@@ -1,0 +1,26 @@
+<!--pages/member/member.wxml-->
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+
+
+	<swiper-item wx:for="{{ memList }}" wx:key="{{ index }}">
+		<view id='swiper'>
+			<navigator class="navigator" open-type="navigate" app-id="wx0ff73d8248085825" path="/pages/index/index?userId={{ item.userId }}" hover-class="navigator-hover" target="miniProgram" >
+				<image src="{{ item.headImg || 'http://www.sinelinked.com/static/other/head01.jpg' }}" class="slide-image"
+				/>
+				<view class='name'>{{ item.userName }}</view>
+				<view class='bianhao'>{{ item.certificateNo || '无' }}</view>
+				<view class='gongsi'>{{ item.companyName  || '无' }}</view>
+				<text class='jieshao'>{{ item.personSummary || '保险传递着爱与责任，用专业中立的态度用心为您规划保险，是我们的爱和责任，保险让生活更美好！'  }}</text>
+			</navigator>
+		</view>
+	</swiper-item>
+
+
+
+</swiper>
+<view class='bottom-link'>
+	<navigator open-type="reLaunch" class='team-link'  url="/pages/index/index" hover-class="navigator-hover">
+		<image src='http://www.sinelinked.com/static/other/team-icon.png'></image>进入团队
+	</navigator>
+	<navigator open-type="navigate" class='member-list-link' url="/pages/memberList/memberList?teamId={{ teamId }}" hover-class="navigator-hover">>>成员列表</navigator>
+</view>

@@ -1,0 +1,11 @@
+/**app.wxss**/
+@import 'weui.wxss';
+
+#shareImageUrl{
+  display: none
+}
+.null-box{
+  display: block;
+  text-align: center;
+  margin-top: 20rpx;
+}

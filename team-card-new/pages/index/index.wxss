@@ -1,0 +1,242 @@
+/* pages/agent/index/index.wxss */
+
+.top_bg_wap {
+	width: 100%;
+	height: 444rpx;
+	background: url('http://ii.sinelinked.com/miniProgramAssets/top_bg.png') no-repeat;
+	background-size: cover;
+	position: relative;
+	overflow: hidden;
+}
+.head_img{
+	width: 290rpx;
+	height: 290rpx;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: 45rpx auto 0 auto;
+	position: relative;
+	z-index: 10;
+	box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.2);
+}
+.head_img image{
+	width: 290rpx;
+	height: 290rpx;
+}
+.top_bg_wap .name{
+	color: #fff;
+	font-size: 34rpx;
+	display: block;
+	padding-top: 22rpx;
+	text-align: center;
+}
+.belongTeam{
+	position: absolute;
+	top: 150rpx;
+	right: 30rpx;
+	text-align: center;
+}
+.belongTeam image{
+	width: 64rpx;
+	height: 54rpx;
+}
+.belongTeam text{
+	display: block;
+	text-align: center;
+	font-size: 24rpx;
+	color: #596c90;
+}
+/* main */
+.main{
+	width: 684rpx;
+	/* height: 640rpx; */
+	height: 620rpx;
+	margin: 0 auto;
+	margin-top: -160rpx;
+	border-radius: 18rpx;
+	position: relative;
+	background: #fff url(http://ii.sinelinked.com/miniProgramAssets/card_top_bg.png) center top no-repeat;
+	background-size: 100% 126rpx;
+	box-shadow: 0 0 16rpx rgba(0,0,0,.1);
+}
+.main .content{
+	width: 582rpx;
+	margin: 0 auto;
+	padding-top: 138rpx;
+}	
+.content .cell{
+	display: flex;
+	justify-content: space-between;
+	font-size: 26rpx;
+	line-height: 65rpx;
+}
+.content .cell_label{
+	display: block;
+	color: #8e8e8e;
+	width: 40%;
+	text-align: center;
+}
+.content .cell_value{
+	display: block;
+	color: #333333;
+	width: 60%;
+	text-align: center;
+}
+.content .introduce{
+	
+	color: #3d3d3d;
+	line-height: 35rpx;
+	padding: 20rpx;
+	height: 190rpx;
+	overflow: auto;
+	margin-top: 4rpx;
+	border: 1rpx solid #f9f9f9;
+	font-size: 0;
+}
+.content .introduce .introduceCon{
+	display: inline-block;
+	font-size: 24rpx;
+	vertical-align: middle;
+}
+.content .introduce:after{
+	content: '';
+	display: inline-block;
+	width: 0;
+	height: 100%;
+	vertical-align: middle;
+}
+.contact_btn_wap{
+	margin: 0 auto;
+	margin-top: 48rpx;
+	overflow: hidden;
+	width: 480rpx;
+	height: 62rpx;
+	color: #3b6cc8;
+	font-size: 26rpx;
+	text-align: center;
+	line-height: 62rpx;
+	border: 1rpx solid #3b6cc8;
+	border-radius: 8rpx;
+	display: none;
+}
+.contact_btn_wap image{
+	width: 40rpx;
+	height: 40rpx;
+	display: inline-block;
+	vertical-align: middle;
+}
+.contact_btn_wap text{
+	vertical-align: middle;
+	padding-left: 14rpx;
+}
+.telIconBox{
+	position: absolute;
+	top: 93rpx;
+	right: 62rpx;
+}
+.telIconBox image{
+	width: 40rpx;
+	height: 40rpx;
+	display: inline-block;
+	vertical-align: middle;
+}
+.main-pro {
+	background: #fff;
+	padding-top: 20rpx;
+	padding-bottom: 30rpx;
+	font-size: 24rpx;
+	color: #333;
+	line-height: 50rpx;
+}
+
+.main-pro-con{
+	padding: 10rpx 0;
+}
+.head-img text {
+	display: block;
+	width: 100%;
+	text-align: center;
+	/* font-size: 34rpx; */
+}
+.head-img {
+	text-align: center;
+}
+.head-img image {
+	max-width: 245rpx;
+	max-height: 245rpx;
+	border-radius: 50%
+}
+
+.name {
+  font-size: 34rpx;
+  display: block;
+  padding-left: 72rpx;
+	position: relative;
+	top: -32rpx;
+  text-align: left;
+  font-weight: bold;
+}
+
+
+/* main */
+.start-main{
+	width: 684rpx;
+	height: 140rpx;
+	margin: 0 auto;
+	margin-top: 16rpx;
+	border-radius: 18rpx;
+	position: relative;
+	box-shadow: 0 0 16rpx rgba(0,0,0,.1);
+}
+.start-center{
+	width: 530rpx;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	align-content: center;
+}	
+.start-head-img{
+	margin-top: 18rpx;
+	width: 104rpx;
+	height: 104rpx;
+	border-radius: 50%;
+	position: relative;
+	border: 2rpx solid #fed530;
+	/* overflow: hidden; */
+}
+.start-head-img image{
+	width: 104rpx;
+	height: 104rpx;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.start-head-img .gj{
+	position: absolute;
+	width: 40rpx;
+	height: 40rpx;
+	right: 10rpx;
+	top: -14rpx;
+}
+.start-info{
+	margin-left: 50rpx;
+}
+.start-info .personSummary{
+	font-size: 18rpx;
+	color: #7b7b7b;
+	overflow : hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+}
+.start-info .userName{
+	font-size: 24rpx;
+}
+.start-info .tdzx{
+	font-size: 16rpx;
+	padding: 0 15rpx;
+	color: #fff;
+	background:#3d6cc8 ;
+	border-radius: 15rpx;
+	vertical-align: middle;
+	margin-left: 18rpx;
+}

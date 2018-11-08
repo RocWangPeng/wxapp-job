@@ -1,0 +1,24 @@
+<!--pages/agent/show/show.wxml-->
+<view class="top_banner">
+	<image src="{{ selfShowCover }}" class="show_top_img"></image>
+</view>
+<view class="main">
+	<view class="head_info">
+		<image src="{{ agentData.headImg }}" class="head_img"></image>
+		<text class="agent_name">{{ agentData.userName || '无'  }}</text>
+		<view class="agent_info">{{ agentData.teamShowSummary || '无'  }}</view>
+	</view>
+	
+	<view class="show_img" wx:if="{{ isManySelfImg }}">
+		<view class="show_item" wx:key="index" wx:for="{{ selfImg }}" bindtap='previewImages' data-item = '{{ item }}'>
+			<image src="{{ item }}" class="show_img_item"></image>
+		</view>
+	</view>
+	
+	<view wx:else class="show_img" id="show_img_one">
+		<view class="show_item" bindtap='previewImages' data-item = '{{ selfImg[0] }}'>
+			<image src="{{ selfImg[0] }}" mode="widthFix" class="show_img_item"></image>
+		</view>
+	</view>
+	
+</view>
