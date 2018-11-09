@@ -5,7 +5,6 @@
     "pages/product/product",
     "pages/show/show",
     "pages/memberList/memberList",
-    "pages/start/start",
     "pages/member/member",
     "pages/learnDetail/learnDetail"
   ],

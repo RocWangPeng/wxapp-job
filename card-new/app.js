@@ -1,53 +1,67 @@
 //app.js
 App({
-  onLaunch: function (options) {
+	onLaunch: function(options) {
+	
+	this.getUnineId()
 
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log('https://api.weixin.qq.com/sns/jscode2session?appid=wx0ff73d8248085825&secret=afec6b29047303dfd234ddaa00b857c2&js_code=' + res.code + '&grant_type=authorization_code')
-        console.log(res)
-        wx.request({
-          url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx0ff73d8248085825&secret=afec6b29047303dfd234ddaa00b857c2&js_code=' + res.code + '&grant_type=authorization_code',
-          data: {},
-          header: {
-            'content-type': 'application/json'
-          },
-          success: function (res) {
-            // openid = res.data.openid //返回openid
-            console.log(res.data)
-          }
-        })
-      }
-    })
-    
-    
-		// 首先判断有没有参数，如果没有参考 再判断本地是否存在数据
-		var params = options.query.userId || options.query.scene
-		if(!params){
-      
-			// 如果本地存储没有数据，则跳转到搜索顾问页面
-			var userId = wx.getStorageSync('agentId')
-     
-
-			if(!userId){
-				
-				wx.reLaunch({
-					url: '/pages/start/start',
-					success: function () {
-						console.log('home 跳转成功');
-					},
-					fail: function () {
-						console.log('home 跳转失败');
-					}
-				})
-			}else{
+	},
+	getUnineId(){
+		// 登录
+		wx.login({
+			success: res => {
+				console.log(res)
+				// 发送 res.code 到后台换取 openId, sessionKey, unionId
+				var code = res.code
+				var self = this;
+				if (res.code) {
+					// 获取用户信息
+					wx.getSetting({
+						success: res => {
+							if (res.authSetting['scope.userInfo']) {
+								
+								self.globalData.isScope = 1
+								// 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+								wx.getUserInfo({
+									success: res => {
+										// 可以将 res 发送给后台解码出 unionId
+										console.log(res)
+										wx.request({
+											url: "https://ii.sinelinked.com/tg_web/api/user/getUnionId",
+											data: {
+												encryptedData: res.encryptedData,
+												iv: res.iv,
+												code: code,
+												type: 1
+											},
+											success(res) {
+												self.globalData.userInfo = res.data.data
+												// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+												// 所以此处加入 callback 以防止这种情况
+												if (self.userInfoReadyCallback) {
+													self.userInfoReadyCallback(res)
+												}
+											}
+										})
+									}
+								})
+							} else {
+								console.log('未授权')
+								if (self.userInfoReadyCallbackScope) {
+									self.userInfoReadyCallbackScope(2)
+								}
+							}
+						}
+					})
+				}
 			}
-		}
-  },
-	onShow(options){
-		
+		})
+	},
+	onShow(options) {
+
+	},
+	globalData: {
+		userInfo: null,
+		isScope:null
 	}
 })

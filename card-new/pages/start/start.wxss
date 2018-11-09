@@ -1,25 +1,107 @@
-/**index.wxss**/
-
-.searchbar-result{
-    margin-top: 0;
-    font-size: 14px;
+page{
+	height: 100%;
+	background: url('http://ii.sinelinked.com/miniProgramAssets/flower-b.png') no-repeat center bottom;
+	background-size: 750rpx 120rpx;
 }
-.searchbar-result:before{
-    display: none;
+.flower{
+	width: 358rpx;
+	height: 148rpx;
+	margin-top: 67rpx;
+	margin-bottom: 50rpx;
 }
-.null-icon{
-	width: 60%;
+.search-bar{
+	width: 680rpx;
 	margin: 0 auto;
-	margin-top: 20rpx;
+	height: 78rpx;
+	line-height: 78rpx;
+	display: flex;
 }
-.null-icon image{
-	width: 100%;
+.input-warp{
+	width: 434rpx;
+	height: 78rpx;
+	line-height: 78rpx;
+	background: #f6f6f6;
+	border: 1rpx solid #eeeeee;
+	border-radius: 5rpx;
+	padding-left: 12rpx;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
 }
-.agent-info{
-	display: block;
-	width: 80%;
-	margin: 0 auto;
+.input-warp .input{
+	display: inline-block;
+	line-height: 78rpx;
+	height: 78rpx;
+	font-size: 24rpx;
+	color: #bebebe;
+	width: 340rpx;
+	padding-left: 20rpx;
+	
+}
+.button-warp{
+	display: flex;
+}
+.btn{
+	width: 116rpx;
+	height: 78rpx;
+	background: #5994f1;
+	font-size: 24rpx;
+	color: #fff;
 	text-align: center;
-	font-size: 30rpx;
-	color: #666666;
+	border-radius: 6rpx;
+}
+.agent-btn{
+	margin-right: 4rpx;
+}
+.search-result{
+	text-align: center;
+	margin-top: 82rpx;
+	margin-bottom: 82rpx;
+}
+.search-result text{
+	font-size: 24rpx;
+	color: #949494;
+	padding-left: 12rpx;
+}
+.card-main{
+	width: 544rpx;
+	margin: 0 auto;
+}
+.card-item{
+	border-radius: 16rpx;
+	width: 440rpx;
+	height: 186rpx;
+	background: #fff;
+	box-shadow: 0 0 22rpx rgba(0,0,0,.2);
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.card-item text{
+	font-size: 28rpx;
+	color: #555;
+}
+.agent-card image{
+	width: 61rpx;
+}
+.team-card image{
+	width: 136rpx;
+}
+.qr-code{
+	width: 58rpx;
+	height: 58rpx;
+}
+.card-flex{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+}
+.card-flex:first-child{
+	margin-bottom: 34rpx;
+}
+.card-flex .getUserInfo{
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }

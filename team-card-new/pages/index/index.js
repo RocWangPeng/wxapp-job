@@ -24,8 +24,7 @@ Page({
 
     // 获取扫码状态下的用户id
     var scenes = decodeURIComponent(options.scene)
-    var userId = options.userId || scenes.split('=')[1] || wx.getStorageSync('agentId');
-    console.log(userId)
+    var userId = options.userId || scenes.split('=')[1] || wx.getStorageSync('userId');
     if (userId) {
       this.getInfo(userId)
     }
@@ -52,7 +51,7 @@ Page({
         console.log(Object.prototype.toString.call(res.data))
         if (Object.prototype.toString.call(res.data) === '[object Array]') {
           var result = res.data[0]
-          wx.setStorageSync('agentId', result.userId)
+          wx.setStorageSync('userId', result.userId)
           wx.setStorageSync('phone', result.phone)
           that.setData({
             agentData: result
@@ -70,15 +69,7 @@ Page({
             })
           }
         }else{
-          wx.reLaunch({
-					url: '/pages/start/start',
-					success: function () {
-						console.log('home 跳转成功');
-					},
-					fail: function () {
-						console.log('home 跳转失败');
-					}
-				})
+         
         }
 				// 用户如果没有传头像，赋默认值
 				if(!that.data.agentData.headImg){
@@ -166,16 +157,7 @@ Page({
 	 */
   onShow: function () {
 
-    var userId = this.data.agentData.userId
-    var storyUserId = wx.getStorageSync('NewagentId');
-    if (storyUserId){
-      //如果userI与当前不一致，则重新调用，防止onload执行一次的问题
-      if (userId == storyUserId) {
-        // this.getInfo(userId)
-      } else {
-        this.getInfo(storyUserId)
-      }
-    }
+    
     
   },
 

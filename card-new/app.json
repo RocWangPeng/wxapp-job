@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/start/start",
     "pages/index/index",
     "pages/msg/msg",
     "pages/show/show",
-    "pages/product/product",
-    "pages/start/start"
+    "pages/product/product"
   ],
   "window": {
     "backgroundTextStyle": "light",
