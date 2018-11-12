@@ -22,7 +22,17 @@ Page({
 		unineId: '',
 		currentCode: '',
 		prevUrls: [],
-		joinedTeams: [] //所属团队
+		joinedTeams: ['a','c'] ,//所属团队
+		visible1: false,
+        actions1: [
+            {
+                name: '团队1',
+            },
+            {
+                name: '团队1'
+            },
+            
+        ],
 
 	},
 	search(e) {
@@ -192,6 +202,9 @@ Page({
 			})
 		
 		} else if (joinedTeams.length > 1) { //加入多个团队，弹出列表
+		this.setData({
+            visible1: true
+        });
 		
 		} else if (joinedTeams.length == 0) {
 			$Toast({
