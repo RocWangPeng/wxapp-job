@@ -19,9 +19,7 @@ Page({
 		manyTeam: [], //多团队数据
 		noTeam: true, //是否有加入团队
 		visible1: false,
-		actions1: [
-
-		],
+		actions1: [],
 		actions2: []
 	},
 	/**
@@ -29,23 +27,6 @@ Page({
 	 */
 	onLoad: function(options) {
 		var self = this
-		if (app.globalData.userInfo) {
-			this.setData({
-				userInfo: app.globalData.userInfo,
-			})
-		} else{
-			// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-			// 所以此处加入 callback 以防止这种情况
-			app.userInfoReadyCallback = res => {
-				this.setData({
-					userInfo: res.data.data,
-				})
-			}
-			
-		}
-
-
-		var that = this;
 
 		wx.showLoading({
 			title: '努力加载中...'
@@ -59,7 +40,7 @@ Page({
 		}
 
 		//将城市数据赋值 
-		that.setData({
+		self.setData({
 			cityData: cityData
 		})
 

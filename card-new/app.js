@@ -1,12 +1,43 @@
 //app.js
+let wechat = require('./utils/wechat.js');
 App({
+
+
 	onLaunch: function(options) {
-	
-	this.getUnineId()
+		var self = this
+		// 验证是否已授权
+		wechat.isAuth()
+			.then(res => {
+				
+				if (this.readCallBackFn) {
+					this.readCallBackFn(1)
+				}
+
+				this.globalData.isScope = 1
+				wechat.login()
+					.then(res => {
+						// console.log(res);
+					})
+					.catch(err => {
+						console.log(err);
+					})
+			})
+			.catch(err => {
+				this.globalData.isScope = 2
+				if (this.readCallBackFn) {
+					this.readCallBackFn(2)
+				}
+
+			})
+
+
+
+
+		// this.getUnineId()
 
 
 	},
-	getUnineId(){
+	getUnineId() {
 		// 登录
 		wx.login({
 			success: res => {
@@ -19,7 +50,7 @@ App({
 					wx.getSetting({
 						success: res => {
 							if (res.authSetting['scope.userInfo']) {
-								
+
 								self.globalData.isScope = 1
 								// 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
 								wx.getUserInfo({
@@ -62,6 +93,6 @@ App({
 	},
 	globalData: {
 		userInfo: null,
-		isScope:null
+		isScope: null
 	}
 })

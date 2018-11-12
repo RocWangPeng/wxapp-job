@@ -1,16 +1,29 @@
 //获取应用实例
 const app = getApp()
+let wechat = require('../../utils/wechat.js');
+const {
+	$Toast
+} = require('../../dist/base/index');
+
 Page({
 
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
-		isScope: true,
+		isScope: 2,
 		inputValue: '',
 		searchResult: [],
 		isResult: '',
-		resultTip: '请输入搜索内容'
+		resultTip: '请输入搜索内容',
+		spinShow: false,
+		userInfo: {}, //用户信息
+		agent: {},
+		unineId: '',
+		currentCode: '',
+		prevUrls: [],
+		joinedTeams: [] //所属团队
+
 	},
 	search(e) {
 		var type = e.target.dataset.type
@@ -54,8 +67,6 @@ Page({
 										// 打开成功
 									}
 								})
-
-
 							}
 							break;
 						default:
@@ -74,91 +85,188 @@ Page({
 			}
 		})
 	},
+	//所属团队 
+	getJoinedTeams(id) {
+		var that = this
+		wx.request({
+			url: `https://ii.sinelinked.com/tg_web/api/user/XCX/getJoinedTeams`,
+			data: {
+				userId: id
+			},
+			success: function(res) {
+				if (res.data.code == 0) {
+
+					that.setData({
+						joinedTeams: res.data.data
+					})
+				}
+			}
+		})
+
+	},
 	bindKeyInput: function(e) {
 		this.setData({
 			inputValue: e.detail.value
 		})
-	},
-	onGotUserInfo: function(e) {
-		console.log(e.detail.errMsg)
-		console.log(e.detail.userInfo)
-		console.log(e.detail.rawData)
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function(options) {
-		if (app.globalData.userInfo) {
+
+		if (app.globalData.isScope) {
 			this.setData({
 				isScope: app.globalData.isScope,
 			})
-		} else {
-			// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-			// 所以此处加入 callback 以防止这种情况
-			app.userInfoReadyCallbackScope = res => {
-				this.setData({
-					isScope: res,
-				})
+			var isScope = this.data.isScope
+			/* 
+				1 如果isScope已授权，则获取本地存储中的UnineId
+				2 获取到后查询信息
+				3 没有获取到本地中的UnineId，则让用户重新授权
+			 */
+			if (isScope == 1) {
+				var UnineId = wx.getStorageSync('UnineId')
+				if (UnineId) {
+					this.setData({
+						unineId: UnineId,
+					})
+					this.searchByUnionId(UnineId, false)
+				} else {
+					this.setData({
+						isScope: 2,
+					})
+				}
+			} else {
+
 			}
 
+		} else {
+			app.readCallBackFn = res => {
+				this.setData({
+					isScope: res
+				})
+				var isScope = this.data.isScope
+				if (isScope == 1) {
+					var UnineId = wx.getStorageSync('UnineId')
+					if (UnineId) {
+						this.setData({
+							unineId: UnineId,
+						})
+						this.searchByUnionId(UnineId, false)
+					} else {
+						this.setData({
+							isScope: 2,
+						})
+					}
+				} else {
+
+				}
+			}
 		}
 	},
 	// 授权窗口
-	onGotUserInfo(res){
-		console.log(res);
-		if(res.detail.errMsg == "getUserInfo:ok"){
+	onGotUserInfo(res) {
+		this.setData({
+			userInfo: res.detail
+		})
+
+		if (res.detail.errMsg == "getUserInfo:ok") {
 			this.setData({
-				isScope:1,
+				isScope: 1,
 			})
+			this.getUnineId()
 		}
 	},
 	// 获取授权状态
-	toAgent() {
-		this.getUnineId()
+	toCard() {
+		this.searchByUnionId(this.data.unineId, true)
 	},
+	toTeam() {
+		var joinedTeams = this.data.joinedTeams
+		if (joinedTeams.length == 1) { //加入一个团队直接跳转
+			wx.navigateToMiniProgram({
+				appId: 'wx45ab72d81dc8cd72',
+				path: '/pages/index/index?userId=' + joinedTeams[0].userId,
+				success(res) {/* 打开成功 */}
+			})
+		
+		} else if (joinedTeams.length > 1) { //加入多个团队，弹出列表
+		
+		} else if (joinedTeams.length == 0) {
+			$Toast({
+				content: '暂未加入团队',
+				type: 'warning'
+			});
+		}
+	},
+	// 获取UnineId并查询用户信息
 	getUnineId() {
-		// 登录
-		wx.login({
-			success: res => {
-				// 发送 res.code 到后台换取 openId, sessionKey, unionId
-				var code = res.code
-				var self = this;
-				if (res.code) {
-					// 获取用户信息
-					wx.getSetting({
-						success: res => {
-							if (res.authSetting['scope.userInfo']) {
-								// 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-								wx.getUserInfo({
-									success: res => {
-										// 可以将 res 发送给后台解码出 unionId
-										wx.request({
-											url: "https://ii.sinelinked.com/tg_web/api/user/getUnionId",
-											data: {
-												encryptedData: res.encryptedData,
-												iv: res.iv,
-												code: code,
-												type: 1
-											},
-											success(res) {
-												// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-												// 所以此处加入 callback 以防止这种情况
-												console.log('授权了');
-											}
-										})
-									}
-								})
-							} else {
-								console.log('未授权')
-							}
-						}
+
+		$Toast({
+			content: '加载中',
+			type: 'loading'
+		});
+		wechat.login()
+			.then(res => {
+				var code = res
+				var params = {
+					code: code,
+					encryptedData: this.data.userInfo.encryptedData,
+					iv: this.data.userInfo.iv,
+					type: 1
+				}
+
+				wechat.getUnineId(params)
+					.then(res => {
+						var unionId = res.data.data.unionId
+						this.setData({
+							unineId: unionId,
+							spinShow: false
+						})
+						// 存储unionId
+						wx.setStorageSync('UnineId', unionId)
+						this.searchByUnionId(unionId, true)
+					})
+					.catch(err => {
+						console.log(err);
+					})
+			})
+
+	},
+	// 根据unionId获取顾问信息
+	searchByUnionId: function(unionId, isSkip) {
+		wx.request({
+			url: 'http://ii.sinelinked.com/tg_web/api/agent/searchByUnionId',
+			data: {
+				unionId: unionId,
+				type: 1
+			},
+			success: (res) => {
+				this.setData({
+					agent: res.data.data[0]
+				})
+
+				this.getJoinedTeams(res.data.data[0].userId)
+
+				if (isSkip) {
+					wx.reLaunch({
+						url: '/pages/index/index?userId=' + res.data.data[0].userId
 					})
 				}
+
 			}
 		})
 	},
-
+	//预览太阳码
+	previewImage: function() {
+		var urls = []
+		urls.push(this.data.agent.qrCodePath)
+		wx.previewImage({
+			current: this.data.agent.qrCodePath, // 当前显示图片的http链接
+			urls: urls // 需要预览的图片http链接列表
+		})
+	},
 
 	/**
 	 * 生命周期函数--监听页面初次渲染完成

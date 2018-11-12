@@ -1,5 +1,5 @@
 <!-- <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button> -->
-
+<i-toast id="toast" />
 <view>
 	<image class="flower" src='http://ii.sinelinked.com/miniProgramAssets/flower.png'></image>
 </view>
@@ -19,17 +19,17 @@
 <view class="card-main">
 	<view class="card-flex">
 		<button wx:if="{{ isScope == 2 }}" class="getUserInfo" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"></button>
-		<view bindtap="toAgent" class="card-item agent-card">
+		<view bindtap="toCard" class="card-item agent-card">
 			<image mode="aspectFit" src='http://ii.sinelinked.com/miniProgramAssets/man.png'></image>
 			<text>我的名片</text>
 		</view>
-		<view class="qr-code">
+		<view bindtap="previewImage" class="qr-code">
 			<image class="qr-code" src="http://ii.sinelinked.com/miniProgramAssets/qr-code.png"></image>
 		</view>
 	</view>
 	<view class="card-flex">
 		<button wx:if="{{ isScope == 2 }}" class="getUserInfo" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"></button>
-		<view class="card-item team-card">
+		<view bindtap="toTeam" class="card-item team-card">
 			<image mode="aspectFit" src='http://ii.sinelinked.com/miniProgramAssets/team.png'></image>
 			<text>我的团队名片</text>
 		</view>

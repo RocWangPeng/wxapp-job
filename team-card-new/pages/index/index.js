@@ -48,7 +48,6 @@ Page({
       },
       success: function (res) {
 				wx.hideLoading()
-        console.log(Object.prototype.toString.call(res.data))
         if (Object.prototype.toString.call(res.data) === '[object Array]') {
           var result = res.data[0]
           wx.setStorageSync('userId', result.userId)
