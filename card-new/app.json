@@ -40,5 +40,8 @@
         "selectedIconPath": "/img/show-a.png"
       }
     ]
-  }
+  },
+	"navigateToMiniProgramAppIdList": [
+    "wx45ab72d81dc8cd72"
+  ]
 }

@@ -22,26 +22,32 @@ Page({
 		unineId: '',
 		currentCode: '',
 		prevUrls: [],
-		joinedTeams: ['a','c'] ,//所属团队
+		joinedTeams: [], //所属团队
+		activeTeamid: '', //当前所选团队
 		visible1: false,
-        actions1: [
-            {
-                name: '团队1',
-            },
-            {
-                name: '团队1'
-            },
-            
-        ],
+		actions1: [{
+				name: '团队1',
+			},
+
+		],
 
 	},
 	search(e) {
 		var type = e.target.dataset.type
 		var url = ''
+		console.log('type', type);
+		if (this.data.inputValue == '') {
+			$Toast({
+				content: '请输入搜索内容',
+				type: 'warning'
+			});
+			return
+		}
+
 		if (type == 'agent') {
-			url = 'http://ii.sinelinked.com/tg_web/api/agent/searchByNameOrTel'
+			url = 'https://ii.sinelinked.com/tg_web/api/agent/searchByNameOrTel'
 		} else {
-			url = 'http://ii.sinelinked.com/tg_web/api/team/searchByNameOrTel'
+			url = 'https://ii.sinelinked.com/tg_web/api/team/searchByNameOrTel'
 		}
 
 		var self = this
@@ -51,10 +57,16 @@ Page({
 				nameOrTel: this.data.inputValue
 			},
 			success(res) {
-				if (res.data.data) {
+				if (res.data.data.length) {
 					self.setData({
 						searchResult: res.data.data
 					})
+
+					// 顾问
+					$Toast({
+						content: res.data.data[0].type,
+						type: 'warning'
+					});
 
 					switch (res.data.data.length) {
 						case 0:
@@ -63,7 +75,7 @@ Page({
 							})
 							break;
 						case 1:
-							// 顾问
+
 							if (res.data.data[0].type == 1) {
 								wx.reLaunch({
 									url: '/pages/index/index?userId=' + res.data.data[0].userId
@@ -90,25 +102,54 @@ Page({
 					self.setData({
 						resultTip: '没有搜索到相关内容'
 					})
+					$Toast({
+						content: '没有搜索到相关内容',
+						type: 'warning'
+					});
 				}
 
 			}
 		})
+	},
+	handleClickItem(e) {
+		var userId = e.currentTarget.dataset.userid
+		this.setData({
+			activeTeamid: userId
+		})
+		this.searchTeamBrief()
+		this.setData({
+			visible1: false
+		});
+	},
+	handleCancel2() {
+		this.setData({
+			visible1: false
+		});
 	},
 	//所属团队 
 	getJoinedTeams(id) {
 		var that = this
 		wx.request({
 			url: `https://ii.sinelinked.com/tg_web/api/user/XCX/getJoinedTeams`,
+			// url:"https://www.easy-mock.com/mock/5baef22ab793604807ec54ae/loffery/getJoinedTeams",
 			data: {
 				userId: id
 			},
 			success: function(res) {
 				if (res.data.code == 0) {
+					var joinedTeams = []
+					if (res.data.data.length) {
+						res.data.data.map(item => {
+							joinedTeams.push({
+								name: item.userName,
+								userId: item.userId
+							})
+						})
+						that.setData({
+							joinedTeams: joinedTeams
+						})
+					}
 
-					that.setData({
-						joinedTeams: res.data.data
-					})
 				}
 			}
 		})
@@ -119,7 +160,24 @@ Page({
 			inputValue: e.detail.value
 		})
 	},
-
+	//所属团队 
+	searchTeamBrief() {
+		var that = this;
+		wx.request({
+			url: `https://ii.sinelinked.com/tg_web/api/XCX/team/search`,
+			data: {
+				teamId: this.data.activeTeamid
+			},
+			success: function(res) {
+				if (Object.prototype.toString.call(res.data) === '[object Array]') {
+					var result = res.data[0]
+					that.setData({
+						qrCodePath: result.qrCodePath
+					})
+				}
+			}
+		})
+	},
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
@@ -190,22 +248,35 @@ Page({
 	},
 	// 获取授权状态
 	toCard() {
+		
 		this.searchByUnionId(this.data.unineId, true)
 	},
 	toTeam() {
 		var joinedTeams = this.data.joinedTeams
 		if (joinedTeams.length == 1) { //加入一个团队直接跳转
+// 			$Toast({
+// 				content: '加入一个团队直接跳转',
+// 				type: 'warning'
+// 			});
 			wx.navigateToMiniProgram({
 				appId: 'wx45ab72d81dc8cd72',
 				path: '/pages/index/index?userId=' + joinedTeams[0].userId,
-				success(res) {/* 打开成功 */}
+				success(res) { /* 打开成功 */ }
 			})
-		
+
 		} else if (joinedTeams.length > 1) { //加入多个团队，弹出列表
-		this.setData({
-            visible1: true
-        });
-		
+			if (this.data.activeTeamid) {
+				wx.navigateToMiniProgram({
+					appId: 'wx45ab72d81dc8cd72',
+					path: '/pages/index/index?userId=' + this.data.activeTeamid,
+					success(res) { /* 打开成功 */ }
+				})
+			} else {
+				this.setData({
+					visible1: true
+				});
+			}
+
 		} else if (joinedTeams.length == 0) {
 			$Toast({
 				content: '暂未加入团队',
@@ -249,24 +320,48 @@ Page({
 	},
 	// 根据unionId获取顾问信息
 	searchByUnionId: function(unionId, isSkip) {
+		
 		wx.request({
-			url: 'http://ii.sinelinked.com/tg_web/api/agent/searchByUnionId',
+			url: 'https://ii.sinelinked.com/tg_web/api/agent/searchByUnionId',
 			data: {
 				unionId: unionId,
 				type: 1
 			},
 			success: (res) => {
-				this.setData({
-					agent: res.data.data[0]
-				})
-
-				this.getJoinedTeams(res.data.data[0].userId)
-
-				if (isSkip) {
-					wx.reLaunch({
-						url: '/pages/index/index?userId=' + res.data.data[0].userId
+				if (res.data.code == 0) {
+					this.setData({
+						agent: res.data.data[0]
 					})
+
+					this.getJoinedTeams(res.data.data[0].userId)
+
+					if (isSkip) {
+						wx.reLaunch({
+							url: '/pages/index/index?userId=' + res.data.data[0].userId
+						})
+					}
+
+				}else{
+					
+					if (isSkip) {
+						if(res.data.code == 46){
+							$Toast({
+								content: '非保信平台会员,请进入保信云顾问公众号进行注册',
+								type: 'warning'
+							});
+						}
+// 						$Toast({
+// 							content: res.data.error,
+// 							type: 'warning'
+// 						});
+
+					}
+					
+					
+					
 				}
+
+
 
 			}
 		})
@@ -279,6 +374,26 @@ Page({
 			current: this.data.agent.qrCodePath, // 当前显示图片的http链接
 			urls: urls // 需要预览的图片http链接列表
 		})
+	},
+	//预览太阳码
+	previewImageTeam: function() {
+		if (this.data.activeTeamid) {
+			var urls = []
+			urls.push(this.data.qrCodePath)
+			wx.previewImage({
+				current: this.data.qrCodePath, // 当前显示图片的http链接
+				urls: urls // 需要预览的图片http链接列表
+			})
+		} else {
+			if(this.data.joinedTeams.length){
+				this.setData({
+					visible1: true
+				});
+			}
+			
+		}
+
+
 	},
 
 	/**

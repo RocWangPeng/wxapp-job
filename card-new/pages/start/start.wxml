@@ -33,10 +33,14 @@
 			<image mode="aspectFit" src='http://ii.sinelinked.com/miniProgramAssets/team.png'></image>
 			<text>我的团队名片</text>
 		</view>
-		<view class="qr-code">
+		<view bindtap="previewImageTeam" class="qr-code">
 			<image class="qr-code" src="http://ii.sinelinked.com/miniProgramAssets/qr-code.png"></image>
 		</view>
 	</view>
 </view>
-<i-action-sheet visible="{{ visible1 }}" actions="{{ actions1 }}" show-cancel bind:cancel="handleCancel1" bind:click="handleClickItem1" />
+<i-action-sheet visible="{{ visible1 }}"  show-cancel bind:cancel="handleCancel2">
+  <view class='teamListItem'  wx:for="{{ joinedTeams }}" wx:key="{{ index }}" data-userId ="{{ item.userId }}" slot="header" bindtap="handleClickItem">
+    <text>{{ item.name }}</text>
+  </view>
+</i-action-sheet>
 

@@ -47,8 +47,8 @@ Page({
 				var selfShowCoverTemp = result.teamShowCover
 				if (selfShowCoverTemp) {
           selfShowCoverTemp = selfShowCoverTemp + '&' + Math.random()
-				} else {
-          selfShowCoverTemp = 'http://ii.sinelinked.com/miniProgramAssets/show_bg.jpg' + '&' + Math.random()
+				} else if(selfShowCoverTemp == null) {
+          selfShowCoverTemp = 'http://ii.sinelinked.com/miniProgramAssets/show_bg.jpg' + '#' + Math.random()
 				}
 				
 

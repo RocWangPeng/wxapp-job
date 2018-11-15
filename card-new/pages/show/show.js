@@ -48,8 +48,8 @@ Page({
 				var selfShowCoverTemp = result.selfShowCover
 				if (selfShowCoverTemp) {
           selfShowCoverTemp = selfShowCoverTemp + '&' + Math.random()
-				} else {
-					selfShowCoverTemp = 'http://ii.sinelinked.com/miniProgramAssets/show_bg.jpg' + '&' + Math.random()
+				} else if(selfShowCoverTemp == null) {
+					selfShowCoverTemp = 'http://ii.sinelinked.com/miniProgramAssets/show_bg.jpg' + '#' + Math.random()
 				}
 
 				// 个人秀多图加随机数//防止图片缓存
