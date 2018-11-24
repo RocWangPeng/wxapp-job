@@ -248,16 +248,17 @@ Page({
 	},
 	// 获取授权状态
 	toCard() {
-		
 		this.searchByUnionId(this.data.unineId, true)
 	},
 	toTeam() {
+    console.log('toTeam')
+
 		var joinedTeams = this.data.joinedTeams
+    console.log(joinedTeams, joinedTeams.length)
 		if (joinedTeams.length == 1) { //加入一个团队直接跳转
-// 			$Toast({
-// 				content: '加入一个团队直接跳转',
-// 				type: 'warning'
-// 			});
+    
+			
+
 			wx.navigateToMiniProgram({
 				appId: 'wx45ab72d81dc8cd72',
 				path: '/pages/index/index?userId=' + joinedTeams[0].userId,
@@ -310,7 +311,7 @@ Page({
 						})
 						// 存储unionId
 						wx.setStorageSync('UnineId', unionId)
-						this.searchByUnionId(unionId, true)
+						this.searchByUnionId(unionId, false)
 					})
 					.catch(err => {
 						console.log(err);
@@ -346,7 +347,7 @@ Page({
 					if (isSkip) {
 						if(res.data.code == 46){
 							$Toast({
-								content: '非保信平台会员,请进入保信云顾问公众号进行注册',
+								content: '您还不是保信云顾问，请完善顾问信息后再使用名片',
 								type: 'warning'
 							});
 						}
@@ -377,6 +378,7 @@ Page({
 	},
 	//预览太阳码
 	previewImageTeam: function() {
+    console.log('previewImageTeam')
 		if (this.data.activeTeamid) {
 			var urls = []
 			urls.push(this.data.qrCodePath)
