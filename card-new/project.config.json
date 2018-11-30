@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
@@ -47,8 +47,8 @@
 				{
 					"id": 1,
 					"name": "params",
-					"pathName": "pages/index/index",
-					"query": "userId=2749537581bc4870b6f2aa50b6237"
+					"pathName": "pages/agent/index/index",
+					"query": "userId=1542608281917baa4bf7261274861"
 				}
 			]
 		}

@@ -5,10 +5,22 @@ App({
 
 	onLaunch: function(options) {
 		var self = this
+		console.log(options)
+		wx.showLoading({
+			title: '努力加载中...'
+		})
+		
+		var scenes = decodeURIComponent(options.scene) // 获取扫码状态下的用户id
+		var userId = options.query.userId || scenes.split('=')[1]
+		// 获取顾问信息
+		if(userId){
+			this.getAaentData(userId)
+		}
+		
 		// 验证是否已授权
 		wechat.isAuth()
 			.then(res => {
-				
+
 				if (this.readCallBackFn) {
 					this.readCallBackFn(1)
 				}
@@ -29,13 +41,6 @@ App({
 				}
 
 			})
-
-
-
-
-		// this.getUnineId()
-
-
 	},
 	getUnineId() {
 		// 登录
@@ -91,8 +96,31 @@ App({
 	onShow(options) {
 
 	},
+	// 获取顾问信息
+	getAaentData(userId) {
+		var self = this
+		wx.request({
+			url: `https://ii.sinelinked.com/tg_web/api/XCX/agent/search`,
+			data: {
+				agentId: userId
+			},
+			success: function(res) {
+				wx.hideLoading()
+				if (Object.prototype.toString.call(res.data) === '[object Array]') {
+					var result = res.data[0]
+					self.globalData.agentData = result
+					// 由于 getAaentData 是网络请求，可能会在 Page.onLoad 之后才返回
+					  // 所以此处加入 callback 以防止这种情况
+					  if (self.callBack) {
+						self.callBack(result)
+					  }
+				}
+			}
+		})
+	},
 	globalData: {
 		userInfo: null,
-		isScope: null
+		isScope: null,
+		agentData:null
 	}
 })

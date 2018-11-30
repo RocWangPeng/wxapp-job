@@ -22,31 +22,46 @@ Page({
 		unineId: '',
 		currentCode: '',
 		prevUrls: [],
+		visibleTeamChoose: false, //显示选择团队弹框
+		teamChooseData: [
+// 			{
+// 				name: '记忆的时间差',
+// 				icon: 'group_fill',
+// 				color: '#ff9900'
+// 			}
+		],
 		joinedTeams: [], //所属团队
 		activeTeamid: '', //当前所选团队
 		visible1: false,
-    qrCodeUrl:'',
-    qrCodeTeamUrl: '',
-    resultTipShow:false,//搜索结果显示
-    previewImageShow:false,
-    previewImageTeamShow:false,//团队太阳码显示
+		qrCodeUrl: '',
+		qrCodeTeamUrl: '',
+		resultTipShow: false, //搜索结果显示
+		previewImageShow: false,
+		previewImageTeamShow: false, //团队太阳码显示
 		actions1: [{
 				name: '团队1',
 			},
-
 		],
 
 	},
+	// 弹出框 选择团队
+	teamChooseHandle(e) {
+		var index = e.detail.index
+		console.log(this.data.teamChooseData[index].userId);
+		this.setData({
+			resultTipShow: true
+		});
+	},
 	search(e) {
-    var self = this
+		var self = this
 		var type = e.target.dataset.type
 		var url = ''
 		console.log('type', type);
 		if (this.data.inputValue == '') {
-      self.setData({
-        searchResult: '请输入搜索内容',
-        resultTipShow:true
-      })
+			self.setData({
+				searchResult: '请输入搜索内容',
+				resultTipShow: true
+			})
 			return
 		}
 
@@ -56,7 +71,7 @@ Page({
 			url = 'https://ii.sinelinked.com/tg_web/api/team/searchByNameOrTel'
 		}
 
-		
+
 		wx.request({
 			url: url,
 			data: {
@@ -72,12 +87,12 @@ Page({
 						case 0:
 							self.setData({
 								resultTip: '没有搜索到相关内容',
-                resultTipShow:true
+								resultTipShow: true
 							})
-              // $Toast({
-              //   content: '没有搜索到相关内容',
-              //   type: 'warning'
-              // });
+							// $Toast({
+							//   content: '没有搜索到相关内容',
+							//   type: 'warning'
+							// });
 							break;
 						case 1:
 
@@ -99,31 +114,23 @@ Page({
 						default:
 							self.setData({
 								resultTip: '搜索结果大于一，请输入执业证书编号搜索',
-                resultTipShow:true
+								resultTipShow: true
 							})
-              // $Toast({
-              //   content: '搜索结果大于一，请输入执业证书编号搜索',
-              //   type: 'warning'
-              // });
 							break;
 					}
 
 				} else {
 					self.setData({
 						resultTip: '没有搜索到相关内容',
-            resultTipShow:true
+						resultTipShow: true
 					})
-					// $Toast({
-					// 	content: '没有搜索到相关内容',
-					// 	type: 'warning'
-					// });
 				}
 
 			}
 		})
 	},
 	handleClickItem(e) {
-		var userId = e.currentTarget.dataset.userid
+		var userId = e.currentTarget.dataset.userId
 		this.setData({
 			activeTeamid: userId
 		})
@@ -137,12 +144,11 @@ Page({
 			visible1: false
 		});
 	},
-	//所属团队 
+	//所加入的团队 
 	getJoinedTeams(id) {
 		var that = this
 		wx.request({
 			url: `https://ii.sinelinked.com/tg_web/api/user/XCX/getJoinedTeams`,
-			// url:"https://www.easy-mock.com/mock/5baef22ab793604807ec54ae/loffery/getJoinedTeams",
 			data: {
 				userId: id
 			},
@@ -157,10 +163,9 @@ Page({
 							})
 						})
 						that.setData({
-							joinedTeams: joinedTeams
+							teamChooseData: joinedTeams
 						})
 					}
-
 				}
 			}
 		})
@@ -258,14 +263,9 @@ Page({
 		this.searchByUnionId(this.data.unineId, true)
 	},
 	toTeam() {
-    console.log('toTeam')
-
-		var joinedTeams = this.data.joinedTeams
-    console.log(joinedTeams, joinedTeams.length)
+		var joinedTeams = this.data.teamChooseData
+		console.log(joinedTeams, joinedTeams.length)
 		if (joinedTeams.length == 1) { //加入一个团队直接跳转
-    
-			
-
 			wx.navigateToMiniProgram({
 				appId: 'wx45ab72d81dc8cd72',
 				path: '/pages/index/index?userId=' + joinedTeams[0].userId,
@@ -328,7 +328,7 @@ Page({
 	},
 	// 根据unionId获取顾问信息
 	searchByUnionId: function(unionId, isSkip) {
-		
+
 		wx.request({
 			url: 'https://ii.sinelinked.com/tg_web/api/agent/searchByUnionId',
 			data: {
@@ -349,10 +349,10 @@ Page({
 						})
 					}
 
-				}else{
-					
+				} else {
+
 					if (isSkip) {
-						if(res.data.code == 46){
+						if (res.data.code == 46) {
 							$Toast({
 								content: '您还不是保信云顾问，请完善顾问信息后再使用名片',
 								type: 'warning'
@@ -371,18 +371,18 @@ Page({
 		// 	current: this.data.agent.qrCodePath, // 当前显示图片的http链接
 		// 	urls: urls // 需要预览的图片http链接列表
 		// })
-    this.setData({
-      qrCodeUrl: this.data.agent.qrCodePath,
-      previewImageShow: true,
-    })
+		this.setData({
+			qrCodeUrl: this.data.agent.qrCodePath,
+			previewImageShow: true,
+		})
 	},
 	//预览太阳码
 	previewImageTeam: function() {
 		if (this.data.activeTeamid) {
-      this.setData({
-        qrCodeTeamUrl: this.data.qrCodePath,
-        previewImageTeamShow: true,
-      })
+			this.setData({
+				qrCodeTeamUrl: this.data.qrCodePath,
+				previewImageTeamShow: true,
+			})
 			// var urls = []
 			// urls.push(this.data.qrCodePath)
 			// wx.previewImage({
@@ -391,28 +391,28 @@ Page({
 			// })
 
 		} else {
-			if(this.data.joinedTeams.length){
+			if (this.data.joinedTeams.length) {
 				this.setData({
 					visible1: true
 				});
 			}
-			
+
 		}
 
 
 	},
-  // 关闭团队太阳码预览
-  closePreviewImageTeam(){
-    this.setData({
-      previewImageTeamShow:false,
-    })
-  },
-  // 关闭码预览
-  closePreviewImage() {
-    this.setData({
-      previewImageShow: false,
-    })
-  },
+	// 关闭团队太阳码预览
+	closePreviewImageTeam() {
+		this.setData({
+			previewImageTeamShow: false,
+		})
+	},
+	// 关闭码预览
+	closePreviewImage() {
+		this.setData({
+			previewImageShow: false,
+		})
+	},
 
 
 	/**

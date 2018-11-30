@@ -1,0 +1,42 @@
+Component({
+    properties: {
+    },
+    data:{
+        navStates:true,
+        navData:[
+            {
+               name:'我的团队',
+               icon:'http://ii.sinelinked.com/miniProgramAssets/menu-sub-01.png',
+               goto:'' 
+            },
+            {
+                name:'我的团队',
+                icon:'http://ii.sinelinked.com/miniProgramAssets/menu-sub-02.png',
+                goto:'' 
+             },
+             {
+                name:'我的团队',
+                icon:'http://ii.sinelinked.com/miniProgramAssets/menu-sub-03.png',
+                goto:'' 
+             },
+             {
+                name:'我的团队',
+                icon:'http://ii.sinelinked.com/miniProgramAssets/menu-sub-04.png',
+                goto:'' 
+             },
+             {
+                name:'我的团队',
+                icon:'http://ii.sinelinked.com/miniProgramAssets/menu-sub-05.png',
+                goto:'' 
+             },
+        ]
+    },
+    methods:{
+        navOpen(){
+            console.log(!this.data.navStates);
+            this.setData({
+                navStates:!this.data.navStates
+            })
+        }
+    }
+});

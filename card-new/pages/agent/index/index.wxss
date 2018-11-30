@@ -1,0 +1,66 @@
+.index{
+	background: url('http://ii.sinelinked.com/miniProgramAssets/bg-mb-01.jpg') no-repeat;
+	background-size: contain;
+}
+/* mb-01-style 模版样式1 */
+.mb-01-style{
+	padding-top: 187rpx;
+	box-sizing: border-box;
+}
+.mb-01-style .head-img{
+	width: 230rpx;
+	height: 230rpx;
+	border-radius: 50%;
+	border: 4rpx solid #fff;
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.mb-01-style .user-name{
+	font-size: 44rpx;
+	position: absolute;
+	top: 60rpx;
+	left: 270rpx;
+}
+.mb-01-style .title{
+	font-size: 24rpx;
+	color: #666;
+	padding-left: 24rpx;
+}
+.mb-01-style .phone{
+	position: absolute;
+	top:150rpx;
+	left: 270rpx;
+}
+.mb-01-style .info-cell{
+	width: 100%;
+	padding-left: 46rpx;
+	box-sizing: border-box;
+	position: absolute;
+	top:280rpx;
+	left: 0;
+}
+.mb-01-style .info-cell-item{
+	line-height: 72rpx;
+	display: flex;
+	font-size: 26rpx;
+}
+.mb-01-style .info-cell-label{
+	color: #8e8e8e;
+	padding-right: 90rpx;
+}
+.mb-01-style .info-cell-value{
+	color: #333;
+}
+.mb-01-style .slogan{
+	padding: 0 46rpx;
+	box-sizing: border-box;
+	position: absolute;
+	top:640rpx;
+	left: 0;
+	font-size: 28rpx;
+	color: #333;
+	line-height: 54rpx;
+	text-indent: 2em;
+}

@@ -1,0 +1,12 @@
+<view class="nav nav-agent">
+    <view class="nav-btn {{ navStates?'nav-item-close':'nav-item-open' }}">
+        <view class="menu-main" bind:tap="navOpen">
+            <image class="menu-main-icon" mode="widthFix" src="http://ii.sinelinked.com/miniProgramAssets/menu-main.png" />
+        </view>
+        <view class="menu-box">
+            <view wx:for="{{ navData }}" class="nav-item">
+                <image mode="widthFix" class="navIcon" src="{{ item.icon }}" />
+            </view>
+        </view>
+    </view>
+</view>

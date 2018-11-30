@@ -1,47 +1,15 @@
 {
   "pages": [
+    "pages/agent/index/index",
     "pages/start/start",
-    "pages/index/index",
-    "pages/msg/msg",
-    "pages/show/show",
-    "pages/product/product"
+    "pages/agent/msg/msg",
+    "pages/agent/show/show",
+    "pages/agent/product/product"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#3d6cc8",
     "navigationBarTitleText": "保信云顾问",
     "navigationBarTextStyle": "white"
-  },
-  "tabBar": {
-    "selectedColor": "#3d6cc8",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "顾问",
-        "iconPath": "/img/card.png",
-        "selectedIconPath": "/img/card-a.png"
-      },
-      {
-        "pagePath": "pages/msg/msg",
-        "text": "咨询",
-        "iconPath": "/img/msg.png",
-        "selectedIconPath": "/img/msg-a.png"
-      },
-      {
-        "pagePath": "pages/product/product",
-        "text": "产品",
-        "iconPath": "/img/product.png",
-        "selectedIconPath": "/img/product-a.png"
-      },
-      {
-        "pagePath": "pages/show/show",
-        "text": "我秀",
-        "iconPath": "/img/show.png",
-        "selectedIconPath": "/img/show-a.png"
-      }
-    ]
-  },
-	"navigateToMiniProgramAppIdList": [
-    "wx45ab72d81dc8cd72"
-  ]
+  }
 }
