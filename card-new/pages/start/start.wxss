@@ -4,9 +4,9 @@ page{
 	background-size: 750rpx 120rpx;
 }
 .flower{
-	width: 358rpx;
-	height: 148rpx;
-	margin-top: 67rpx;
+	width: 710rpx;
+	height: 241rpx;
+	margin-top: 60rpx;
 	margin-bottom: 50rpx;
 }
 .search-bar{
@@ -55,13 +55,22 @@ page{
 }
 .search-result{
 	text-align: center;
-	margin-top: 82rpx;
-	margin-bottom: 82rpx;
+	margin-top: 40rpx;
+	margin-bottom: 40rpx;
+}
+.search-result{
+  min-height: 60rpx;
 }
 .search-result text{
 	font-size: 24rpx;
 	color: #949494;
 	padding-left: 12rpx;
+   vertical-align: middle
+}
+.tip-icon{
+  width: 41rpx;
+  height: 50rpx;
+  vertical-align: middle
 }
 .card-main{
 	width: 544rpx;
@@ -69,7 +78,7 @@ page{
 }
 .card-item{
 	border-radius: 16rpx;
-	width: 380rpx;
+	width: 350rpx;
 	height: 186rpx;
 	background: #fff;
 	box-shadow: 0 0 22rpx rgba(0,0,0,.2);
@@ -115,4 +124,29 @@ page{
   background: #fff !important;
   color: #495060 !important;
   padding-bottom: 4rpx;
+}
+.previewImageTeam{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(255,255,255,.6)
+}
+.previewImageTeam>view{
+  width: 100%;
+  height:100%;
+  position: relative;
+}
+.previewImageTeam>view image{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin:auto;
+}
+.previewImageTeamCode{
+  width: 400rpx;
+  height: 400rpx;
 }
