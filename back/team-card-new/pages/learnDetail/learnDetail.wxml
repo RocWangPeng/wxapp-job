@@ -1,0 +1,6 @@
+<!--pages/learnDetail/learnDetail.wxml-->
+<text class='title'>{{ title }}</text>
+<import src="../../wxParse/wxParse.wxml" />
+
+<template is="wxParse" data="{{wxParseData:article.nodes}}" />
+

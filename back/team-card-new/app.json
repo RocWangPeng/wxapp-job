@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/msg/msg",
+    "pages/product/product",
+    "pages/show/show",
+    "pages/memberList/memberList",
+    "pages/member/member",
+    "pages/learnDetail/learnDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3d6cc8",
+    "navigationBarTitleText": "保信保师团",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "selectedColor": "#3d6cc8",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "团队",
+        "iconPath": "/img/card.png",
+        "selectedIconPath": "/img/card-a.png"
+      },
+      {
+        "pagePath": "pages/msg/msg",
+        "text": "咨询",
+        "iconPath": "/img/msg.png",
+        "selectedIconPath": "/img/msg-a.png"
+      },
+      {
+        "pagePath": "pages/product/product",
+        "text": "观念",
+        "iconPath": "/img/product.png",
+        "selectedIconPath": "/img/product-a.png"
+      },
+      {
+        "pagePath": "pages/show/show",
+        "text": "我秀",
+        "iconPath": "/img/show.png",
+        "selectedIconPath": "/img/show-a.png"
+      }
+    ]
+  },
+	"navigateToMiniProgramAppIdList": [
+		"wx0ff73d8248085825"
+	]
+}

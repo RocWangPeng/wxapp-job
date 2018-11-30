@@ -1,0 +1,70 @@
+<!--pages/agent/index/index.wxml-->
+<view class="top_bg_wap">
+  <view>
+    <view class="head_img">
+      <image src="{{ agentData.headImg }}" mode="scaleToFill"></image>
+    </view>
+    <!-- <text class="name">{{ agentData.userName || '无' }}</text> -->
+  </view>
+  <!-- 所属团队icon -->
+  <!-- <view wx:if="{{ isManyTeam }}" class="belongTeam" bindtap="toTeam"> -->
+	<!-- 多团队 -->
+	<view  wx:if="{{ isManyTeam }}" class="belongTeam" bindtap="handleOpen1">
+	
+      <image src="http://ii.sinelinked.com/miniProgramAssets/team_icon.png" mode="scaleToFill"></image>
+		  <text>所属团队</text>
+  
+	</view>
+	<!-- 一个团队 -->
+  <navigator wx:else class="belongTeam" open-type="navigate" app-id="wx45ab72d81dc8cd72" path="/pages/index/index?userId={{ manyTeam[0].userId }}" target="miniProgram">
+	<view class='noTeam'  wx:if="{{ noTeam }}" >
+    <image src="http://ii.sinelinked.com/miniProgramAssets/team_icon.png" mode="scaleToFill"></image>
+    <text>所属团队</text>
+      </view>
+  </navigator>
+
+
+</view>
+<!-- main -->
+<view class="main">
+  <view class="content">
+		<text class="name">{{ agentData.userName || '无' }}</text>
+
+    <view class="cell">
+      <text class="cell_label">执业证书编号</text>
+      <text class="cell_value">{{ agentData.certificateNo || '无'  }}</text>
+    </view>
+    <view class="cell">
+      <text class="cell_label">业务范围</text>
+      <text class="cell_value">{{ agentData.intype || '无'  }}</text>
+    </view>
+    <view class="cell">
+      <text class="cell_label">执业区域</text>
+      <text class="cell_value">{{ getCityResultstr || '无'  }}</text>
+    </view>
+    <view class="cell">
+      <text class="cell_label">所属公司</text>
+      <text class="cell_value">{{ agentData.companyName || '无'  }}</text>
+    </view>
+    <!-- introduce -->
+    <view class="introduce">
+     <view class="introduceCon"> {{ agentData.personSummary || '无' }}</view>
+    </view>
+    <view class="contact_btn_wap" bindtap='makePhoneCall'>
+      <image src="http://ii.sinelinked.com/miniProgramAssets/tel_icon.png" mode="aspectFit"></image>
+      <text>联系我</text>
+    </view>
+  </view>
+</view>
+<i-action-sheet visible="{{ visible1 }}" actions="{{ actions1 }}" show-cancel bind:cancel="handleCancel1" bind:click="handleClickItem1" />
+<i-action-sheet visible="{{ visible2 }}" actions="{{ actions2 }}" show-cancel bind:cancel="handleCancel2" bind:click="handleClickItem1">
+
+  <navigator class='teamListItem'  wx:for="{{ manyTeam }}" wx:key="{{ index }}" slot="header" open-type="navigate" app-id="wx45ab72d81dc8cd72" path="/pages/index/index?userId={{ item.userId }}" target="miniProgram">
+    <text>{{ item.userName }}</text>
+  </navigator>
+
+
+
+</i-action-sheet>
+
+<i-message id="message" />

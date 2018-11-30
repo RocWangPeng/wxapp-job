@@ -1,0 +1,60 @@
+<!-- <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button> -->
+<i-toast id="toast" />
+<view>
+  <image class="flower" src='http://ii.sinelinked.com/miniProgramAssets/flower.png'></image>
+</view>
+<view class="search-bar">
+  <view class="input-warp">
+    <i-icon size="24" color="#bebebe" type="search" />
+    <input class="input" bindinput="bindKeyInput" placeholder="请输入搜索内容" /> </view>
+  <view class="button-warp">
+    <view class="agent-btn btn" bindtap="search" data-type='agent'> 顾问 </view>
+    <view class="team-btn btn" bindtap="search" data-type='team'> 团队 </view>
+  </view>
+</view>
+<view class="search-result">
+ <view wx:if="{{ resultTipShow }}">
+  <image class='tip-icon' mode="aspectFit" src='http://ii.sinelinked.com/miniProgramAssets/tip01.png'></image>
+  <text>{{ resultTip }}</text>
+ </view>
+</view>
+<view class="card-main">
+  <view class="card-flex">
+    <button wx:if="{{ isScope == 2 }}" class="getUserInfo" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"></button>
+    <view bindtap="toCard" class="card-item agent-card">
+      <image mode="aspectFit" src='http://ii.sinelinked.com/miniProgramAssets/man.png'></image>
+      <text>我的名片</text>
+    </view>
+    <view bindtap="previewImage" class="qr-code">
+      <image class="qr-code" src="http://ii.sinelinked.com/miniProgramAssets/qr-code.png"></image>
+    </view>
+  </view>
+  <view class="card-flex">
+    <button wx:if="{{ isScope == 2 }}" class="getUserInfo" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"></button>
+    <view bindtap="toTeam" class="card-item team-card">
+      <image mode="aspectFit" src='http://ii.sinelinked.com/miniProgramAssets/team.png'></image>
+      <text>我的团队</text>
+    </view>
+    <view bindtap="previewImageTeam" class="qr-code">
+      <image class="qr-code" src="http://ii.sinelinked.com/miniProgramAssets/qr-code.png"></image>
+    </view>
+  </view>
+</view>
+
+<view class='previewImageTeam' bindtap='closePreviewImage' wx:if="{{ previewImageShow }}">
+ <view>
+   <image class="previewImageTeamCode" src="{{ qrCodeUrl }}"></image>
+ </view>
+</view>
+
+<view class='previewImageTeam' bindtap='closePreviewImageTeam' wx:if="{{ previewImageTeamShow }}">
+ <view>
+   <image class="previewImageTeamCode" src="{{ qrCodeTeamUrl }}"></image>
+ </view>
+</view>
+<i-modal title="我的团队" visible="{{ visibleTeamChoose }}" actions="{{ teamChooseData }}" action-mode="{{ vertical }}" bind:click="teamChooseHandle"></i-modal>
+<i-action-sheet visible="{{ visible1 }}" show-cancel bind:cancel="handleCancel2">
+  <view class='teamListItem' wx:for="{{ joinedTeams }}" wx:key="{{ index }}" data-userId="{{ item.userId }}" slot="header" bindtap="handleClickItem">
+    <text>{{ item.name }}</text>
+  </view>
+</i-action-sheet>

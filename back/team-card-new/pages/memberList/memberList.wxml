@@ -1,0 +1,34 @@
+<!--pages/member-list/member-list.wxml-->
+<view class='center'>
+	<view class="searchBar">
+		 <input  bindinput="bindKeyInput"  placeholder="搜索顾问请输入"/>
+		 <view class="searchBtn" bindtap="searchByNameOrTel">搜索</view>
+	</view>
+  <view class='member-list'>
+    <view class='member-item' wx:for="{{ memList }}" wx:key="{{ index }}">
+     	<navigator open-type="navigate" app-id="wx0ff73d8248085825" path="/pages/index/index?userId={{ item.userId }}" hover-class="navigator-hover" target="miniProgram" >
+      <image src="{{ item.headImg || 'http://tgbucket-test.oss-cn-beijing.aliyuncs.com/bx/user/agent/'+item.userId+'/imgHead/imgHead.jpg?x-oss-process=image/resize,h_1000' }}"></image>
+      <text>{{ item.userName }}</text>
+      </navigator>
+    </view>
+<!--    <view class='member-item'>
+     <navigator open-type="redirect"  url="/pages/member/member?title=navigate" hover-class="navigator-hover">
+      <image src="http://www.sinelinked.com/static/user/team/6008078088-4993-4725-ac91-2eeb2f63395f/teamHead.jpg"></image>
+      <text>老农</text>
+      </navigator>
+    </view>
+    <view class='member-item'>
+     <navigator open-type="redirect"  url="/pages/member/member?title=navigate" hover-class="navigator-hover">
+      <image src="http://www.sinelinked.com/static/other/head01.jpg"></image>
+      <text>老农</text>
+      </navigator>
+    </view>
+    <view class='member-item'>
+     <navigator open-type="redirect"  url="/pages/member/member?title=navigate" hover-class="navigator-hover">
+      <image src="http://www.sinelinked.com/static/other/head01.jpg"></image>
+      <text>老农</text>
+      </navigator>
+    </view> -->
+		
+  </view>
+</view>
