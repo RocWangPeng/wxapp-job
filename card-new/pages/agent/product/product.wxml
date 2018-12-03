@@ -1,8 +1,12 @@
-<!--pages/agent/product/product.wxml-->
-<view class="main">
-	<text class="product_title">产品列表</text>
-	<view class="product_list" wx:if="{{ !isProductData }}">
-		<view class="item" wx:for="{{ productData }}" wx:key="index" bindtap="copyProductUrl" data-url="{{ item.product_detail_url }}" >
+<nav-agent></nav-agent>
+<view class="header">
+  <image class="head-img" src="{{ agentData.headImg }}"/>
+  <text class="agent-name">保险产品</text>
+</view>
+<view class="main center">
+	<!-- <text class="product_title">产品列表</text> -->
+	<view class="product_list" wx:if="{{ isProductData }}">
+		<view class="item" wx:for="{{ !productData }}" wx:key="index" bindtap="copyProductUrl" data-url="{{ item.product_detail_url }}" >
 			<view class="left_img">
 				<image src="{{ item.product_img_url || 'http://ii.sinelinked.com/miniProgramAssets/product-demo.jpg' }}"></image>
 			</view>

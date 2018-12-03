@@ -243,7 +243,10 @@ Page({
 	/**
 	 * 用户点击右上角分享
 	 */
-	onShareAppMessage: function () {
-
+	onShareAppMessage: function() {
+		return {
+			title: this.data.agentData.xcxTitle || '您的贴心保险顾问',
+			path: '/pages/agent/msg/msg?userId=' + this.data.agentData.userId,
+		}
 	}
 })

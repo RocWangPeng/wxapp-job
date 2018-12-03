@@ -53,8 +53,8 @@
  </view>
 </view>
 <i-modal title="我的团队" visible="{{ visibleTeamChoose }}" actions="{{ teamChooseData }}" action-mode="{{ vertical }}" bind:click="teamChooseHandle"></i-modal>
-<i-action-sheet visible="{{ visible1 }}" show-cancel bind:cancel="handleCancel2">
+<!-- <i-action-sheet visible="{{ visible1 }}" show-cancel bind:cancel="handleCancel2">
   <view class='teamListItem' wx:for="{{ joinedTeams }}" wx:key="{{ index }}" data-userId="{{ item.userId }}" slot="header" bindtap="handleClickItem">
     <text>{{ item.name }}</text>
   </view>
-</i-action-sheet>
+</i-action-sheet> -->

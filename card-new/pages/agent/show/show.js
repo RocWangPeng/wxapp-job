@@ -1,4 +1,6 @@
 // pages/agent/show/show.js
+//获取应用实例
+const app = getApp()
 Page({
 
 	/**
@@ -18,67 +20,31 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function(options) {
-		var that = this;
-		// 查看options是否有userID否则调用本地存储
-		var userId = options.userId || wx.getStorageSync('agentId')
-		if (userId) {
-			this.getInfo(userId)
-		}
-	},
-	//获取信息
-	getInfo(id) {
-		wx.showLoading({title:'努力加载中...'})
-		setTimeout(function(){
-			wx.hideLoading()
-		},6000)
-		var that = this;
-		wx.request({
-			url: `https://ii.sinelinked.com/tg_web/api/XCX/agent/search`,
-			data: {
-				agentId: id
-			},
-			success: function(res) {
-				wx.hideLoading()
-
-				var result = res.data[0]
-				wx.setStorageSync('agentId', result.userId)
-				wx.setStorageSync('phone', result.phone)
-
-				// 个人秀封面如果存在就追加随机数防止缓存，否则使用默认图
-				var selfShowCoverTemp = result.selfShowCover
-				if (selfShowCoverTemp) {
-          selfShowCoverTemp = selfShowCoverTemp + '&' + Math.random()
-				} else if(selfShowCoverTemp == null) {
-					selfShowCoverTemp = 'http://ii.sinelinked.com/miniProgramAssets/show_bg.jpg' + '#' + Math.random()
-				}
-
+		var self = this;
+    if(app.globalData.agentData){
+			self.setData({agentData:app.globalData.agentData})
 				// 个人秀多图加随机数//防止图片缓存
 				var selfImgArr = []
 
-				if (result.selfImg.length > 1) {
-					that.setData({
-						isManySelfImg: true
-					})
-
+				if (self.data.agentData.selfImg.length > 1) {
+					self.setData({isManySelfImg: true})
 				} else {
-					that.setData({
-						isManySelfImg: false
-					})
+					self.setData({isManySelfImg: false})
 				}
 
-				for (var i = 0; i < result.selfImg.length; i++) {
-          selfImgArr.push(result.selfImg[i] + '&' + Math.random())
+				for (var i = 0; i <self.data.agentData.selfImg.length; i++) {
+          selfImgArr.push(self.data.agentData.selfImg[i] + '&' + Math.random())
 				}
-
-				that.setData({
-					agentData: result,
-					selfShowCover: selfShowCoverTemp,
-          headImg: result.headImg + '&' + Math.random(),
+				self.setData({
 					selfImg: selfImgArr
 				})
-
+		}else{
+			// 防止app.js还没执行完就已经page.onload，所以增加回调
+			app.callBack =res=>{
+				self.setData({agentData:res})
 			}
-		})
+		}
+
 	},
 	// 全屏预览图片
 	previewImages(e) {
@@ -86,9 +52,6 @@ Page({
 		wx.previewImage({
 			current: e.currentTarget.dataset.item,
 			urls: that.data.selfImg
-			//       success: function () {
-			//         wx.setStorageSync('account_id', that.data.agentShowData.data[0].id)
-			//       }
 		})
 	},
 
@@ -140,8 +103,7 @@ Page({
 	onShareAppMessage: function() {
 		return {
 			title: this.data.agentData.xcxTitle || '您的贴心保险顾问',
-			path: '/pages/show/show?userId=' + this.data.agentData.userId,
-			imageUrl: this.data.agentData.coverTempletUrl || this.data.imageUrl
+			path: '/pages/agent/show/show?userId=' + this.data.agentData.userId,
 		}
 	}
 })

@@ -1,10 +1,12 @@
-// pages/agent/product/product.js
+//获取应用实例
+const app = getApp()
 Page({
 
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
+    agentData:{},
     productData: [
       {
         "product_id": null,
@@ -64,7 +66,6 @@ Page({
 	},
   //小程序查询或新增用户栏目配置
   xcxSearchOrAddUserColConf(id) {
-    var userId = wx.getStorageSync('agentId');
     var that = this
     wx.request({
       url: `https://ii.sinelinked.com/tg_web/api/XCX/user/xcxSearchOrAddUserColConf`,
@@ -73,10 +74,9 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       data: {
-        userId: userId
+        userId: this.data.agentData.userId
       },
       success: function (res) {
-        console.log(res)
         if(res.data.code == 0){
           if (res.data.data.productShowType != 4){
             that.setData({
@@ -110,6 +110,16 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+    var self = this
+    if(app.globalData.agentData){
+			self.setData({agentData:app.globalData.agentData})
+		}else{
+			// 防止app.js还没执行完就已经page.onload，所以增加回调
+			app.callBack =res=>{
+				self.setData({agentData:res})
+			}
+    }
+    
 		this.shopProduct()
     this.xcxSearchOrAddUserColConf()
 	},
@@ -160,6 +170,9 @@ Page({
 	 * 用户点击右上角分享
 	 */
 	onShareAppMessage: function () {
-
+    return {
+			title: this.data.agentData.xcxTitle || '您的贴心保险顾问',
+			path: '/pages/agent/product/product?userId=' + this.data.agentData.userId,
+		}
 	}
 })

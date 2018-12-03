@@ -1,0 +1,11 @@
+<nav-agent></nav-agent>
+<view class="header">
+  <image class="head-img" src="{{ agentData.headImg }}"/>
+  <text class="agent-name">公司简介</text>
+</view>
+<view class="personSummary center">
+  <view class="personSummary-title">
+    <text class="jianjie">简介</text>
+  </view>
+ <text class="personSummary-main">{{ '公司简介' }}</text>
+</view>

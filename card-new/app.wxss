@@ -3,8 +3,9 @@
 page{
 	width: 100%;
 	min-height: 100vh;
-	background: #f5efe1;
 	color: #333;
+	background:#f5efe1 url('http://ii.sinelinked.com/miniProgramAssets/bg-mb-01.jpg') no-repeat;
+	background-size: contain;
 }
 .page{
 	width: 100%;

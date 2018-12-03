@@ -1,0 +1,15 @@
+<!--pages/member-list/member-list.wxml-->
+<view class='center'>
+	<view class="searchBar">
+		 <input  bindinput="bindKeyInput"  placeholder="搜索顾问请输入"/>
+		 <view class="searchBtn" bindtap="searchByNameOrTel">搜索</view>
+	</view>
+  <view class='member-list'>
+    <view class='member-item' wx:for="{{ memList }}" wx:key="{{ index }}">
+     	<navigator open-type="navigate" url="/pages/agent/index/index?userId={{ item.userId }}" hover-class="navigator-hover">
+      <image src="{{ item.headImg || 'http://tgbucket-test.oss-cn-beijing.aliyuncs.com/bx/user/agent/'+item.userId+'/imgHead/imgHead.jpg?x-oss-process=image/resize,h_1000' }}"></image>
+      <text>{{ item.userName }}</text>
+      </navigator>
+    </view>
+  </view>
+</view>

@@ -19,12 +19,14 @@ Page({
 	 */
 	onLoad: function(options) {
 		var self = this
-		// wx.showLoading({
-		// 	title: '努力加载中...'
-		// })
+		var userId = options.userId
+		if(userId){
+			this.getInfo(userId)
+		}
 		
 		if(app.globalData.agentData){
 			self.setData({agentData:app.globalData.agentData})
+			self.getJoinedTeams(agentData.userId)
 			var areaArr = []
 			if (self.data.agentData.area) {
 				areaArr = self.data.agentData.area.split('|')
@@ -34,6 +36,7 @@ Page({
 			// 防止app.js还没执行完就已经page.onload，所以增加回调
 			app.callBack =res=>{
 				self.setData({agentData:res})
+				self.getJoinedTeams(agentData.userId)
 				var areaArr = []
 				if (self.data.agentData.area) {
 					areaArr = self.data.agentData.area.split('|')
@@ -41,25 +44,9 @@ Page({
 				}
 			}
 		}
-
-		// 获取扫码状态下的用户id
-// 		var scenes = decodeURIComponent(options.scene)
-// 		var userId = options.userId || scenes.split('=')[1] || wx.getStorageSync('agentId');
-// 		if (userId) {
-// 			// this.getInfo(userId)
-// 		}
-
-		// 将城市数据赋值 
-		// self.setData({
-		// 	cityData: cityData
-		// })
-
 	},
 	//获取信息
 	getInfo(id) {
-		setTimeout(function() {
-			wx.hideLoading()
-		}, 6000)
 		var that = this;
 		wx.request({
 			url: `https://ii.sinelinked.com/tg_web/api/XCX/agent/search`,
@@ -71,31 +58,51 @@ Page({
 				if (Object.prototype.toString.call(res.data) === '[object Array]') {
 
 					var result = res.data[0]
-					wx.setStorageSync('agentId', result.userId)
-					wx.setStorageSync('phone', result.phone)
 					that.setData({
 						agentData: result
 					})
 					var areaArr = []
 					if (res.data[0].area) {
 						areaArr = res.data[0].area.split('|')
+						that.setData({transFormArea:utils.getCityResult(cityData,areaArr[0], areaArr[1])})
 					}
-					that.getCityResult(that.data.cityData, areaArr[0], areaArr[1])
-				} else {
-
 				}
-
-				// 用户如果没有传头像，赋默认值
-				if (!that.data.agentData.headImg) {
-					var headImg = 'agentData.headImg'
-					that.setData({
-						[headImg]: 'http://ii.sinelinked.com/miniProgramAssets/headImg.jpg'
-					})
-				}
-
 				that.getJoinedTeams(id)
 			}
 		})
+	},
+	//所属团队 
+	getJoinedTeams(id) {
+		var that = this
+		wx.request({
+			url: `https://ii.sinelinked.com/tg_web/api/user/XCX/getJoinedTeams`,
+			data: {
+				userId: id
+			},
+			success: function(res) {
+				if (res.data.code == 0) {
+					if (res.data.data.length == 1) { //加入一个团队直接跳转
+						that.setData({
+							isManyTeam: false,
+							noTeam: true,
+							manyTeam: res.data.data
+						})
+					} else if (res.data.data.length > 1) { //加入多个团队，弹出列表
+						that.setData({
+							isManyTeam: true,
+							noTeam: true,
+							manyTeam: res.data.data
+						})
+					} else if (res.data.data.length == 0) {
+						that.setData({
+							noTeam: false,
+						})
+					}
+
+				}
+			}
+		})
+
 	},
 	// 播打电话
 	makePhoneCall: function() {
@@ -155,7 +162,7 @@ Page({
 	onShareAppMessage: function() {
 		return {
 			title: this.data.agentData.xcxTitle || '您的贴心保险顾问',
-			path: '/pages/index/index?userId=' + this.data.agentData.userId,
+			path: '/pages/agent/index/index?userId=' + this.data.agentData.userId,
 		}
 	}
 })

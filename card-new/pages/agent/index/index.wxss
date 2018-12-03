@@ -1,6 +1,6 @@
 .index{
-	background: url('http://ii.sinelinked.com/miniProgramAssets/bg-mb-01.jpg') no-repeat;
-	background-size: contain;
+	/* background: url('http://ii.sinelinked.com/miniProgramAssets/bg-mb-01.jpg') no-repeat;
+	background-size: contain; */
 }
 /* mb-01-style 模版样式1 */
 .mb-01-style{
@@ -32,6 +32,7 @@
 	position: absolute;
 	top:150rpx;
 	left: 270rpx;
+  z-index: 3
 }
 .mb-01-style .info-cell{
 	width: 100%;

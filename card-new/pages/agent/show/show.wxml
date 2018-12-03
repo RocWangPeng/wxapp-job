@@ -1,12 +1,12 @@
-<!--pages/agent/show/show.wxml-->
-<view class="top_banner">
-	<image src="{{ selfShowCover }}" class="show_top_img"></image>
+<nav-agent></nav-agent>
+<view class="header">
+  <image class="head-img" src="{{ agentData.headImg }}"/>
+  <text class="agent-name">{{ agentData.userName }}</text>
 </view>
+
 <view class="main">
-	<view class="head_info">
-		<image src="{{ headImg }}" class="head_img"></image>
-		<text class="agent_name">{{ agentData.userName || '无'  }}</text>
-		<view class="agent_info">{{ agentData.selfShowSummary || '无'  }}</view>
+	<view class="personSummary-title">
+    <text class="jianjie">个人秀</text>
 	</view>
 	<view class="show_img" wx:if="{{ isManySelfImg }}">
 		<view class="show_item" wx:key="index" wx:for="{{ selfImg }}" bindtap='previewImages' data-item = '{{ item }}'>

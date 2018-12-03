@@ -3,7 +3,8 @@
   height: 64rpx;
   position: fixed;
   right: 0;
-  top: 220rpx;
+  top: 160rpx;
+  z-index: 3
 }
 .msg-btn image{
   width: 100%;

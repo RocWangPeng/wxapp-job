@@ -2,20 +2,9 @@
 let wechat = require('./utils/wechat.js');
 App({
 
-
 	onLaunch: function(options) {
-		var self = this
-		console.log(options)
-		wx.showLoading({
-			title: '努力加载中...'
-		})
-		
-		var scenes = decodeURIComponent(options.scene) // 获取扫码状态下的用户id
-		var userId = options.query.userId || scenes.split('=')[1]
-		// 获取顾问信息
-		if(userId){
-			this.getAaentData(userId)
-		}
+		console.log('app-onLaunch',options)
+
 		
 		// 验证是否已授权
 		wechat.isAuth()
@@ -94,7 +83,36 @@ App({
 		})
 	},
 	onShow(options) {
+		console.log('app-onShow',options)
+		var self = this
+		wx.showLoading({
+			title: '努力加载中...'
+		})
+		
+		var scenes = decodeURIComponent(options.scene) // 获取扫码状态下的用户id
+		// agent
+		var userId = options.query.userId || scenes.split('=')[1]
+		// team
+		var teamId = options.query.teamId || scenes.split('=')[1]
 
+		// 获取顾问信息
+		if(userId){
+			try {
+				wx.setStorageSync('userId', userId)
+				wx.setStorageSync('userType', 'agent')
+			} catch (e) { }
+			this.getAaentData(userId)
+		}else if(teamId){
+			try {
+				wx.setStorageSync('teamId', teamId)
+				wx.setStorageSync('userType', 'team')
+			} catch (e) { }
+			wx.redirectTo({
+				url: '/pages/team/index/index?teamId='+teamId
+			})
+		}else{
+			console.log('没任何参数')
+		}
 	},
 	// 获取顾问信息
 	getAaentData(userId) {

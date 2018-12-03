@@ -1,4 +1,4 @@
-<!--pages/agent/msg/msg.wxml-->
+<nav-agent></nav-agent>
 <view class="top_bg_wap"></view>
 <!-- main -->
 <view class="main">

@@ -1,10 +1,19 @@
 {
   "pages": [
+    "pages/agent/introduce/introduce",
     "pages/agent/index/index",
     "pages/start/start",
     "pages/agent/msg/msg",
     "pages/agent/show/show",
-    "pages/agent/product/product"
+    "pages/agent/product/product",
+    "pages/agent/company/company",
+    "pages/team/index/index",
+    "pages/team/msg/msg",
+    "pages/team/show/show",
+    "pages/team/learn/learn",
+    "pages/team/member/member",
+    "pages/team/memberList/memberList"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,42 +1,99 @@
 Component({
     properties: {
+        joinedTeams: { // 属性名
+            type: Object, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
+            value: {}, // 属性初始值（可选），如果未指定则会根据类型选择一个
+            observer: function(newVal, oldVal, changedPath) {
+               // 属性被改变时执行的函数（可选），也可以写成在methods段中定义的方法名字符串, 如：'_propertyChange'
+               // 通常 newVal 就是新设置的数据， oldVal 是旧数据
+            }
+          },
     },
     data:{
         navStates:true,
         navData:[
             {
-               name:'我的团队',
+               name:'team',
                icon:'http://ii.sinelinked.com/miniProgramAssets/menu-sub-01.png',
-               goto:'' 
+               goto:'/pages/team/index/index' 
             },
             {
-                name:'我的团队',
-                icon:'http://ii.sinelinked.com/miniProgramAssets/menu-sub-02.png',
-                goto:'' 
+                name:'index',
+                icon:'http://ii.sinelinked.com/miniProgramAssets/menu-sub-06.png',
+                goto:'/pages/agent/index/index' 
              },
              {
-                name:'我的团队',
+                name:'show',
                 icon:'http://ii.sinelinked.com/miniProgramAssets/menu-sub-03.png',
-                goto:'' 
+                goto:'/pages/agent/show/show' 
              },
              {
-                name:'我的团队',
+                name:'product',
                 icon:'http://ii.sinelinked.com/miniProgramAssets/menu-sub-04.png',
-                goto:'' 
+                goto:'/pages/agent/product/product' 
              },
              {
-                name:'我的团队',
+                name:'company',
                 icon:'http://ii.sinelinked.com/miniProgramAssets/menu-sub-05.png',
-                goto:'' 
+                goto:'/pages/agent/company/company' 
              },
-        ]
+        ],
+        visibleTeamChoose: false, //显示选择团队弹框
+		teamChooseData: [
+			// {
+			// 	name: '记忆的时间差',
+			// 	icon: 'group_fill',
+			// 	color: '#ff9900'
+			// }
+		],
+		joinedTeams: [], //所属团队
+		activeTeamid: '', //当前所选团队
     },
     methods:{
         navOpen(){
-            console.log(!this.data.navStates);
             this.setData({
                 navStates:!this.data.navStates
             })
+        },
+      navClose(){
+        this.setData({
+          navStates: !this.data.navStates
+        })
+      },
+      teamChooseHandle(e){
+        var index = e.detail.index
+        wx.redirectTo({
+            url: '/pages/team/index/index?teamId='+ this.data.teamChooseData[index].userId
+        })
+      },
+      goTo(e){
+        var navName = e.currentTarget.dataset.name
+        var goto = e.currentTarget.dataset.goto
+        if(navName == 'team'){
+             // 传入的加入团队信息
+            var joinedTeams = this.data.joinedTeams
+            if(joinedTeams.length == 1){
+                wx.redirectTo({
+                 url: goto+'?teamId='+ joinedTeams[0].userId
+                })
+                return
+            }
+            var joinedTeamsArr = []
+            joinedTeams.map(item => {
+                joinedTeamsArr.push({
+                    name: item.userName,
+                    userId: item.userId
+                })
+            })
+            this.setData({visibleTeamChoose:true,teamChooseData:joinedTeamsArr})
+            
+           
+        }else{
+            wx.redirectTo({
+                url: goto
+              })
         }
+      },
+     
     }
 });
