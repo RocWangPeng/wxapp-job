@@ -10,9 +10,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:'',
-    title:'',
-    detailData:''
+    id: '',
+    title: '',
+    detailData: ''
   },
 
   /**
@@ -30,7 +30,9 @@ Page({
   getDetail() {
     var that = this;
 
-    wx.showLoading({ title: '努力加载中...' })
+    wx.showLoading({
+      title: '努力加载中...'
+    })
 
     wx.request({
       url: 'https://ii.sinelinked.com/tg_web/api/cms/searchArtById',
@@ -97,6 +99,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: this.data.title,
+      path: '/pages/team/learnDetail/learnDetail?id=' + this.data.id,
+    }
   }
 })

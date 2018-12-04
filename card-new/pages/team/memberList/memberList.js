@@ -1,24 +1,37 @@
-// pages/member-list/member-list.js
+const { $Toast  } = require('../../../dist/base/index');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  memList:[],
-	inputValue:''
+    memList:[],
+    inputValue:'',
+    teamId:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let pageInstance = getCurrentPages()
-    	var that = this
+      var that = this
+      if(options.teamId){
+        this.setData({
+          teamId: options.teamId
+        })
+      }else{
+        try {
+          var teamData = wx.getStorageSync('teamData')
+          if (teamData) {
+            // Do something with return value
+            that.setData({teamId:teamData.userId})
+          }
+        } catch (e) {
+          // Do something when catch error
+        }
+      }
 			
-			this.setData({
-				teamId: options.teamId
-			})
 			
     	wx.request({
     		url: 'https://ii.sinelinked.com/tg_web/api/user/XCX/getTeamAgent',
@@ -58,7 +71,15 @@ Page({
 		
   },
 	searchByNameOrTel(){
-		var that = this
+    var that = this
+    if(!this.data.inputValue){
+      $Toast({
+        content: '请输入搜索内容',
+        type: 'warning'
+    });
+    
+      return
+    }
 		wx.request({
 			url: 'https://ii.sinelinked.com/tg_web/api/agent/searchByNameOrTel',
 			data: {
@@ -120,6 +141,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    return {
+			title: this.data.agentData.xcxTitle || '您的贴心保险顾问',
+			path: '/pages/team/memberList/memberList?teamId=' + this.data.agentData.userId,
+		}
   }
 })

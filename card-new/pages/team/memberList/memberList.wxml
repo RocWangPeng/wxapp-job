@@ -1,4 +1,4 @@
-<!--pages/member-list/member-list.wxml-->
+<nav-team></nav-team>
 <view class='center'>
 	<view class="searchBar">
 		 <input  bindinput="bindKeyInput"  placeholder="搜索顾问请输入"/>
@@ -13,3 +13,5 @@
     </view>
   </view>
 </view>
+<i-toast id="toast" />
+

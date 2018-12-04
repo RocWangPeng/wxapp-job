@@ -17,14 +17,21 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
   onLoad: function (options) {
-    console.log('team onLoad',options)
     var self = this;
       var teamId = options.teamId
       // 获取扫码状态下的用户id
       if (teamId) {
         this.getInfo(teamId)
       }else{
-        console.log('系统错误')
+        try {
+          var teamData = wx.getStorageSync('teamData')
+          if (teamData) {
+            // Do something with return value
+            self.setData({agentData:teamData})
+          }
+        } catch (e) {
+          // Do something when catch error
+        }
       }
     
 
@@ -50,6 +57,9 @@ Page({
           self.setData({
             agentData: result
           })
+          try {
+						wx.setStorageSync('teamData', result)
+					} catch (e) { }
           // 匹配城市
           var areaArr = []
           if (res.data[0].area) {
@@ -188,8 +198,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: this.data.agentData.teamXcxTitle || '您的贴心保险顾问',
-      path: '/pages/index/index?userId=' + this.data.agentData.userId,
-      imageUrl: this.data.agentData.coverTempletUrl || this.data.imageUrl
+      path: '/pages/team/index/index?teamId=' + this.data.agentData.userId,
     }
   }
 })

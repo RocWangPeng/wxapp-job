@@ -4,12 +4,15 @@ class wechat {
 		@return {Promise}
 	 */
 	static login() {
+		console.log('登陆login')
 		return new Promise((resolve, reject) => {
 			wx.login({
 				success(res) {
+					console.log('登陆OK')
 					resolve(res.code)
 				},
 				fail(err) {
+					console.log('登陆失败')
 					rejecte('登陆失败')
 				}
 			})
@@ -25,11 +28,12 @@ class wechat {
 			wx.getSetting({
 				success: res => {
 					if (res.authSetting['scope.userInfo']) {
-						
 						// 已经授权
+						console.log('已授权')
 						resolve('已授权')
 					} else {
 						// 未授权
+						console.log('未授权')
 						reject('未授权')
 					}
 				}

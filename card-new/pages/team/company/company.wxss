@@ -1,0 +1,41 @@
+.header{
+  height: 230rpx;
+  display: flex;justify-content: center;
+  align-items: center;
+  flex-direction: column
+}
+.agent-name{
+  display: block;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  color: #333;
+}
+.head-img{
+  width: 106rpx;
+  height: 106rpx;
+  border: 6rpx solid #fff;
+  border-radius: 50%;
+}
+.personSummary{
+  margin-top: 30rpx;
+}
+.personSummary-title{
+  height: 30rpx;
+  border-top: 1rpx solid #ccc;
+  position: relative;
+}
+.personSummary-title .jianjie{
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: -26rpx;
+  background: #f5efe2;
+  padding: 0 30rpx;
+  transform: translateX(-50%);
+  font-size: 30rpx;
+}
+.personSummary-main{
+  padding-top: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+}

@@ -1,1 +1,6 @@
-{}
+{
+  "usingComponents": {
+    "i-toast": "../../../dist/toast/index",
+    "nav-team": "../../../component/nav-team/index"
+}
+}

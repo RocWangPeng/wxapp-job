@@ -192,6 +192,17 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+		var self = this;
+    try {
+      var teamData = wx.getStorageSync('teamData')
+      if (teamData) {
+        // Do something with return value
+        self.setData({agentData:teamData})
+      }
+    } catch (e) {
+      // Do something when catch error
+		}
+		
 		var agentId = wx.getStorageSync('agentId')
 		this.setData({
 			uid: agentId
@@ -244,6 +255,9 @@ Page({
 	 * 用户点击右上角分享
 	 */
 	onShareAppMessage: function () {
-
+		return {
+			title: this.data.agentData.xcxTitle || '您的贴心保险顾问',
+			path: '/pages/team/show/show?teamId=' + this.data.agentData.userId,
+		}
 	}
 })

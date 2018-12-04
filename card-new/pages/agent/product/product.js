@@ -110,14 +110,16 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-    var self = this
-    if(app.globalData.agentData){
-			self.setData({agentData:app.globalData.agentData})
-		}else{
-			// 防止app.js还没执行完就已经page.onload，所以增加回调
-			app.callBack =res=>{
-				self.setData({agentData:res})
+    var self = this;
+    try {
+			var agentData = wx.getStorageSync('agentData')
+			if (agentData) {
+				self.setData({
+					agentData: agentData
+				})
 			}
+		} catch (e) {
+			// Do something when catch error
     }
     
 		this.shopProduct()

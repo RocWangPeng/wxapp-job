@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/start/start",
     "pages/agent/introduce/introduce",
     "pages/agent/index/index",
-    "pages/start/start",
     "pages/agent/msg/msg",
     "pages/agent/show/show",
     "pages/agent/product/product",
@@ -11,8 +11,10 @@
     "pages/team/msg/msg",
     "pages/team/show/show",
     "pages/team/learn/learn",
+    "pages/team/learnDetail/learnDetail",
     "pages/team/member/member",
-    "pages/team/memberList/memberList"
+    "pages/team/memberList/memberList",
+    "pages/team/company/company"
     
   ],
   "window": {

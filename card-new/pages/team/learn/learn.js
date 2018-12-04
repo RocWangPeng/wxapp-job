@@ -41,6 +41,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var self = this;
+    try {
+      var teamData = wx.getStorageSync('teamData')
+      if (teamData) {
+        // Do something with return value
+        self.setData({agentData:teamData})
+      }
+    } catch (e) {
+      // Do something when catch error
+    }
     this.shopProduct()
   },
 

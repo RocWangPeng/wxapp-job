@@ -19,31 +19,40 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function(options) {
+	onLoad: function (options) {
 		var self = this;
-    if(app.globalData.agentData){
-			self.setData({agentData:app.globalData.agentData})
+		try {
+			var agentData = wx.getStorageSync('agentData')
+			if (agentData) {
+				self.setData({
+					agentData: agentData
+				})
+
 				// 个人秀多图加随机数//防止图片缓存
 				var selfImgArr = []
 
 				if (self.data.agentData.selfImg.length > 1) {
-					self.setData({isManySelfImg: true})
+					self.setData({
+						isManySelfImg: true
+					})
 				} else {
-					self.setData({isManySelfImg: false})
+					self.setData({
+						isManySelfImg: false
+					})
 				}
 
-				for (var i = 0; i <self.data.agentData.selfImg.length; i++) {
-          selfImgArr.push(self.data.agentData.selfImg[i] + '&' + Math.random())
+				for (var i = 0; i < self.data.agentData.selfImg.length; i++) {
+					selfImgArr.push(self.data.agentData.selfImg[i] + '&' + Math.random())
 				}
 				self.setData({
 					selfImg: selfImgArr
 				})
-		}else{
-			// 防止app.js还没执行完就已经page.onload，所以增加回调
-			app.callBack =res=>{
-				self.setData({agentData:res})
+
 			}
+		} catch (e) {
+			// Do something when catch error
 		}
+
 
 	},
 	// 全屏预览图片
@@ -58,49 +67,49 @@ Page({
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
-	onReady: function() {
+	onReady: function () {
 
 	},
 
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: function() {
+	onShow: function () {
 
 	},
 
 	/**
 	 * 生命周期函数--监听页面隐藏
 	 */
-	onHide: function() {
+	onHide: function () {
 
 	},
 
 	/**
 	 * 生命周期函数--监听页面卸载
 	 */
-	onUnload: function() {
+	onUnload: function () {
 
 	},
 
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
-	onPullDownRefresh: function() {
+	onPullDownRefresh: function () {
 
 	},
 
 	/**
 	 * 页面上拉触底事件的处理函数
 	 */
-	onReachBottom: function() {
+	onReachBottom: function () {
 
 	},
 
 	/**
 	 * 用户点击右上角分享
 	 */
-	onShareAppMessage: function() {
+	onShareAppMessage: function () {
 		return {
 			title: this.data.agentData.xcxTitle || '您的贴心保险顾问',
 			path: '/pages/agent/show/show?userId=' + this.data.agentData.userId,

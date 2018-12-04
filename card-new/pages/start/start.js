@@ -11,7 +11,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		isScope: 2,
+		isScope: 2, //1已授权 2未授权
 		inputValue: '',
 		searchResult: [],
 		isResult: '',
@@ -38,18 +38,13 @@ Page({
 		resultTipShow: false, //搜索结果显示
 		previewImageShow: false,
 		previewImageTeamShow: false, //团队太阳码显示
-		actions1: [{
-				name: '团队1',
-			},
-		],
-
 	},
 	// 弹出框 选择团队
 	teamChooseHandle(e) {
 		var index = e.detail.index
-		console.log(this.data.teamChooseData[index].userId);
 		this.setData({
-			resultTipShow: true
+			activeTeamid:this.data.teamChooseData[index].userId,
+			visibleTeamChoose: false
 		});
 	},
 	search(e) {
@@ -89,26 +84,19 @@ Page({
 								resultTip: '没有搜索到相关内容',
 								resultTipShow: true
 							})
-							// $Toast({
-							//   content: '没有搜索到相关内容',
-							//   type: 'warning'
-							// });
 							break;
 						case 1:
 
 							if (res.data.data[0].type == 1) {
 								wx.reLaunch({
-									url: '/pages/index/index?userId=' + res.data.data[0].userId
+									url: '/pages/agent/index/index?userId=' + res.data.data[0].userId
 								})
 							} else if (res.data.data[0].type == 2) {
 								// 团队
-								wx.navigateToMiniProgram({
-									appId: 'wx45ab72d81dc8cd72',
-									path: '/pages/index/index?userId=' + res.data.data[0].userId,
-									success(res) {
-										// 打开成功
-									}
+								wx.reLaunch({
+									url: '/pages/team/index/index?teamId=' + res.data.data[0].teamId
 								})
+
 							}
 							break;
 						default:
@@ -156,14 +144,26 @@ Page({
 				if (res.data.code == 0) {
 					var joinedTeams = []
 					if (res.data.data.length) {
+						// 将此用户创建的团队与所加入的团队合并
 						res.data.data.map(item => {
-							joinedTeams.push({
-								name: item.userName,
-								userId: item.userId
-							})
+							if(item.name != that.data.agentJoinTeam.userName ){
+								joinedTeams.push({
+									name: item.userName,
+									userId: item.userId,
+									qrCodePath:item.qrCodePath
+								})
+							}else{
+								joinedTeams.push({
+									name: that.data.agentJoinTeam.userName,
+									userId: that.data.agentJoinTeam.userId,
+									qrCodePath:item.qrCodePath
+								})
+							}
 						})
+
+
 						that.setData({
-							teamChooseData: joinedTeams
+							teamChooseData: joinedTeams,
 						})
 					}
 				}
@@ -194,56 +194,58 @@ Page({
 			}
 		})
 	},
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-	onLoad: function(options) {
-
-		if (app.globalData.isScope) {
-			this.setData({
-				isScope: app.globalData.isScope,
-			})
-			var isScope = this.data.isScope
-			/* 
+	getUnineId(){
+		wx.showLoading({
+			title: '努力加载中...'
+		})
+		var self = this
+				 /* 
 				1 如果isScope已授权，则获取本地存储中的UnineId
 				2 获取到后查询信息
 				3 没有获取到本地中的UnineId，则让用户重新授权
 			 */
-			if (isScope == 1) {
-				var UnineId = wx.getStorageSync('UnineId')
-				if (UnineId) {
-					this.setData({
-						unineId: UnineId,
-					})
-					this.searchByUnionId(UnineId, false)
-				} else {
-					this.setData({
-						isScope: 2,
-					})
-				}
-			}
-
-		} else {
-			app.readCallBackFn = res => {
-				this.setData({
-					isScope: res
+				wechat.isAuth()
+				.then(res => {
+					self.setData({isScope:1})
+					wechat.login()
+						.then(res => {
+							var code = res
+							wechat.getUserInfo().then((result) => {
+								var params = {
+										encryptedData: result.encryptedData,
+										iv: result.iv,
+										code: code,
+										type: 1
+								}
+								wechat.getUnineId(params).then((result) => {
+									if(result.data.code == 0){
+										//获取到unionId
+										self.setData({unionId:result.data.data.unionId})
+											// 根据unionId获取顾问信息
+										self.searchByUnionId(result.data.data.unionId,false,1)
+										self.searchByUnionId(result.data.data.unionId,false,2)
+									}
+								}).catch((err) => {
+									console.log(err)
+								});
+							}).catch((err) => {
+								console.log(err)
+							});
+						})
+						.catch(err => {
+							console.log(err);
+						})
 				})
-				var isScope = this.data.isScope
-				if (isScope == 1) {
-					var UnineId = wx.getStorageSync('UnineId')
-					if (UnineId) {
-						this.setData({
-							unineId: UnineId,
-						})
-						this.searchByUnionId(UnineId, false)
-					} else {
-						this.setData({
-							isScope: 2,
-						})
-					}
-				}
-			}
-		}
+				.catch(err => {
+					this.setData({isScope:2})
+					wx.hideLoading()
+				})
+	},
+	/**
+	 * 生命周期函数--监听页面加载
+	 */
+	onLoad: function(options) {
+			this.getUnineId()
 	},
 	// 授权窗口
 	onGotUserInfo(res) {
@@ -260,92 +262,68 @@ Page({
 	},
 	// 获取授权状态
 	toCard() {
-		this.searchByUnionId(this.data.unineId, true)
+		this.searchByUnionId(this.data.unionId, true)
 	},
 	toTeam() {
-		var joinedTeams = this.data.teamChooseData
-		console.log(joinedTeams, joinedTeams.length)
-		if (joinedTeams.length == 1) { //加入一个团队直接跳转
-			wx.navigateToMiniProgram({
-				appId: 'wx45ab72d81dc8cd72',
-				path: '/pages/index/index?userId=' + joinedTeams[0].userId,
-				success(res) { /* 打开成功 */ }
+		if(this.data.activeTeamid){
+			wx.navigateTo({
+				url: '/pages/team/index/index?teamId=' + this.data.activeTeamid
 			})
-
-		} else if (joinedTeams.length > 1) { //加入多个团队，弹出列表
-			if (this.data.activeTeamid) {
-				wx.navigateToMiniProgram({
-					appId: 'wx45ab72d81dc8cd72',
-					path: '/pages/index/index?userId=' + this.data.activeTeamid,
-					success(res) { /* 打开成功 */ }
+		}else{
+			var joinedTeams = this.data.teamChooseData
+			if (joinedTeams.length == 1) { //加入一个团队直接跳转
+				wx.navigateTo({
+					url: '/pages/team/index/index?teamId=' + res.data.data[0].userId
 				})
-			} else {
+			} else if (joinedTeams.length > 1) { //加入多个团队，弹出列表
 				this.setData({
-					visible1: true
+					visibleTeamChoose: true
+				});
+	
+			} else if (joinedTeams.length == 0) {
+				$Toast({
+					content: '暂未加入团队',
+					type: 'warning'
 				});
 			}
-
-		} else if (joinedTeams.length == 0) {
-			$Toast({
-				content: '暂未加入团队',
-				type: 'warning'
-			});
 		}
+		
 	},
-	// 获取UnineId并查询用户信息
-	getUnineId() {
-
-		$Toast({
-			content: '加载中',
-			type: 'loading'
-		});
-		wechat.login()
-			.then(res => {
-				var code = res
-				var params = {
-					code: code,
-					encryptedData: this.data.userInfo.encryptedData,
-					iv: this.data.userInfo.iv,
-					type: 1
-				}
-
-				wechat.getUnineId(params)
-					.then(res => {
-						var unionId = res.data.data.unionId
-						this.setData({
-							unineId: unionId,
-							spinShow: false
-						})
-						// 存储unionId
-						wx.setStorageSync('UnineId', unionId)
-						this.searchByUnionId(unionId, false)
-					})
-					.catch(err => {
-						console.log(err);
-					})
-			})
-
-	},
-	// 根据unionId获取顾问信息
-	searchByUnionId: function(unionId, isSkip) {
+	// 根据unionId获取顾问/团队信息
+	searchByUnionId(unionId, isSkip,type=1) {
+		wx.hideLoading()
+		var url =''
+		if(type == 1){
+			url ='https://ii.sinelinked.com/tg_web/api/agent/searchByUnionId'
+		}else{
+			url ='https://ii.sinelinked.com/tg_web/api/team/searchByUnionId'
+		}
 
 		wx.request({
-			url: 'https://ii.sinelinked.com/tg_web/api/agent/searchByUnionId',
+			url: url,
 			data: {
 				unionId: unionId,
-				type: 1
+				type: type
 			},
 			success: (res) => {
 				if (res.data.code == 0) {
-					this.setData({
-						agent: res.data.data[0]
-					})
+					
+
+					if(type == 1){
+						this.setData({
+							agent: res.data.data[0]
+						})
+					}else{
+						this.setData({
+							agentJoinTeam: res.data.data[0]
+						})
+					}
 
 					this.getJoinedTeams(res.data.data[0].userId)
 
 					if (isSkip) {
-						wx.reLaunch({
-							url: '/pages/index/index?userId=' + res.data.data[0].userId
+						wx.navigateTo({
+							url: '/pages/agent/index/index?userId=' + res.data.data[0].userId
 						})
 					}
 
@@ -365,12 +343,6 @@ Page({
 	},
 	//预览太阳码
 	previewImage: function() {
-		// var urls = []
-		// urls.push(this.data.agent.qrCodePath)
-		// wx.previewImage({
-		// 	current: this.data.agent.qrCodePath, // 当前显示图片的http链接
-		// 	urls: urls // 需要预览的图片http链接列表
-		// })
 		this.setData({
 			qrCodeUrl: this.data.agent.qrCodePath,
 			previewImageShow: true,
@@ -379,24 +351,20 @@ Page({
 	//预览太阳码
 	previewImageTeam: function() {
 		if (this.data.activeTeamid) {
-			this.setData({
-				qrCodeTeamUrl: this.data.qrCodePath,
-				previewImageTeamShow: true,
+			this.data.teamChooseData.map(item=>{
+				if(item.userId == this.data.activeTeamid){
+					this.setData({
+						qrCodeTeamUrl: item.qrCodePath,
+						previewImageTeamShow: true,
+					})
+				}
 			})
-			// var urls = []
-			// urls.push(this.data.qrCodePath)
-			// wx.previewImage({
-			// 	current: this.data.qrCodePath, // 当前显示图片的http链接
-			// 	urls: urls // 需要预览的图片http链接列表
-			// })
+			
 
 		} else {
-			if (this.data.joinedTeams.length) {
-				this.setData({
-					visible1: true
-				});
-			}
-
+			this.setData({
+				visibleTeamChoose: true
+			});
 		}
 
 

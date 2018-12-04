@@ -16,14 +16,13 @@ Page({
   onLoad: function (options) {
     var self = this;
     try {
-			var agentData = wx.getStorageSync('agentData')
-			if (agentData) {
-				self.setData({
-					agentData: agentData
-				})
-			}
-		} catch (e) {
-			// Do something when catch error
+      var teamData = wx.getStorageSync('teamData')
+      if (teamData) {
+        // Do something with return value
+        self.setData({agentData:teamData})
+      }
+    } catch (e) {
+      // Do something when catch error
     }
   },
 
@@ -75,7 +74,7 @@ Page({
 	onShareAppMessage: function() {
 		return {
 			title: this.data.agentData.xcxTitle || '您的贴心保险顾问',
-			path: '/pages/agent/company/company?userId=' + this.data.agentData.userId,
+			path: '/pages/team/company/company?teamId=' + this.data.agentData.userId,
 		}
 	}
 })

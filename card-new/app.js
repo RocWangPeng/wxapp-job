@@ -3,8 +3,6 @@ let wechat = require('./utils/wechat.js');
 App({
 
 	onLaunch: function(options) {
-		console.log('app-onLaunch',options)
-
 		
 		// 验证是否已授权
 		wechat.isAuth()
@@ -31,63 +29,11 @@ App({
 
 			})
 	},
-	getUnineId() {
-		// 登录
-		wx.login({
-			success: res => {
-				console.log(res)
-				// 发送 res.code 到后台换取 openId, sessionKey, unionId
-				var code = res.code
-				var self = this;
-				if (res.code) {
-					// 获取用户信息
-					wx.getSetting({
-						success: res => {
-							if (res.authSetting['scope.userInfo']) {
-
-								self.globalData.isScope = 1
-								// 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-								wx.getUserInfo({
-									success: res => {
-										// 可以将 res 发送给后台解码出 unionId
-										console.log(res)
-										wx.request({
-											url: "https://ii.sinelinked.com/tg_web/api/user/getUnionId",
-											data: {
-												encryptedData: res.encryptedData,
-												iv: res.iv,
-												code: code,
-												type: 1
-											},
-											success(res) {
-												self.globalData.userInfo = res.data.data
-												// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-												// 所以此处加入 callback 以防止这种情况
-												if (self.userInfoReadyCallback) {
-													self.userInfoReadyCallback(res)
-												}
-											}
-										})
-									}
-								})
-							} else {
-								console.log('未授权')
-								if (self.userInfoReadyCallbackScope) {
-									self.userInfoReadyCallbackScope(2)
-								}
-							}
-						}
-					})
-				}
-			}
-		})
-	},
 	onShow(options) {
-		console.log('app-onShow',options)
 		var self = this
-		wx.showLoading({
-			title: '努力加载中...'
-		})
+		// wx.showLoading({
+		// 	title: '努力加载中...'
+		// })
 		
 		var scenes = decodeURIComponent(options.scene) // 获取扫码状态下的用户id
 		// agent
@@ -107,9 +53,7 @@ App({
 				wx.setStorageSync('teamId', teamId)
 				wx.setStorageSync('userType', 'team')
 			} catch (e) { }
-			wx.redirectTo({
-				url: '/pages/team/index/index?teamId='+teamId
-			})
+			this.getTeamData(teamId)
 		}else{
 			console.log('没任何参数')
 		}
@@ -123,7 +67,6 @@ App({
 				agentId: userId
 			},
 			success: function(res) {
-				wx.hideLoading()
 				if (Object.prototype.toString.call(res.data) === '[object Array]') {
 					var result = res.data[0]
 					self.globalData.agentData = result
@@ -136,6 +79,28 @@ App({
 			}
 		})
 	},
+	  //获取信息
+		getTeamData(teamId) {
+			var self = this;
+			wx.request({
+				url: `https://ii.sinelinked.com/tg_web/api/XCX/team/search`,
+				data: {
+					teamId: teamId
+				},
+				success: function (res) {
+					if (Object.prototype.toString.call(res.data) === '[object Array]') {
+						var result = res.data[0]
+						try {
+							wx.setStorageSync('teamData', result)
+						} catch (e) { }
+					}
+
+					wx.redirectTo({
+						url: '/pages/team/index/index?teamId='+teamId
+					})
+				}
+			})
+		},
 	globalData: {
 		userInfo: null,
 		isScope: null,

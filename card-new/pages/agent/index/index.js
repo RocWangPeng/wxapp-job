@@ -22,6 +22,16 @@ Page({
 		var userId = options.userId
 		if(userId){
 			this.getInfo(userId)
+		}else{
+			try {
+				var agentData = wx.getStorageSync('agentData')
+				if (agentData) {
+					// Do something with return value
+					self.setData({agentData:agentData})
+				}
+			} catch (e) {
+				// Do something when catch error
+			}
 		}
 		
 		if(app.globalData.agentData){
@@ -61,6 +71,11 @@ Page({
 					that.setData({
 						agentData: result
 					})
+					
+					try {
+						wx.setStorageSync('agentData',result)
+					} catch (e) { }
+
 					var areaArr = []
 					if (res.data[0].area) {
 						areaArr = res.data[0].area.split('|')
@@ -81,23 +96,14 @@ Page({
 			},
 			success: function(res) {
 				if (res.data.code == 0) {
-					if (res.data.data.length == 1) { //加入一个团队直接跳转
-						that.setData({
-							isManyTeam: false,
-							noTeam: true,
-							manyTeam: res.data.data
-						})
-					} else if (res.data.data.length > 1) { //加入多个团队，弹出列表
-						that.setData({
-							isManyTeam: true,
-							noTeam: true,
-							manyTeam: res.data.data
-						})
-					} else if (res.data.data.length == 0) {
-						that.setData({
-							noTeam: false,
-						})
-					}
+					that.setData({
+						manyTeam: res.data.data
+					})
+
+					try {
+						wx.setStorageSync('joinedTeams', res.data.data)
+					} catch (e) { }
+					
 
 				}
 			}

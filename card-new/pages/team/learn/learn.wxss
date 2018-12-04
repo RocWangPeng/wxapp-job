@@ -1,20 +1,18 @@
-/* pages/agent/product/product.wxss */
-page{
-	background: #f9f9f9;
-}
+
 .main{
-	width: 688rpx;
 	margin: 0 auto;
 }
 
 .product_title{
 	display: block;
-	font-size: 26rpx;
-	color: #383838;
-	padding-left: 34rpx;
-	border-left:7rpx solid #3d6cc8 ;
-	margin-top: 26rpx;
-	margin-bottom: 22rpx;
+	margin: 60rpx auto;
+	width: 452rpx;
+	height: 114rpx;
+	background:rgba(217, 217, 217, .8);
+	text-align: center;
+	line-height: 114rpx;
+	font-size: 48rpx;
+	border-radius: 6rpx;
 }
 
 .item{
