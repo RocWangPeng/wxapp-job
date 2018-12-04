@@ -32,7 +32,8 @@
   pointer-events: all
 }
 .menu-main .menu-main-icon{
-  width: 60%;
+  width: 44rpx;
+  height: 44rpx;
   position: relative;
   z-index: 1000;
 }
@@ -87,4 +88,5 @@
 } 
 .navIcon{
   width: 60%;
+  height: 52%
 }

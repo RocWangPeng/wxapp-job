@@ -4,30 +4,30 @@ App({
 
 	onLaunch: function(options) {
 		
-		// 验证是否已授权
-		wechat.isAuth()
-			.then(res => {
+		// // 验证是否已授权
+		// wechat.isAuth()
+		// 	.then(res => {
 
-				if (this.readCallBackFn) {
-					this.readCallBackFn(1)
-				}
+		// 		if (this.readCallBackFn) {
+		// 			this.readCallBackFn(1)
+		// 		}
 
-				this.globalData.isScope = 1
-				wechat.login()
-					.then(res => {
-						// console.log(res);
-					})
-					.catch(err => {
-						console.log(err);
-					})
-			})
-			.catch(err => {
-				this.globalData.isScope = 2
-				if (this.readCallBackFn) {
-					this.readCallBackFn(2)
-				}
+		// 		this.globalData.isScope = 1
+		// 		wechat.login()
+		// 			.then(res => {
+		// 				// console.log(res);
+		// 			})
+		// 			.catch(err => {
+		// 				console.log(err);
+		// 			})
+		// 	})
+		// 	.catch(err => {
+		// 		this.globalData.isScope = 2
+		// 		if (this.readCallBackFn) {
+		// 			this.readCallBackFn(2)
+		// 		}
 
-			})
+		// 	})
 	},
 	onShow(options) {
 		var self = this
@@ -55,6 +55,7 @@ App({
 			} catch (e) { }
 			this.getTeamData(teamId)
 		}else{
+      wx.setStorageSync('userType', 'agent')
 			console.log('没任何参数')
 		}
 	},

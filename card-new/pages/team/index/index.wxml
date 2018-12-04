@@ -4,10 +4,10 @@
 	<view class="center">
 			<image src="{{ agentData.headImg }}" class="head-img"></image>
 			<view class="user-name">
-				<text>{{ agentData.userName || "保信保师团" }}</text>
+				<text>{{ agentData.userName }}</text>
 				<!-- <text class="title">保险规划师</text> -->
 			</view>
-			<view bindtap="makePhoneCall" class="phone">18769526199</view>
+			<view bindtap="makePhoneCall" class="phone">{{ agentData.contractPhone }}</view>
 			<view class="info-cell">
 				<view class="info-cell-item">
 					<view class="info-cell-label">业务范围</view>

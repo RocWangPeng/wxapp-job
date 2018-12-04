@@ -196,6 +196,7 @@ Page({
 	},
 	getUnineId(){
 		wx.showLoading({
+      mask:true,
 			title: '努力加载中...'
 		})
 		var self = this
@@ -226,6 +227,7 @@ Page({
 										self.searchByUnionId(result.data.data.unionId,false,2)
 									}
 								}).catch((err) => {
+                  wx.hideLoading()
 									console.log(err)
 								});
 							}).catch((err) => {
@@ -238,7 +240,8 @@ Page({
 				})
 				.catch(err => {
 					this.setData({isScope:2})
-					wx.hideLoading()
+          wx.hideLoading()
+
 				})
 	},
 	/**
@@ -291,7 +294,7 @@ Page({
 	},
 	// 根据unionId获取顾问/团队信息
 	searchByUnionId(unionId, isSkip,type=1) {
-		wx.hideLoading()
+    wx.hideLoading()
 		var url =''
 		if(type == 1){
 			url ='https://ii.sinelinked.com/tg_web/api/agent/searchByUnionId'
@@ -306,9 +309,8 @@ Page({
 				type: type
 			},
 			success: (res) => {
+        
 				if (res.data.code == 0) {
-					
-
 					if(type == 1){
 						this.setData({
 							agent: res.data.data[0]

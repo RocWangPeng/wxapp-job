@@ -59,11 +59,11 @@ Component({
             var navName = e.currentTarget.dataset.name
             var goto = e.currentTarget.dataset.goto
             if (getCurrentPagesNum.length < 10) {
-                wx.navigateTo({
+              wx.redirectTo({
                     url: goto + '?teamId=' + this.data.teamId
                 })
             }else{
-                wx.reLaunch({
+              wx.redirectTo({
                     url: goto + '?teamId=' + this.data.teamId
                 })
             }

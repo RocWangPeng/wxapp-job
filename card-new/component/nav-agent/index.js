@@ -9,8 +9,17 @@ Component({
             }
         },
     },
+  pageLifetimes:{
+    show: function () {
+      // 页面被展示
+      console.log('页面被展示')
+      this.setData({
+        navStates: false
+      })
+    },
+  },
     data: {
-        navStates: true,
+        navStates: false,
         navData: [{
                 name: 'team',
                 icon: 'http://ii.sinelinked.com/miniProgramAssets/menu-sub-01.png',
@@ -50,6 +59,7 @@ Component({
     },
     methods: {
         navOpen() {
+          console.log(this.data.navStates)
             this.setData({
                 navStates: !this.data.navStates
             })
@@ -77,7 +87,7 @@ Component({
                     if (joinedTeams) {
                         // Do something with return value
                         if (joinedTeams.length == 1) {
-                            wx.navigateTo({
+                          wx.redirectTo({
                                 url: goto + '?teamId=' + joinedTeams[0].userId
                             })
                             return
@@ -100,7 +110,7 @@ Component({
 
             } else {
                 if (getCurrentPagesNum.length < 10) {
-                    wx.navigateTo({
+                  wx.redirectTo({
                         url: goto
                     })
                 }else{
