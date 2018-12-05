@@ -162,7 +162,7 @@ page{
   height: 400rpx;
 }
 .team-cell{
-	line-height: 65rpx;
+	line-height: 80rpx;
 }
 .i-modal-main{
 	width: 210px;

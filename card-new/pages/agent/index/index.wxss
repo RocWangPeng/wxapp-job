@@ -19,13 +19,15 @@
 	transform: translateX(-50%)
 }
 .mb-01-style .user-name{
-	padding-left: 74rpx;
+	padding-left: 10rpx;
 	font-size: 44rpx;
 	position: absolute;
 	top: 310rpx;
-	left: 50%;
 	text-align: center;
-	transform: translateX(-50%)
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center
 }
 .mb-01-style .title{
 	font-size: 24rpx;

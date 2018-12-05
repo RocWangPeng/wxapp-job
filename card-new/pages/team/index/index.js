@@ -28,6 +28,7 @@ Page({
           if (teamData) {
             // Do something with return value
             self.setData({agentData:teamData})
+            wx.setStorageSync('teamId', result.userId)
           }
         } catch (e) {
           // Do something when catch error
@@ -58,8 +59,11 @@ Page({
             agentData: result
           })
           try {
-						wx.setStorageSync('teamData', result)
-					} catch (e) { }
+            wx.setStorageSync('teamData', result)
+            wx.setStorageSync('teamId', result.userId)
+					} catch (e) { 
+
+          }
           // 匹配城市
           var areaArr = []
           if (res.data[0].area) {

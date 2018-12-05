@@ -6,6 +6,7 @@ App({
 		
 	},
 	onShow(options) {
+		console.log(options);
 		var self = this
 		// wx.showLoading({
 		// 	title: '努力加载中...'

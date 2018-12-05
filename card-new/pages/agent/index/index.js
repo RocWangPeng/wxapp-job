@@ -12,6 +12,7 @@ Page({
 		agentData:{},//顾问信息
 		cityData:'',//城市信息数据
 		transFormArea:'',//转换后城市
+    coverTempletUrl:''
 
 	},
 	/**
@@ -27,8 +28,9 @@ Page({
 				var agentData = wx.getStorageSync('agentData')
 				if (agentData) {
 					// Do something with return value
-					self.setData({agentData:agentData})
+          self.setData({ agentData: agentData, coverTempletUrl: agentData.coverTempletUrl})
 					var areaArr = []
+
 					if (self.data.agentData.area) {
 						areaArr = self.data.agentData.area.split('|')
 						self.setData({transFormArea:utils.getCityResult(cityData,areaArr[0], areaArr[1])})
@@ -74,7 +76,8 @@ Page({
 
 					var result = res.data[0]
 					that.setData({
-						agentData: result
+						agentData: result,
+            coverTempletUrl: result.coverTempletUrl
 					})
 					
 					try {
@@ -182,6 +185,7 @@ Page({
 		return {
 			title: this.data.agentData.xcxTitle || '您的贴心保险顾问',
 			path: '/pages/agent/index/index?userId=' + this.data.agentData.userId,
+      imageUrl: this.data.coverTempletUrl
 		}
 	}
 })

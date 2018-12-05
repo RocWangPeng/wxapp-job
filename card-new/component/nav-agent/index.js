@@ -1,3 +1,5 @@
+const { $Toast } = require('../../dist/base/index');
+
 Component({
     properties: {
         joinedTeams: { // 属性名
@@ -12,7 +14,6 @@ Component({
   pageLifetimes:{
     show: function () {
       // 页面被展示
-      console.log('页面被展示')
       this.setData({
         navStates: false
       })
@@ -99,12 +100,21 @@ Component({
                             return
                         }
                         var joinedTeamsArr = []
+                        console.log(joinedTeamsArr,'还未加入任何团队');
                         joinedTeams.map(item => {
                             joinedTeamsArr.push({
                                 name: item.userName,
                                 userId: item.userId
                             })
                         })
+                        if(joinedTeamsArr.length = 0){
+                            console.log(joinedTeamsArr,'还未加入任何团队');
+                            $Toast({
+                                content: '还未加入任何团队',
+                                type: 'warning'
+                            });
+                            return
+                        }
                         this.setData({
                             visibleTeamChoose: true,
                             teamChooseData: joinedTeamsArr

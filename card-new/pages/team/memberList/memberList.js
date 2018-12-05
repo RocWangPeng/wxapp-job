@@ -16,6 +16,7 @@ Page({
    */
   onLoad: function (options) {
       var that = this
+      console.log(options);
       if(options.teamId){
         this.setData({
           teamId: options.teamId
@@ -23,11 +24,14 @@ Page({
       }else{
         try {
           var teamData = wx.getStorageSync('teamData')
+          console.log(teamData);
           if (teamData) {
+            
             // Do something with return value
             that.setData({teamId:teamData.userId})
           }
         } catch (e) {
+          console.log(e);
           // Do something when catch error
         }
       }
@@ -39,10 +43,12 @@ Page({
     			teamId: this.data.teamId
     		},
     		success: function (res) {
+          console.log(res);
     			if (res.data.code == 0) {
     				that.setData({
     					memList: res.data.data.memList
-    				})
+            })
+            console.log(res.data.data.memList)
     			}
     		}
     	})

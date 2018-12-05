@@ -64,7 +64,7 @@
   opacity: .9;
   /* right: 0; */
   top: 0;
-  transition: .26s ease-in-out;
+  transition: .2s;
 }
 .nav-item-open .nav-item:nth-child(1){
   top: -130rpx;

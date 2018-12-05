@@ -4,8 +4,8 @@
 	<view class="center">
 			<image bindtap="previewImages" src="{{ agentData.headImg }}" class="head-img"></image>
 			<view class="user-name">
-				<text>{{ agentData.userName }}</text>
-				<text class="title">保师团</text>
+				<view>{{ agentData.userName }}</view>
+				<view class="title">保师团</view>
 			</view>
 			<!-- <view bindtap="makePhoneCall" class="phone">{{ agentData.contractPhone }}</view> -->
 			<view class="info-cell">
