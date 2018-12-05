@@ -20,11 +20,7 @@ Component({
   },
     data: {
         navStates: false,
-        navData: [{
-                name: 'team',
-                icon: 'http://ii.sinelinked.com/miniProgramAssets/menu-sub-01.png',
-                goto: '/pages/team/index/index'
-            },
+        navData: [
             {
                 name: 'index',
                 icon: 'http://ii.sinelinked.com/miniProgramAssets/menu-sub-06.png',
@@ -34,6 +30,11 @@ Component({
                 name: 'show',
                 icon: 'http://ii.sinelinked.com/miniProgramAssets/menu-sub-03.png',
                 goto: '/pages/agent/show/show'
+            },
+            {
+                name: 'team',
+                icon: 'http://ii.sinelinked.com/miniProgramAssets/menu-sub-01.png',
+                goto: '/pages/team/index/index'
             },
             {
                 name: 'product',
@@ -70,9 +71,9 @@ Component({
             })
         },
         teamChooseHandle(e) {
-            var index = e.detail.index
+            var userId = e.currentTarget.dataset.userid
             wx.redirectTo({
-                url: '/pages/team/index/index?teamId=' + this.data.teamChooseData[index].userId
+                url: '/pages/team/index/index?teamId=' + userId
             })
         },
         goTo(e) {

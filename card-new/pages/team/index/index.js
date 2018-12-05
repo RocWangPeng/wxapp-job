@@ -86,6 +86,14 @@ Page({
       }
     })
   },
+  // 全屏预览图片
+  previewImages(e) {
+    var self = this;
+    wx.previewImage({
+      current: self.data.agentData.headImg,
+      urls: [self.data.agentData.headImg]
+    })
+  },
   // 获取团队之星
   getTeamStar: function (teamId){
     var that = this;

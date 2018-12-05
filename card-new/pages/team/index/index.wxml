@@ -2,7 +2,7 @@
 	<msg-btn></msg-btn>
 	<nav-team></nav-team>
 	<view class="center">
-			<image src="{{ agentData.headImg }}" class="head-img"></image>
+			<image bindtap="previewImages" src="{{ agentData.headImg }}" class="head-img"></image>
 			<view class="user-name">
 				<text>{{ agentData.userName }}</text>
 				<!-- <text class="title">保险规划师</text> -->

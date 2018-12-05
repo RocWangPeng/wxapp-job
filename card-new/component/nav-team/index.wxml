@@ -1,5 +1,5 @@
 <movable-area  bind:tap="navClose" class="nav nav-agent" style="pointer-events:{{ navStates?'none':'all' }}">
-    <movable-view x="{{ 1000 }}" y="{{ 130 }}" direction="all" class="nav-btn {{ navStates?'nav-item-close':'nav-item-open' }}">
+    <movable-view x="{{ 1000 }}" y="{{ 180 }}" direction="all" class="nav-btn {{ navStates?'nav-item-close':'nav-item-open' }}">
         <view class="menu-main" bind:tap="navOpen" capture-catch:tap="navOpen">
             <image class="menu-main-icon" src="http://ii.sinelinked.com/miniProgramAssets/menu-main.png" />
         </view>

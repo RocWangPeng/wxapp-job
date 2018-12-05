@@ -13,15 +13,15 @@
   z-index: 100;
 }
 .nav-btn{
-  width: 100rpx;
-  height: 100rpx;
+  width: 65rpx;
+  height: 65rpx;
   z-index: 100;
   text-align: center;
   border-radius: 18rpx;
 }
 .menu-main{
-  width: 100rpx;
-  height: 100rpx;
+  width: 65rpx;
+  height: 65rpx;
   position: absolute;
   border-radius: 14rpx;
   z-index: 1000;
@@ -32,8 +32,8 @@
   pointer-events: all
 }
 .menu-main .menu-main-icon{
-  width: 44rpx;
-  height: 44rpx;
+  width: 36rpx;
+  height: 36rpx;
   position: relative;
   z-index: 1000;
 }
@@ -50,19 +50,18 @@
   position: relative;
 }
 .nav-item{
-  width: 76rpx;
-  height: 76rpx;
+  width: 65rpx;
+  height: 65rpx;
   border-radius: 50%;
   background: #6197ec;
   text-align: center;
-  line-height: 76rpx;
+  line-height: 65rpx;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   z-index: 20;
   opacity: .9;
-  /* right: 0; */
   top: 0;
   transition: .26s ease-in-out;
 }
@@ -89,4 +88,10 @@
 .navIcon{
   width: 60%;
   height: 52%
+}
+.i-modal-main{
+	width: 210px;
+}
+.team-cell{
+	line-height: 65rpx;
 }

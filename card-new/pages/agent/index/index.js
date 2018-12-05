@@ -28,32 +28,37 @@ Page({
 				if (agentData) {
 					// Do something with return value
 					self.setData({agentData:agentData})
+					var areaArr = []
+					if (self.data.agentData.area) {
+						areaArr = self.data.agentData.area.split('|')
+						self.setData({transFormArea:utils.getCityResult(cityData,areaArr[0], areaArr[1])})
+					}
 				}
 			} catch (e) {
 				// Do something when catch error
 			}
 		}
 		
-		if(app.globalData.agentData){
-			self.setData({agentData:app.globalData.agentData})
-			self.getJoinedTeams(agentData.userId)
-			var areaArr = []
-			if (self.data.agentData.area) {
-				areaArr = self.data.agentData.area.split('|')
-				self.setData({transFormArea:utils.getCityResult(cityData,areaArr[0], areaArr[1])})
-			}
-		}else{
-			// 防止app.js还没执行完就已经page.onload，所以增加回调
-			app.callBack =res=>{
-				self.setData({agentData:res})
-				self.getJoinedTeams(agentData.userId)
-				var areaArr = []
-				if (self.data.agentData.area) {
-					areaArr = self.data.agentData.area.split('|')
-					self.setData({transFormArea:utils.getCityResult(cityData,areaArr[0], areaArr[1])})
-				}
-			}
-		}
+		// if(app.globalData.agentData){
+		// 	self.setData({agentData:app.globalData.agentData})
+		// 	self.getJoinedTeams(agentData.userId)
+		// 	var areaArr = []
+		// 	if (self.data.agentData.area) {
+		// 		areaArr = self.data.agentData.area.split('|')
+		// 		self.setData({transFormArea:utils.getCityResult(cityData,areaArr[0], areaArr[1])})
+		// 	}
+		// }else{
+		// 	// 防止app.js还没执行完就已经page.onload，所以增加回调
+		// 	app.callBack =res=>{
+		// 		self.setData({agentData:res})
+		// 		self.getJoinedTeams(agentData.userId)
+		// 		var areaArr = []
+		// 		if (self.data.agentData.area) {
+		// 			areaArr = self.data.agentData.area.split('|')
+		// 			self.setData({transFormArea:utils.getCityResult(cityData,areaArr[0], areaArr[1])})
+		// 		}
+		// 	}
+		// }
 	},
 	//获取信息
 	getInfo(id) {
@@ -86,6 +91,14 @@ Page({
 			}
 		})
 	},
+		// 全屏预览图片
+		previewImages(e) {
+			var self = this;
+			wx.previewImage({
+				current: self.data.agentData.headImg,
+				urls: [self.data.agentData.headImg]
+			})
+		},
 	//所属团队 
 	getJoinedTeams(id) {
 		var that = this

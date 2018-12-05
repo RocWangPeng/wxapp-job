@@ -39,14 +39,7 @@ Page({
 		previewImageShow: false,
 		previewImageTeamShow: false, //团队太阳码显示
 	},
-	// 弹出框 选择团队
-	teamChooseHandle(e) {
-		var index = e.detail.index
-		this.setData({
-			activeTeamid:this.data.teamChooseData[index].userId,
-			visibleTeamChoose: false
-		});
-	},
+
 	search(e) {
 		var self = this
 		var type = e.target.dataset.type
@@ -116,21 +109,6 @@ Page({
 
 			}
 		})
-	},
-	handleClickItem(e) {
-		var userId = e.currentTarget.dataset.userId
-		this.setData({
-			activeTeamid: userId
-		})
-		this.searchTeamBrief()
-		this.setData({
-			visible1: false
-		});
-	},
-	handleCancel2() {
-		this.setData({
-			visible1: false
-		});
 	},
 	//所加入的团队 
 	getJoinedTeams(id) {
@@ -268,15 +246,27 @@ Page({
 		this.searchByUnionId(this.data.unionId, true)
 	},
 	toTeam() {
+		var self = this
 		if(this.data.activeTeamid){
 			wx.navigateTo({
-				url: '/pages/team/index/index?teamId=' + this.data.activeTeamid
+				url: '/pages/team/index/index?teamId=' + this.data.activeTeamid,
+				success(){
+					self.setData({
+						activeTeamid:''
+					})
+				}
 			})
+			
 		}else{
 			var joinedTeams = this.data.teamChooseData
 			if (joinedTeams.length == 1) { //加入一个团队直接跳转
 				wx.navigateTo({
-					url: '/pages/team/index/index?teamId=' + res.data.data[0].userId
+					url: '/pages/team/index/index?teamId=' + joinedTeams[0].userId,
+					success(){
+						self.setData({
+							activeTeamid:''
+						})
+					}
 				})
 			} else if (joinedTeams.length > 1) { //加入多个团队，弹出列表
 				this.setData({
@@ -334,7 +324,7 @@ Page({
 					if (isSkip) {
 						if (res.data.code == 46) {
 							$Toast({
-								content: '您还不是保信云顾问，请完善顾问信息后再使用名片',
+								content: '您还不是保信云顾问,请完善顾问信息后再使用名片',
 								type: 'warning'
 							});
 						}
@@ -352,29 +342,46 @@ Page({
 	},
 	//预览太阳码
 	previewImageTeam: function() {
-		if (this.data.activeTeamid) {
-			this.data.teamChooseData.map(item=>{
-				if(item.userId == this.data.activeTeamid){
-					this.setData({
-						qrCodeTeamUrl: item.qrCodePath,
-						previewImageTeamShow: true,
-					})
-				}
-			})
-			
-
-		} else {
-			this.setData({
-				visibleTeamChoose: true
+		if(this.data.teamChooseData.length == 0){
+			$Toast({
+				content: '您还未有任何团队,请完善团队信息后再使用',
+				type: 'warning'
 			});
+		}else if(this.data.teamChooseData.length == 1){
+			this.setData({
+				qrCodeTeamUrl: this.data.teamChooseData[0].qrCodePath,
+				previewImageTeamShow: true,
+			})
+		}else if(this.data.teamChooseData.length > 1){
+			if (this.data.activeTeamid) {
+				this.data.teamChooseData.map(item=>{
+					if(item.userId == this.data.activeTeamid){
+						this.setData({
+							qrCodeTeamUrl: item.qrCodePath,
+							previewImageTeamShow: true,
+						})
+					}
+				})
+			} else {
+				this.setData({
+					visibleTeamChoose: true
+				});
+			}
 		}
-
-
 	},
+		// 弹出框 选择团队
+		teamChooseHandle(e) {
+			var userId = e.currentTarget.dataset.userid
+			this.setData({
+				activeTeamid:userId,
+				visibleTeamChoose: false
+			});
+		},
 	// 关闭团队太阳码预览
 	closePreviewImageTeam() {
 		this.setData({
 			previewImageTeamShow: false,
+			activeTeamid:''
 		})
 	},
 	// 关闭码预览

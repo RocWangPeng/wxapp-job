@@ -52,9 +52,6 @@
    <image class="previewImageTeamCode" src="{{ qrCodeTeamUrl }}"></image>
  </view>
 </view>
-<i-modal title="我的团队" visible="{{ visibleTeamChoose }}" actions="{{ teamChooseData }}" action-mode="{{ vertical }}" bind:click="teamChooseHandle"></i-modal>
-<!-- <i-action-sheet visible="{{ visible1 }}" show-cancel bind:cancel="handleCancel2">
-  <view class='teamListItem' wx:for="{{ joinedTeams }}" wx:key="{{ index }}" data-userId="{{ item.userId }}" slot="header" bindtap="handleClickItem">
-    <text>{{ item.name }}</text>
-  </view>
-</i-action-sheet> -->
+<i-modal visible="{{ visibleTeamChoose }}" show-ok="{{ false }}" show-cancel="{{ false }}">
+  <view class="team-cell" bindtap="teamChooseHandle" data-userId="{{ item.userId }}" wx:for="{{ teamChooseData }}" wx:key="{{ index }}">{{ item.name }}</view>
+</i-modal>

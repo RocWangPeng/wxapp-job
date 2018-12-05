@@ -20,7 +20,7 @@
 .mb-01-style .user-name{
 	font-size: 44rpx;
 	position: absolute;
-	top: 60rpx;
+	top: 80rpx;
 	left: 270rpx;
 }
 .mb-01-style .title{
@@ -30,7 +30,7 @@
 }
 .mb-01-style .phone{
 	position: absolute;
-	top:150rpx;
+	top:172rpx;
 	left: 270rpx;
   z-index: 3
 }
@@ -39,11 +39,11 @@
 	padding-left: 46rpx;
 	box-sizing: border-box;
 	position: absolute;
-	top:280rpx;
+	top:300rpx;
 	left: 0;
 }
 .mb-01-style .info-cell-item{
-	line-height: 72rpx;
+	line-height: 60rpx;
 	display: flex;
 	font-size: 26rpx;
 }
