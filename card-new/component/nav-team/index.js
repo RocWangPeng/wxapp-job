@@ -7,7 +7,6 @@ Component({
                     this.setData({
                         teamId: teamId
                     })
-                    console.log('shezhi teamId',teamId);
                 }
             } catch (e) {
                 // Do something when catch error

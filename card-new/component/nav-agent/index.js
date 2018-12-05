@@ -66,7 +66,6 @@ Component({
     },
     methods: {
         navOpen() {
-          console.log(this.data.navStates)
             this.setData({
                 navStates: !this.data.navStates
             })
@@ -92,6 +91,16 @@ Component({
                 try {
                     joinedTeams = wx.getStorageSync('joinedTeams')
                     if (joinedTeams) {
+                        console.log(joinedTeams);
+                        if(joinedTeams.length == 0){
+                           
+                            wx.showToast({
+                                title: '还未加入任何团队',
+                                icon: 'none',
+                                duration: 2000
+                              })
+                            return
+                        }
                         // Do something with return value
                         if (joinedTeams.length == 1) {
                           wx.redirectTo({
@@ -100,21 +109,13 @@ Component({
                             return
                         }
                         var joinedTeamsArr = []
-                        console.log(joinedTeamsArr,'还未加入任何团队');
                         joinedTeams.map(item => {
                             joinedTeamsArr.push({
                                 name: item.userName,
                                 userId: item.userId
                             })
                         })
-                        if(joinedTeamsArr.length = 0){
-                            console.log(joinedTeamsArr,'还未加入任何团队');
-                            $Toast({
-                                content: '还未加入任何团队',
-                                type: 'warning'
-                            });
-                            return
-                        }
+                        
                         this.setData({
                             visibleTeamChoose: true,
                             teamChooseData: joinedTeamsArr

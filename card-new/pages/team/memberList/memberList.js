@@ -36,14 +36,14 @@ Page({
         }
       }
 			
-			
+			wx.showNavigationBarLoading()
     	wx.request({
     		url: 'https://ii.sinelinked.com/tg_web/api/user/XCX/getTeamAgent',
     		data: {
     			teamId: this.data.teamId
     		},
     		success: function (res) {
-          console.log(res);
+          wx.hideNavigationBarLoading()
     			if (res.data.code == 0) {
     				that.setData({
     					memList: res.data.data.memList

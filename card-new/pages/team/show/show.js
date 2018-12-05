@@ -20,6 +20,7 @@ Page({
 	onLoad: function(options) {
 		var that = this;
 		var self = this;
+		wx.showNavigationBarLoading()
     try {
       var teamData = wx.getStorageSync('teamData')
       if (teamData) {
@@ -75,7 +76,7 @@ Page({
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
 	onReady: function() {
-
+		wx.hideNavigationBarLoading()
 	},
 
 	/**

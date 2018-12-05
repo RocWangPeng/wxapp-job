@@ -70,13 +70,16 @@ page{
 	padding-left: 12rpx;
    vertical-align: middle
 }
+.result-warp{
+	padding-right: 66rpx;
+}
 .tip-icon{
   width: 41rpx;
   height: 50rpx;
   vertical-align: middle
 }
 .card-main{
-	width: 544rpx;
+	width: 500rpx;
 	margin: 0 auto;
 }
 .card-item{
@@ -116,7 +119,6 @@ page{
 	justify-content: space-between;
 	align-items: center;
 	position: relative;
-	padding-right: 60rpx;
 	box-sizing: border-box;
 }
 .card-flex:first-child{

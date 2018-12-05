@@ -10,9 +10,9 @@
         </view>
     </movable-view>
 </movable-area>
-<!-- <i-moda visible="{{ visibleTeamChoose }}" actions="{{ teamChooseData }}" action-mode="{{ vertical }}" bind:click="teamChooseHandle">
 
-</i-modal> -->
+<i-toast id="toast" />
+
 
 <i-modal visible="{{ visibleTeamChoose }}" show-ok="{{ false }}" show-cancel="{{ false }}">
   <view class="team-cell" bindtap="teamChooseHandle" data-userId="{{ item.userId }}" wx:for="{{ teamChooseData }}" wx:key="{{ index }}">{{ item.name }}</view>

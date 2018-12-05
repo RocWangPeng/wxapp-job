@@ -6,12 +6,7 @@ App({
 		
 	},
 	onShow(options) {
-		console.log(options);
 		var self = this
-		// wx.showLoading({
-		// 	title: '努力加载中...'
-		// })
-		
 		var scenes = decodeURIComponent(options.scene) // 获取扫码状态下的用户id
 		// agent
 		var userId = options.query.userId || scenes.split('=')[1]
@@ -32,8 +27,7 @@ App({
 			} catch (e) { }
 			this.getTeamData(teamId)
 		}else{
-      wx.setStorageSync('userType', 'agent')
-			console.log('没任何参数')
+      		wx.setStorageSync('userType', 'agent')
 		}
 	},
 	// 获取顾问信息

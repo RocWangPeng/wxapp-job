@@ -18,6 +18,7 @@ Page({
 	 */
   onLoad: function (options) {
     var self = this;
+    wx.showNavigationBarLoading()
       var teamId = options.teamId
       // 获取扫码状态下的用户id
       if (teamId) {
@@ -53,6 +54,7 @@ Page({
       },
       success: function (res) {
         wx.hideLoading()
+        wx.hideNavigationBarLoading()
         if (Object.prototype.toString.call(res.data) === '[object Array]') {
           var result = res.data[0]
           self.setData({

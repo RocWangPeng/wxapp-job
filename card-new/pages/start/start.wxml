@@ -13,7 +13,7 @@
   </view>
 </view>
 <view class="search-result">
- <view>
+ <view class="result-warp">
   <image class='tip-icon' mode="aspectFit" src='{{ tipIcon }}'></image>
   <text wx:if="{{ resultTipShow }}">{{ resultTip }}</text>
  </view>
