@@ -13,9 +13,9 @@
   </view>
 </view>
 <view class="search-result">
- <view wx:if="{{ resultTipShow }}">
-  <image class='tip-icon' mode="aspectFit" src='http://ii.sinelinked.com/miniProgramAssets/tip01.png'></image>
-  <text>{{ resultTip }}</text>
+ <view>
+  <image class='tip-icon' mode="aspectFit" src='{{ tipIcon }}'></image>
+  <text wx:if="{{ resultTipShow }}">{{ resultTip }}</text>
  </view>
 </view>
 <view class="card-main">

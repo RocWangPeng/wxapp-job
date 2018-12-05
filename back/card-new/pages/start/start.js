@@ -102,12 +102,8 @@ Page({
 								})
 							} else if (res.data.data[0].type == 2) {
 								// 团队
-								wx.navigateToMiniProgram({
-									appId: 'wx45ab72d81dc8cd72',
-									path: '/pages/index/index?userId=' + res.data.data[0].userId,
-									success(res) {
-										// 打开成功
-									}
+								wx.reLaunch({
+									url: '/pages/team/index/index?teamId=' + res.data.data[0].userId
 								})
 							}
 							break;

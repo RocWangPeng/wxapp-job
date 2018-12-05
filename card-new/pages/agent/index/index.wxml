@@ -7,8 +7,12 @@
 				<text>{{ agentData.userName }}</text>
 				<text class="title">保险规划师</text>
 			</view>
-			<view bindtap="makePhoneCall" class="phone">{{ agentData.phone }}</view>
+			<!-- <view  class="phone">{{ agentData.phone }}</view> -->
 			<view class="info-cell">
+				<view class="info-cell-item" bindtap="makePhoneCall">
+					<view class="info-cell-label">电话号码</view>
+					<view class="info-cell-value">{{ agentData.phone }}</view>
+				</view>
 				<view class="info-cell-item">
 					<view class="info-cell-label">执业证书</view>
 					<view class="info-cell-value">{{ agentData.certificateNo }}</view>

@@ -27,14 +27,14 @@ Component({
                 goto: '/pages/agent/index/index'
             },
             {
+                name: 'introduce',
+                icon: 'http://ii.sinelinked.com/miniProgramAssets/menu-sub-02.png',
+                goto: '/pages/agent/introduce/introduce'
+            },
+            {
                 name: 'show',
                 icon: 'http://ii.sinelinked.com/miniProgramAssets/menu-sub-03.png',
                 goto: '/pages/agent/show/show'
-            },
-            {
-                name: 'team',
-                icon: 'http://ii.sinelinked.com/miniProgramAssets/menu-sub-01.png',
-                goto: '/pages/team/index/index'
             },
             {
                 name: 'product',
@@ -46,6 +46,11 @@ Component({
                 icon: 'http://ii.sinelinked.com/miniProgramAssets/menu-sub-05.png',
                 goto: '/pages/agent/company/company'
             },
+            {
+                name: 'team',
+                icon: 'http://ii.sinelinked.com/miniProgramAssets/menu-sub-01.png',
+                goto: '/pages/team/index/index'
+            }
         ],
         visibleTeamChoose: false, //显示选择团队弹框
         teamChooseData: [

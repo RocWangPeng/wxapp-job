@@ -71,21 +71,25 @@
   right: 0;
 }
 .nav-item-open .nav-item:nth-child(2){
-  top: -92rpx;
-  left: -90rpx;
+  top: -96rpx;
+  left: -73rpx;
 }
 .nav-item-open .nav-item:nth-child(3){
-  top: 12rpx;
+  top: -40rpx;
   left: -128rpx;
 } 
 .nav-item-open .nav-item:nth-child(4){
-  top: 102rpx;
-  left: -92rpx;
+  top: 40rpx;
+  left: -128rpx;
 } 
 .nav-item-open .nav-item:nth-child(5){
-  top: 150rpx;
-  right: 0;
+  top: 96rpx;
+  right: 73rpx;
 } 
+.nav-item-open .nav-item:nth-child(6){
+  top: 130rpx;
+  right: 0;
+}
 .navIcon{
   width: 60%;
   height: 52%

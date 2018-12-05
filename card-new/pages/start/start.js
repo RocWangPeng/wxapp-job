@@ -16,6 +16,7 @@ Page({
 		searchResult: [],
 		isResult: '',
 		resultTip: '请输入搜索内容',
+		tipIcon:'http://ii.sinelinked.com/miniProgramAssets/tip01.png',
 		spinShow: false,
 		userInfo: {}, //用户信息
 		agent: {},
@@ -44,7 +45,6 @@ Page({
 		var self = this
 		var type = e.target.dataset.type
 		var url = ''
-		console.log('type', type);
 		if (this.data.inputValue == '') {
 			self.setData({
 				searchResult: '请输入搜索内容',
@@ -75,6 +75,7 @@ Page({
 						case 0:
 							self.setData({
 								resultTip: '没有搜索到相关内容',
+								tipIcon:'http://ii.sinelinked.com/miniProgramAssets/tip03.png',
 								resultTipShow: true
 							})
 							break;
@@ -103,6 +104,7 @@ Page({
 				} else {
 					self.setData({
 						resultTip: '没有搜索到相关内容',
+						tipIcon:'http://ii.sinelinked.com/miniProgramAssets/tip03.png',
 						resultTipShow: true
 					})
 				}

@@ -57,9 +57,12 @@ page{
 	text-align: center;
 	margin-top: 40rpx;
 	margin-bottom: 40rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .search-result{
-  min-height: 60rpx;
+  min-height: 120rpx;
 }
 .search-result text{
 	font-size: 24rpx;
@@ -78,24 +81,30 @@ page{
 }
 .card-item{
 	border-radius: 16rpx;
-	width: 350rpx;
-	height: 186rpx;
+	width: 294rpx;
+	height: 153rpx;
 	background: #fff;
 	box-shadow: 0 0 22rpx rgba(0,0,0,.2);
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
+	box-sizing: border-box;
+	padding-left: 35rpx;
+	padding-right: 32rpx;
 }
 .card-item text{
 	font-size: 28rpx;
 	color: #555;
 }
+.agent-card{
+	padding-left: 66rpx;
+}
 .agent-card image{
-	width: 61rpx;
+	width: 60rpx;
 	height: 100%;
 }
 .team-card image{
-	width: 136rpx;
+	width: 106rpx;
 	height: 100%;
 }
 .qr-code{
@@ -107,9 +116,11 @@ page{
 	justify-content: space-between;
 	align-items: center;
 	position: relative;
+	padding-right: 60rpx;
+	box-sizing: border-box;
 }
 .card-flex:first-child{
-	margin-bottom: 34rpx;
+	margin-bottom: 43rpx;
 }
 .card-flex .getUserInfo{
 	position: absolute;

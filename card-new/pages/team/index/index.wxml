@@ -5,18 +5,22 @@
 			<image bindtap="previewImages" src="{{ agentData.headImg }}" class="head-img"></image>
 			<view class="user-name">
 				<text>{{ agentData.userName }}</text>
-				<!-- <text class="title">保险规划师</text> -->
+				<text class="title">保师团</text>
 			</view>
-			<view bindtap="makePhoneCall" class="phone">{{ agentData.contractPhone }}</view>
+			<!-- <view bindtap="makePhoneCall" class="phone">{{ agentData.contractPhone }}</view> -->
 			<view class="info-cell">
+				<view class="info-cell-item" bindtap="makePhoneCall">
+					<view class="info-cell-label">联系电话</view>
+					<view class="info-cell-value">{{ agentData.contractPhone }}</view>
+				</view>
 				<view class="info-cell-item">
 					<view class="info-cell-label">业务范围</view>
 					<view class="info-cell-value">{{ '财险、寿险' }}</view>
 				</view>
-				<view class="info-cell-item">
+				<!-- <view class="info-cell-item">
 					<view class="info-cell-label">执业区域</view>
 					<view class="info-cell-value">{{ getCityResultstr }}</view>
-				</view>
+				</view> -->
 			</view>
 			<view class="slogan">
 				{{ agentData.teamSummary }}
