@@ -8,11 +8,12 @@
   display: block;
   line-height: 80rpx;
   font-size: 36rpx;
-  color: #333;
+	color: #333;
+	display: none;
 }
 .head-img{
-  width: 106rpx;
-  height: 106rpx;
+  width: 200rpx;
+  height: 200rpx;
   border: 6rpx solid #fff;
   border-radius: 50%;
 }

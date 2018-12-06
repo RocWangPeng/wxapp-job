@@ -8,8 +8,8 @@
 	box-sizing: border-box;
 }
 .mb-01-style .head-img{
-	width: 300rpx;
-	height: 300rpx;
+	width: 350rpx;
+	height: 350rpx;
 	border-radius: 50%;
 	border: 4rpx solid #fff;
 	box-sizing: border-box;
@@ -19,10 +19,10 @@
 	transform: translateX(-50%)
 }
 .mb-01-style .user-name{
-	padding-left: 10rpx;
+	padding-left: 20rpx;
 	font-size: 44rpx;
 	position: absolute;
-	top: 310rpx;
+	top: 370rpx;
 	text-align: center;
 	display: flex;
 	width: 100%;
@@ -32,7 +32,7 @@
 .mb-01-style .title{
 	font-size: 24rpx;
 	color: #666;
-	padding-left: 20rpx;
+	padding-left: 10rpx;
 	padding-top: 10rpx;
 }
 .mb-01-style .phone{
@@ -46,11 +46,11 @@
 	padding-left: 46rpx;
 	box-sizing: border-box;
 	position: absolute;
-	top:410rpx;
+	top:460rpx;
 	left: 0;
 }
 .mb-01-style .info-cell-item{
-	line-height: 60rpx;
+	line-height: 48rpx;
 	display: flex;
 	font-size: 26rpx;
 }
@@ -69,7 +69,7 @@
 	border: 1rpx dotted #ccc;
 	box-sizing: border-box;
 	position: absolute;
-	top:750rpx;
+	top:710rpx;
 	left: 36rpx;
 	font-size: 28rpx;
 	color: #8e8e8e;
