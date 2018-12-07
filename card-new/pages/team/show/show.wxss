@@ -12,8 +12,8 @@
 	display: none;
 }
 .head-img{
-  width: 300rpx;
-  height: 300rpx;
+  width: 200rpx;
+  height: 200rpx;
   border: 6rpx solid #fff;
   border-radius: 50%;
 }

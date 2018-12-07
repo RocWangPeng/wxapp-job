@@ -7,5 +7,5 @@
   <view class="personSummary-title">
     <text class="jianjie">简介</text>
   </view>
- <text class="personSummary-main">{{ agentData.personSummary }}</text>
+ <text class="personSummary-main">{{ agentData.personIntro }}</text>
 </view>

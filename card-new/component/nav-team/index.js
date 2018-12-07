@@ -36,11 +36,11 @@ Component({
                 icon: 'http://ii.sinelinked.com/miniProgramAssets/menu-sub-07.png',
                 goto: '/pages/team/learn/learn'
             },
-            {
-                name: 'company',
-                icon: 'http://ii.sinelinked.com/miniProgramAssets/menu-sub-05.png',
-                goto: '/pages/team/company/company'
-            },
+            // {
+            //     name: 'company',
+            //     icon: 'http://ii.sinelinked.com/miniProgramAssets/menu-sub-05.png',
+            //     goto: '/pages/team/company/company'
+            // },
         ]
     },
     methods: {
