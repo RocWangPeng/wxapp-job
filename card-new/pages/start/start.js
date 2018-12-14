@@ -89,7 +89,7 @@ Page({
 							} else if (res.data.data[0].type == 2) {
 								// 团队
 								wx.reLaunch({
-									url: '/pages/team/index/index?teamId=' + res.data.data[0].teamId
+                  url: '/pages/team/index/index?teamId=' + res.data.data[0].userId
 								})
 
 							}
@@ -128,24 +128,30 @@ Page({
 					if (res.data.data.length) {
 						// 将此用户创建的团队与所加入的团队合并
 						res.data.data.map(item => {
+							
 							if (item.name != that.data.agentJoinTeam.userName) {
 								joinedTeams.push({
 									name: item.userName,
 									userId: item.userId,
 									qrCodePath: item.qrCodePath
 								})
-							} else {
-								joinedTeams.push({
-									name: that.data.agentJoinTeam.userName,
-									userId: that.data.agentJoinTeam.userId,
-									qrCodePath: item.qrCodePath
-								})
-							}
+							} 
 						})
-
+						joinedTeams.push({
+							name: that.data.agentJoinTeam.userName,
+							userId: that.data.agentJoinTeam.userId,
+							qrCodePath: that.data.agentJoinTeam.qrCodePath
+						})
 
 						that.setData({
 							teamChooseData: joinedTeams,
+						})
+						
+					}else{
+						var temp = []
+						temp.push(that.data.agentJoinTeam)
+						that.setData({
+							teamChooseData: temp,
 						})
 					}
 				}
@@ -203,7 +209,6 @@ Page({
 								type: 1
 							}
 							wechat.getUnineId(params).then((result) => {
-								console.log(result);
 								if (result.data.code == 0) {
 									//获取到unionId
 									self.setData({
@@ -268,6 +273,7 @@ Page({
 	toTeam() {
 		var self = this
 		if (this.data.activeTeamid) {
+      wx.setStorageSync('userType', 'team')
 			wx.setStorageSync('teamId', this.data.activeTeamid)
 			wx.navigateTo({
 				url: '/pages/team/index/index?teamId=' + this.data.activeTeamid,
@@ -281,6 +287,7 @@ Page({
 		} else {
 			var joinedTeams = this.data.teamChooseData
 			if (joinedTeams.length == 1) { //加入一个团队直接跳转
+        wx.setStorageSync('userType', 'team')
 				wx.setStorageSync('teamId', joinedTeams[0].userId)
 				wx.navigateTo({
 					url: '/pages/team/index/index?teamId=' + joinedTeams[0].userId,
@@ -297,7 +304,7 @@ Page({
 
 			} else if (joinedTeams.length == 0) {
 				$Toast({
-					content: '暂未加入团队',
+					content: '您还未有任何团队,请完善团队信息或加入团队',
 					type: 'warning'
 				});
 			}
@@ -326,15 +333,15 @@ Page({
 						this.setData({
 							agent: res.data.data[0]
 						})
+						this.getJoinedTeams(res.data.data[0].userId)
 					} else {
 						this.setData({
 							agentJoinTeam: res.data.data[0]
 						})
 					}
 
-					this.getJoinedTeams(res.data.data[0].userId)
-
 					if (isSkip) {
+            wx.setStorageSync('userType', 'agent')
 						wx.navigateTo({
 							url: '/pages/agent/index/index?userId=' + res.data.data[0].userId
 						})
@@ -366,7 +373,7 @@ Page({
 	previewImageTeam: function () {
 		if (this.data.teamChooseData.length == 0) {
 			$Toast({
-				content: '您还未有任何团队,请完善团队信息后再使用',
+				content: '您还未有任何团队,请完善团队信息或加入团队',
 				type: 'warning'
 			});
 		} else if (this.data.teamChooseData.length == 1) {

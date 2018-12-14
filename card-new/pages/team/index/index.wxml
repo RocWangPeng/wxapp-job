@@ -1,29 +1,38 @@
 <view class="page index mb-01-style">
-	<msg-btn></msg-btn>
-	<nav-team></nav-team>
+	<!-- <nav-team></nav-team> -->
 	<view class="center">
 			<image bindtap="previewImages" src="{{ agentData.headImg }}" class="head-img"></image>
 			<view class="user-name">
 				<view>{{ agentData.userName }}</view>
 				<view class="title">保师团</view>
 			</view>
-			<!-- <view bindtap="makePhoneCall" class="phone">{{ agentData.contractPhone }}</view> -->
+			<view  class="phone" bindtap="makePhoneCall"><text>{{ phone }}</text><image src="http://ii.sinelinked.com/miniProgramAssets/phone.png"></image></view>
+
 			<view class="info-cell">
-				<view class="info-cell-item" bindtap="makePhoneCall">
-					<view class="info-cell-label">联系电话</view>
-					<view class="info-cell-value">{{ agentData.contractPhone }}</view>
-				</view>
 				<view class="info-cell-item">
-					<view class="info-cell-label">业务范围</view>
-					<view class="info-cell-value">{{ '财险、寿险' }}</view>
+					<view class="info-cell-label">成立时间</view>
+					<view class="info-cell-value">{{ createTime }}</view>
 				</view>
-				<!-- <view class="info-cell-item">
-					<view class="info-cell-label">执业区域</view>
-					<view class="info-cell-value">{{ getCityResultstr }}</view>
-				</view> -->
 			</view>
-			<view class="slogan">
+			<view class="team-nav">
+				<navigator url="/pages/team/memberList/memberList?teamId={{ agentData.userId }}" class="team-nav-item">
+					<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-01.png'></image> 团队成员
+				</navigator>
+				<navigator url="/pages/team/introduce/introduce?teamId={{ agentData.userId }}"  class="team-nav-item">
+					<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-02.png'></image> 团队介绍
+				</navigator>
+				<navigator url="/pages/team/show/show?teamId={{ agentData.userId }}"  class="team-nav-item">
+					<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-03.png'></image> 团队秀
+				</navigator>
+				<navigator url="/pages/team/learn/learn?teamId={{ agentData.userId }}"  class="team-nav-item">
+					<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-05.png'></image> 观念
+				</navigator>
+				
+			</view>
+			<i-button i-class="msg-btn" bind:click="toMsg" type="primary">点我咨询</i-button>
+
+			<!-- <view class="slogan">
 				{{ agentData.teamSummary }}
-			</view>
+			</view> -->
 	</view>
 </view>

@@ -6,12 +6,13 @@ App({
 		
 	},
 	onShow(options) {
+		console.log(options);
 		var self = this
 		var scenes = decodeURIComponent(options.scene) // 获取扫码状态下的用户id
 		// agent
-		var userId = options.query.userId || scenes.split('=')[1]
+    var userId = options.query.userId || scenes.split('=')[1]
 		// team
-		var teamId = options.query.teamId || scenes.split('=')[1]
+    var teamId = options.query.teamId || scenes.split('=')[1]
 
 		// 获取顾问信息
 		if(userId){
@@ -27,7 +28,7 @@ App({
 			} catch (e) { }
 			this.getTeamData(teamId)
 		}else{
-      		wx.setStorageSync('userType', 'agent')
+      	wx.setStorageSync('userType', 'agent')
 		}
 	},
 	// 获取顾问信息

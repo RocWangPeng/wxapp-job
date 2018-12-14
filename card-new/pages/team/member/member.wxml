@@ -1,10 +1,10 @@
-<!--pages/member/member.wxml-->
+<msg-btn></msg-btn>
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
 
 
 	<swiper-item wx:for="{{ memList }}" wx:key="{{ index }}">
 		<view id='swiper'>
-			<navigator class="navigator" open-type="navigate" app-id="wx0ff73d8248085825" path="/pages/index/index?userId={{ item.userId }}" hover-class="navigator-hover" target="miniProgram" >
+			<navigator class="navigator" open-type="navigate" path="/pages/index/index?userId={{ item.userId }}" hover-class="navigator-hover" target="miniProgram" >
 				<image src="{{ item.headImg || 'http://www.sinelinked.com/static/other/head01.jpg' }}" class="slide-image"
 				/>
 				<view class='name'>{{ item.userName }}</view>

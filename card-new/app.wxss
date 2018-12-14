@@ -11,9 +11,13 @@ page{
 	width: 100%;
 	min-height: 100vh;
 }
+
 .center{
 	width: 670rpx;
 	margin: 0 auto;
 	position: relative;
 }
 
+.main{
+	margin-top: 30rpx;
+}

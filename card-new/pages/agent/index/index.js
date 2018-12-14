@@ -12,26 +12,32 @@ Page({
 		agentData: {}, //顾问信息
 		cityData: '', //城市信息数据
 		transFormArea: '', //转换后城市
-		coverTempletUrl: ''
+		coverTempletUrl: '',
+		phone: ''
 
 	},
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {
+	onLoad: function(options) {
 		var self = this
-		var userId = options.userId
+		var scenes = decodeURIComponent(options.scene)
+		var userId = options.userId || scenes.split('=')[1]
 		if (userId) {
 			this.getInfo(userId)
 		} else {
 			try {
 				var agentData = wx.getStorageSync('agentData')
 				if (agentData) {
-					// Do something with return value
 					self.setData({
 						agentData: agentData,
 						coverTempletUrl: agentData.coverTempletUrl
 					})
+					var phone = self.formatPhone(agentData.phone)
+					self.setData({
+						phone: phone
+					})
+
 					var areaArr = []
 
 					if (self.data.agentData.area) {
@@ -56,7 +62,7 @@ Page({
 			data: {
 				agentId: id
 			},
-			success: function (res) {
+			success: function(res) {
 				wx.hideLoading()
 				if (Object.prototype.toString.call(res.data) === '[object Array]') {
 
@@ -64,6 +70,11 @@ Page({
 					that.setData({
 						agentData: result,
 						coverTempletUrl: result.coverTempletUrl
+					})
+					var phone = that.formatPhone(result.phone)
+					that.setData({
+						'agentData.headImg': result.headImg + '&' + Math.random() * 10,
+						phone: phone
 					})
 
 					try {
@@ -99,7 +110,7 @@ Page({
 			data: {
 				userId: id
 			},
-			success: function (res) {
+			success: function(res) {
 				wx.hideNavigationBarLoading()
 				if (res.data.code == 0) {
 					that.setData({
@@ -117,61 +128,73 @@ Page({
 
 	},
 	// 播打电话
-	makePhoneCall: function () {
+	makePhoneCall: function() {
 		var that = this
 		wx.makePhoneCall({
 			phoneNumber: that.data.agentData.phone //仅为示例，并非真实的电话号码
 		})
 	},
+	toMsg: function() {
+		wx.navigateTo({
+			url: '/pages/agent/msg/msg'
+		})
+	},
+	// 格式化手机号码
+	formatPhone: function(phone) {
+		var phone = String(phone)
+		if (phone) {
+			return phone.slice(0, 3) + '-' + phone.slice(3, 7) + '-' + phone.slice(7, 11)
+		}
+	},
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
-	onReady: function () {
+	onReady: function() {
 
 	},
 
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: function (options) {
+	onShow: function(options) {
 
 	},
-	onError: function (msg) {
+	onError: function(msg) {
 		console.log(msg)
 	},
 
 	/**
 	 * 生命周期函数--监听页面隐藏
 	 */
-	onHide: function () {
+	onHide: function() {
 
 	},
 
 	/**
 	 * 生命周期函数--监听页面卸载
 	 */
-	onUnload: function () {
+	onUnload: function() {
 
 	},
 
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
-	onPullDownRefresh: function () {
+	onPullDownRefresh: function() {
 
 	},
 
 	/**
 	 * 页面上拉触底事件的处理函数
 	 */
-	onReachBottom: function () {
+	onReachBottom: function() {
 
 	},
 
 	/**
 	 * 用户点击右上角分享
 	 */
-	onShareAppMessage: function () {
+	onShareAppMessage: function() {
 		return {
 			title: this.data.agentData.xcxTitle || '您的贴心保险顾问',
 			path: '/pages/agent/index/index?userId=' + this.data.agentData.userId,

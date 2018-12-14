@@ -3,7 +3,9 @@
   <image class="head-img" src="{{ agentData.headImg }}"/>
   <text class="agent-name">{{ agentData.userName }}</text>
 </view>
-
+<view class="selfShowSummary">
+	{{ agentData.selfShowSummary }}
+</view>
 <view class="main">
 	<view class="personSummary-title">
     <text class="jianjie">个人秀</text>

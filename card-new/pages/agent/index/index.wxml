@@ -1,5 +1,5 @@
 <view class="page index mb-01-style">
-	<msg-btn></msg-btn>
+	<!-- <msg-btn></msg-btn> -->
 	<nav-agent joinedTeams="{{ manyTeam }}"></nav-agent>
 	<view class="center">
 			<image bindtap="previewImages" src="{{ agentData.headImg }}" class="head-img"></image>
@@ -7,12 +7,12 @@
 				<view>{{ agentData.userName }}</view>
 				<view class="title">保险规划师</view>
 			</view>
-			<!-- <view  class="phone">{{ agentData.phone }}</view> -->
+			<view  class="phone" bindtap="makePhoneCall"><text>{{ phone }}</text><image src="http://ii.sinelinked.com/miniProgramAssets/phone.png"></image></view>
 			<view class="info-cell">
-				<view class="info-cell-item" bindtap="makePhoneCall">
+				<!-- <view class="info-cell-item" bindtap="makePhoneCall">
 					<view class="info-cell-label">电话号码</view>
 					<view class="info-cell-value">{{ agentData.phone }}</view>
-				</view>
+				</view> -->
 				<view class="info-cell-item">
 					<view class="info-cell-label">执业证书</view>
 					<view class="info-cell-value">{{ agentData.certificateNo }}</view>
@@ -30,8 +30,11 @@
 					<view class="info-cell-value">{{ agentData.companyName }}</view>
 				</view>
 			</view>
-			<view class="slogan">
+			<i-button i-class="msg-btn" bind:click="toMsg" type="primary">点我咨询</i-button>
+			
+			<!-- <view class="slogan">
 				{{ agentData.personSummary }}
-			</view>
+			</view> -->
 	</view>
 </view>
+<official-account></official-account>

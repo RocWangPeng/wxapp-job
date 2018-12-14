@@ -83,6 +83,8 @@ Page({
 			return
 		}
 
+    const userId = wx.getStorageSync('userId')
+
 		wx.request({
 			url: `https://ii.sinelinked.com/tg_web/api/order/publishOrders`,
 			method: 'POST',
@@ -91,7 +93,7 @@ Page({
 				tel: that.data.tel,
 				address: that.data.address,
 				content: that.data.question,
-				proxyId: that.data.uid,
+        proxyId: userId,
 				orign: '2',
 				mtype: '1',
 				verifyCode: that.data.tel_token
@@ -163,7 +165,7 @@ Page({
 		var that = this;
 		var timer;
 		console.log(e)
-		var countdownNum = 10
+		var countdownNum = 120
 
 		function settime() {
 			if (countdownNum <= 0) {
@@ -171,7 +173,7 @@ Page({
 					sendTxt: '发送验证码'
 				})
 				clearInterval(timer)
-				countdownNum = 90;
+				countdownNum = 120;
 				that.setData({
 					clickNo: false
 				})

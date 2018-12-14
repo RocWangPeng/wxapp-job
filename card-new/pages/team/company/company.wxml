@@ -1,4 +1,4 @@
-<nav-team></nav-team>
+<!-- <nav-team></nav-team> -->
 <view class="header">
   <image class="head-img" src="{{ agentData.headImg }}"/>
   <text class="agent-name">公司简介</text>

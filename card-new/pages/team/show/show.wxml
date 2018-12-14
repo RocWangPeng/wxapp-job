@@ -1,9 +1,11 @@
-<nav-team></nav-team>
+<!-- <nav-team></nav-team> -->
 <view class="header">
   <image class="head-img" src="{{ agentData.headImg }}"/>
   <text class="agent-name">{{ agentData.userName }}</text>
 </view>
-
+<view class="selfShowSummary">
+	{{ agentData.teamShowSummary }}
+</view>
 <view class="main">
 	<view class="personSummary-title">
     <text class="jianjie">团队秀</text>

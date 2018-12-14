@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "msg-btn": "../../../component/msg-btn/index"
+  }
+}

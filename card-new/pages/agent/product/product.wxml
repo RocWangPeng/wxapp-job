@@ -4,7 +4,9 @@
   <text class="agent-name">保险产品</text>
 </view>
 <view class="main center">
-	<!-- <text class="product_title">产品列表</text> -->
+	<view class="personSummary-title">
+		<text class="jianjie">保险产品</text>
+	</view>
 	<view class="product_list">
 		<view class="item" wx:for="{{ productData }}" wx:key="index" bindtap="copyProductUrl" data-url="{{ item.product_detail_url }}" >
 			<view class="left_img">

@@ -27,6 +27,7 @@
     </view>
     <view bindtap="previewImage" class="qr-code">
       <image class="qr-code" src="http://ii.sinelinked.com/miniProgramAssets/qr-code.png"></image>
+     
     </view>
   </view>
   <view class="card-flex">
@@ -44,12 +45,14 @@
 <view class='previewImageTeam' bindtap='closePreviewImage' wx:if="{{ previewImageShow }}">
  <view>
    <image class="previewImageTeamCode" src="{{ qrCodeUrl }}"></image>
+    <text class='qr-code-tip'>请扫码识别我的名片</text>
  </view>
 </view>
 
 <view class='previewImageTeam' bindtap='closePreviewImageTeam' wx:if="{{ previewImageTeamShow }}">
  <view>
    <image class="previewImageTeamCode" src="{{ qrCodeTeamUrl }}"></image>
+    <text class='qr-code-tip'>请扫码识别团队名片</text>
  </view>
 </view>
 <i-modal visible="{{ visibleTeamChoose }}" show-ok="{{ false }}" show-cancel="{{ false }}">

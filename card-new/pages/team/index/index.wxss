@@ -4,12 +4,12 @@
 }
 /* mb-01-style 模版样式1 */
 .mb-01-style{
-	padding-top: 140rpx;
+	padding-top: 80rpx;
 	box-sizing: border-box;
 }
 .mb-01-style .head-img{
-	width: 350rpx;
-	height: 350rpx;
+	width: 270rpx;
+	height: 270rpx;
 	border-radius: 50%;
 	border: 4rpx solid #fff;
 	box-sizing: border-box;
@@ -20,9 +20,10 @@
 }
 .mb-01-style .user-name{
 	padding-left: 20rpx;
-	font-size: 44rpx;
+	font-size: 50rpx;
 	position: absolute;
-	top: 370rpx;
+	/* top: 370rpx; */
+	top: 310rpx;
 	text-align: center;
 	display: flex;
 	width: 100%;
@@ -32,34 +33,128 @@
 .mb-01-style .title{
 	font-size: 24rpx;
 	color: #666;
-	padding-left: 20rpx;
-	padding-top: 10rpx;
+	color: #4e8cee;
+	margin-left: 20rpx;
+	padding-left: 10rpx;
+	padding-right: 10rpx;
+	/* padding-top: 10rpx; */
+	border-radius: 6rpx;
+	border: 1rpx solid #4e8cee;
+	position: relative;
+	box-sizing: border-box;
+}
+.mb-01-style .title::before{
+	content:'';
+	width: 0;
+	height: 0;
+	position: absolute;
+	left: -16rpx;
+	top: 50%;
+	transform: translateY(-50%);
+	border: 9rpx solid transparent;
+	border-right: 9rpx solid #4e8cee;
+	box-sizing: border-box;
+}
+.mb-01-style .title::after{
+	content:'';
+	width: 0;
+	height: 0;
+	position: absolute;
+	left: -14rpx;
+	z-index: 300;
+	top: 50%;
+	transform: translateY(-50%);
+	border: 9rpx solid transparent;
+	border-right: 9rpx solid #f5efe2;
+	box-sizing: border-box;
 }
 .mb-01-style .phone{
 	position: absolute;
-	top:172rpx;
-	left: 270rpx;
-  z-index: 3
+	top: 422rpx;
+	left: 50%;
+	vertical-align: middle;
+	transform: translateX(-50%);
+	width: 100%;
+	text-align: center;
+}
+.mb-01-style .phone text{
+	vertical-align: middle;
+	font-size: 42rpx;
+}
+.mb-01-style .phone image{
+	width: 42rpx;
+	height: 42rpx;
+	vertical-align: middle;
+	margin-left: 20rpx;
 }
 .mb-01-style .info-cell{
 	width: 100%;
-	padding-left: 46rpx;
+	padding-left: 30rpx;
+	padding-right: 30rpx;
 	box-sizing: border-box;
 	position: absolute;
-	top:475rpx;
-	left: 0;
+	top:530rpx;
+	left: 50%;
+	transform: translateX(-50%);
 }
 .mb-01-style .info-cell-item{
-	line-height: 60rpx;
+	line-height: 80rpx;
+	background: #f0e2cd;
 	display: flex;
 	font-size: 26rpx;
+	margin-bottom: 30rpx;
+	padding-left: 60rpx;
+	border-radius: 10rpx;
+	box-sizing: border-box;
 }
 .mb-01-style .info-cell-label{
 	color: #8e8e8e;
-	padding-right: 90rpx;
+	padding-right: 50rpx;
+	font-size: 24rpx;
 }
 .mb-01-style .info-cell-value{
 	color: #333;
+	font-size: 26rpx;
+}
+.mb-01-style .msg-btn{
+	position: absolute;
+	top: 920rpx;
+	width: 410rpx;
+	background: #4e8cee !important;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.mb-01-style .team-nav{
+	position: absolute;
+	width: 100%;
+	padding-left: 30rpx;
+	padding-right: 30rpx;
+	box-sizing: border-box;
+	top: 656rpx;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.mb-01-style .team-nav-item{
+	width: 290rpx;
+	height: 90rpx;
+	border-radius: 8rpx;
+	line-height: 90rpx;
+	margin-bottom: 30rpx;
+	background: #f1e3cd;
+	text-align: center;
+	font-size: 26rpx;
+	display: flex;
+	align-items: center;
+	padding-left: 60rpx;
+	box-sizing: border-box;
+}
+.mb-01-style .team-nav-item image{
+	max-width: 40rpx;
+	max-height: 40rpx;
+	margin-right: 14rpx;
 }
 .mb-01-style .slogan{
 	padding: 10rpx 46rpx;

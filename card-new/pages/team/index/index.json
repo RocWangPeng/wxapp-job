@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "msg-btn": "../../../component/msg-btn/index",
-    "nav-team": "../../../component/nav-team/index"
+    "nav-team": "../../../component/nav-team/index",
+	"i-button": "../../../dist/button/index"
   }
 }
