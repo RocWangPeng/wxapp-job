@@ -128,8 +128,8 @@ Page({
 					if (res.data.data.length) {
 						// 将此用户创建的团队与所加入的团队合并
 						res.data.data.map(item => {
-							
-							if (item.name != that.data.agentJoinTeam.userName) {
+							console.log(item.userName);
+							if (item.userName != that.data.agentJoinTeam.userName) {
 								joinedTeams.push({
 									name: item.userName,
 									userId: item.userId,
@@ -137,6 +137,7 @@ Page({
 								})
 							} 
 						})
+						
 						joinedTeams.push({
 							name: that.data.agentJoinTeam.userName,
 							userId: that.data.agentJoinTeam.userId,

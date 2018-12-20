@@ -6,7 +6,6 @@ App({
 		
 	},
 	onShow(options) {
-		console.log(options);
 		var self = this
 		var scenes = decodeURIComponent(options.scene) // 获取扫码状态下的用户id
 		// agent
