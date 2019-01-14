@@ -1,20 +1,23 @@
 page{
 	height: 100%;
-	background: url('http://ii.sinelinked.com/miniProgramAssets/flower-b.png') no-repeat center bottom;
-	background-size: 750rpx 120rpx;
+	background: #e3e4e9 url('http://ii.sinelinked.com/miniProgramAssets/winter-bg.jpg') no-repeat center center;
+	background-size: 100% 100%;
 }
 .flower{
 	width: 710rpx;
 	height: 241rpx;
 	margin-top: 60rpx;
 	margin-bottom: 50rpx;
+  display: block;
+  margin: 60rpx auto 50rpx auto;
 }
 .search-bar{
-	width: 680rpx;
+	/* width: 680rpx; */
 	margin: 0 auto;
 	height: 78rpx;
 	line-height: 78rpx;
 	display: flex;
+  justify-content: center
 }
 .input-warp{
 	width: 434rpx;
@@ -74,8 +77,8 @@ page{
 	padding-right: 66rpx;
 }
 .tip-icon{
-  width: 41rpx;
-  height: 50rpx;
+  width: 36rpx;
+  height: 32rpx;
   vertical-align: middle
 }
 .card-main{

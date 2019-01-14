@@ -1,7 +1,7 @@
 <!-- <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button> -->
 <i-toast id="toast" />
 <view>
-  <image class="flower" src='http://ii.sinelinked.com/miniProgramAssets/flower.png'></image>
+  <view class="flower" src='http://ii.sinelinked.com/miniProgramAssets/flower.png'></view>
 </view>
 <view class="search-bar">
   <view class="input-warp">

@@ -16,31 +16,31 @@ Page({
 		clickNo: false, //发送验证码按钮是否可点击
 	},
 	//咨询问题
-	bindQuestion: function (e) {
+	bindQuestion: function(e) {
 		this.setData({
 			question: e.detail.value
 		})
 	},
 	//用户姓名
-	bindUserName: function (e) {
+	bindUserName: function(e) {
 		this.setData({
 			userName: e.detail.value
 		})
 	},
 	//联系方式
-	bindTel: function (e) {
+	bindTel: function(e) {
 		this.setData({
 			tel: e.detail.value
 		})
 	},
 	//验证码
-	bindAuthCode: function (e) {
+	bindAuthCode: function(e) {
 		this.setData({
 			tel_token: e.detail.value
 		})
 	},
 	// 所属地区
-	bindRegionChange: function (event) {
+	bindRegionChange: function(event) {
 		var addressCodeResult = event.detail.code[0] + '|' + event.detail.code[1]
 		this.setData({
 			region: event.detail.value,
@@ -83,7 +83,7 @@ Page({
 			return
 		}
 
-    const userId = wx.getStorageSync('userId')
+		const userId = wx.getStorageSync('agentData').userId
 
 		wx.request({
 			url: `https://ii.sinelinked.com/tg_web/api/order/publishOrders`,
@@ -93,18 +93,18 @@ Page({
 				tel: that.data.tel,
 				address: that.data.address,
 				content: that.data.question,
-        proxyId: userId,
+				proxyId: userId,
 				orign: '2',
 				mtype: '1',
 				verifyCode: that.data.tel_token
 			},
-			success: function (res) {
+			success: function(res) {
 				if (res.data.code == 0) {
 					wx.showModal({
 						title: '提示',
 						content: '提交成功',
 						showCancel: false,
-						success: function (res) {
+						success: function(res) {
 							that.setData({
 								question: '',
 								userName: '',
@@ -121,14 +121,14 @@ Page({
 					})
 				}
 			},
-			fail: function (err) {
+			fail: function(err) {
 				console.log(err)
 			}
 		})
 	},
-	onChange: function () {},
+	onChange: function() {},
 	// 发送验证码
-	sendAuthCode: function () {
+	sendAuthCode: function() {
 		var that = this;
 		wx.request({
 			url: "https://ii.sinelinked.com/tg_web/api/phone/message/send",
@@ -136,7 +136,7 @@ Page({
 				phone: that.data.tel,
 				flag: "code_7"
 			},
-			success: function (res) {
+			success: function(res) {
 				console.log(res)
 				if (res.data.error == 0) {
 					wx.showToast({
@@ -161,7 +161,7 @@ Page({
 		})
 	},
 	// 倒计时
-	countdown: function (e) {
+	countdown: function(e) {
 		var that = this;
 		var timer;
 		console.log(e)
@@ -186,14 +186,14 @@ Page({
 			}
 		}
 
-		timer = setInterval(function () {
+		timer = setInterval(function() {
 			settime()
 		}, 1000)
 	},
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {
+	onLoad: function(options) {
 		var agentId = wx.getStorageSync('agentId')
 		this.setData({
 			uid: agentId
@@ -203,42 +203,42 @@ Page({
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
-	onReady: function () {
+	onReady: function() {
 
 	},
 
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: function () {
+	onShow: function() {
 
 	},
 
 	/**
 	 * 生命周期函数--监听页面隐藏
 	 */
-	onHide: function () {
+	onHide: function() {
 
 	},
 
 	/**
 	 * 生命周期函数--监听页面卸载
 	 */
-	onUnload: function () {
+	onUnload: function() {
 
 	},
 
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
-	onPullDownRefresh: function () {
+	onPullDownRefresh: function() {
 
 	},
 
 	/**
 	 * 页面上拉触底事件的处理函数
 	 */
-	onReachBottom: function () {
+	onReachBottom: function() {
 
 	},
 
