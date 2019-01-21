@@ -1,21 +1,38 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+page{
+	background: url(http://ii.sinelinked.com/miniProgramAssets/compass/bg.jpg);
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.header{
+	width: 100%;
+	height: 100rpx;
+	background: url(http://ii.sinelinked.com/miniProgramAssets/compass/logo-bg.jpg) no-repeat;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.logo{
+	width: 282rpx;
+	height: 60rpx;
+	display: block;
 }
-
-.usermotto {
-  margin-top: 200px;
+/* gradienter */
+/* .gradienter{
+	width: 140rpx;
+	height: 140rpx;
+	border-radius: 50%;
+	border: 6rpx solid #8d7056;
+	background: url(http://ii.sinelinked.com/miniProgramAssets/compass/shi.png) no-repeat center;
+	background-size: 89rpx 89rpx;
+	position: relative;
+} */
+.gradienter{
+	position: relative;
+}
+.page-body-ball{
+	width: 302px;
+  height: 302px;
+	width: 140px;
+	height: 140px;
+	position: absolute;
+  top: 0;
+  left: 0;
 }
