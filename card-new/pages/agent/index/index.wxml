@@ -1,5 +1,4 @@
-<view class="page index mb-01-style">
-	<!-- <msg-btn></msg-btn> -->
+<!-- <view class="page index mb-01-style">
 	<nav-agent joinedTeams="{{ manyTeam }}"></nav-agent>
 	<view class="center">
 			<image bindtap="previewImages" src="{{ agentData.headImg }}" class="head-img"></image>
@@ -9,10 +8,6 @@
 			</view>
 			<view  class="phone" bindtap="makePhoneCall"><text>{{ phone }}</text><image src="http://ii.sinelinked.com/miniProgramAssets/phone.png"></image></view>
 			<view class="info-cell">
-				<!-- <view class="info-cell-item" bindtap="makePhoneCall">
-					<view class="info-cell-label">电话号码</view>
-					<view class="info-cell-value">{{ agentData.phone }}</view>
-				</view> -->
 				<view class="info-cell-item">
 					<view class="info-cell-label">执业证书</view>
 					<view class="info-cell-value">{{ agentData.certificateNo }}</view>
@@ -31,10 +26,76 @@
 				</view>
 			</view>
 			<i-button i-class="msg-btn" bind:click="toMsg" type="primary">点我咨询</i-button>
-			
-			<!-- <view class="slogan">
-				{{ agentData.personSummary }}
-			</view> -->
+	</view>
+</view> -->
+<i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<view class="page index mb-02-style">
+	<view class="center">
+		<!-- card -->
+		<view class="card">
+			<image bindtap="previewImages" src="{{ agentData.headImg }}" class="head-img"></image>
+			<view class="user-name">
+				<view class="user-name-val">{{ agentData.userName  || '无'}}</view>
+				<view id="talkbubble">保险规划师</view>
+			</view>
+			<view class="commany">
+				{{ agentData.companyName  || '无'}}
+			</view>
+
+			<view class="card-cell">
+				<view class="info-cell-item">
+					<view class="info-cell-label">执业区域</view>
+					<view class="info-cell-value">{{ transFormArea  }}</view>
+				</view>
+				<view class="info-cell-item">
+					<view class="info-cell-label">资质证书</view>
+					<view class="info-cell-value">{{ agentData.certificateNo || '无'  }}</view>
+					<view class="auth" bindtap="showAuthModal">资质验证</view>
+				</view>
+			</view>
+		</view>
+		<view class="phone" bindtap="makePhoneCall">
+			<image src="http://ii.sinelinked.com/miniProgramAssets/phone.png"></image>
+		</view>
+		<view class="banner">
+			<image src="http://ii.sinelinked.com/miniProgramAssets/banner.jpg"></image>
+		</view>
+		<view class="team-nav">
+			<navigator url="/pages/agent/introduce/introduce?cardId={{ cardInfo.id }}" class="team-nav-item">
+				<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-01.png'></image> 个人介绍
+			</navigator>
+			<navigator url="/pages/agent/show/show?cardId={{ cardInfo.id }}" class="team-nav-item">
+				<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-03.png'></image> 个人秀
+			</navigator>
+			<navigator url="/pages/agent/product/product?cardId={{ cardInfo.id }}" class="team-nav-item">
+				<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-02.png'></image> 产品
+			</navigator>
+			<view bindtap="toTeam" url="/pages/team/index/index?cardId={{ cardInfo.id }}" class="team-nav-item">
+				<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-05.png'></image> 我的团队
+			</view>
+		</view>
+		<i-button i-class="msg-btn" bind:click="toMsg" type="primary">点我咨询</i-button>
 	</view>
 </view>
-<official-account></official-account>
+
+<i-modal visible="{{ visibleTeamChoose }}" show-ok="{{ false }}" show-cancel="{{ false }}">
+	<view class="team-cell" bindtap="teamChooseHandle" data-userId="{{ item.userId }}" wx:for="{{ teamChooseData }}"
+	 wx:key="{{ index }}">{{ item.name }}</view>
+</i-modal>
+
+<view class="auth-modal {{ authModalShow?'authModalShow':'' }}" bindtap="closeAuthModal">
+	<view class="auth-content">
+		<view class="auth-main">
+			<image class="auth-headImg" src='{{ agentData.headImg }}'></image>
+			<view class="auth-info">
+				<view class="info-title">尊敬的客户:</view>
+				<text class="em">{{ agentData.userName }}</text> 为 <text class="em">{{ agentData.companyName }}</text> 的 <text class="em">保险规划师</text>，是报信云顾问平台认证的保险规划师，资质证书编号为
+				<text class="em">{{ agentData.certificateNo }}</text> ，可以登陆银保监会网站 <text class="link">http://iir.circ.gov.cn/web/</text> 查询。
+				<view></view>
+				<text class="em"></text> <text class="em"></text>如有疑问或建议，可以登陆保信云顾问平台<text class="link">https://ii.sinelinked.com/Evaluation</text>
+				或者关注“保信云顾问”公众号建议或投诉。我们将竭诚为您服务。
+
+			</view>
+		</view>
+	</view>
+</view>

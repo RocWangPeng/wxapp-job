@@ -13,8 +13,10 @@ Page({
 		cityData: '', //城市信息数据
 		transFormArea: '', //转换后城市
 		coverTempletUrl: '',
-		phone: ''
-
+		phone: '',
+		teamList:[],//加入团队
+		spinShow:true,
+		authModalShow:false,
 	},
 	/**
 	 * 生命周期函数--监听页面加载
@@ -53,9 +55,18 @@ Page({
 		}
 
 	},
+	showAuthModal(){
+		this.setData({
+			authModalShow:true
+		})
+	},
+	closeAuthModal(){
+		this.setData({
+			authModalShow:false
+		})
+	},
 	//获取信息
 	getInfo(id) {
-		wx.showNavigationBarLoading()
 		var that = this;
 		wx.request({
 			url: `https://ii.sinelinked.com/tg_web/api/XCX/agent/search`,
@@ -63,7 +74,10 @@ Page({
 				agentId: id
 			},
 			success: function(res) {
-				wx.hideLoading()
+				// 隐藏spin
+				setTimeout(()=>{
+					that.setData({spinShow:false})
+				},200)
 				if (Object.prototype.toString.call(res.data) === '[object Array]') {
 
 					var result = res.data[0]
@@ -103,7 +117,6 @@ Page({
 	},
 	//所属团队 
 	getJoinedTeams(id) {
-
 		var that = this
 		wx.request({
 			url: `https://ii.sinelinked.com/tg_web/api/user/XCX/getJoinedTeams`,
@@ -111,21 +124,30 @@ Page({
 				userId: id
 			},
 			success: function(res) {
-				wx.hideNavigationBarLoading()
 				if (res.data.code == 0) {
-					that.setData({
-						manyTeam: res.data.data
+					var teamList = res.data.data
+					var joinedTeamsArr = []
+					teamList.map(item => {
+					    joinedTeamsArr.push({
+					        name: item.userName,
+					        userId: item.userId
+					    })
 					})
-
-					try {
-						wx.setStorageSync('joinedTeams', res.data.data)
-					} catch (e) {}
-
-
+					
+					that.setData({
+						teamList:teamList,
+						teamChooseData:joinedTeamsArr
+					})
 				}
 			}
 		})
 
+	},
+	teamChooseHandle(e) {
+	    var userId = e.currentTarget.dataset.userid
+	    wx.redirectTo({
+	        url: '/pages/team/index/index?teamId=' + userId
+	    })
 	},
 	// 播打电话
 	makePhoneCall: function() {
@@ -138,6 +160,24 @@ Page({
 		wx.navigateTo({
 			url: '/pages/agent/msg/msg'
 		})
+	},
+	toTeam:function(){
+		var teamList = this.data.teamList
+		if(teamList.length == 1){
+			wx.navigateTo({
+				url: '/pages/team/index/index?teamId=' + teamList[0].id
+			})
+		}else if(teamList.length > 1){
+			this.setData({
+				visibleTeamChoose: true,
+			})
+		}else{
+			wx.showToast({
+				title: '还未加入任何团队',
+				icon: 'none',
+				duration: 2000
+			})
+		}
 	},
 	// 格式化手机号码
 	formatPhone: function(phone) {

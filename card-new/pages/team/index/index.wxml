@@ -1,3 +1,4 @@
+<i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
 <view class="page index mb-01-style">
 	<!-- <nav-team></nav-team> -->
 	<view class="center">
@@ -30,9 +31,5 @@
 				
 			</view>
 			<i-button i-class="msg-btn" bind:click="toMsg" type="primary">点我咨询</i-button>
-
-			<!-- <view class="slogan">
-				{{ agentData.teamSummary }}
-			</view> -->
 	</view>
 </view>

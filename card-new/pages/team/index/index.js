@@ -12,14 +12,14 @@ Page({
 		isStarAgent: false, //是否有团队之星
 		starAgent: {}, //团队之星
 		cityData: [],
-		phone: ''
+		phone: '',
+		spinShow:true,
 	},
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function(options) {
 		var self = this;
-		wx.showNavigationBarLoading()
 		var scenes = decodeURIComponent(options.scene)
 
 		var teamId = options.teamId || scenes.split('=')[1]
@@ -62,9 +62,6 @@ Page({
 	},
 	//获取信息
 	getInfo(teamId) {
-		wx.showLoading({
-			title: '努力加载中...'
-		})
 		var self = this;
 		wx.request({
 			url: `https://ii.sinelinked.com/tg_web/api/XCX/team/search`,
@@ -72,8 +69,10 @@ Page({
 				teamId: teamId
 			},
 			success: function(res) {
-				wx.hideLoading()
-				wx.hideNavigationBarLoading()
+				// 隐藏spin
+				setTimeout(()=>{
+					self.setData({spinShow:false})
+				},200)
 				if (Object.prototype.toString.call(res.data) === '[object Array]') {
 					var result = res.data[0]
 

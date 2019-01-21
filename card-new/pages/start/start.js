@@ -128,7 +128,6 @@ Page({
 					if (res.data.data.length) {
 						// 将此用户创建的团队与所加入的团队合并
 						res.data.data.map(item => {
-							console.log(item.userName);
 							if (item.userName != that.data.agentJoinTeam.userName) {
 								joinedTeams.push({
 									name: item.userName,
@@ -314,6 +313,10 @@ Page({
 	},
 	// 根据unionId获取顾问/团队信息
 	searchByUnionId(unionId, isSkip, type = 1) {
+		wx.showLoading({
+			mask: true,
+			title: '努力加载中...'
+		})
 		var url = ''
 		if (type == 1) {
 			url = 'https://ii.sinelinked.com/tg_web/api/agent/searchByUnionId'
@@ -342,7 +345,7 @@ Page({
 					}
 
 					if (isSkip) {
-            wx.setStorageSync('userType', 'agent')
+						wx.setStorageSync('userType', 'agent')
 						wx.navigateTo({
 							url: '/pages/agent/index/index?userId=' + res.data.data[0].userId
 						})
@@ -361,7 +364,6 @@ Page({
 				}
 			}
 		})
-		wx.hideLoading()
 	},
 	//预览太阳码
 	previewImage: function () {
