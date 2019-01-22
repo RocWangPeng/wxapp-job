@@ -4,6 +4,7 @@ Page({
 		y: 0,
 		enabled: true,
 		direction: 360, //罗盘旋转角度
+		showPan:true,
 	},
 	onReady() {
 		var self = this;
@@ -87,6 +88,16 @@ Page({
 			showPan: !this.data.showPan
 		})
 	},
+	
+	// 提示
+	tips(){
+		if(this.data.showPan){
+			wx.showToast({
+				title:'操作地图,先点击下方收起罗盘',
+				icon:'none'
+			})
+		}
+	}
 
 
 })

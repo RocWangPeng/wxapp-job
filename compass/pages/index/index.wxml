@@ -3,8 +3,65 @@
 </view>
 <!-- main -->
 <view class="main">
+	<!-- 水平仪 -->
 	<view class="gradienter">
-		<canvas class="page-body-ball" show="{{true}}" canvas-id="big-ball"></canvas>
-    <canvas class="page-body-ball" show="{{true}}" canvas-id="small-ball"></canvas>
+		<view style="left: {{ x }}px;top: {{ y }}px;" class="ball"></view>
 	</view>
+	<!-- 天气黄历 -->
+	<view class="weather">
+		<view class="item">
+			<image src="http://ii.sinelinked.com/miniProgramAssets/compass/weather.png"></image>
+			<text>天气</text>
+		</view>
+		<view class="item">
+			<image src="http://ii.sinelinked.com/miniProgramAssets/compass/calendar.png"></image>
+			<text>黄历</text>
+		</view>
+	</view>
+	<!-- pan -->
+	<view class="pan" >
+		<view class="ten-line"></view>
+		<view class="ten-vertical"></view>
+		<!-- 主盘 -->
+		<image class="pan-main" style="transform: rotate({{direction}}deg)" src="http://ii.sinelinked.com/miniProgramAssets/compass/pan.png"></image>
+		<!-- 度数 -->
+		<view class="direction-value">
+			<text>{{ direction }}</text>
+			<text class="direction-degree">o</text>
+		</view>
+	</view>
+	<view class="tool">
+		<view class="item map"  bindtap="togglePanMode">
+			<view class="img-box">
+				<image src="http://ii.sinelinked.com/miniProgramAssets/compass/map.png"></image>
+			</view>
+			<text>模式</text>
+		</view>
+		<view class="item capture">
+			<view class="img-box">
+				<image src="http://ii.sinelinked.com/miniProgramAssets/compass/capture.png"></image>
+			</view>
+			<text>截屏</text>
+		</view>
+		<view class="item close" bindtap="togglePan">
+			<view class="img-box">
+				<image src="http://ii.sinelinked.com/miniProgramAssets/compass/close.png"></image>
+			</view>
+			<text>{{ showPan?'收起':'展开' }}</text>
+		</view>
+		<view class="item manual">
+			<view class="img-box">
+				<image src="http://ii.sinelinked.com/miniProgramAssets/compass/manual.png"></image>
+			</view>
+			<text>手动</text>
+		</view>
+	</view>
+</view>
+
+<!-- info -->
+<view class="info">
+	<text class="weight">正东震卦81.2°甲方兼卯</text>
+	<text>正东震卦81.2°甲方兼卯</text>
+	<text class="weight">正东震卦81.2°甲方兼卯</text>
+	<text>正东震卦81.2°甲方兼卯</text>
 </view>

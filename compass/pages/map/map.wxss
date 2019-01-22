@@ -1,7 +1,15 @@
 page {
 	background: url(http://ii.sinelinked.com/miniProgramAssets/compass/bg.jpg);
+	width: 100%;
+	height: 100%;
 }
-
+#map{
+	width: 100%;
+	height: 100%;
+}
+.controls{
+	/* pointer-events: none; */
+}
 .header {
 	width: 100%;
 	height: 100rpx;
@@ -21,6 +29,7 @@ page {
 	position: relative;
 	padding-top: 30rpx;
 	box-sizing: border-box;
+	pointer-events: none;
 }
 
 /* gradienter */
@@ -47,18 +56,6 @@ page {
 	border-radius: 50%;
 }
 
-/* .gradienter{
-	position: relative;
-}
-.page-body-ball{
-	width: 302px;
-  height: 302px;
-	width: 140px;
-	height: 140px;
-	position: absolute;
-  top: 0;
-  left: 0;
-} */
 .weather {
 	position: absolute;
 	top: 30rpx;
@@ -72,17 +69,17 @@ page {
 	text-align: center;
 }
 
-.weather image:nth-child(1) {
+.weather cover-image:nth-child(1) {
 	width: 56rpx;
 	height: 58rpx;
 }
 
-.weather image:nth-child(2) {
+.weather cover-image:nth-child(2) {
 	width: 50rpx;
 	height: 60rpx;
 }
 
-.weather text {
+.weather .text {
 	display: block;
 	font-size: 26rpx;
 	font-weight: 700;
@@ -98,6 +95,7 @@ page {
 	height: 701rpx;
 	position: relative;
 	box-sizing: border-box;
+	pointer-events: none;
 }
 
 .pan .ten-line,
@@ -126,19 +124,23 @@ page {
 	height: 701rpx;
 	transition: .2s;
 	border-radius: 50%;
-	box-shadow: 0 0 30rpx rgba(0, 0, 0, .5);
+	/* box-shadow: 0 0 30rpx rgba(0, 0, 0, .5); */
 	position: absolute;
 	left: 0;
 	top: 0;
 	bottom: 0;
 	right: 0;
 	margin: auto;
+	z-index: 800;
+	pointer-events: none;
 }
 
 .direction-value {
 	font-size: 100rpx;
 	color: #705540;
 	position: relative;
+	display: none;
+	pointer-events: none;
 }
 
 .direction-degree {
@@ -146,6 +148,7 @@ page {
 	top: 0;
 	right: -40rpx;
 	font-size: 40rpx;
+	pointer-events: none;
 }
 .tool{
 	text-align: center;
@@ -154,6 +157,9 @@ page {
 	padding: 0 40rpx;
 	height: 120rpx;
 	margin-top: 20rpx;
+	position: absolute;
+	width: 100%;
+	bottom:130rpx;
 }
 .tool .item{
 	width: 77rpx;
@@ -169,7 +175,7 @@ page {
 	background: #a27243;
 	border-radius: 50%;
 }
-.tool  text{
+.tool  .text{
 	display: block;
 	font-size: 26rpx;
 	font-weight: 700;
@@ -179,28 +185,28 @@ page {
 .tool .map{
 	left: 40rpx;
 }
-.tool .map image{
+.tool .map cover-image{
 	width: 55rpx;
 	height: 55rpx;
 }
 .tool .capture{
 	left: 156rpx;
 }
-.tool .capture image{
+.tool .capture cover-image{
 	width: 54rpx;
 	height: 55rpx;
 }
 .tool .close{
 	right: 170rpx;
 }
-.tool .close image{
+.tool .close cover-image{
 	width: 57rpx;
 	height: 58rpx;
 }
 .tool .manual{
 	right:40rpx;
 }
-.tool .manual image{
+.tool .manual cover-image{
 	width: 45rpx;
 	height: 57rpx;
 }
@@ -215,7 +221,7 @@ page {
 	box-sizing: border-box;
 	padding: 30rpx 40rpx;
 }
-.info text{
+.info .text{
 	display: block;
 	font-size: 24rpx;
 	color: #745339;
