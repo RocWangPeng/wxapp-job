@@ -1,5 +1,9 @@
 page {
 	background: url(http://ii.sinelinked.com/miniProgramAssets/compass/bg.jpg);
+	height: 100%;
+}
+page .container.hidden{
+	overflow: hidden;
 }
 
 .header {
@@ -124,7 +128,7 @@ page {
 .pan-main {
 	width: 701rpx;
 	height: 701rpx;
-	transition: .2s;
+	transition: .1s;
 	border-radius: 50%;
 	box-shadow: 0 0 30rpx rgba(0, 0, 0, .5);
 	position: absolute;
@@ -134,7 +138,13 @@ page {
 	right: 0;
 	margin: auto;
 }
-
+.zhen{
+	transition: .1s;
+}
+.zhen image{
+	width: 215rpx;
+	height: 203rpx;
+}
 .direction-value {
 	font-size: 100rpx;
 	color: #705540;
@@ -226,4 +236,20 @@ page {
 	font-size: 28rpx;
 	color: #e8600f;
 	margin-top: 16rpx;
+}
+
+
+weather {
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  transition: .5s;
+  transform: translateY(-100rpx);
+}
+weather.show{
+	transform: translateY(0);
+}
+
+weather view {
+  color: #fff!important;
 }

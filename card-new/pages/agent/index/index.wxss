@@ -1,13 +1,15 @@
-.index{
+.index {
 	/* background: url('http://ii.sinelinked.com/miniProgramAssets/bg-mb-01.jpg') no-repeat;
 	background-size: contain; */
 }
+
 /* mb-01-style 模版样式1 */
-.mb-01-style{
+.mb-01-style {
 	padding-top: 80rpx;
 	box-sizing: border-box;
 }
-.mb-01-style .head-img{
+
+.mb-01-style .head-img {
 	width: 270rpx;
 	height: 270rpx;
 	border-radius: 50%;
@@ -18,7 +20,8 @@
 	left: 50%;
 	transform: translateX(-50%)
 }
-.mb-01-style .user-name{
+
+.mb-01-style .user-name {
 	padding-left: 20rpx;
 	font-size: 50rpx;
 	position: absolute;
@@ -30,7 +33,8 @@
 	justify-content: center;
 	align-items: center
 }
-.mb-01-style .title{
+
+.mb-01-style .title {
 	font-size: 24rpx;
 	color: #666;
 	color: #4e8cee;
@@ -43,8 +47,9 @@
 	position: relative;
 	box-sizing: border-box;
 }
-.mb-01-style .title::before{
-	content:'';
+
+.mb-01-style .title::before {
+	content: '';
 	width: 0;
 	height: 0;
 	position: absolute;
@@ -55,8 +60,9 @@
 	border-right: 9rpx solid #4e8cee;
 	box-sizing: border-box;
 }
-.mb-01-style .title::after{
-	content:'';
+
+.mb-01-style .title::after {
+	content: '';
 	width: 0;
 	height: 0;
 	position: absolute;
@@ -68,7 +74,8 @@
 	border-right: 9rpx solid #f5efe2;
 	box-sizing: border-box;
 }
-.mb-01-style .phone{
+
+.mb-01-style .phone {
 	position: absolute;
 	top: 422rpx;
 	left: 50%;
@@ -77,26 +84,30 @@
 	width: 100%;
 	text-align: center;
 }
-.mb-01-style .phone text{
+
+.mb-01-style .phone text {
 	vertical-align: middle;
 	font-size: 42rpx;
 }
-.mb-01-style .phone image{
+
+.mb-01-style .phone image {
 	width: 42rpx;
 	height: 42rpx;
 	vertical-align: middle;
 	margin-left: 20rpx;
 }
-.mb-01-style .info-cell{
+
+.mb-01-style .info-cell {
 	width: 100%;
 	padding-left: 30rpx;
 	padding-right: 30rpx;
 	box-sizing: border-box;
 	position: absolute;
-	top:530rpx;
+	top: 530rpx;
 	left: 0;
 }
-.mb-01-style .info-cell-item{
+
+.mb-01-style .info-cell-item {
 	line-height: 80rpx;
 	background: #f0e2cd;
 	display: flex;
@@ -106,25 +117,28 @@
 	border-radius: 10rpx;
 	box-sizing: border-box;
 }
-.mb-01-style .info-cell-label{
+
+.mb-01-style .info-cell-label {
 	color: #8e8e8e;
 	padding-right: 50rpx;
 	font-size: 24rpx;
 }
-.mb-01-style .info-cell-value{
+
+.mb-01-style .info-cell-value {
 	color: #333;
 	font-size: 26rpx;
 }
 
-.mb-01-style .msg-btn{
-	position: absolute;
-	top: 970rpx;
-	left: 50%;
+.mb-01-style .msg-btn {
+	/* position: absolute; */
+	/* top: 970rpx; */
+	/* left: 50%; */
 	width: 410rpx;
 	background: #4e8cee !important;
-	transform: translateX(-50%);
+	/* transform: translateX(-50%); */
 }
-.mb-01-style .slogan{
+
+.mb-01-style .slogan {
 	padding: 10rpx 46rpx;
 	width: 90%;
 	border-radius: 12rpx;
@@ -132,7 +146,7 @@
 	border: 1rpx dotted #ccc;
 	box-sizing: border-box;
 	position: absolute;
-	top:710rpx;
+	top: 710rpx;
 	left: 36rpx;
 	font-size: 28rpx;
 	color: #8e8e8e;
@@ -190,23 +204,37 @@
 
 
 .mb-02-style .msg-btn {
-	position: absolute;
-	top: 920rpx;
+	/* position: absolute; */
+	/* top: 920rpx; */
 	width: 410rpx;
 	background: #4e8cee !important;
-	left: 50%;
-	transform: translateX(-50%);
+	margin: 46rpx auto;
+	/* left: 50%; */
+	/* transform: translateX(-50%); */
+	color: #fff !important;
+	font-size: 30rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.mb-02-style .msg-btn image {
+	width: 35rpx;
+	height: 35rpx;
+	margin-right: 8rpx;
+}
+.mb-02-style .msg-btn:after {
+	border: none;
 }
 
 .mb-02-style .team-nav {
-	position: absolute;
+	/* position: absolute; */
 	width: 100%;
 	padding-left: 30rpx;
 	padding-right: 30rpx;
 	box-sizing: border-box;
 	top: 638rpx;
 	left: 50%;
-	transform: translateX(-50%);
+	/* transform: translateX(-50%); */
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
@@ -295,7 +323,7 @@
 .mb-02-style .card-cell {
 	position: absolute;
 	top: 270rpx;
-	left: 50px;
+	left: 30px;
 }
 
 .mb-02-style .info-cell-item {
@@ -309,7 +337,7 @@
 }
 
 .mb-02-style .info-cell-label {
-	width: 120rpx;
+	width: 110rpx;
 }
 
 .mb-02-style .info-cell-value {
@@ -323,7 +351,7 @@
 	color: #4e8cee;
 	text-decoration: underline;
 	position: absolute;
-	right: -130rpx;
+	right: -190rpx;
 }
 
 .mb-02-style .phone {
@@ -333,13 +361,16 @@
 	width: 50rpx;
 	height: 50rpx;
 }
+
 .mb-02-style .msg {
-	right:150rpx;
+	right: 150rpx;
 }
+
 .mb-02-style .phone image {
 	width: 50rpx;
 	height: 50rpx;
 }
+
 .mb-02-style #talkbubble {
 	padding: 0 16rpx;
 	line-height: 46rpx;
@@ -365,47 +396,54 @@
 	border-right: 12rpx solid #4e8cee;
 	border-bottom: 6rpx solid transparent;
 }
-.mb-02-style .banner{
-	width: 640rpx;
-	height: 92rpx;
-	margin: 44rpx auto;
+
+.mb-02-style .banner {
+	width: 658rpx;
+	height: 110rpx;
+	margin: 22rpx auto;
 	border-radius: 10rpx;
 	overflow: hidden;
 }
-.mb-02-style .banner image{
+
+.mb-02-style .banner image {
 	width: 100%;
 	height: 100%;
 }
-.mb-02-style  .banner-bottom{
+
+.mb-02-style .banner-bottom {
 	position: absolute;
 	top: 850rpx;
 	left: 50%;
 	transform: translateX(-50%);
 }
-.team-cell{
+
+.team-cell {
 	line-height: 80rpx;
 }
 
-.auth-modal{
+.auth-modal {
 	width: 100%;
 	height: 100%;
 	position: fixed;
 	left: 0;
 	top: 0;
-	background: rgba(0,0,0,.1);
+	background: rgba(0, 0, 0, .1);
 	transition: .3s;
 	display: none;
 }
-.auth-modal.authModalShow{
+
+.auth-modal.authModalShow {
 	display: block;
-	background: rgba(0,0,0,.5);
+	background: rgba(0, 0, 0, .5);
 }
-.auth-modal .auth-content{
+
+.auth-modal .auth-content {
 	width: 100%;
 	height: 100%;
 	position: relative;
 }
-.auth-modal .auth-main{
+
+.auth-modal .auth-main {
 	width: 522rpx;
 	height: 674rpx;
 	position: absolute;
@@ -421,7 +459,8 @@
 	padding-left: 34rpx;
 	padding-right: 34rpx;
 }
-.auth-modal .auth-headImg{
+
+.auth-modal .auth-headImg {
 	position: absolute;
 	width: 122rpx;
 	height: 122rpx;
@@ -429,25 +468,39 @@
 	border: 6rpx solid #fff;
 	left: 50%;
 	top: 0;
-	transform: translate(-50%,-50%);
+	transform: translate(-50%, -50%);
 }
-.auth-modal .auth-info{
+
+.auth-modal .auth-info {
 	font-size: 24rpx;
 	color: #333;
 	line-height: 44rpx;
-	white-space:normal; 
-	word-break:break-all;
+	white-space: normal;
+	word-break: break-all;
 }
-.auth-modal .em{
+
+.auth-modal .em {
 	font-weight: bold;
 	padding: 0 8rpx;
-	white-space:normal; 
-	word-break:break-all;
+	white-space: normal;
+	word-break: break-all;
 }
-.auth-modal .link{
+
+.auth-modal .link {
 	color: #4e8cee;
 }
-.auth-modal .info-title{
+
+.auth-modal .info-title {
 	display: block;
 	margin-bottom: 16rpx;
+}
+
+.getUserInfo {
+	width: 64rpx;
+	height: 150rpx;
+	position: fixed;
+	z-index: 200;
+	top: 42rpx;
+	right: 28rpx;
+	opacity: 0
 }

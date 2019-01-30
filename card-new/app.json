@@ -8,6 +8,7 @@
     "pages/agent/msg/msg",
     "pages/agent/product/product",
     "pages/agent/company/company",
+		"pages/agent/gy/gy",
 		
     "pages/team/msg/msg",
     "pages/team/show/show",
@@ -25,5 +26,6 @@
     "navigationBarBackgroundColor": "#3d6cc8",
     "navigationBarTitleText": "保信云顾问",
     "navigationBarTextStyle": "white"
-  }
+  },
+	 "navigateToMiniProgramAppIdList": ["wx3facaaa31f346d16"]
 }

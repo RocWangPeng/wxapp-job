@@ -1,12 +1,26 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-		"pages/map/map"
+    "pages/map/map",
+    "pages/weather/weather",
+    "pages/live-action/live-action",
+    "component/compass/compass"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#303030",
     "navigationBarTitleText": "虎狮罗盘",
-    "navigationBarTextStyle":"#fff"
+    "navigationBarTextStyle": "#fff"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "根据用户当前位置获取实时天气信息"
+    }
+  },
+  "plugins": {
+    "weather": {
+      "version": "1.0.3",
+      "provider": "wx6578a11b90205be3"
+    }
   }
 }

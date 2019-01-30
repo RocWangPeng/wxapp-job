@@ -1,5 +1,7 @@
 <i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
 <view class="page index mb-01-style">
+	<collection-btn data="{{ collectionData }}" isCollect="{{ isCollect }}"></collection-btn>
+	<button wx:if="{{ isScope == 2 }}" class="getUserInfo" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"></button>
 	<!-- <nav-team></nav-team> -->
 	<view class="center">
 			<image bindtap="previewImages" src="{{ agentData.headImg }}" class="head-img"></image>

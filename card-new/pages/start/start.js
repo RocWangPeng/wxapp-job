@@ -59,14 +59,14 @@ Page({
 			url = 'https://ii.sinelinked.com/tg_web/api/team/searchByNameOrTel'
 		}
 
-		
+
 		wx.request({
 			url: url,
 			data: {
 				nameOrTel: this.data.inputValue
 			},
 			success(res) {
-				
+
 				if (res.data.data.length) {
 					self.setData({
 						searchResult: res.data.data
@@ -89,7 +89,7 @@ Page({
 							} else if (res.data.data[0].type == 2) {
 								// 团队
 								wx.reLaunch({
-                  url: '/pages/team/index/index?teamId=' + res.data.data[0].userId
+									url: '/pages/team/index/index?teamId=' + res.data.data[0].userId
 								})
 
 							}
@@ -121,7 +121,7 @@ Page({
 			data: {
 				userId: id
 			},
-			success: function (res) {
+			success: function(res) {
 				wx.hideNavigationBarLoading()
 				if (res.data.code == 0) {
 					var joinedTeams = []
@@ -134,9 +134,9 @@ Page({
 									userId: item.userId,
 									qrCodePath: item.qrCodePath
 								})
-							} 
+							}
 						})
-						
+
 						joinedTeams.push({
 							name: that.data.agentJoinTeam.userName,
 							userId: that.data.agentJoinTeam.userId,
@@ -146,8 +146,8 @@ Page({
 						that.setData({
 							teamChooseData: joinedTeams,
 						})
-						
-					}else{
+
+					} else {
 						var temp = []
 						temp.push(that.data.agentJoinTeam)
 						that.setData({
@@ -159,7 +159,7 @@ Page({
 		})
 
 	},
-	bindKeyInput: function (e) {
+	bindKeyInput: function(e) {
 		this.setData({
 			inputValue: e.detail.value
 		})
@@ -172,7 +172,7 @@ Page({
 			data: {
 				teamId: this.data.activeTeamid
 			},
-			success: function (res) {
+			success: function(res) {
 				if (Object.prototype.toString.call(res.data) === '[object Array]') {
 					var result = res.data[0]
 					that.setData({
@@ -208,26 +208,43 @@ Page({
 								code: code,
 								type: 1
 							}
-							wechat.getUnineId(params).then((result) => {
-								if (result.data.code == 0) {
-									//获取到unionId
-									self.setData({
-										unionId: result.data.data.unionId
-									})
+							
+							try {
+								var unionId = wx.getStorageSync('unionId')
+								if (unionId) {
 									// 根据unionId获取顾问信息
-									self.searchByUnionId(result.data.data.unionId, false, 1)
-									self.searchByUnionId(result.data.data.unionId, false, 2)
+									self.searchByUnionId(unionId, false, 1)
+									self.searchByUnionId(unionId, false, 2)
+									self.setData({
+										unionId: unionId
+									})
 								}else{
-									wx.showToast({
-										title: '系统出错,请关闭重试',
-										icon: 'none',
-										duration: 2000
-									  })
+									wechat.getUnineId(params).then((result) => {
+										if (result.data.code == 0) {
+											//获取到unionId
+											self.setData({
+												unionId: result.data.data.unionId
+											})
+											wx.setStorageSync('unionId', result.data.data.unionId)
+											// 根据unionId获取顾问信息
+											self.searchByUnionId(result.data.data.unionId, false, 1)
+											self.searchByUnionId(result.data.data.unionId, false, 2)
+										} else {
+											wx.showToast({
+												title: '系统出错,请关闭重试',
+												icon: 'none',
+												duration: 2000
+											})
+										}
+									}).catch((err) => {
+										wx.hideLoading()
+									});
 								}
-							}).catch((err) => {
-								wx.hideLoading()
-								console.log(err)
-							});
+							} catch (e) {
+								// Do something when catch error
+							}
+							
+							
 						}).catch((err) => {
 							wx.hideLoading()
 							console.log(err)
@@ -249,7 +266,7 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {
+	onLoad: function(options) {
 		this.getUnineId()
 		wx.showNavigationBarLoading()
 	},
@@ -273,7 +290,7 @@ Page({
 	toTeam() {
 		var self = this
 		if (this.data.activeTeamid) {
-      wx.setStorageSync('userType', 'team')
+			wx.setStorageSync('userType', 'team')
 			wx.setStorageSync('teamId', this.data.activeTeamid)
 			wx.navigateTo({
 				url: '/pages/team/index/index?teamId=' + this.data.activeTeamid,
@@ -287,7 +304,7 @@ Page({
 		} else {
 			var joinedTeams = this.data.teamChooseData
 			if (joinedTeams.length == 1) { //加入一个团队直接跳转
-        wx.setStorageSync('userType', 'team')
+				wx.setStorageSync('userType', 'team')
 				wx.setStorageSync('teamId', joinedTeams[0].userId)
 				wx.navigateTo({
 					url: '/pages/team/index/index?teamId=' + joinedTeams[0].userId,
@@ -366,14 +383,14 @@ Page({
 		})
 	},
 	//预览太阳码
-	previewImage: function () {
+	previewImage: function() {
 		this.setData({
 			qrCodeUrl: this.data.agent.qrCodePath,
 			previewImageShow: true,
 		})
 	},
 	//预览太阳码
-	previewImageTeam: function () {
+	previewImageTeam: function() {
 		if (this.data.teamChooseData.length == 0) {
 			$Toast({
 				content: '您还未有任何团队,请完善团队信息或加入团队',
@@ -428,7 +445,7 @@ Page({
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
-	onReady: function () {
+	onReady: function() {
 
 
 
@@ -437,42 +454,43 @@ Page({
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: function () {
-
+	onShow: function() {
+		
+		
 	},
 
 	/**
 	 * 生命周期函数--监听页面隐藏
 	 */
-	onHide: function () {
+	onHide: function() {
 
 	},
 
 	/**
 	 * 生命周期函数--监听页面卸载
 	 */
-	onUnload: function () {
+	onUnload: function() {
 
 	},
 
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
-	onPullDownRefresh: function () {
+	onPullDownRefresh: function() {
 
 	},
 
 	/**
 	 * 页面上拉触底事件的处理函数
 	 */
-	onReachBottom: function () {
+	onReachBottom: function() {
 
 	},
 
 	/**
 	 * 用户点击右上角分享
 	 */
-	onShareAppMessage: function () {
+	onShareAppMessage: function() {
 
 	}
 })

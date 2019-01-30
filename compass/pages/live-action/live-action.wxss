@@ -1,0 +1,250 @@
+page {
+	background: url(http://ii.sinelinked.com/miniProgramAssets/compass/bg.jpg);
+	width: 100%;
+	height: 100%;
+}
+#camera{
+	width: 100%;
+	height: 100%;
+}
+.controls{
+	/* pointer-events: none; */
+}
+.header {
+	width: 100%;
+	height: 100rpx;
+	background: url(http://ii.sinelinked.com/miniProgramAssets/compass/logo-bg.jpg) no-repeat;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.logo {
+	width: 282rpx;
+	height: 60rpx;
+	display: block;
+}
+
+.main {
+	position: relative;
+	padding-top: 30rpx;
+	box-sizing: border-box;
+	pointer-events: none;
+}
+
+/* gradienter */
+.gradienter {
+	width: 100rpx;
+	height: 100rpx;
+	/* border-radius: 50%; */
+	border: 5rpx solid #8d7056;
+	background: url(http://ii.sinelinked.com/miniProgramAssets/compass/shi.png) no-repeat center;
+	background-size: 89rpx 89rpx;
+	position: relative;
+	/* margin-top: 38rpx; */
+	margin-left: 38rpx;
+}
+
+.gradienter .ball {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 10rpx;
+	height: 10rpx;
+	background: red;
+	transition: .5s;
+	border-radius: 50%;
+}
+
+.weather {
+	position: absolute;
+	top: 30rpx;
+	right: 40rpx;
+	display: flex;
+	width: 150rpx;
+	justify-content: space-between;
+}
+
+.weather .item {
+	text-align: center;
+}
+
+.weather cover-image:nth-child(1) {
+	width: 56rpx;
+	height: 58rpx;
+}
+
+.weather cover-image:nth-child(2) {
+	width: 50rpx;
+	height: 60rpx;
+}
+
+.weather .text {
+	display: block;
+	font-size: 26rpx;
+	font-weight: 700;
+	color: #806550;
+}
+
+.pan {
+	display: flex;
+	margin: 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: 701rpx;
+	height: 701rpx;
+	position: relative;
+	box-sizing: border-box;
+	pointer-events: none;
+}
+
+.pan .ten-line,
+.pan .ten-vertical {
+	position: absolute;
+}
+
+.pan .ten-line {
+	width: 99%;
+	height: 2rpx;
+	background: red;
+	z-index: 3;
+	pointer-events: none;
+}
+
+.pan .ten-vertical {
+	width: 2rpx;
+	height: 99%;
+	background: red;
+	z-index: 3;
+	pointer-events: none;
+}
+
+.pan-main {
+	width: 701rpx;
+	height: 701rpx;
+	transition: .2s;
+	border-radius: 50%;
+	/* box-shadow: 0 0 30rpx rgba(0, 0, 0, .5); */
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	z-index: 800;
+	pointer-events: none;
+}
+
+.direction-value {
+	font-size: 100rpx;
+	color: #705540;
+	position: relative;
+	display: none;
+	pointer-events: none;
+}
+
+.direction-degree {
+	position: absolute;
+	top: 0;
+	right: -40rpx;
+	font-size: 40rpx;
+	pointer-events: none;
+}
+.tool{
+	text-align: center;
+	position: relative;
+	box-sizing: border-box;
+	padding: 0 40rpx;
+	height: 120rpx;
+	margin-top: 20rpx;
+	position: absolute;
+	width: 100%;
+	bottom:130rpx;
+}
+.tool .item{
+	width: 77rpx;
+	position: absolute;
+	top: 0;
+}
+.tool .img-box{
+	width: 77rpx;
+	height: 77rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #a27243;
+	border-radius: 50%;
+}
+.tool  .text{
+	display: block;
+	font-size: 26rpx;
+	font-weight: 700;
+	color: #806550;
+	padding-top: 10rpx;
+}
+.tool .map{
+	left: 40rpx;
+}
+.tool .map cover-image{
+	width: 55rpx;
+	height: 55rpx;
+}
+.tool .capture{
+	left: 156rpx;
+}
+.tool .capture cover-image{
+	width: 54rpx;
+	height: 55rpx;
+}
+.tool .close{
+	right: 170rpx;
+}
+.tool .close cover-image{
+	width: 57rpx;
+	height: 58rpx;
+}
+.tool .manual{
+	right:40rpx;
+}
+.tool .manual cover-image{
+	width: 45rpx;
+	height: 57rpx;
+}
+
+/* info */
+.info{
+	width: 720rpx;
+	margin: 26rpx auto;
+	border-radius: 15rpx;
+	box-shadow: 0 0 30rpx rgba(162,114,67,.5);
+	background: #f7f4f1;
+	box-sizing: border-box;
+	padding: 30rpx 40rpx;
+}
+.info .text{
+	display: block;
+	font-size: 24rpx;
+	color: #745339;
+	margin-bottom: 12rpx;
+}
+.info .weight{
+	font-weight: bold;
+	font-size: 28rpx;
+	color: #e8600f;
+	margin-top: 16rpx;
+}
+weather {
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  transition: .5s;
+  transform: translateY(-100rpx);
+  z-index: 100;
+}
+weather.show{
+	transform: translateY(0);
+}
+
+weather view {
+  color: #fff!important;
+}

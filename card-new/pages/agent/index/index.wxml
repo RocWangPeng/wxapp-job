@@ -30,6 +30,8 @@
 </view> -->
 <i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
 <view class="page index mb-02-style">
+	<collection-btn data="{{ collectionData }}" isCollect="{{ isCollect }}"></collection-btn>
+	<button wx:if="{{ isScope == 2 }}" class="getUserInfo" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"></button>
 	<view class="center">
 		<!-- card -->
 		<view class="card">
@@ -57,9 +59,12 @@
 		<view class="phone" bindtap="makePhoneCall">
 			<image src="http://ii.sinelinked.com/miniProgramAssets/phone.png"></image>
 		</view>
-		<view class="banner">
-			<image src="http://ii.sinelinked.com/miniProgramAssets/banner.jpg"></image>
-		</view>
+		<button class="msg-btn" bindtap="toMsg">
+			<image src="http://ii.sinelinked.com/miniProgramAssets/msg-white.png"></image>
+			<text>点我咨询</text>
+			</button>
+		<!-- <i-button i-class="msg-btn" bind:click="toMsg" type="primary">点我咨询</i-button> -->
+		
 		<view class="team-nav">
 			<navigator url="/pages/agent/introduce/introduce?cardId={{ cardInfo.id }}" class="team-nav-item">
 				<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-01.png'></image> 个人介绍
@@ -74,7 +79,13 @@
 				<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-05.png'></image> 我的团队
 			</view>
 		</view>
-		<i-button i-class="msg-btn" bind:click="toMsg" type="primary">点我咨询</i-button>
+		<!-- <view class="banner">
+			<image src="http://ii.sinelinked.com/miniProgramAssets/gy02.png"></image>
+		</view> -->
+		<navigator class="banner banner-bottom" url="/pages/agent/gy/gy">
+				<image src="http://ii.sinelinked.com/miniProgramAssets/gy02.png"></image>
+		</navigator>
+		<!-- <i-button i-class="msg-btn" bind:click="toMsg" type="primary">点我咨询</i-button> -->
 	</view>
 </view>
 

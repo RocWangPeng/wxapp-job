@@ -1,0 +1,8 @@
+<view class="collection-btn">
+	<view class="item" bindtap="collection">
+		<image src="{{ isCollect?'http://ii.sinelinked.com/miniProgramAssets/collection-true.png':'http://ii.sinelinked.com/miniProgramAssets/collection.png' }}" ></image>
+	</view>
+	<view class="item" bindtap="toCardCase">
+		<image src="http://ii.sinelinked.com/miniProgramAssets/card.png" ></image>
+	</view>
+</view>

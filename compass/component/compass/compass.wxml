@@ -1,0 +1,3 @@
+<view class="zhen" style="transform: rotate({{directionSouth}}deg)">
+	<image src="http://ii.sinelinked.com/miniProgramAssets/compass/zhen.png"></image>
+</view>

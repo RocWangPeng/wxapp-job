@@ -1,0 +1,7 @@
+.zhen{
+	transition: .1s;
+}
+.zhen image{
+	width: 215rpx;
+	height: 203rpx;
+}

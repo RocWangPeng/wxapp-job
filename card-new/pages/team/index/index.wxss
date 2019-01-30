@@ -410,3 +410,14 @@
 .team-cell{
 	line-height: 80rpx;
 }
+
+
+.getUserInfo{
+	width: 64rpx;
+	height: 150rpx;
+	position: fixed;
+	z-index: 200;
+	top: 42rpx;
+	right: 28rpx;
+  opacity: 0
+}

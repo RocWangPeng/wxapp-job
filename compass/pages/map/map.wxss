@@ -193,8 +193,8 @@ page {
 	left: 156rpx;
 }
 .tool .capture cover-image{
-	width: 54rpx;
-	height: 55rpx;
+	width: 48rpx;
+	height: 48rpx;
 }
 .tool .close{
 	right: 170rpx;
@@ -232,4 +232,19 @@ page {
 	font-size: 28rpx;
 	color: #e8600f;
 	margin-top: 16rpx;
+}
+weather {
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  transition: .5s;
+  transform: translateY(-100rpx);
+  z-index: 100;
+}
+weather.show{
+	transform: translateY(0);
+}
+
+weather view {
+  color: #fff!important;
 }
