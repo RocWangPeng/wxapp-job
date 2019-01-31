@@ -10,6 +10,7 @@ Page({
 		lockOnoff:false,//锁定开关
 		touchstartX:0,//开始拖动坐标
 		touchstartY:0,//开始拖动坐标
+		text:''
 	},
 	onLoad(){
 		this.setData({
@@ -34,6 +35,9 @@ Page({
 			var positionY = gradienterHeight / 2
 			// 水平仪监听
 			wx.onAccelerometerChange(function(res) {
+				console.log(res.x)
+  console.log(res.y)
+  console.log(res.z)
 				if (res.x > 0) {
 					positionX += 6
 				} else {
@@ -66,12 +70,35 @@ Page({
 
 		// 罗盘监听
 		wx.onCompassChange(function(res) {
+			console.log(res);
+			var directions = res.direction.toFixed(2);
 			self.setData({
-				direction: parseInt(res.direction, 10),
+				direction: directions,
+				text:self.check(directions)
 			})
 		})
 
 	},
+	 // 判断文字
+	 check(i){
+      if(22.5<i && i<67.5){
+        return '东北'
+      }else if(67.5<i && i<112.5){
+        return '正东'
+      }else if(112.5<i && i<157.5){
+        return '东南'
+      }else if(157.5<i && i<202.5){
+        return '正南'
+      }else if(202.5<i && i<247.5){
+        return '西南'
+      }else if(247.5<i && i<292.5){
+        return '正西'
+      }else if(292.5<i && i<337.5){
+        return '西北'
+      }else{
+        return '正北'
+      }
+    }, 
 	// 切换罗盘模式
 	togglePanMode() {
 	  wx.showActionSheet({
@@ -109,15 +136,9 @@ Page({
 		this.setData({
 			manualOnoff:!this.data.manualOnoff
 		})
-// 		if(this.data.manualOnoff){
-// 			wx.stopCompass()
-// 		}else{
-// 			wx.startCompass()
-// 		}
 		
 	},
 	touchstart(e){
-		console.log('start',e.touches[0]);
 		this.setData({
 			touchstartX:e.touches[0].clientX,
 			touchstartY:e.touches[0].clientY
@@ -130,14 +151,11 @@ Page({
 		
 		var clientX = e.touches[0].clientX
 		var clientY = e.touches[0].clientY
-		console.log('clientY',clientY);
-		console.log('touchstartY',this.data.touchstartY);
 		var direction = this.data.directionSouth
 		// 判断手指在左右方位
 		
 		if(this.data.touchstartX<150){
 			// 手指在左边
-			console.log('手指在左边');
 			if(clientY > this.data.touchstartY){
 				direction-=3
 			}else{
@@ -145,7 +163,6 @@ Page({
 			}
 		}else{
 			// 手指在右边
-			console.log('手指在右边');
 			if(clientY > this.data.touchstartY){
 				direction+=3
 			}else{

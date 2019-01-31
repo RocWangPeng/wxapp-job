@@ -66,7 +66,7 @@ page .container.hidden{
 .weather {
 	position: absolute;
 	top: 30rpx;
-	right: 40rpx;
+	right: -46rpx;
 	display: flex;
 	width: 150rpx;
 	justify-content: space-between;
@@ -102,6 +102,7 @@ page .container.hidden{
 	height: 701rpx;
 	position: relative;
 	box-sizing: border-box;
+	margin-top: -50rpx;
 }
 
 .pan .ten-line,
@@ -186,33 +187,37 @@ page .container.hidden{
 	color: #806550;
 	padding-top: 10rpx;
 }
-.tool .map{
-	left: 40rpx;
-}
-.tool .map image{
+.tool image{
 	width: 55rpx;
 	height: 55rpx;
 }
+.tool .map{
+	left: 40rpx;
+}
+/* .tool .map image{
+	width: 55rpx;
+	height: 55rpx;
+} */
 .tool .capture{
 	left: 156rpx;
 }
 .tool .capture image{
-	width: 54rpx;
-	height: 55rpx;
+	width: 46rpx;
+	height: 46rpx;
 }
 .tool .close{
 	right: 170rpx;
 }
-.tool .close image{
+/* .tool .close image{
 	width: 57rpx;
 	height: 58rpx;
-}
+} */
 .tool .manual{
 	right:40rpx;
 }
 .tool .manual image{
 	width: 45rpx;
-	height: 57rpx;
+	height: 45rpx;
 }
 
 /* info */
@@ -244,7 +249,7 @@ weather {
   position: fixed;
   top: 0;
   transition: .5s;
-  transform: translateY(-100rpx);
+  transform: translateY(-150rpx);
 }
 weather.show{
 	transform: translateY(0);

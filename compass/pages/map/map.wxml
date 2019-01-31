@@ -3,7 +3,7 @@
 	<cover-view class="controls"  wx:if="{{ showPan }}" bindtouchmove="tips">
 
 		<cover-view class="header">
-			<cover-image class="logo" src="http://ii.sinelinked.com/miniProgramAssets/compass/logo.png"></cover-image>
+			<cover-image class="logo" src="http://ii.sinelinked.com/miniProgramAssets/compass/logo2.png"></cover-image>
 		</cover-view>
 		<!-- main -->
 		<cover-view class="main">
@@ -17,10 +17,10 @@
 					<cover-image src="http://ii.sinelinked.com/miniProgramAssets/compass/weather.png"></cover-image>
 					<cover-view class="text">天气</cover-view>
 				</cover-view>
-				<cover-view class="item">
+				<!-- <cover-view class="item">
 					<cover-image src="http://ii.sinelinked.com/miniProgramAssets/compass/calendar.png"></cover-image>
 					<cover-view class="text">黄历</cover-view>
-				</cover-view>
+				</cover-view> -->
 			</cover-view>
 			<!-- pan -->
 			<cover-view class="pan">
@@ -28,7 +28,7 @@
 				<cover-view class="ten-vertical"></cover-view>
 				<!-- 主盘 --> 
 				<!-- style="transform: rotate({{direction}}deg)" -->
-				<cover-image class="pan-main" style="transform: rotateX({{direction}}deg)"  src="http://ii.sinelinked.com/miniProgramAssets/compass/pan-map.png"></cover-image>
+				<cover-image class="pan-main" src="http://ii.sinelinked.com/miniProgramAssets/compass/pan-map.png"></cover-image>
 				<!-- 度数 -->
 				<cover-view class="direction-value">
 					<cover-view class="text">{{ direction }}</cover-view>
@@ -48,7 +48,7 @@
 	<cover-view class="tool">
 		<cover-view class="item map" bindtap="togglePanMode">
 			<cover-view class="img-box">
-				<cover-image src="http://ii.sinelinked.com/miniProgramAssets/compass/map.png"></cover-image>
+				<cover-image src="http://ii.sinelinked.com/miniProgramAssets/compass/001.png"></cover-image>
 			</cover-view>
 			<cover-view class="text">模式</cover-view>
 		</cover-view>
@@ -60,15 +60,15 @@
 		</cover-view>
 		<cover-view class="item close"   bindtap="togglePan">
 			<cover-view class="img-box">
-				<cover-image src="http://ii.sinelinked.com/miniProgramAssets/compass/close.png"></cover-image>
+				<cover-image src="http://ii.sinelinked.com/miniProgramAssets/compass/002.png"></cover-image>
 			</cover-view>
 			<cover-view class="text">{{ showPan?'收起':'展开' }}</cover-view>
 		</cover-view>
-		<cover-view class="item manual">
+		<!-- <cover-view class="item manual">
 			<cover-view class="img-box">
 				<cover-image src="http://ii.sinelinked.com/miniProgramAssets/compass/manual.png"></cover-image>
 			</cover-view>
 			<cover-view class="text">手动</cover-view>
-		</cover-view>
+		</cover-view> -->
 	</cover-view>
 </map>

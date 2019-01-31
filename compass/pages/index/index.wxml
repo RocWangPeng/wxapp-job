@@ -15,10 +15,10 @@
 				<image src="http://ii.sinelinked.com/miniProgramAssets/compass/weather.png"></image>
 				<text>天气</text>
 			</view>
-			<view class="item">
+			<!-- <view class="item">
 				<image src="http://ii.sinelinked.com/miniProgramAssets/compass/calendar.png"></image>
 				<text>黄历</text>
-			</view>
+			</view> -->
 		</view>
 		<!-- pan -->
 		<view class="pan">
@@ -44,25 +44,25 @@
 		<view class="tool">
 			<view class="item map" bindtap="togglePanMode">
 				<view class="img-box">
-					<image src="http://ii.sinelinked.com/miniProgramAssets/compass/map.png"></image>
+					<image src="http://ii.sinelinked.com/miniProgramAssets/compass/001.png"></image>
 				</view>
 				<text>模式</text>
 			</view>
 			<view class="item capture" bindtap="lock">
 				<view class="img-box">
-					<image src="http://ii.sinelinked.com/miniProgramAssets/compass/capture.png"></image>
+					<image src="http://ii.sinelinked.com/miniProgramAssets/compass/004.png"></image>
 				</view>
 				<text>{{ lockOnoff?'解锁':'锁定' }}</text>
 			</view>
-			<view class="item close" bindtap="togglePan">
+			<!-- <view class="item close" bindtap="togglePan">
 				<view class="img-box">
 					<image src="http://ii.sinelinked.com/miniProgramAssets/compass/close.png"></image>
 				</view>
 				<text>{{ showPan?'收起':'展开' }}</text>
-			</view>
+			</view> -->
 			<view class="item manual" bindtap="manual">
 				<view class="img-box">
-					<image src="http://ii.sinelinked.com/miniProgramAssets/compass/manual.png"></image>
+					<image src="http://ii.sinelinked.com/miniProgramAssets/compass/003.png"></image>
 				</view>
 				<text>{{ manualOnoff?'自动':'手动' }}</text>
 			</view>
@@ -71,9 +71,7 @@
 
 	<!-- info -->
 	<view class="info" >
-		<text class="weight">正东震卦81.2°甲方兼卯</text>
-		<text>正东震卦81.2°甲方兼卯</text>
-		<text class="weight">正东震卦81.2°甲方兼卯</text>
-		<text>正东震卦81.2°甲方兼卯</text>
+		<text class="weight">方位: {{ text || 0 }} 度数: {{ direction }}</text>
+		<!-- <text>正东震卦81.2°甲方兼卯</text> -->
 	</view>
 </view>

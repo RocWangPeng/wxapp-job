@@ -9,7 +9,8 @@ Page({
 		location:{},
 		scale:14,
 		latitude: 23.099994,
-		longitude: 113.324520
+		longitude: 113.324520,
+		test:0
 	},
 	onLoad(){
 		wx.getSetting({
@@ -79,6 +80,7 @@ Page({
 		})
 
 	},
+	
 	// 切换罗盘模式
 	togglePanMode() {
 		wx.showActionSheet({

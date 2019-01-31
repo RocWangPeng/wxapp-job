@@ -1,5 +1,5 @@
 page {
-	background: url(http://ii.sinelinked.com/miniProgramAssets/compass/bg.jpg);
+	/* background: url(http://ii.sinelinked.com/miniProgramAssets/compass/bg.jpg); */
 	width: 100%;
 	height: 100%;
 }
@@ -13,15 +13,16 @@ page {
 .header {
 	width: 100%;
 	height: 100rpx;
-	background: url(http://ii.sinelinked.com/miniProgramAssets/compass/logo-bg.jpg) no-repeat;
+	/* background: url(http://ii.sinelinked.com/miniProgramAssets/compass/logo-bg.jpg) no-repeat; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
+.header
 .logo {
-	width: 282rpx;
-	height: 60rpx;
+	width: 100%;
+	height:100%;
 	display: block;
 }
 
@@ -150,7 +151,7 @@ page {
 	font-size: 40rpx;
 	pointer-events: none;
 }
-.tool{
+/* .tool{
 	text-align: center;
 	position: relative;
 	box-sizing: border-box;
@@ -209,6 +210,71 @@ page {
 .tool .manual cover-image{
 	width: 45rpx;
 	height: 57rpx;
+} */
+
+.tool{
+	text-align: center;
+	position: relative;
+	box-sizing: border-box;
+	padding: 0 40rpx;
+	height: 120rpx;
+	margin-top: 20rpx;
+	position: absolute;
+	width: 100%;
+	bottom:130rpx;
+}
+.tool .item{
+	width: 77rpx;
+	position: absolute;
+	top: 0;
+}
+.tool .img-box{
+	width: 77rpx;
+	height: 77rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #a27243;
+	border-radius: 50%;
+}
+.tool  .text{
+	display: block;
+	font-size: 26rpx;
+	font-weight: 700;
+	color: #806550;
+	padding-top: 10rpx;
+}
+.tool cover-image{
+	width: 55rpx;
+	height: 55rpx;
+}
+.tool .map{
+	left: 40rpx;
+}
+.tool .map image{
+	width: 55rpx;
+	height: 55rpx;
+}
+.tool .capture{
+	left: 156rpx;
+}
+.tool .capture cover-image{
+	width: 46rpx;
+	height: 46rpx;
+}
+.tool .close{
+	right: 170rpx;
+}
+/* .tool .close cover-image{
+	width: 57rpx;
+	height: 58rpx;
+} */
+.tool .manual{
+	right:40rpx;
+}
+.tool .manual cover-image{
+	width: 45rpx;
+	height: 45rpx;
 }
 
 /* info */
@@ -238,7 +304,7 @@ weather {
   position: fixed;
   top: 0;
   transition: .5s;
-  transform: translateY(-100rpx);
+  transform: translateY(-150rpx);
   z-index: 100;
 }
 weather.show{
