@@ -4,13 +4,14 @@
     "pages/map/map",
     "pages/weather/weather",
     "pages/live-action/live-action",
-    "component/compass/compass"
+    "component/compass/compass",
+    "pages/custom/custom"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#303030",
     "navigationBarTitleText": "虎狮罗盘",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarTextStyle": "white"
   },
   "permission": {
     "scope.userLocation": {

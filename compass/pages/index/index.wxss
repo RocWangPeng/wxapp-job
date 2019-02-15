@@ -129,7 +129,7 @@ page .container.hidden{
 .pan-main {
 	width: 701rpx;
 	height: 701rpx;
-	transition: .1s;
+	transition: .1s linear;
 	border-radius: 50%;
 	box-shadow: 0 0 30rpx rgba(0, 0, 0, .5);
 	position: absolute;
@@ -138,6 +138,9 @@ page .container.hidden{
 	bottom: 0;
 	right: 0;
 	margin: auto;
+}
+.pan-main:hover{
+  box-shadow: 0 0 60rpx rgba(0, 0, 0, .5);
 }
 .zhen{
 	transition: .1s;
@@ -179,6 +182,9 @@ page .container.hidden{
 	justify-content: center;
 	background: #a27243;
 	border-radius: 50%;
+}
+.tool .img-box-active{
+  background: #ed564e
 }
 .tool  text{
 	display: block;
@@ -222,6 +228,7 @@ page .container.hidden{
 
 /* info */
 .info{
+  
 	width: 720rpx;
 	margin: 26rpx auto;
 	border-radius: 15rpx;

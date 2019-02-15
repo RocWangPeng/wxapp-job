@@ -1,0 +1,29 @@
+<wxs module="tool" src="./index.wxs"></wxs>
+<view class='tempImageBox'>
+  <image mode='widthFix' src='{{ tempFilePaths }}'></image>
+</view>
+
+<!-- pan -->
+<view class="pan">
+  <view class="ten-line"></view>
+  <view class="ten-vertical"></view>
+  <!-- 主盘 -->
+  <image class="pan-main manual-pan {{ tool.isTouch?'touchShadow':'' }}" bindtouchstart="{{ tool.touchstart }}" catchtouchmove="{{ tool.touchmove }}" bindtouchend='{{ tool.touchend }}' style="transform: rotate{{directionSouth}}deg;" src="http://ii.sinelinked.com/miniProgramAssets/compass/pan.png"></image>
+  <compass></compass>
+</view>
+
+<!-- 上传 -->
+<button class="merge" bindtap="chooseImage">
+  上传
+</button>
+<view class="item map" bindtap="togglePanMode">
+  <view class="img-box">
+    <image src="http://ii.sinelinked.com/miniProgramAssets/compass/001.png"></image>
+  </view>
+  <text>模式</text>
+</view>
+<!-- info -->
+<view class="info">
+  <text class="weight">方位: {{ text || 0 }}  度数: {{ direction }}°</text>
+  <text class="weight">经度:{{ jd }}°  纬度:{{ wd }}°  </text>
+</view>

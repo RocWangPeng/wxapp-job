@@ -233,6 +233,9 @@ page {
 	background: #a27243;
 	border-radius: 50%;
 }
+.tool .img-box-active{
+  background: #ed564e
+}
 .tool  .text{
 	display: block;
 	font-size: 26rpx;

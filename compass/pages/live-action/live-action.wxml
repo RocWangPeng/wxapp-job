@@ -59,7 +59,7 @@
 			<cover-view class="text">截屏</cover-view>
 		</cover-view> -->
 		<cover-view class="item close"   bindtap="togglePan">
-			<cover-view class="img-box">
+			<cover-view class="img-box {{ showPan?'':'img-box-active' }}">
 				<cover-image src="http://ii.sinelinked.com/miniProgramAssets/compass/002.png"></cover-image>
 			</cover-view>
 			<cover-view class="text">{{ showPan?'收起':'展开' }}</cover-view>

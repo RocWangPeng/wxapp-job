@@ -102,6 +102,7 @@ page {
 .pan .ten-line,
 .pan .ten-vertical {
 	position: absolute;
+  pointer-events: none;
 }
 
 .pan .ten-line {
@@ -123,7 +124,7 @@ page {
 .pan-main {
 	width: 701rpx;
 	height: 701rpx;
-	transition: .2s;
+	/* transition: .2s; */
 	border-radius: 50%;
 	/* box-shadow: 0 0 30rpx rgba(0, 0, 0, .5); */
 	position: absolute;
@@ -133,7 +134,6 @@ page {
 	right: 0;
 	margin: auto;
 	z-index: 800;
-	pointer-events: none;
 }
 
 .direction-value {
@@ -175,6 +175,9 @@ page {
 	justify-content: center;
 	background: #a27243;
 	border-radius: 50%;
+}
+.tool .img-box-active{
+  background: #ed564e
 }
 .tool  .text{
 	display: block;
@@ -236,6 +239,9 @@ page {
 	justify-content: center;
 	background: #a27243;
 	border-radius: 50%;
+}
+.tool .img-box-active{
+  background: #ed564e
 }
 .tool  .text{
 	display: block;

@@ -1,0 +1,52 @@
+var touchstartX = 0
+var touchstartY = 0
+
+var direction = 0
+
+var clientYArr = []
+
+function touchstart(event, ins) {
+	 console.log('movess');
+  	touchstartX=event.touches[0].clientX,
+  	touchstartY=event.touches[0].clientY
+}
+var isTouch = false
+function touchmove(event, ins) {
+ var clientY = event.touches[0].clientY
+  isTouch = true
+  var instance = ins.selectComponent('.manual-pan') // 返回组件的实例
+
+  clientYArr.push(clientY)
+  if (Math.abs(clientYArr[clientYArr.length - 1] - clientYArr[clientYArr.length - 2])>2 ){
+    if (touchstartX < 150) {
+      // 手指在左边
+      if (clientY > touchstartY) {
+        direction -= 3
+      } else {
+        direction += 6
+      }
+    } else {
+      // 手指在右边
+      if (clientY > touchstartY) {
+        direction += 6
+      } else {
+        direction -= 3
+      }
+    }
+  }
+
+  console.log(direction)
+  
+  instance.setStyle({
+    transform: 'rotate(' + direction+'deg)',
+  })
+}
+
+function touchend(event, ins) {
+  clientYArr = []
+}
+module.exports = {
+  touchstart: touchstart,
+  touchmove: touchmove,
+  touchend: touchend
+}

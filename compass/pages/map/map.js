@@ -3,19 +3,19 @@ Page({
 		x: 0, //水平仪x方向
 		y: 0,
 		enabled: true,
-		direction: 360, //罗盘旋转角度
+		direction: 0, //罗盘旋转角度
 		showPan: true,
 		weatherShow: false,
 		location:{},
-		scale:14,
+		scale:18,
 		latitude: 23.099994,
 		longitude: 113.324520,
-		test:0
+		test:0,
+    enable3D: true
 	},
 	onLoad(){
 		wx.getSetting({
 		  success(res) {
-			console.log(res.authSetting)
 			// res.authSetting = {
 			//   "scope.userInfo": true,
 			//   "scope.userLocation": true
@@ -81,27 +81,46 @@ Page({
 
 	},
 	
-	// 切换罗盘模式
-	togglePanMode() {
-		wx.showActionSheet({
-			itemList: ['主盘', '地图盘', '实景盘'],
-			success(e) {
-				var tabIndex = e.tapIndex
-				var url = ''
-				if (tabIndex == 0) {
-					url = '/pages/index/index'
-				} else if (tabIndex == 1) {
-					url = '/pages/map/map'
-				} else if (tabIndex == 2) {
-					url = '/pages/live-action/live-action'
-				}
-				wx.navigateTo({
-					url: url
-				})
+  // 切换罗盘模式
+  togglePanMode() {
+    wx.getSystemInfo({
+      success: function (result) {
+        console.log(result.platform)
+        //选项集合
+        let itemList;
+        if (result.platform == 'android') {
+          itemList = ['主盘', '地图盘', '实景盘', '图片盘', '取消']
+        } else {
+          itemList = ['主盘', '地图盘', '实景盘', '图片盘']
+        }
 
-			}
-		})
-	},
+        wx.showActionSheet({
+          itemList: itemList,
+          success(e) {
+            var tabIndex = e.tapIndex
+            var url = ''
+            if (tabIndex == 0) {
+              url = '/pages/index/index'
+            } else if (tabIndex == 1) {
+              url = '/pages/map/map'
+            } else if (tabIndex == 2) {
+              url = '/pages/live-action/live-action'
+            } else if (tabIndex == 3) {
+              url = '/pages/custom/custom'
+            } else if (tabIndex == 4) {
+
+            }
+            wx.redirectTo({
+              url: url
+            })
+
+          }
+        })
+
+
+      },
+    })
+  },
 
 	// 罗盘展开隐藏
 	togglePan() {
@@ -132,11 +151,9 @@ Page({
 		}
 	},
 	getLocation() {
-		console.log('getLocation');
 		const that = this
 		wx.getLocation({
 			success(res) {
-				console.log(res)
 				that.setData({
 					hasLocation: true,
 					longitude: res.longitude,

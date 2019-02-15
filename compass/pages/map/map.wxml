@@ -1,6 +1,10 @@
 <weather size="sm" class="{{ weatherShow?'show':'' }}" theme="light" />
-<map id="map" show-compass = "{{ true }}" longitude="{{ longitude }}"  latitude="{{ latitude }}" scale="{{ scale }}">
-	<cover-view class="controls"  wx:if="{{ showPan }}" bindtouchmove="tips">
+
+<wxs module="tool" src="./index.wxs"></wxs> 
+
+<map id="map" enable-3D="{{ enable3D }}" enable-overlooking="{{ enable3D }}" subkey="FU5BZ-OFH3J-HSMFX-K5QWD-WNAL7-LLFCY" show-compass = "{{ true }}" longitude="{{ longitude }}"  latitude="{{ latitude }}" scale="{{ scale }}">
+<!-- bindtouchmove="tips" -->
+	<cover-view class="controls" wx:if="{{ showPan }}">
 
 		<cover-view class="header">
 			<cover-image class="logo" src="http://ii.sinelinked.com/miniProgramAssets/compass/logo2.png"></cover-image>
@@ -12,23 +16,25 @@
 				<cover-view style="left: {{ x }}px;top: {{ y }}px;" class="ball"></cover-view>
 			</cover-view>
 			<!-- 天气黄历 -->
-			<cover-view class="weather" bindtap="toWeather">
+			<!-- <cover-view class="weather" bindtap="toWeather">
 				<cover-view class="item">
 					<cover-image src="http://ii.sinelinked.com/miniProgramAssets/compass/weather.png"></cover-image>
 					<cover-view class="text">天气</cover-view>
 				</cover-view>
-				<!-- <cover-view class="item">
+				<cover-view class="item">
 					<cover-image src="http://ii.sinelinked.com/miniProgramAssets/compass/calendar.png"></cover-image>
 					<cover-view class="text">黄历</cover-view>
-				</cover-view> -->
-			</cover-view>
+				</cover-view>
+			</cover-view> -->
 			<!-- pan -->
-			<cover-view class="pan">
+			<cover-view class="pan" >
 				<cover-view class="ten-line"></cover-view>
 				<cover-view class="ten-vertical"></cover-view>
 				<!-- 主盘 --> 
 				<!-- style="transform: rotate({{direction}}deg)" -->
-				<cover-image class="pan-main" src="http://ii.sinelinked.com/miniProgramAssets/compass/pan-map.png"></cover-image>
+        <cover-view class="pan-main">
+				<cover-image class="manual-pan"   bindtouchstart="{{ tool.touchstart }}" catchtouchmove="{{ tool.touchmove }}" bindtouchend='{{ tool.touchend }}'  style="transform: rotateZ{{direction}}deg" src="http://ii.sinelinked.com/miniProgramAssets/compass/pan-map.png"></cover-image>
+        </cover-view>
 				<!-- 度数 -->
 				<cover-view class="direction-value">
 					<cover-view class="text">{{ direction }}</cover-view>
@@ -59,7 +65,7 @@
 			<cover-view class="text">定位</cover-view>
 		</cover-view>
 		<cover-view class="item close"   bindtap="togglePan">
-			<cover-view class="img-box">
+			<cover-view class="img-box {{ showPan?'':'img-box-active' }}">
 				<cover-image src="http://ii.sinelinked.com/miniProgramAssets/compass/002.png"></cover-image>
 			</cover-view>
 			<cover-view class="text">{{ showPan?'收起':'展开' }}</cover-view>
