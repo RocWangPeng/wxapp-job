@@ -55,6 +55,7 @@ Page({
 		hasMsg: false,
 		checkedColor: 'blue',
 		unionId: '',
+		openId: '',
 		isScope: 2
 	},
 
@@ -71,13 +72,20 @@ Page({
 		})
 		// 获取本地unionId
 		const openId = wx.getStorageSync('currentOpenId')
-		if (openId) {
+		const unionId = wx.getStorageSync('currentColectUnionId')
+		if(unionId){
 			this.setData({
-				unionId: openId
+				unionId: unionId,
+				openId: openId,
 			})
+		}else{
+			this.setData({
+				openId: openId,
+			})
+			
 		}
+		
 		this.getList()
-		// 登录用户获取所有标签列表
 
 	},
 	searchValHandle(e) {
@@ -127,7 +135,8 @@ Page({
 						.then(res => {
 							if (res.data.code == 0) {
 								var unionId = res.data.data.unionId
-								wx.setStorageSync('currentUnionId', unionId)
+								// 临时unionId
+								wx.setStorageSync('currentColectUnionId', unionId)
 								this.merge()
 							}
 						})
@@ -158,7 +167,7 @@ Page({
 	merge() {
 		var self = this
 		var openId = wx.getStorageSync('currentOpenId')
-		var unionId = wx.getStorageSync('currentUnionId')
+		var unionId = wx.getStorageSync('currentColectUnionId')
 		var data = {
 			openId: openId,
 			unionId: unionId
@@ -175,6 +184,7 @@ Page({
 						icon: 'none',
 						duration: 2000
 					})
+					self.getList()
 				} else {
 					wx.showToast({
 						title: '系统错误,请重试',
@@ -227,11 +237,11 @@ Page({
 				actionsDel: action
 			});
 			var data = {
-				unionId: this.data.unionId,
-				openId: this.data.unionId,
+				// unionId: this.data.unionId,
+				openId: this.data.openId,
 				contactId: this.data.currentTargetId
 			}
-			utils.request(utils.personApi + '/personal/card/holder/deleteFromCardHolderByUnionId', 'POST', data,
+			utils.request(utils.personApi + '/personal/card/holder/deleteFromCardHolderByOpenId', 'POST', data,
 					'application/x-www-form-urlencoded')
 				.then((res) => {
 					if (res.code == 0) {
@@ -252,23 +262,18 @@ Page({
 		}
 	},
 	// 获取名片夹列表
-	getList(e) {
-		var labelId = ''
-		var cardName = ''
-		if (e) {
-			labelId = e.currentTarget.dataset.labelid || ''
-			if (e.detail.detail) {
-				cardName = e.detail.detail.value || ''
-			}
-		}
-
+	getList() {
 		let data = {
 			unionId: this.data.unionId,
-			openId: this.data.unionId,
-			labelId: labelId,
-			cardName: cardName
+			openId: this.data.openId,
 		}
-		utils.request(utils.personApi + '/personal/card/holder/getListByUnionId', 'GET', data)
+		var url = '/personal/card/holder/getListByOpenId'
+		if(this.data.unionId){
+			url = '/personal/card/holder/getListByUnionId'
+		}else{
+			url = '/personal/card/holder/getListByOpenId'
+		}
+		utils.request(utils.personApi + url, 'GET', data)
 			.then(res => {
 				if (res.code == 0) {
 
@@ -302,7 +307,8 @@ Page({
 								pinyin: item,
 								name: val.cardName,
 								cardType: val.cardType,
-								remark: val.remark || ''
+								remark: val.remark || '',
+								cardHeadUrl:val.cardHeadUrl
 							})
 						})
 					}
@@ -334,7 +340,8 @@ Page({
 							key: firstName,
 							cardType: this.getCardType(item.cardType),
 							type: item.cardType,
-							remark: item.remark
+							remark: item.remark,
+							cardHeadUrl:item.cardHeadUrl
 						});
 						this.setData({
 							citiesData: storeCity
@@ -367,7 +374,7 @@ Page({
 	// 登录用户获取所有标签列表
 	getAllRemark() {
 		var data = {
-			unionId: this.data.unionId,
+			unionId: this.data.openId,
 		}
 		utils.request(utils.personApi + '/personal/card/holder/getLabelByUnionId', 'GET', data)
 			.then((res) => {
@@ -385,7 +392,7 @@ Page({
 	},
 	getLabelAndRemark(id) {
 		var data = {
-			unionId: this.data.unionId,
+			unionId: this.data.openId,
 			contactId: id
 		}
 		utils.request(utils.personApi + '/personal/card/holder/getLabelAndRemarkByUnionId', 'GET', data)
