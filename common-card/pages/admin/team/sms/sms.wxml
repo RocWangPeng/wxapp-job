@@ -1,0 +1,8 @@
+
+ <i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<view class="center wrap mine-introduce">
+	<view class="introduce-input">
+		 <textarea value="{{ content }}" bindinput="bindTextAreaBlur" auto-height placeholder="请输入消息内容" />
+	</view>
+</view>
+<i-button bind:click="submit" type="primary">发送</i-button>

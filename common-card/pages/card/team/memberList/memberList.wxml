@@ -1,0 +1,17 @@
+<i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<view class='center'>
+	<view class="searchBar">
+		 <input  bindinput="bindKeyInput"  placeholder="请输入搜索内容"/>
+		 <view class="searchBtn" bindtap="searchByNameOrTel">搜索</view>
+	</view>
+  <view class='member-list'>
+    <view class='member-item' wx:for="{{ memList }}" wx:key="{{ index }}">
+     	<navigator open-type="redirect" url="/pages/card/person/index/index?cardId={{ item.id }}" hover-class="navigator-hover">
+      <image src="{{ item.cardHeadUrl || 'http://ii.sinelinked.com/miniProgramAssets/defaultHeadImg.jpg' }}"></image>
+      <text>{{ item.cardName }}</text>
+      </navigator>
+    </view>
+  </view>
+</view>
+<i-toast id="toast" />
+

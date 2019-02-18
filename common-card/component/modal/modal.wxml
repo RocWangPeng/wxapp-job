@@ -1,0 +1,8 @@
+<view class="modal {{ show?'show':'' }}" bindtap="close">
+	<view class="content">
+		<view class="modal-title" wx:if="{{ title.show }}">{{title.title}}</view>
+		<view class="cell" wx:for="{{ data }}" data-index="{{ index }}"  bindtap="handleClickItem" wx:key="{{ index }}">
+			{{ item.title }}
+		</view>
+	</view>
+</view>

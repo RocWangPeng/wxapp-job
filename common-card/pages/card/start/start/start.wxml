@@ -1,0 +1,63 @@
+<i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<i-toast id="toast" />
+<view>
+  <view class="flower" src='http://ii.sinelinked.com/miniProgramAssets/flower.png'></view>
+</view>
+<view class="search-bar">
+  <view class="input-warp">
+    <i-icon size="24" color="#bebebe" type="search" />
+    <input class="input" bindinput="bindKeyInput" placeholder="请输入搜索内容" /> </view>
+  <view class="button-warp">
+    <view class="agent-btn btn" bindtap="search" data-type='person'> 个人 </view>
+    <view class="team-btn btn" bindtap="search" data-type='team'> 团队 </view>
+  </view>
+</view>
+<view class="search-result">
+ <view class="result-warp">
+  <image class='tip-icon' mode="aspectFit" src='{{ tipIcon }}'></image>
+  <text wx:if="{{ resultTipShow }}">{{ resultTip }}</text>
+ </view>
+</view>
+<view class="card-main">
+  <view class="card-flex">
+    <view bindtap="toCard" class="card-item agent-card">
+      <image mode="aspectFit" src='http://ii.sinelinked.com/miniProgramAssets/man.png'></image>
+      <text>我的名片</text>
+    </view>
+    <view bindtap="previewImage" class="qr-code">
+      <image class="qr-code" src="http://ii.sinelinked.com/miniProgramAssets/qr-code.png"></image>
+     
+    </view>
+  </view>
+  <view class="card-flex">
+    <view bindtap="toTeam" class="card-item team-card">
+      <image mode="aspectFit" src='http://ii.sinelinked.com/miniProgramAssets/team.png'></image>
+      <text>我的团队</text>
+    </view>
+    <view bindtap="previewImageTeam" class="qr-code">
+      <image class="qr-code" src="http://ii.sinelinked.com/miniProgramAssets/qr-code.png"></image>
+    </view>
+  </view>
+</view>
+
+<view class='previewImageTeam' bindtap='closePreviewImage' wx:if="{{ previewImageShow }}">
+ <view>
+   <image class="previewImageTeamCode" src="{{ qrCodeUrl }}"></image>
+    <text class='qr-code-tip'>请扫码识别我的名片</text>
+ </view>
+</view>
+
+<view class='previewImageTeam' bindtap='closePreviewImageTeam' wx:if="{{ previewImageTeamShow }}">
+ <view>
+   <image class="previewImageTeamCode" src="{{ qrCodeTeamUrl }}"></image>
+    <text class='qr-code-tip'>请扫码识别团队名片</text>
+ </view>
+</view>
+
+<!-- 个人名片弹框 -->
+<modal show="{{ visibilityCardList }}" data="{{ cardList }}" bind:click="getChooseCard"></modal>
+<!-- 个人团队弹框 -->
+<modal show="{{ visibilityTeamList }}" data="{{ teamList }}" bind:click="getChooseTeamCard"></modal>
+<!-- snow -->
+<view class="snow-mask">
+</view>

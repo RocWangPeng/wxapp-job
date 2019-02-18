@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+		"collection-btn": "../../../../component/collection-btn/index",
+		"i-button": "../../../../dist/button/index",
+		"i-toast": "../../../../dist/toast/index",
+		"i-action-sheet": "../../../../dist/action-sheet/index",
+		"i-modal": "../../../../dist/modal/index",
+		"i-spin": "../../../../dist/spin/index"
+  }
+}

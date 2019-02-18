@@ -1,0 +1,10 @@
+<i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<view class="header">
+  <image class="head-img" src="{{ cardInfo.cardHeadUrl }}"/>
+</view>
+<view class="personSummary center main">
+  <view class="personSummary-title">
+    <text class="jianjie">简介</text>
+  </view>
+ <text class="personSummary-main">{{ cardInfo.cardPersonalProfile  }}</text>
+</view>

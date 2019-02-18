@@ -1,0 +1,246 @@
+.wrap {
+	padding: 0;
+	overflow: hidden;
+	min-height: 77vh;
+	background: #fff;
+	margin-bottom: 170rpx;
+}
+page{
+	background: #f9f9f9;
+}
+.topBar{
+	height: 54rpx;
+	margin: 36rpx auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.topBar .searchBar{
+	background: #ededed;
+	width: 720rpx;
+	border-radius: 34rpx;
+	padding: 0;
+	text-align: center;
+	overflow: hidden;
+}
+.topBar .topMenu {
+	font-size: 26rpx;
+	display: flex;
+	color: #4e8cee;
+	align-items: center;
+	position: relative;
+}
+.menuList{
+	position: absolute;
+	top: 80rpx;
+	left: 0;
+	background: rgba(0,0,0,.6);
+	width: 110rpx;
+	text-align: center;
+	color: #fff;
+	border-radius: 10rpx;
+	z-index: 200;
+}
+.menu-item{
+	line-height: 70rpx;
+	border-bottom: 1rpx solid #fff;
+	font-size: 24rpx;
+}
+.i-swipeout-demo-item{
+    border-bottom:#333 solid 1px;
+}
+.msg-info{
+	display: inline-block;
+	vertical-align: top;
+	word-wrap: break-word; 
+	word-break: normal;
+	width: 86%;
+}
+.msg-name{
+	font-size: 28rpx;
+	display: flex;
+	justify-content: space-between;
+}
+.msg-time{
+	font-size: 22rpx;
+	color: #999;
+}
+.msg-desc{
+	display: block;
+	font-size: 24rpx;
+	color: #666;
+	white-space: pre-line;
+	margin-top: 6rpx;
+	line-height:34rpx;
+}
+.i-swipeout-item{
+	height: 130rpx;
+	background: none!important;
+	position: relative;
+}
+.mark{
+	/* position: absolute; */
+	left: 0;
+	/* top: -90rpx;
+	border: 66rpx solid transparent;
+	border-left-color: #4e8cee;
+	color: #fff; */
+	width: 28rpx;
+	background: #4e8cee;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 14rpx;
+	color: #fff;
+	 writing-mode:tb-rl;  
+  -webkit-writing-mode:vertical-rl;
+  margin-right: 20rpx;
+  text-align: center;
+  justify-content: space-around;
+}
+.mark-txt{
+	/* position: relative;
+	left: -49rpx;
+	top: 28rpx; */
+	font-size: 14rpx;
+	color: #fff;
+}
+/*自定义按钮*/
+.i-swipeout-button-group{
+    height:100%;
+    width:100%;
+	border-radius: 16rpx;
+	display: flex;
+	align-items: center;
+}
+.i-swipeout-button{
+    width:90px;
+	height:100%;
+	vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    background:#2d8cf0;
+    color:#fff;
+    align-items:center;
+}
+.i-swipeout-button.stick{
+	background: #c7c7cd;
+}
+.i-swipeout-button.delete{
+	background: #ff3a30;
+}
+.i-swipeout-button.shielding{
+	background: #ff9d00;
+}
+.head-img{
+	width: 76rpx;
+	height: 76rpx;
+	border-radius: 50%;
+}
+.user-name{
+	font-size: 32rpx;
+	margin-left: 30rpx;
+}
+.content{
+	display: flex;
+	align-items: center;
+	padding-left: 36rpx;
+	box-sizing: border-box;
+}
+
+.i-index-demo,page{
+    width:100%;
+    height:100%;
+}
+.i-index-demo-item{
+    padding:10px;
+    /* border-bottom:#ddd solid 1rpx; */
+    font-size:14px;
+}
+/* remarksModal */
+.remarksModal{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 500;
+	background: rgba(0,0,0,.5);
+}
+.remarks-main{
+	width: 700rpx;
+	background: #FFFFFF;
+	border-radius: 20rpx;
+	box-sizing: border-box;
+	padding: 30rpx 50rpx;
+	padding-top: 20rpx;
+	position: absolute;
+	left: 50%;
+	top: 40%;
+	transform: translate(-50%,-50%);
+}
+.remarks-title{
+	height: 80rpx;
+	line-height: 80rpx;
+	text-align: center;
+	font-size: 30rpx;
+	color: #333;
+	border-bottom: 1rpx solid #e5e5e5;
+}
+
+/* remark */
+.remarksModal .remarkTxt{
+	height: 60rpx;
+	background: #f5f5f5;
+	padding: 0;
+	border-radius: 28rpx;
+	box-sizing: border-box;
+	padding-left: 36rpx;
+	margin-top: 36rpx;
+	margin-bottom: 36rpx;
+}
+.remarkTag{
+	height: 60rpx;
+	display: flex;
+	align-items: center;
+}
+.remarkTagItem{
+	margin-right: 18rpx;
+	border-radius: 18rpx;
+}
+.remarkTag .addremark{
+	padding-left: 10rpx;
+	padding-left: 10rpx;
+	font-size: 20rpx;
+	display: inline-block;
+}
+.remarkBtn{
+	margin-top: 20rpx;
+	display: flex;
+	justify-content: space-between;
+}
+.remarkBtns{
+	width: 220rpx;
+	height: 65rpx !important;
+	line-height: 65rpx !important;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.null{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	min-height: 77vh;
+}
+.no-msg{
+	width: 150rpx;
+	height: 150rpx;
+}
+.null text{
+	font-size: 30rpx;
+	color: #999;
+}

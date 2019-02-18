@@ -1,0 +1,67 @@
+page{
+	background: #f9f9f9;
+}
+.team-joinTip{
+	margin-top: 30rpx;
+	background: #fff;
+}
+.join-list .item{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 148rpx;
+}
+.join-list .item>view{
+	display: flex;
+}
+.head-img{
+	width: 90rpx;
+	height: 90rpx;
+	border-radius: 50%;
+	margin-right: 20rpx;
+}
+.join-list .txt text{
+	display: block;
+	font-size: 30rpx;
+	padding-top: 8rpx;
+}
+.join-list .txt text:last-child{
+	font-size: 22rpx;
+	color: #999;
+}
+.join-list .item{
+	border-bottom: 1rpx solid #e5e5e5;
+}
+.join-list .item:last-child{
+	border-bottom: none;
+}
+.join-list .btn{
+	color: #4e8cee;
+	width: 100rpx;
+	height: 46rpx;
+	border-radius: 8rpx;
+	font-size: 24rpx;
+	text-align: center;
+	line-height: 46rpx;
+}
+.join-list .btn.agree{
+	background: #4e8cee;
+	color: #fff;
+	margin-left: 10rpx;
+}
+
+.null{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	min-height: 90vh;
+}
+.no-msg{
+	width: 150rpx;
+	height: 150rpx;
+}
+.null text{
+	font-size: 30rpx;
+	color: #999;
+}

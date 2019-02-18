@@ -1,0 +1,52 @@
+<view class="center wrap mine-profile">
+	<view class="template-sel">
+		<!-- <view class="tpl-item">
+			<i-icon size="20" type="success" color="#4e8cee" />
+			<image bindtap="previewImageTpl" data-image="http://ii.sinelinked.com/miniProgramAssets/tpl01.jpg" src="http://ii.sinelinked.com/miniProgramAssets/tpl01.jpg"></image>
+		</view> -->
+		
+	</view>
+	<!-- mine-profile -->
+	<view class="profile">
+		<view class="profile-headImg" bindtap="chooseImage">
+			<i-icon class="camera_fill" size="20" color="#4e8cee" type="camera_fill" />
+			<image class="tempFilePaths" src="{{ tempFilePaths }}"></image>
+			<!-- <i-icon wx:else class="mine_fill" color="#e5e5e5" size="75" type="mine_fill" /> -->
+		</view>
+		<form class="profile-input" bindsubmit="formSubmit">
+			<view class="section">
+				<view class="section__title">姓名</view>
+				<input name="cardName" value="{{ cardInfo.cardName }}" placeholder="请输入姓名" />
+			</view>
+			<view class="section">
+				<view class="section__title">手机号码</view>
+				<input name="cardPhone" bindinput="bindKeyInputPhone" value="{{ cardInfo.cardPhone }}" placeholder="请输入手机号码" />
+			</view>
+			<view class="section">
+				<view class="section__title">备注信息</view>
+				<input name="cardRemark" value="{{ cardInfo.cardRemark }}"  placeholder="请输入备注信息" />
+			</view>
+			<view class="section">
+				<view class="section__title">单位</view>
+				<textarea name="cardCompany" auto-height value="{{ cardInfo.cardCompany }}"  placeholder="请输入单位名称" />
+			</view>
+			<view class="section">
+				<view class="section__title">职务</view>
+				<input name="cardDuty" value="{{ cardInfo.cardDuty }}"  placeholder="请输入职务" />
+			</view>
+			<view class="section">
+				<view class="section__title">网址</view>
+				<input name="cardUrl" value="{{ cardInfo.cardUrl }}"  placeholder="请输入网址" />
+			</view>
+			<view class="section">
+				<view class="section__title">邮箱</view>
+				<input name="cardEmail" value="{{ cardInfo.cardEmail }}"  placeholder="请输入邮箱" />
+			</view>
+			<view class="section">
+				<view class="section__title">地址</view>
+				<textarea name="cardAddress" auto-height value="{{ cardInfo.cardAddress }}"  placeholder="请输入地址" />
+			</view>
+			<button form-type="submit" class="submitBtn">立即提交</button>
+		</form>
+	</view>
+</view>

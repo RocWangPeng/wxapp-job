@@ -1,0 +1,21 @@
+<view class="center wrap team-joinTip">
+	<view class="join-list">
+		<view class="null" wx:if="{{ hasMsg }}">
+			<image class="no-msg" src="http://ii.sinelinked.com/miniProgramAssets/no-msg.png"></image>
+			<text>空空如也</text>
+		</view>
+		<view class="item" wx:for="{{ joinList }}" wx:key="{{ index }}">
+			<view>
+				<image class="head-img" src="{{ item.cardHeadUrl || 'http://ii.sinelinked.com/miniProgramAssets/defaultHeadImg.jpg' }}"></image>
+				<view class="txt">
+					<text>{{ item.cardName }}</text>
+					<text>{{ item.cardPhone }}</text>
+				</view>
+			</view>
+			<view class="btns">
+				<text class="btn" data-status="4" data-carpersonalid="{{ item.carPersonalId }}" bindtap="teamapply">拒绝</text>
+				<view class="btn agree" data-status="2" data-carpersonalid="{{ item.carPersonalId }}" bindtap="teamapply">接受</view>
+			</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,29 @@
+page{
+	background: #f9f9f9;
+}
+.mine-introduce{
+	margin-top: 30rpx;
+	margin-bottom: 30rpx;
+	background: #fff;
+}
+.introduce-input{
+	min-height: 40vh;
+}
+.introduce-input textarea{
+	padding-top: 20rpx;
+	font-size: 26rpx;
+	min-height: 40vh;
+}
+.isShow{
+	margin-top: 30rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 30rpx;
+}
+.isShow text{
+	padding-left: 12rpx;
+	font-size: 24rpx;
+	color: #999999;
+	
+}

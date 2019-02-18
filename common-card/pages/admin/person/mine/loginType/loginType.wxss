@@ -1,0 +1,38 @@
+page{
+	background: #f9f9f9;
+}
+
+.mine-loginType{
+	margin-top: 30rpx;
+	margin-bottom: 30rpx;
+	background: #fff;
+}
+.passwordInput{
+	line-height: 100rpx;
+	font-size: 24rpx;
+	border-bottom: 1rpx solid #eee;
+	display: flex;
+	align-items: center;
+	margin-bottom: 20rpx;
+}
+.passWordBox{
+	position: relative;
+}
+.authCodeBox{
+	position: absolute;
+	font-size: 24rpx;
+	color: #4e8dee;
+	right: 60rpx;
+	bottom: 60rpx;
+}
+.title{
+	text-align: center;
+	line-height: 60rpx;
+	font-size: 26rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.title text{
+	padding-left: 10rpx;
+}

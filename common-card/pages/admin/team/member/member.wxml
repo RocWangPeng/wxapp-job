@@ -1,0 +1,31 @@
+ <i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<i-tab-bar fixed current="{{ current }}" bindchange="handleChange">
+	<i-tab-bar-item wx:for="{{ tabBar }}" wx:key="index" key="{{ item.key }}" icon="{{ item.icon }}" current-icon="{{ item.currentIcon }}"
+	 title="{{ item.title }}"></i-tab-bar-item>
+</i-tab-bar>
+<!-- main -->
+<view class="center wrap team-member">
+	<view class="team-title">
+		<view>
+			<i-icon size="20" color="#4e8cee" type="group_fill" />
+			<text>团队人数 : {{ pepoleNum }}</text>
+		</view>
+		<navigator url="/pages/admin/team/joinTip/joinTip">
+			<i-badge dot="{{ hasApply }}" count="0">
+				<i-icon size="20" color="#4e8cee" type="systemprompt_fill" />
+				<text>申请通知</text>
+			</i-badge>
+		</navigator>
+	</view>
+	<!-- list -->
+	<view class="null" wx:if="{{ hasMsg }}">
+		<image class="no-msg" src="http://ii.sinelinked.com/miniProgramAssets/no-msg.png"></image>
+		<text>空空如也</text>
+	</view>
+	<view class="member-list">
+		<view class="item" wx:for="{{ teamlist }}" wx:key="{{ index }}" data-cardid="{{ item.carPersonalId }}" bindtap="toMemberInfo" url="/page/admin/team?title=navigate">
+			<image class="head-img" src="{{ item.cardHeadUrl || 'http://ii.sinelinked.com/miniProgramAssets/defaultHeadImg.jpg' }}"></image>
+			<text>{{ item.cardName }}</text>
+		</view>
+	</view>
+</view>

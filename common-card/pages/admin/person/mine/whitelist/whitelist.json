@@ -1,0 +1,8 @@
+{
+	"usingComponents": {
+		"i-icon": "../../../../../dist/icon/index",
+		"i-input": "../../../../../dist/input/index",
+		"i-button": "../../../../../dist/button/index",
+		"i-swipeout": "../../../../../dist/swipeout/index"
+	}
+}

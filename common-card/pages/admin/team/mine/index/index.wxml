@@ -1,0 +1,38 @@
+ <i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<i-tab-bar fixed current="{{ current }}" bindchange="handleChange">
+	<i-tab-bar-item wx:for="{{ tabBar }}" wx:key="index" key="{{ item.key }}" icon="{{ item.icon }}" current-icon="{{ item.currentIcon }}"
+	 title="{{ item.title }}"></i-tab-bar-item>
+</i-tab-bar>
+<view class="center wrap mine-index">
+	<view class="head-type">
+		<navigator url="/pages/admin/team/mine/profile/profile" class="type-item first">
+			<view>
+				<image class="head-img" src="{{ cardInfo.cardHeadUrl || 'http://ii.sinelinked.com/miniProgramAssets/defaultHeadImg.jpg' }}"></image>
+				<view class="remark">
+					<text class="card-name">{{ cardInfo.cardName }}</text>
+				</view>
+			</view>
+			<i-icon type="enter" size="26" color="#fff" />
+		</navigator>
+	</view>
+	<!-- main -->
+	<view class="mine-index-main">
+		<i-cell-group>
+			<i-cell title="团队简介" is-link url="/pages/admin/team/mine/introduce/introduce">
+				<i-icon size="20" type="barrage" slot="icon" />
+			</i-cell>
+			<i-cell title="团队秀" is-link url="/pages/admin/team/mine/show/show">
+				<i-icon size="20" type="integral" slot="icon" />
+			</i-cell>
+			<i-cell title="转发" is-link  url="/pages/admin/team/mine/forWard/forWard">
+				<i-icon size="20" type="share" slot="icon" />
+			</i-cell>
+			<i-cell title="配置信息" is-link url="/pages/admin/team/mine/setting/setting">
+				<i-icon size="20" type="setup" slot="icon" />
+			</i-cell>
+			<i-cell title="登陆方式" is-link url="/pages/admin/team/mine/loginType/loginType">
+				<i-icon size="20" type="scan" slot="icon" />
+			</i-cell>
+		</i-cell-group>
+	</view>
+</view>

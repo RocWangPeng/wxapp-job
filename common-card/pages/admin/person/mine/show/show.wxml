@@ -1,0 +1,28 @@
+<view class="center wrap mine-show">
+	<image class="show-head-img" src="{{ cardHeadUrl }}"></image>
+	<view class="show-title">
+		<text>个人秀</text>
+	</view>
+	<view class="show-desc">
+		 <input value="{{ showDesc }}" bindinput="bindshowDesc"  placeholder="请输入个人秀简介" />
+	</view>
+	<view class="show-img">
+		<!-- showimg -->
+		<view wx:for="{{ tempFilePaths }}" wx:key="{{ index }}" bindlongpress="deleteImg" data-index = "{{ index }}">
+			<view class="show-img-item">
+				<image class="add-img-icon" src="{{ item }}"></image>
+			</view>
+		</view>
+		<view>
+			<view class="show-img-item add-item-ctrl"  bindtap="chooseImage">
+				<image class="add-img-icon" src="http://ii.sinelinked.com/miniProgramAssets/add-img.png"></image>
+			</view>
+		</view>
+	</view>
+</view>
+<i-button bind:click="formSubmit" type="primary">保存</i-button>
+<view class="isShow" bindtap="isShow">
+	<i-icon type="success_fill" wx:if="{{ isShow == 1 }}" color="#2d8cf0" size="20" />
+	<i-icon type="success" wx:else color="#2d8cf0" size="20" />
+	<text>将个人秀公开展示</text>
+</view>

@@ -1,0 +1,21 @@
+<view class="center wrap mine-setting">
+	<i-cell-group>
+	<i-cell title="允许名片被系统搜索">
+        <i-switch value="{{cardSystemSearchStatus}}" data-name="cardSystemSearchStatus" bind:change="onChange" slot="footer"></i-switch>
+    </i-cell>
+	<i-cell title="展示自己的团队">
+		<i-switch value="{{cardDisplayTeamsStatus}}" data-name="cardDisplayTeamsStatus"  bind:change="onChange" slot="footer"></i-switch>
+	</i-cell>
+	<i-cell title="允许非本团队成员查看详情">
+		<i-switch value="{{cardOthersDetailsStatus}}" data-name="cardOthersDetailsStatus"  bind:change="onChange" slot="footer"></i-switch>
+	</i-cell>
+	<i-cell title="只接受白名单消息">
+		<i-switch value="{{cardWhiteMsgStatus}}" data-name="cardWhiteMsgStatus" bind:change="onChange" slot="footer"></i-switch>
+	</i-cell>
+	</i-cell-group>
+</view>
+<view class="center wrap mine-setting whitelist">
+	<i-cell-group>
+	<i-cell title="白名单" value="{{ whitelistCount }}" link-type="redirectTo" is-link url="/pages/admin/person/mine/whitelist/whitelist?cardId={{ cardId }}"></i-cell>
+	</i-cell-group>
+</view>

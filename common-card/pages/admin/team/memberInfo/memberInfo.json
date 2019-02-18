@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+	  "i-icon": "../../../../dist/icon/index",
+	   "i-input": "../../../../dist/input/index",
+		 "i-spin": "../../../../../dist/spin/index",
+		 "modal": "../../../../component/modal/modal"
+  }
+}

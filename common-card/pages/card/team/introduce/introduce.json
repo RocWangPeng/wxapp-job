@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "nav-agent": "../../../../component/nav-agent/index",
+		"i-spin": "../../../../dist/spin/index"
+  }
+}
+

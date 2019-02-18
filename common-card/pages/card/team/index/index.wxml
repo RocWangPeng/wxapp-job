@@ -1,0 +1,29 @@
+<i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<view class="page index mb-01-style">
+	<collection-btn data="{{ collectionData }}" isCollect="{{ isCollect }}"></collection-btn>
+	<view class="center">
+			<image bindtap="previewImages" src="{{ cardInfo.cardHeadUrl }}" class="head-img"></image>
+			<view class="user-name">
+				<view>{{ cardInfo.cardName }}</view>
+			</view>
+			<view class="team-nav">
+				<!-- <navigator url="/pages/card/team/memberList/memberList?cardId={{ cardInfo.id }}" class="team-nav-item">
+					<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-01.png'></image> 团队成员
+				</navigator> -->
+				<navigator url="/pages/card/team/introduce/introduce?cardId={{ cardInfo.id }}"  class="team-nav-item">
+					<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-02.png'></image> 团队介绍
+				</navigator>
+				<navigator url="/pages/card/team/show/show?cardId={{ cardInfo.id }}"  class="team-nav-item">
+					<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-03.png'></image> 团队秀
+				</navigator>
+			</view>
+			<view class="team-open">
+				<view class="content">
+					<navigator wx:if="{{ cardOthersDetailsStatus == 0 }}" url="/pages/card/team/memberList/memberList?cardId={{ cardInfo.id }}&teamId={{ cardInfo.userId }}">
+						<image class="team-open-yes" src="http://ii.sinelinked.com/miniProgramAssets/team-open-yes.png"></image>
+					</navigator>
+					<image wx:else class="team-open-no" src="http://ii.sinelinked.com/miniProgramAssets/team-open-no.png"></image>
+				</view>
+			</view>
+	</view>
+</view>

@@ -1,0 +1,62 @@
+ <i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<i-tab-bar fixed current="{{ current }}" color="#4e8cee"  bindchange="handleChange">
+	<i-tab-bar-item wx:for="{{ tabBar }}" wx:key="index" key="{{ item.key }}" icon="{{ item.icon }}" current-icon="{{ item.currentIcon }}"
+	 title="{{ item.title }}"></i-tab-bar-item>
+</i-tab-bar>
+<!-- search -->
+<view class="topBar center">
+	<i-input i-class="searchBar" bind:change="serchTeamHandle" value="{{ searchVal }}" placeholder="搜索系统内团队" maxlength="50" />
+	<i-icon size="24" color="#666666" bindtap="searchTip" type="feedback_fill" />
+</view>
+<view class="center wrap searchTeamResult teamResult" wx:if="{{ hasTeam }}">
+	<view wx:for="{{ searchTeamResult }}" wx:key="{{ index }}">
+		<view class="team-head">
+			<button class="joinTeamStyle" data-id="{{ item.userId }}" bindtap="joinTeamHandle">加入团队</button>
+			<image class="head-img" src="{{ item.cardHeadUrl || 'http://ii.sinelinked.com/miniProgramAssets/headImg.jpg' }}"></image>
+			<view class="headInfo">
+				<text class="teamName">{{ item.cardName }}</text>
+				<text class="teamPhone">{{ item.cardPhone }}</text>
+			</view>
+		</view>
+		<view class="teamSubInfo">
+			<view><text class="label">团队人数 </text><text> {{ item.teamNum }}</text></view>
+			<view><text class="label">成立时间 </text><text> {{ item.createTime }}</text></view>
+		</view>
+		<view class="teamDesc">
+			{{ item.cardTeamProfile }}
+		</view>
+		<navigator class="btns to-card" url="/pages/card/team/index/index?cardId={{ item.id }}">
+			<image class="xcx-icon" src="http://ii.sinelinked.com/miniProgramAssets/xcc.png"></image><text>查看名片</text>
+		</navigator>
+	</view>
+</view>
+<!-- main -->
+<view class="wrap center">
+	<view class="team-top-title">
+		<i-icon size="18" color='#4e8cee' type="group_fill" />
+		<text>团队数 : {{ teamCount }}</text>
+	</view>
+	<view class="null" wx:if="{{ hasMsg }}">
+		<image class="no-msg" src="http://ii.sinelinked.com/miniProgramAssets/no-msg.png"></image>
+		<text>空空如也</text>
+	</view>
+	<view class="team-list" wx:for="{{ teamList }}" wx:key="{{ index }}">
+		<view class="team-item">
+			<navigator url="/pages/admin/person/teamInfo/teamInfo?relationId={{ item.relationId }}" hover-class="navigator-hover">
+				<view class="team-item-main">
+					<image class="head-img" src="{{ item.teamHeadImg || 'http://ii.sinelinked.com/miniProgramAssets/defaultHeadImg.jpg'  }}"></image>
+					<text class="user-name">{{ item.teamName }}</text>
+				</view>
+				<i-icon type="enter" size="20" color="#aaaaaa" />
+			</navigator>
+		</view>
+	</view>
+
+</view>
+
+<i-modal visible="{{ visibleJoinTeam }}" bind:ok="enterJoinTeam" bind:cancel="closeJoinTeam">
+    <view>确认是否加入该团队</view>
+</i-modal>
+
+<!-- 个人名片选择弹框 -->
+<modal show="{{ visibilityCardList }}" data="{{ cardList }}" title="{{ title }}" bind:click="getChooseCard"></modal>

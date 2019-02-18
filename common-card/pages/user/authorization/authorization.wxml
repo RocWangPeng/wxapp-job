@@ -1,0 +1,12 @@
+<i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<view class="authorization">
+	<view class="content">
+		<view class="top">
+			<image class="avatar" src="http://ii.sinelinked.com/miniProgramAssets/ltlogo.png"></image>
+			<text>柳条筐名片夹</text>
+		</view>
+		<button class="getUserInfoBtn" wx:if="{{ isScope == 2 }}"  open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">微信授权登录</button>
+	</view>
+</view>
+
+<modal show="{{ visibilityTeamUser }}" title="{{ title }}" data="{{ teamUser }}" bind:click="getChooseCard"></modal>

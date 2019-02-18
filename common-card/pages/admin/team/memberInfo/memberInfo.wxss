@@ -1,0 +1,203 @@
+ /* .teamInfo{
+	margin-top: 30rpx;
+}
+.team-info-title{
+	display: flex;
+	align-items: center;
+}
+.team-info-title .head-img{
+	width: 76rpx;
+	height: 76rpx;
+	border-radius: 50%;
+}
+.team-info-title .user-name{
+	margin-left: 30rpx;
+}
+.team-info-main{
+	padding: 0 30rpx;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.team-info-cell{
+	width: 50%;
+	display: flex;
+	align-items: center;
+	margin-top: 20rpx;
+}
+.team-info-cell text{
+	font-size: 24rpx;
+	margin-left: 10rpx;
+}
+.tean-info-desc{
+	padding-top: 36rpx;
+	box-sizing: border-box;
+	padding-left: 30rpx;
+	padding-right: 30rpx;
+	font-size: 24rpx;
+	line-height: 48rpx;
+}
+.active-card{
+	margin-left: 10rpx;
+	display: flex;
+	align-items: center;
+}
+.active-card .head-img{
+	width: 66rpx;
+	height: 66rpx;
+	border-radius: 50%;
+}
+.active-card .user-name{
+	margin-left: 10rpx;
+}
+.active-card .user-name view:nth-child(1){
+	font-size: 24rpx;
+}
+.active-card .user-name view:nth-child(2){
+	font-size: 20rpx;
+}
+.btn-wrap {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 30rpx;
+	margin-bottom: 30rpx;
+}
+.btn-wrap .btns{
+	width: 180rpx;
+	height: 50rpx;
+	border-radius: 20rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 26rpx;
+}
+.xcx-icon{
+	width: 20rpx;
+	height: 20rpx;
+}
+.btn-wrap .btns.to-card{
+	background: #4e8cee;
+	color: #fff;
+}
+.btn-wrap .btns.to-card{
+	background: #4e8cee;
+	color: #fff;
+}
+.btn-wrap .btns.to-card image{
+	margin-right: 6rpx;
+}
+.btn-wrap .btns.out-team{
+	background: #f75151;
+	color: #fff;
+} 
+ */
+.teamInfo{
+	margin-top: 30rpx;
+	padding-top: 106rpx;
+	box-sizing: border-box;
+	background: url(http://ii.sinelinked.com/miniProgramAssets/top_bg.120ca8f.png) no-repeat top center;
+	background-size: contain;
+}
+
+.head-img{
+	width: 76rpx;
+	height: 76rpx;
+	border-radius: 50%;
+	vertical-align: bottom;
+}
+.head text{
+	font-size: 35rpx;
+	padding-left: 20rpx;
+	display: inline-block;
+}
+.tel{
+	color: #808080;
+	font-size: 30rpx;
+	line-height: 90rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.tel .sendMsg-img{
+	width: 40rpx;
+	height: 40rpx;
+	margin-right: 6rpx;
+}
+.sendMsg{
+	display: flex;
+	align-items: center;
+}
+.line{
+	height: 2rpx;
+	background:#eeeeee ;
+	margin: 18rpx 0;
+}
+.mt0{
+	margin-top: 0;
+}
+.item{
+	line-height: 60rpx;
+	color: #808080;
+	font-size: 30rpx;
+	display: flex;
+	padding-left: 6rpx;
+}
+.item-label{
+	width: 180rpx;
+}
+.item-value{
+	color: #000000;
+}
+.addRole .item-value{
+	display: flex;
+	align-items: center;
+}
+.addRole .item-value image{
+	width: 60rpx;
+	height: 60rpx;
+}
+.addRole .user-name{
+	display: flex;
+	align-items: center;
+	font-size: 24rpx;
+	flex-direction: column;
+	justify-content: space-around;
+	line-height: 30rpx;
+	padding-left: 16rpx;
+}
+.addRole .user-name .remark{
+	font-size: 22rpx;
+}
+.addCardRemark{
+	align-items: center;
+}
+.addCardRemark .item-label{
+	display: flex;
+	align-items: center;
+}
+.btn-wrap{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.btn-wrap .btns{
+	width: 230rpx;
+	height: 66rpx;
+	background: #fff;
+	border: 2rpx solid #49516b;
+	border-radius: 16rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 26rpx;
+	margin: 0;
+}
+.btn-wrap .btns image{
+	width: 20rpx;
+	height: 20rpx;
+}
+.btn-wrap .btns:after{
+	border: none;
+}
+

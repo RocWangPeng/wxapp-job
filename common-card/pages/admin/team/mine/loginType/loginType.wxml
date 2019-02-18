@@ -1,0 +1,24 @@
+<view class="center wrap mine-loginType">
+	<i-radio-group current="{{current}}" bindchange="loginTypeChange">
+		<i-radio position="right" value="自动登陆">
+		</i-radio>
+		<i-radio position="right" value="密码登陆">
+		</i-radio>
+	</i-radio-group>
+</view>
+<view class="title" bindtap="showUpdatePassword">
+	<i-icon type="brush_fill" />
+	<text>修改密码</text>
+</view>
+<view class="center wrap mine-loginType" wx:if="{{ showUpdatePassword }}">
+	<i-panel title="修改密码">
+		<view class="passWordBox" style="padding: 15px;">
+			<input class="passwordInput" value="{{ newPassword }}" bindinput="newPasswordHandle" placeholder="输入新密码" />
+			<input class="passwordInput" value="{{ renewPassword }}" bindinput="renewPasswordHandle"  placeholder="确认新密码" />
+			<input class="passwordInput" value="{{ phone }}" bindinput="phoneHandle"  placeholder="请输入手机号" />
+			<input class="passwordInput" value="{{ verifyCode }}" bindinput="authCodeHandle"  placeholder="验证码" />
+			<view class="authCodeBox" bindtap="getVerifyCode">获取验证码</view>
+		</view>
+	</i-panel>
+</view>
+<i-button bind:click="handleClick"  wx:if="{{ showUpdatePassword }}" type="primary">保存</i-button>

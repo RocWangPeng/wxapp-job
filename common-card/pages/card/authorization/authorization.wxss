@@ -1,0 +1,48 @@
+page{
+	width: 100%;
+	height: 100%;
+	background: #e3e4e9 url('http://ii.sinelinked.com/miniProgramAssets/winter-bg.jpg') no-repeat center center;
+	background-size: 100% 100%;
+}
+.authorization{
+	position: fixed;
+	/* background: #FFF; */
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.content{
+	position: relative;
+	/* background: #FFF; */
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.top{
+	margin-top: 250rpx;
+	text-align: center;
+}
+.avatar{
+	width: 150rpx;
+	height: 150rpx;
+	border-radius: 50%;
+}
+.top text{
+	display: block;
+	font-size: 30rpx;
+	color: #fff;
+}
+.getUserInfoBtn{
+	width: 580rpx;
+	height: 90rpx;
+	background: #4e8cee;
+	color: #fff;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	font-size: 28rpx;
+	line-height: 90rpx;
+	letter-spacing: 3rpx;
+}

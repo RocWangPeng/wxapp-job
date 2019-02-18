@@ -1,0 +1,22 @@
+<view class="center wrap mine-forWard">
+	<view class="forWard-title">
+		<image class="logo-img" src="http://ii.sinelinked.com/lib/img/logo.png"></image>
+		<text>团队名片</text>
+	</view>
+	<view class="forWard-input">
+		 <input placeholder="请输入转发标题" value="{{ cardForwardTitle }}" bindinput="bindshowDesc" />
+	</view>
+	<view class="forWard-img" bindtap="chooseImage">
+		<image class="forWardImg" src="{{ tempFilePaths }}"></image>
+	</view>
+	<view class="forWard-bottom">
+		<image class="xcx-img" src="http://ii.sinelinked.com/miniProgramAssets/xcx.png"></image>
+		<text>小程序</text>
+	</view>
+</view>
+<i-button bind:click="formSubmit" type="primary">保存</i-button>
+
+<view class="public-plate">
+	<i-icon type="prompt_fill" size="18" color="#5e92e3" />
+	<text bindtap="cancleForWard">取消转发封面</text>
+</view>

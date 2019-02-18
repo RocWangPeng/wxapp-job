@@ -1,0 +1,19 @@
+<movable-area  bind:tap="navClose" class="nav nav-agent" style="pointer-events:{{ navStates?'all':'none' }}">
+    <movable-view x="{{ 1000 }}" y="{{ 180 }}" direction="all" class="nav-btn {{ navStates?'nav-item-open':'nav-item-close' }}">
+        <view class="menu-main" bind:tap="navOpen" capture-catch:tap="navOpen">
+            <image class="menu-main-icon" src="http://ii.sinelinked.com/miniProgramAssets/menu-main.png" />
+        </view>
+        <view class="menu-box">
+            <view wx:for="{{ navData }}" data-name="{{ item.name }}" data-goto="{{ item.goto }}" wx:key="{{ index }}" class="nav-item" bind:tap="goTo" >
+                <image class="navIcon" src="{{ item.icon }}" />
+            </view>
+        </view>
+    </movable-view>
+</movable-area>
+
+<i-toast id="toast" />
+
+
+<i-modal visible="{{ visibleTeamChoose }}" show-ok="{{ false }}" show-cancel="{{ false }}">
+  <view class="team-cell" bindtap="teamChooseHandle" data-userId="{{ item.userId }}" wx:for="{{ teamChooseData }}" wx:key="{{ index }}">{{ item.name }}</view>
+</i-modal>

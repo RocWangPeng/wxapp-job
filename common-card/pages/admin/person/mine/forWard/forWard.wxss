@@ -1,0 +1,68 @@
+page{
+	background: #f9f9f9;
+}
+.mine-forWard{
+	margin-top: 30rpx;
+	margin-bottom: 30rpx;
+	padding-bottom: 60rpx;
+	background: #fff;
+}
+.forWard-title{
+	display: flex;
+	align-items: center;
+}
+.forWard-title text{
+	font-size: 24rpx;
+	margin-left: 10rpx;
+}
+.logo-img{
+	width: 37rpx;
+	height: 37rpx;
+}
+.forWardImg{
+	border: 1rpx dashed #666;
+}
+.forWard-input{
+	padding: 16rpx 4rpx;
+}
+.forWard-input input{
+	font-size: 26rpx;
+}
+.forWard-img{
+	background: url('http://ii.sinelinked.com/miniProgramAssets/add-img.png') no-repeat center;
+	background-size: 160rpx 160rpx;
+}
+.xcx-img{
+	width: 36rpx;
+	height: 36rpx;
+}
+.forWard-bottom{
+	padding-top: 20rpx;
+	display: flex;align-items: center;
+}
+.forWard-bottom text{
+	font-size: 26rpx;
+	margin-left: 16rpx;
+}
+.isShow{
+	margin-top: 30rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 30rpx;
+}
+.isShow text{
+	padding-left: 12rpx;
+	font-size: 24rpx;
+	color: #999999;
+}
+.public-plate{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.public-plate text{
+	font-size: 26rpx;
+	padding-left: 10rpx;
+	text-decoration: underline;
+}

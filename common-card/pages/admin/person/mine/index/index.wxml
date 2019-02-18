@@ -1,0 +1,64 @@
+ <i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<i-tab-bar fixed current="{{ current }}" color="#4e8cee"  bindchange="handleChange">
+	<i-tab-bar-item wx:for="{{ tabBar }}" wx:key="index" key="{{ item.key }}" icon="{{ item.icon }}" current-icon="{{ item.currentIcon }}"
+	 title="{{ item.title }}"></i-tab-bar-item>
+</i-tab-bar>
+<view class="center wrap mine-index">
+	<view class="head-type">
+		<!-- <view wx:for="{{ cardList }}" data-index="{{ index }}" data-cardid="{{ item.id }}" bindtap="chooseDefaultCard" wx:key="{{ index }}" class="type-item {{ index == activeIndex ? 'first': '' }}">
+			<image class="head-img" src="{{ item.cardHeadUrl }}"></image>
+			<view class="remark">
+				<text class="card-name">{{ item.cardName || '' }}</text>
+				<view class="remark-txt">{{ item.remark || '' }}</view>
+			</view>
+		</view> -->
+		
+		<view class="type-item main">
+			<image class="head-img" src="{{ cardInfo.cardHeadUrl }}"></image>
+			<view class="remark">
+				<text class="card-name">{{ cardInfo.cardName || '' }}</text>
+				<view class="remark-txt">{{ cardInfo.remark || '' }}</view>
+			</view>
+		</view>
+
+		<view class="type-item" bindtap="toMoreCard">
+			<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/add.png"></image>
+			<view class="remark">
+				<text class="card-name">更多</text>
+			</view>
+		</view>
+	</view>
+	<!-- main -->
+	<view class="mine-index-main">
+		<i-cell-group>
+			<i-cell title="个人信息" is-link url="/pages/admin/person/mine/profile/profile?cardId={{ activeCardId }}">
+				<i-icon size="20" type="businesscard" slot="icon"  />
+			</i-cell>
+			<i-cell title="个人简介" is-link url="/pages/admin/person/mine/introduce/introduce?cardId={{ activeCardId }}">
+				<i-icon size="20" type="barrage" slot="icon" />
+			</i-cell>
+			<i-cell title="个人秀" is-link url="/pages/admin/person/mine/show/show?cardId={{ activeCardId }}">
+				<i-icon size="20" type="integral" slot="icon" />
+			</i-cell>
+			<i-cell title="转发" is-link  url="/pages/admin/person/mine/forWard/forWard?cardId={{ activeCardId }}">
+				<i-icon size="20" type="share" slot="icon" />
+			</i-cell>
+			<i-cell title="企业" is-link url="/pages/admin/person/mine/company/company?cardId={{ activeCardId }}">
+				<i-icon size="20" type="homepage" slot="icon" />
+			</i-cell>
+			<i-cell title="配置信息" is-link url="/pages/admin/person/mine/setting/setting?cardId={{ activeCardId }}">
+				<i-icon size="20" type="setup" slot="icon" />
+			</i-cell>
+		</i-cell-group>
+	</view>
+</view>
+<view class="center wrap mine-index">
+	<i-cell-group>
+		<i-cell title="登陆方式" is-link url="/pages/admin/person/mine/loginType/loginType">
+			<i-icon size="20" type="scan" slot="icon" />
+		</i-cell>
+		<i-cell title="黑名单" is-link url="/pages/admin/person/mine/blacklist/blacklist">
+			<i-icon size="20" type="delete" slot="icon" />
+		</i-cell>
+	</i-cell-group>
+</view>

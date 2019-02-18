@@ -1,0 +1,11 @@
+<view class="center wrap mine-introduce">
+	<view class="introduce-input">
+		 <textarea value="{{ teamInfo.cardTeamProfile }}" bindinput="bindshowDesc" auto-height placeholder="请输入简介内容" />
+	</view>
+</view>
+<i-button bind:click="formSubmit" type="primary">保存</i-button>
+<view class="isShow" bindtap="isShow">
+	<i-icon type="success_fill" wx:if="{{ isShow == 1 }}" color="#2d8cf0" size="20" />
+	<i-icon type="success" wx:else color="#2d8cf0" size="20" />
+	<text>将团队秀公开展示</text>
+</view>

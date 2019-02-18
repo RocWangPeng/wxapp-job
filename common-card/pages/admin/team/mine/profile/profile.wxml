@@ -1,0 +1,20 @@
+<view class="center wrap mine-profile">
+	<!-- mine-profile -->
+	<view class="profile">
+		<view class="profile-headImg" bindtap="chooseImage">
+			<i-icon class="camera_fill" size="20" color="#4e8cee" type="camera_fill" />
+			<image class="tempFilePaths" src="{{ teamInfo.cardHeadUrl || 'http://ii.sinelinked.com/miniProgramAssets/defaultHeadImg.jpg' }}"></image>
+		</view>
+		<form class="profile-input" bindsubmit="formSubmit">
+			<view class="section">
+				<view class="section__title">团队名称</view>
+				<input name="cardName" value="{{ teamInfo.cardName }}" placeholder="请输入姓名" />
+			</view>
+			<view class="section">
+				<view class="section__title">手机号码</view>
+				<input name="cardPhone" bindinput="bindKeyInputPhone" value="{{ teamInfo.cardPhone }}" placeholder="请输入手机号码" />
+			</view>
+			<button form-type="submit" class="submitBtn">立即提交</button>
+		</form>
+	</view>
+</view>

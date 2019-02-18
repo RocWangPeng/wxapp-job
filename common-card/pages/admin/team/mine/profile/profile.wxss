@@ -1,0 +1,79 @@
+page{
+	background: #f9f9f9;
+}
+.mine-profile{
+	margin-top: 30rpx;
+	margin-bottom: 30rpx;
+	background: #fff;
+}
+.template-sel{
+	padding-top: 10rpx;
+	display: flex;
+}
+.tpl-item{
+	display: flex;
+	width: 33.333%;
+	align-items: center;
+}
+.tpl-item image{
+	width: 66rpx;
+	height: 116rpx;
+	margin-left: 20rpx;
+}
+/* profile */
+.profile{
+	padding-top: 20rpx;
+}
+.profile-headImg{
+	width: 130rpx;
+	height: 130rpx;
+	margin:36rpx auto;
+	position: relative;
+}
+.mine_fill,.camera_fill{
+	position: absolute;
+}
+.mine_fill{
+	left: 0;
+	top: 0;
+}
+.camera_fill{
+	right: 0;
+	bottom: 6rpx;
+	z-index: 6;
+}
+.tempFilePaths{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.input-cell{
+	border-bottom: 1rpx solid #e5e5e5;
+}
+/* section-input */
+.section{
+	padding-left: 36rpx;
+	padding-right: 36rpx;
+	box-sizing: border-box;
+	height:80rpx;
+	display: flex;
+	align-items: center;
+	font-size: 26rpx;
+	border-bottom: 1rpx solid #e5e5e5;
+}
+.section input,.section__title{
+	font-size: 26rpx;
+	height: 30rpx;
+	line-height: 30rpx;
+}
+.section__title{
+	width: 160rpx;
+	color: #444;
+}
+.submitBtn{
+	margin-top: 40rpx;
+	margin-bottom: 20rpx;
+	font-size: 32rpx;
+	background:#4e8cee;
+	color: #fff;
+}

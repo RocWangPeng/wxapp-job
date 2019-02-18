@@ -1,0 +1,45 @@
+.modal{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.5);
+	left: 0;
+	top: 0;
+	transition: .2s opacity;
+	transform: scale(0);
+	opacity: 0;
+	z-index: 100;
+}
+.show{
+	opacity: 1;
+	transform: scale(1);
+}
+.modal-title{
+	text-align: center;
+	line-height: 60rpx;
+	color: #4e8cee;
+	padding-top: 30rpx;
+}
+.content{
+	width: 660rpx;
+	position: absolute;
+	left: 50%;
+	top: 45%;
+	transform: translate(-50%,-50%);
+	background: #FFFFFF;
+	border-radius: 18rpx;
+	box-sizing: border-box;
+	font-size: 28rpx;
+	overflow: hidden;
+}
+.cell{
+	padding: 0 40rpx;
+	line-height: 100rpx;
+	color: #000000;
+	border-bottom: 1rpx solid #eaeaea;
+	background: rgba(0,0,0,0);
+	transition: .2s;
+}
+.cell:hover{
+	background: rgba(0,0,0,.05);
+}

@@ -1,0 +1,31 @@
+<!-- search -->
+<view class="topBar center">
+	<i-input i-class="searchBar" bind:change="searchValHandle" value="{{ searchVal }}" maxlength="50" placeholder="搜索名片" />
+</view>
+<!-- main -->
+<view class="center wrap">
+	<view class="i-index-demo">
+		<view class="null" wx:if="{{ hasMsg }}">
+			<image class="no-msg" src="http://ii.sinelinked.com/miniProgramAssets/no-msg.png"></image>
+			<text>空空如也</text>
+		</view>
+		<i-index height="100%" bind:change="onChange">
+			<i-index-item wx:for="{{ citiesData }}" wx:for-index="index" wx:key="{{index}}" wx:for-item="item" name="{{item.key}}" >
+				<view class="i-index-demo-item" wx:for="{{item.list}}" wx:for-index="index" wx:key="{{index}}" wx:for-item="item" wx:if="{{ item.type == 1 }}"  data-infotype="{{ item.type }}" data-cardtype="{{ item.cardType }}" data-cardid="{{ item.cardId }}" data-id="{{ item.id }}" bindtap="chooseHandle">
+					<i-swipeout i-class="i-swipeout-item" operateWidth="{{0}}" toggle="{{toggle}}">
+						<view slot="content" class="content">
+							<view class="mark"><text class="mark-txt">{{ item.cardType }}</text></view>
+							<image class="head-img" src="{{ item.cardHeadUrl }}"></image>
+							<text class="user-name">{{item.name}} <text wx:if="{{ item.remark }}">( {{ item.remark }} )</text> </text>
+						</view>
+					</i-swipeout>
+				</view>
+			</i-index-item>
+		</i-index>
+	</view>
+</view>
+
+<i-modal visible="{{ showModal }}" bind:ok="enterHandle" bind:cancel="closeHandle">
+    <view>确认将此用户加入{{ type == 'white' ?'白':'黑' }}名单</view>
+</i-modal>
+

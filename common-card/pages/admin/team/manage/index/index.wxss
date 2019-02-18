@@ -1,0 +1,33 @@
+page{
+	background: #f2f2f2;
+}
+.team-manage{
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0 40rpx;
+}
+.menu-item{
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 80rpx;
+}
+.menu-item .item{
+	width: 270rpx;
+	height: 270rpx;
+	background: #FFFFFF;
+	border-radius: 26rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.menu-item .item image{
+	width: 147rpx;
+	height: 111rpx;
+}
+.menu-item .item text{
+	line-height: 60rpx;
+	font-size: 32rpx;
+}

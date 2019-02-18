@@ -1,0 +1,98 @@
+{
+  "pages": [
+    "pages/card/start/start/start",
+    "component/modal/modal",
+    "pages/card/authorization/authorization"
+  ],
+  "subpackages": [
+    {
+      "root": "pages/admin/person",
+      "pages": [
+        "msg/msg",
+        "cardcase/cardcase",
+        "team/team",
+        "teamInfo/teamInfo",
+        "mine/index/index",
+        "mine/moreCard/moreCard",
+        "mine/profile/profile",
+        "mine/introduce/introduce",
+        "mine/show/show",
+        "mine/forWard/forWard",
+        "mine/setting/setting",
+        "mine/whitelist/whitelist",
+        "mine/blacklist/blacklist",
+        "mine/cardcase/cardcase",
+        "mine/company/company",
+        "mine/loginType/loginType"
+      ]
+    },
+    {
+      "root": "pages/admin/team",
+      "pages": [
+        "member/member",
+        "memberInfo/memberInfo",
+        "joinTip/joinTip",
+        "sms/sms",
+        "manage/index/index",
+        "manage/sms/sms",
+				"manage/smsHistory/smsHistory",
+        "mine/index/index",
+        "mine/profile/profile",
+        "mine/forWard/forWard",
+        "mine/show/show",
+        "mine/introduce/introduce",
+        "mine/setting/setting",
+        "mine/loginType/loginType"
+      ]
+    },
+    {
+      "root": "pages/admin/cardcase",
+      "pages": [
+        "cardcase/cardcase"
+      ]
+    },
+    {
+      "root": "pages/card/person",
+      "pages": [
+        "index/index",
+        "introduce/introduce",
+        "show/show",
+        "company/company",
+        "msg/msg",
+        "gy/gy"
+      ]
+    },
+    {
+      "root": "pages/card/team",
+      "pages": [
+        "index/index",
+        "introduce/introduce",
+        "show/show",
+        "company/company",
+        "msg/msg",
+        "memberList/memberList"
+      ]
+    },
+    {
+      "root": "pages/user",
+      "pages": [
+        "person/login/login",
+        "person/register/register",
+        "team/login/login",
+        "team/register/register",
+        "authorization/authorization",
+        "protocol/protocol"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3d6cc8",
+    "navigationBarTitleText": "柳条筐子",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#3d6cc8"
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx0ff73d8248085825"
+  ]
+}

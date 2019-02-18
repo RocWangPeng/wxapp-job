@@ -1,0 +1,11 @@
+.wrap{
+	box-shadow: 0 0 10rpx rgba(0,0,0,.2);
+	border-radius: 20rpx;
+	box-sizing: border-box;
+	padding: 18rpx 30rpx;
+}
+.center{
+	width: 716rpx;
+	margin: 0 auto;
+	position: relative;
+}

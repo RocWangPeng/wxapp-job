@@ -1,0 +1,25 @@
+ <i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<i-tab-bar fixed current="{{ current }}" bindchange="handleChange">
+	<i-tab-bar-item wx:for="{{ tabBar }}" wx:key="index" key="{{ item.key }}" icon="{{ item.icon }}" current-icon="{{ item.currentIcon }}"
+	 title="{{ item.title }}"></i-tab-bar-item>
+</i-tab-bar>
+<view class="team-manage">
+	<!-- <view class="menu-item">
+		<view class="item">
+			<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/hongbao.png"></image>
+			<text>红包</text>
+		</view>
+	</view> -->
+	<navigator  url="/pages/admin/team/manage/sms/sms" class="menu-item">
+		<view class="item">
+			<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/tongzhi.png"></image>
+			<text>通知</text>
+		</view>
+	</navigator>
+	<!-- <view class="menu-item">
+		<view class="item">
+			<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/hongbao.png"></image>
+			<text>红包</text>
+		</view>
+	</view> -->
+</view>

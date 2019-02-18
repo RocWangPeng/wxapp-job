@@ -1,0 +1,86 @@
+ <i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<!-- <view class="wrap center teamInfo">
+	<view class="team-info-title">
+		<image class="head-img" src="{{ teamDetail.teamCardHeadUrl }}"></image>
+		<text class="user-name">{{ teamDetail.teamCardName }}</text>
+	</view>
+	<view class="team-info-main">
+		<view class="team-info-cell">
+			<i-icon color="#4e8cee" size="18" type="customerservice_fill" /><text>{{ teamDetail.teamCardPhone }}</text>
+		</view>
+		<view class="team-info-cell">
+			<i-icon color="#4e8cee" size="18" type="label_fill" />
+			<i-input value="{{ teamDetail.remark }}" bind:blur="updatePersonToTeamRemark" bind:change="remarkHandle" placeholder="设置备注" maxlength="50" />
+		</view>
+		<view class="team-info-cell">
+			<i-icon color="#4e8cee" size="18" type="time_fill" /><text>{{ teamDetail.addTime }}</text>
+		</view>
+		<view class="team-info-cell">
+			<i-icon color="#4e8cee" size="18" type="businesscard_fill" />
+			<view class="active-card" bindtap="getCardList">
+				<image class="head-img" src="{{ teamDetail.personCardHead}}"></image>
+				<view class="user-name">
+					<view>{{ teamDetail.cardPersonName }}</view>
+					<view>{{ teamDetail.remark || '无' }}</view>
+				</view>
+			</view>
+		</view>
+		<view class="team-info-cell">
+			<i-icon color="#4e8cee" size="18" type="group_fill" /><text>{{ teamDetail.teamNum }}</text>
+		</view>
+	</view>
+	<view class="tean-info-desc">
+		{{ teamDetail.cardTeamProfile || '无' }}
+	</view>
+	<view class="btn-wrap">
+		<navigator url="/pages/card/team/index/index?cardId={{ teamDetail.teamCardId }}" open-type="redirect" class="btns to-card"><image class="xcx-icon" src="http://ii.sinelinked.com/miniProgramAssets/xcc.png"></image><text>查看名片</text></navigator>
+		<view class="btns out-team" bindtap="quitTeam">退出团队</view>
+	</view>
+</view> -->
+<view class="wrap center teamInfo">
+	<view class="head">
+		<image class="head-img" src="{{ teamDetail.teamCardHeadUrl }}"></image>
+		<text class="user-name">{{ teamDetail.teamCardName }}</text>
+	</view>
+	<view class="tel">
+		TEL: {{ teamDetail.teamCardPhone }}
+	</view>
+	<view class="line mt0"></view>
+	<view class="item">
+		<view class="item-label">加入时间</view>
+		<view class="item-value">{{ teamDetail.addTime }}</view>
+	</view>
+	<view class="item">
+		<view class="item-label">团队人数</view>
+		<view class="item-value">{{ teamDetail.teamNum }}</view>
+	</view>
+	<view class="item">
+		<view class="item-label">创建时间</view>
+		<view class="item-value">{{ teamDetail.createTime }}</view>
+	</view>
+	<view class="line"></view>
+	<view class="item addRole">
+		<view class="item-label">切换身份</view>
+		<view class="item-value" bindtap="getCardList">
+			<image class="head-img" src="{{ teamDetail.personCardHead }}"></image>
+			<view class="user-name">
+				<view>{{ teamDetail.cardPersonName }}</view>
+				<view class="remark">{{ teamDetail.remark || ' ' }}</view>
+			</view>
+		</view>
+	</view>
+	<view class="line"></view>
+	<view class="item addCardRemark">
+		<view class="item-label">名片备注</view>
+		<view class="item-value">
+			<i-input value="{{ teamDetail.remark }}" bind:blur="updatePersonToTeamRemark" bind:change="remarkHandle" placeholder="设置备注" maxlength="50" />
+		</view>
+	</view>
+	<view class="line"></view>
+	<view class="btn-wrap">
+		<navigator url="/pages/card/team/index/index?cardId={{ teamDetail.teamCardId }}" open-type="redirect" class="btns to-card"><image class="xcx-icon" src="http://ii.sinelinked.com/miniProgramAssets/xcc.png"></image><text>查看名片</text></navigator>
+		<button class="btns out-team" bindtap="quitTeam">退出团队</button>
+	</view>
+</view>
+<!-- 个人名片选择弹框 -->
+<modal show="{{ visibilityCardList }}" data="{{ cardList }}" title="{{ title }}" bind:click="getChooseCard"></modal>

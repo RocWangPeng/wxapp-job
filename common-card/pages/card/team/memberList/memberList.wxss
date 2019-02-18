@@ -1,0 +1,73 @@
+/* pages/member-list/member-list.wxss */
+page{
+	width: 100%;
+	min-height: 100vh;
+	color: #333;
+	background:#f5efe1 url('http://ii.sinelinked.com/miniProgramAssets/bg-mb-01.jpg') no-repeat;
+	background-size: contain;
+	box-sizing: border-box;
+}
+.center {
+	width: 668rpx;
+	margin: 0 auto;
+}
+
+.member-list {
+	padding-top: 50rpx;
+	display: flex;
+	/* justify-content: space-between; */
+	flex-wrap: wrap;
+}
+
+.member-item {
+	text-align: center;
+	margin-bottom: 20rpx;
+	width: 25%;
+}
+
+.member-item image {
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 50%
+}
+
+.member-item text {
+	display: block;
+	color: #666666;
+	font-size: 22rpx;
+}
+
+.searchBar {
+	width: 406rpx;
+	font-size: 24rpx;
+	margin: 90rpx auto;
+	height: 60rpx;
+	border-radius: 40rpx;
+	border: 1rpx solid #f6f6f6;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-sizing: border-box;
+	padding-left: 20rpx;
+	margin-left: 160rpx;
+}
+
+page {
+	min-height: 100vh;
+}
+
+.searchBar input {
+	box-sizing: border-box;
+	padding-left: 36rpx;
+}
+
+.searchBtn {
+	width: 120rpx;
+	border-radius: 40rpx;
+	background: #3d6cc8;
+	color: #fff;
+	text-align: center;
+	height: 60rpx;
+	line-height: 60rpx;
+
+}

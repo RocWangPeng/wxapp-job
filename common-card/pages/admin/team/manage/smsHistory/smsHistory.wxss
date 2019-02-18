@@ -1,0 +1,21 @@
+.center{
+	margin-top: 30rpx;
+}
+.info{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 24rpx;
+}
+.item{
+	border-bottom: 1rpx solid #ccc;
+	font-size: 26rpx;
+	padding-bottom: 26rpx;
+}
+.item .info-tag{
+	color: #4e8cee;
+	border: 1rpx solid #4e8cee;
+	text-align: center;
+	padding: 2rpx 4rpx;
+	border-radius: 8rpx;
+}

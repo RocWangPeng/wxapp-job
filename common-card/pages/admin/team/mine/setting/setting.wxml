@@ -1,0 +1,13 @@
+<view class="center wrap mine-setting">
+	<i-cell-group>
+	<i-cell title="允许本团队被系统搜索">
+        <i-switch value="{{cardSystemSearchStatus}}" data-name="cardSystemSearchStatus" bind:change="onChange" slot="footer"></i-switch>
+    </i-cell>
+	<i-cell title="允许团队成员展示团队名片">
+		<i-switch value="{{cardDisplayTeamsStatus}}" data-name="cardDisplayTeamsStatus"  bind:change="onChange" slot="footer"></i-switch>
+	</i-cell>
+	<i-cell title="允许非本团队成员查看详情">
+		<i-switch value="{{cardOthersDetailsStatus}}" data-name="cardOthersDetailsStatus"  bind:change="onChange" slot="footer"></i-switch>
+	</i-cell>
+	</i-cell-group>
+</view>

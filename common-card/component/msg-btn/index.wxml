@@ -1,0 +1,3 @@
+<view class="msg-btn" bind:tap="ToMsg">
+    <image src="http://ii.sinelinked.com/miniProgramAssets/msg-btn.jpg" />
+</view>

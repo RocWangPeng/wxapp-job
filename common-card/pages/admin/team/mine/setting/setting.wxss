@@ -1,0 +1,12 @@
+page{
+	background: #f9f9f9;
+}
+.mine-setting{
+	margin-top: 30rpx;
+	margin-bottom: 30rpx;
+	padding-bottom: 60rpx;
+	background: #fff;
+}
+.whitelist{
+	padding-bottom: 0;
+}

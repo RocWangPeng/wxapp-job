@@ -1,0 +1,82 @@
+/* pages/agent/msg/msg.wxss */
+.top_bg_wap {
+	width: 100%;
+	height: 444rpx;
+	background: url('http://ii.sinelinked.com/miniProgramAssets/top_bg.png') no-repeat;
+	background-size: cover;
+	position: relative;
+	overflow: hidden;
+}
+.main{
+	width: 684rpx;
+	/* height: 770rpx; */
+	margin: 0 auto;
+	margin-top: -354rpx;
+	border-radius: 18rpx;
+	background: #fff;
+	position: relative;
+	box-shadow: 0 0 16rpx rgba(0,0,0,.1);
+}
+.main_title{
+	display: block;text-align: center;
+	font-size: 34rpx;
+	font-weight: bold;
+	color: #3b6cc8;
+	padding: 28rpx 0;
+}
+.filed_box{
+	width: 570rpx;
+	margin: 0 auto;
+	font-size: 24rpx;
+	box-sizing: border-box;
+	padding-bottom: 40rpx;
+}
+.fleledInput{
+	display: block;
+	width: 100%;	
+	border: 1rpx solid #d2d2d2;
+	box-sizing: border-box;
+	padding-left: 24rpx;
+	padding-right: 24rpx;
+	height: 80rpx;
+	line-height: 80rpx;
+	margin-bottom: 44rpx;
+	border-radius: 8rpx;
+	color: #7f7e7e;
+}
+.authCode{
+	box-sizing: border-box;
+	/* padding-left: 24rpx; */
+	height: 80rpx;
+	line-height: 80rpx;
+	flex: 2;
+}
+.textarea{
+	width: 100%;	
+	padding: 24rpx;
+	height: 210rpx;
+	border: 1rpx solid #d2d2d2;
+	box-sizing: border-box;
+	margin-bottom: 44rpx;
+	border-radius: 8rpx;
+}
+.resultCity{
+	height: 100%;
+}
+.code{
+	display: flex;
+	justify-content: space-between;
+}
+.clickNo{
+	pointer-events: none;
+}
+.sendCode{
+	color: #3d6cc8;
+	flex: 1;
+	text-align: center;
+}
+button[type=warn]{
+	background: #3d6cc8;
+}
+/** wxss **/
+/** 修改button默认的点击态样式类**/

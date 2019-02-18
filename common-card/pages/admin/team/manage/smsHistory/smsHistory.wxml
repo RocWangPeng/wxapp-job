@@ -1,0 +1,17 @@
+<view class="center wrap">
+	<view class="list">
+		<view class="item" wx:for="{{ msgData }}" wx:key="{{ index }}">
+			<text>
+				{{ item.msgContent }}
+			</text>
+			<view class="info">
+				<view class="info-tag">
+					团队消息
+				</view>
+				<view class="time">
+					{{ item.createTime }}
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

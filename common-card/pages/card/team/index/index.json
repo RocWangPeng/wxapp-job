@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "msg-btn": "../../../../component/msg-btn/index",
+		"i-button": "../../../../dist/button/index",
+		"i-spin": "../../../../dist/spin/index",
+		"collection-btn": "../../../../component/collection-btn/index"
+  }
+}

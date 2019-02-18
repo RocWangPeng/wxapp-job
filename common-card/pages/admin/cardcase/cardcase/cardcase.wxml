@@ -1,0 +1,82 @@
+<!-- <i-tab-bar fixed current="{{ current }}" bindchange="handleChange">
+	<i-tab-bar-item wx:for="{{ tabBar }}" wx:key="index" key="{{ item.key }}" icon="{{ item.icon }}" current-icon="{{ item.currentIcon }}"
+	 title="{{ item.title }}"></i-tab-bar-item>
+</i-tab-bar> -->
+<!-- search -->
+<navigator class="banner" url="/pages/card/person/gy/gy">
+	<image src="http://ii.sinelinked.com/miniProgramAssets/gy03.png"></image>
+</navigator>
+<view class="topBar center">
+	<i-input i-class="searchBar" bind:change="searchValHandle" value="{{ searchVal }}" maxlength="50" placeholder="搜索名片" />
+	<view class="merge_box">
+		<button class="merge" bindtap="showAuthTip">
+			合并
+		</button>
+	</view>
+</view>
+<!-- main -->
+<view class="center wrap">
+
+	<view class="i-index-demo">
+		<view class="null" wx:if="{{ hasMsg }}">
+			<image class="no-msg" src="http://ii.sinelinked.com/miniProgramAssets/no-msg.png"></image>
+			<text>空空如也</text>
+		</view>
+		<i-index height="100%" bind:change="onChange">
+			<i-index-item wx:for="{{ citiesData }}" wx:for-index="index" wx:key="{{index}}" wx:for-item="item" name="{{item.key}}" >
+				<view class="i-index-demo-item" wx:for="{{item.list}}" wx:for-index="index" wx:key="{{index}}" wx:for-item="item" data-cardtype="{{ item.cardType }}"  data-type="{{ item.type }}" data-id="{{ item.cardId }}" bindtap="toCard">
+					<i-swipeout i-class="i-swipeout-item" operateWidth="{{180}}" toggle="{{toggle}}">
+						<view slot="content" class="content">
+							<view class="mark">{{ item.cardType }}</view>
+							<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/headImg.jpg"></image>
+							<text class="user-name">{{item.name}} <text wx:if="{{ item.remark }}">( {{ item.remark }} )</text> </text>
+						</view>
+						<view slot="button" class="i-swipeout-button-group">
+							<view slot="button" class="i-swipeout-button-group">
+								<view class="i-swipeout-button delete" data-id="{{ item.id }}"  catchtap="delete">删除</view>
+							</view>
+						</view>
+					</i-swipeout>
+				</view>
+			</i-index-item>
+		</i-index>
+	</view>
+	
+</view>
+<view class="banner banner-bottom" url="/pages/card/person/gy/gy">
+	<image src="http://ii.sinelinked.com/mobile/agent/static/img/reg_welfare.880640a.jpg"></image>
+</view>
+<!-- 删除确认框 -->
+<i-modal title="删除确认" visible="{{ visibleDel }}" actions="{{ actionsDel }}" bind:click="delHandle">
+    <view>确认是否删除此名片</view>
+</i-modal>
+<!-- merge -->
+<!-- <view class="merge_box">
+	<button class="getUserInfoBtn" wx:if="{{ isScope == 2 }}"  open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">微信授权登录</button>
+	<button class="merge" bindtap="merge">
+		一键合并
+	</button>
+</view> -->
+
+<!-- <view class="public-plate">
+	<i-icon type="prompt_fill" size="18" color="#5e92e3" />
+	<text bindtap="cancleForWard">将当前用户在所有平台应用下收藏的名片进行合并展示</text>
+</view> -->
+
+<!-- 授权弹框 -->
+<view class="authModal" wx:if="{{ visibleAuthModal }}">
+	<view class="authModalContent">
+		<view class="authMain">
+			<text class="authMainTxt">是否将当前用户在所有平台应用下收藏的名片进行合并展示</text>
+			<view class="authMainBtn">
+				<view class="btns" bindtap="cancelAuth">
+					取消
+				</view>
+				<button class="getUserInfoBtn" wx:if="{{ isScope == 2 }}"  open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">微信授权登录</button>
+				<view class="btns" bindtap="enterAuth">
+					确认
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

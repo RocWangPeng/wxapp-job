@@ -1,0 +1,79 @@
+
+.mine-index{
+	margin-top: 30rpx;
+	padding: 0;
+	overflow: hidden;
+}
+.mine-index .head-type{
+	height: 170rpx;
+	display: flex;
+	flex-wrap: wrap;
+}
+.mine-index .main.type-item{
+	flex: 3;
+	display: flex;
+	flex-direction: row;
+}
+.mine-index .main.type-item .remark{
+	margin-left: 20rpx;
+}
+.mine-index .main.type-item .head-img{
+	width: 100rpx;
+	height: 100rpx;
+}
+.mine-index .main.type-item .card-name{
+	font-size: 32rpx;
+}
+
+.mine-index .type-item{
+	flex: 1;
+	background: #4e8cee;
+	border-radius: 18rpx;
+	box-shadow: 0 0 16rpx rgba(0,0,0,.5);
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+}
+.mine-index .type-item .remark-txt{
+	display: none;
+	
+}
+.mine-index .type-item.first{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	flex: 2;
+	transition: .3s;
+}
+.mine-index .type-item.first .head-img{
+	width: 100rpx;
+	height: 100rpx;
+}
+.mine-index .type-item.first .card-name{
+	font-size: 32rpx;
+}
+.mine-index .type-item.first .remark-txt{
+	display: block;
+	font-size: 20rpx;
+	opacity: .8;
+}
+.type-item .head-img{
+	border:4rpx solid #fff;
+	border-radius: 50%;
+	width: 64rpx;
+	height: 64rpx;
+}
+.mine-index .type-item .card-name{
+	font-size: 22rpx;
+}
+.mine-index .type-item .remark-txt{
+	font-size: 18rpx;
+	opacity: .8;
+}
+.mine-index-main{
+	margin-top: 20rpx;
+}

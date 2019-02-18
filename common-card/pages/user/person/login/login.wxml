@@ -1,0 +1,22 @@
+<view class="logo">
+	<image src="http://ii.sinelinked.com/miniProgramAssets/ltkz.png"></image>
+</view>
+<view class="main">
+	<view class="title">帐号登录</view>
+	<view id="form-wrap">
+		<form bindsubmit="formSubmit">
+			<view class="form-item">
+				<input name="phone" placeholder="请输入您的手机号" type="number" />
+			</view>
+			<view class="form-item">
+				<input name="password" placeholder="请输入您的登陆密码" type="password" />
+			</view>
+			<button form-type="submit" class="submit">立即登录</button>
+		</form>
+	</view>
+	<!-- <view class="bottom">
+		<navigator url="/pages/user/person/register/register" class="toReginster">
+			注册帐号
+		</navigator>
+	</view> -->
+</view>

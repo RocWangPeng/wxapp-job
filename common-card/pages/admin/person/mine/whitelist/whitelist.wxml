@@ -1,0 +1,48 @@
+<view class="center wrap mine-whitelist">
+	<view class="null" wx:if="{{ hasMsg }}">
+		<image class="no-msg" src="http://ii.sinelinked.com/miniProgramAssets/no-msg.png"></image>
+		<text>空空如也</text>
+	</view>
+	<i-swipeout wx:if="{{ item.id !== '0000001' }}" class="whitelist-cell" toggle = "{{ toggle }}" bind:change="deleteWhiteList" actions="{{actions}}" wx:for="{{ whiteList }}" data-id = "{{ item.id }}" wx:key="{{ index }}">
+		<view class="content" slot="content">
+			<text class="cell-name">{{ item.whiteCardName }}</text>
+			<text class="cell-tel">{{ item.whiteCardPhone }}</text>
+		</view>
+	</i-swipeout>
+</view>
+
+<view class="add-bar">
+	<view class="add-bar-main">
+		<view class="items" bindtap="addFromCardCase">
+			<i-icon size="24" color="#4e8cee" type="businesscard" />
+			<view>从名片添加</view>
+		</view>
+		<!-- <view class="items" bindtap="addFromManual">
+			<i-icon size="24" color="#4e8cee" type="editor" />
+			<view>手动添加</view>
+		</view> -->
+		<!-- <view class="items">
+			<i-icon size="24" color="#4e8cee" type="interactive" />
+			<view>从消息中添加</view>
+		</view> -->
+	</view>
+</view>
+
+
+<!-- 手动添加 -->
+<view class="remarksModal" wx:if="{{ visibleRemarks }}">
+	<view class="remarks-main">
+		<view class="remarks-title">添加白名单</view>
+		<view class="remarkTxt remarkTag">
+			<input class="remarkTagItem addremark" value="{{ whiteCardName }}" bindinput="addremarNamekHandle" placeholder="请输入姓名 " auto-focus />
+		</view>
+		<view class="remarkTxt remarkTag">
+			<input class="remarkTagItem addremark" value="{{ activeRemark }}" bindinput="addremarkHandle" placeholder="请输入电话 " />
+		</view>
+		<view class="remarkBtn">
+			<i-button i-class="remarkBtns" bind:click="remarkBtnCancel" inline shape="circle">取消</i-button>
+			<i-button i-class="remarkBtns" type="primary" bind:click="remarkBtnEnter" inline shape="circle">确定</i-button>
+		</view>
+		
+	</view>
+</view>

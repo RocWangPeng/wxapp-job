@@ -1,0 +1,50 @@
+page{
+	width: 100%;
+	min-height: 100vh;
+	color: #333;
+	background:#f5efe1 url('http://ii.sinelinked.com/miniProgramAssets/bg-mb-01.jpg') no-repeat;
+	background-size: contain;
+	box-sizing: border-box;
+}
+.header{
+  height: 260rpx;
+  display: flex;justify-content: center;
+  align-items: center;
+  flex-direction: column;
+	margin-bottom: 20rpx;
+}
+.agent-name{
+  display: block;
+  line-height: 80rpx;
+  font-size: 36rpx;
+	color: #333;
+	display: none;
+}
+.head-img{
+  width: 200rpx;
+  height: 200rpx;
+  border: 6rpx solid #fff;
+  border-radius: 50%;
+}
+.personSummary-title{
+  height: 30rpx;
+  border-top: 1rpx solid #ccc;
+  position: relative;
+}
+.personSummary-title .jianjie{
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: -26rpx;
+  background: #f5efe2;
+  padding: 0 30rpx;
+  transform: translateX(-50%);
+  font-size: 36rpx;
+}
+.personSummary-main{
+  padding-top: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+	padding-left: 26rpx;
+	padding-right: 26rpx;
+}

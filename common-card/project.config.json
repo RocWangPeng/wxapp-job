@@ -1,0 +1,113 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.3.0",
+	"appid": "wx3facaaa31f346d16",
+	"projectname": "%E9%80%9A%E7%94%A8%E5%90%8D%E7%89%87",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 8,
+			"list": [
+				{
+					"id": 0,
+					"name": "temp",
+					"pathName": "pages/admin/cardcase/cardcase/cardcase",
+					"query": "cardId=PI7775507623062994944",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "mineIndex",
+					"pathName": "pages/admin/person/mine/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "mineIndexteam",
+					"pathName": "pages/admin/team/mine/index/index",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "loginPerson",
+					"pathName": "pages/user/authorization/authorization?role=1",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "loginTeam",
+					"pathName": "pages/user/team/login/login",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "start",
+					"pathName": "pages/card/start/start/start",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 6,
+					"name": "card",
+					"pathName": "pages/card/person/index/index",
+					"query": "cardId=PI7775507623062994944",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "register-person",
+					"pathName": "pages/user/person/register/register",
+					"query": ""
+				},
+				{
+					"id": 8,
+					"name": "个人名片入口",
+					"pathName": "pages/user/authorization/authorization",
+					"query": "role=1&type=admin",
+					"scene": 1011
+				},
+				{
+					"id": 9,
+					"name": "团队名片入口",
+					"pathName": "pages/user/authorization/authorization",
+					"query": "role=2",
+					"scene": "1011"
+				},
+				{
+					"id": 10,
+					"name": "authorization",
+					"pathName": "pages/card/authorization/authorization",
+					"query": ""
+				}
+			]
+		}
+	}
+}

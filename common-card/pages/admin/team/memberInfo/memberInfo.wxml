@@ -1,0 +1,37 @@
+ <i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+
+<view class="wrap center teamInfo">
+	<view class="head">
+		<image class="head-img" src="{{ teamDetail.cardHeadUrl }}"></image>
+		<text class="user-name">{{ teamDetail.cardName }}</text>
+	</view>
+	<view class="tel">
+		<text>TEL: {{ teamDetail.cardPhone }}</text>
+		<navigator class="sendMsg"  url="/pages/admin/team/sms/sms?carPersonalId={{ teamDetail.id }}">
+			<image class="sendMsg-img" src="http://ii.sinelinked.com/miniProgramAssets/msg.png"></image>
+			发消息
+		</navigator>
+	</view>
+	<view class="line mt0"></view>
+	<view class="item">
+		<view class="item-label">单位</view>
+		<view class="item-value">{{ teamDetail.cardCompany }}</view>
+	</view>
+	<view class="item">
+		<view class="item-label">职位</view>
+		<view class="item-value">{{ teamDetail.cardDuty }}</view>
+	</view>
+	<view class="item">
+		<view class="item-label">邮箱</view>
+		<view class="item-value">{{ teamDetail.cardEmail }}</view>
+	</view>
+	<view class="item">
+		<view class="item-label">地址</view>
+		<view class="item-value">{{ teamDetail.cardAddress }}</view>
+	</view>
+	<view class="line"></view>
+	<view class="btn-wrap">
+		<navigator url="/pages/card/person/index/index?cardId={{ teamDetail.id }}" open-type="redirect" class="btns to-card"><image class="xcx-icon" src="http://ii.sinelinked.com/miniProgramAssets/xcc.png"></image><text>查看名片</text></navigator>
+		<button class="btns out-team" data-carpersonalid = "{{ teamDetail.id }}" bindtap="teamapply">删除成员</button>
+	</view>
+</view>

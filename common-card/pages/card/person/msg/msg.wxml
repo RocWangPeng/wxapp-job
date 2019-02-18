@@ -1,0 +1,19 @@
+<i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<view class="top_bg_wap"></view>
+<!-- main -->
+<view class="main">
+	<text class="main_title">信息咨询</text>
+	<view class="filed_box">
+		<textarea class="textarea" value="{{question}}" bindinput="bindQuestion" placeholder="请输入消息内容" />
+		<input class="fleledInput" value="{{userName}}" bindinput="bindUserName"placeholder="请输入您的姓名" />
+<!-- 		<picker class="fleledInput" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+			{{region[0]}} {{region[1]}}
+		</picker> -->
+		<input class="fleledInput" value="{{tel}}" bindinput="bindTel" type="number" placeholder="请输入您的联系方式" />
+		<!-- <view class="code fleledInput">
+			<input class="authCode" type="number" bindinput="bindAuthCode" value="{{tel_token}}"  placeholder="请输入验证码" />
+			<text class="sendCode {{ clickNo?'clickNo':'' }}" bindtap="sendAuthCode">{{ sendTxt }}</text>
+		</view> -->
+		<button hover-class="none" type="warn" bindtap="submitMsg" loading="{{loading}}" disabled="{{disabled}}"> 提交 </button>
+	</view>
+</view>

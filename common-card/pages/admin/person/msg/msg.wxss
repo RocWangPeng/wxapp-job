@@ -1,0 +1,184 @@
+page{
+	background: #f9f9f9;
+	padding-bottom: 66px;
+}
+.wrap{
+	min-height: 77vh;
+	padding: 18rpx 0;
+}
+.top{
+	max-height: 85rpx;
+	overflow: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	font-size: 24rpx;
+	color: #888888;
+	transition: .3s;
+	line-height: 85rpx;
+}
+.top.unfold{
+	max-height: 170rpx;
+}
+.data-item{
+	width: 33.333%;
+	text-align: center;
+	font-size: 24rpx;
+}
+.i-swipeout-demo-item{
+    border-bottom:#333 solid 1px;
+}
+.msg-info{
+	display: inline-block;
+	vertical-align: top;
+	word-wrap: break-word; 
+	word-break: normal;
+	width: 86%;
+}
+.msg-name{
+	font-size: 28rpx;
+	display: flex;
+	justify-content: space-between;
+}
+.msg-sub-title{
+	display: flex;
+	align-items: center;
+	padding-top: 20rpx;
+	padding-bottom: 4rpx;
+	justify-content: space-between;
+	
+}
+.msg-sub-title .msg-sub-name{
+	width: 136rpx;
+}
+.msg-sub-title text{
+	font-size: 18rpx;
+	color: #999999;
+}
+.msg-sub-title image{
+	width: 15rpx;
+	height: 16rpx;
+	padding-right: 8rpx;
+}
+.null{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	min-height: 77vh;
+}
+.no-msg{
+	width: 150rpx;
+	height: 150rpx;
+}
+.null text{
+	font-size: 30rpx;
+	color: #999;
+}
+
+.msg-time{
+	font-size: 22rpx;
+	color: #999;
+}
+.msg-desc{
+	display: block;
+	font-size: 24rpx;
+	color: #666;
+	white-space: pre-line;
+	margin-top: 6rpx;
+	line-height:34rpx;
+}
+.i-swipeout-item{
+	background: none!important;
+}
+.msg-items{
+	padding-left: 16rpx;
+	padding-right: 20rpx;
+	background: #fff;
+}
+.msg-items.topz{
+	background: #f9f9f9;
+}
+.msg-items.topz .i-swipeout-demo-item{
+	border-bottom: 1rpx solid #fff !important;
+}
+.i-badge-c{
+	display: block !important;
+}
+/*自定义按钮*/
+.i-swipeout-button-group{
+    height:100%;
+    width:100%;
+	border-radius: 16rpx;
+	display: flex;
+	align-items: center;
+	font-size: 26rpx;
+}
+.i-swipeout-button{
+    width:60px;
+	height: 60%;
+	vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    background:#2d8cf0;
+    color:#fff;
+    align-items:center;
+}
+.i-swipeout-button.stick{
+	background: #c7c7cd;
+}
+.i-swipeout-button.delete{
+	background: #ff3a30;
+}
+.i-swipeout-button.shielding{
+	background: #ff9d00;
+}
+.msg-main{
+	margin-bottom: 140rpx;
+}
+.msg-icon{
+	width: 64rpx;
+	height: 64rpx;
+	margin-right: 16rpx;
+}
+/* msg-Bar */
+.msg-Bar{
+	width: 594rpx;
+	height: 108rpx;
+	position: fixed;
+	bottom: 160rpx;
+	left: 50%;
+	transform: translate(-50%);
+	border-radius: 50rpx;
+	background: #fff;
+	box-shadow: 0 0 15rpx rgba(0,0,0,.1);
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.msg-Bar .msg-item{
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+}
+.msg-Bar .msg-item:nth-child(1) image{
+	width: 34rpx;
+	height: 34rpx;
+}
+.msg-Bar .msg-item:nth-child(2) image{
+	width: 43rpx;
+	height: 26rpx;
+}
+.msg-Bar .msg-item:nth-child(3) image{
+	width: 36rpx;
+	height: 30rpx;
+}
+.msg-item text{
+	display: block;
+	font-size: 18rpx;
+	padding-top: 4rpx;
+	color: #666;
+}

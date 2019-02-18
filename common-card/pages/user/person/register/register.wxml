@@ -1,0 +1,34 @@
+<view class="logo">
+		<image src="http://ii.sinelinked.com/miniProgramAssets/ltkz.png"></image>
+</view>
+<view class="main">
+		<view class="title">帐号密码注册</view>
+		<view id="form-wrap">
+				<form bindsubmit="formSubmit" bindreset="formReset">
+						<view class="form-item">
+								<input name="phone" placeholder="请输入您的手机号" bindinput="phoneHandle" type="number" />
+						</view>
+						<view class="form-item">
+								<input name="password" placeholder="密码6-16位,英文、数字或者常用字符" type="password" />
+						</view>
+						<view class="form-item">
+								<input name="repassword" placeholder="确认密码" type="password" />
+						</view>
+						<view id="auth-code-wrap" class="form-item">
+								<input name="verifyCode" placeholder="请输入验证码" bindinput="authCodeHandle" type="text" />
+								<text class="auth-code {{ clickNo?'clickNo':'' }}" bindtap="getVerifyCode">
+										{{ sendTxt }}
+								</text>
+						</view>
+						<button wx:if="{{ isScope == 2 }}" class="getUserInfo submit" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
+								立即提交
+						</button>
+						<button wx:else form-type="submit" class="submit">立即提交</button>
+				</form>
+		</view>
+		<navigator url="/pages/user/person/login/login" class="toReginster">立即登陆</navigator>
+</view>
+<navigator url="/pages/user/protocol/protocol" class="protocol">
+		<text>注册即表示同意并愿意遵守</text>
+		<text id="gvrp">《用户协议》</text>
+</navigator>

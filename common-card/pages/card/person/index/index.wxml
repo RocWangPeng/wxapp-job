@@ -1,0 +1,72 @@
+<i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<view class="page index mb-02-style">
+	<collection-btn data="{{ collectionData }}" isCollect="{{ isCollect }}"></collection-btn>
+	<view class="center">
+			<!-- card -->
+			<view class="card">
+				<image bindtap="previewImages" src="{{ cardInfo.cardHeadUrl || 'http://ii.sinelinked.com/miniProgramAssets/defaultHeadImg.jpg' }}" class="head-img"></image>
+				<view class="user-name">
+					<view class="user-name-val">{{ cardInfo.cardName}}</view>
+					<view id="talkbubble">{{ cardInfo.cardDuty }}</view>
+				</view>
+				<view class="commany">
+					{{ cardInfo.cardCompany }}
+				</view>
+				
+				<view class="card-cell">
+					<view class="info-cell-item">
+						<view class="info-cell-label">邮箱</view>
+						<view class="info-cell-value">{{ cardInfo.cardEmail }}</view>
+					</view>
+					<view class="info-cell-item">
+						<view class="info-cell-label">地址</view>
+						<view class="info-cell-value">{{ cardInfo.cardAddress }}</view>
+					</view>
+				</view>
+				<!-- views -->
+				<view class="views">
+					<view class="views-item">
+						<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/chakan.png'></image>
+						<text>{{ cardInfo.historyBrowseNum  || 0}}次浏览</text>
+					</view>
+					<view class="views-item">
+						<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/choucang.png'></image>
+						<text>{{ cardInfo.historyCollectNum  || 0}}次收藏</text>
+					</view>
+				</view>
+				<view class="team-nav">
+					<view bindtap="tointroduce" url="/pages/card/person/introduce/introduce?cardId={{ cardInfo.id }}" class="team-nav-item">
+						<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-01.png'></image> 个人介绍
+					</view>
+					<view bindtap="tocompany"  url="/pages/card/person/company/company?cardId={{ cardInfo.id }}"  class="team-nav-item">
+						<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-02.png'></image> 单位介绍
+					</view>
+					<view bindtap="toshow"  url="/pages/card/person/show/show?cardId={{ cardInfo.id }}"  class="team-nav-item">
+						<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-03.png'></image> 个人秀
+					</view>
+					<view  bindtap="toTeam" url="/pages/card/team/index/index?cardId={{ cardInfo.id }}"  class="team-nav-item">
+						<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/menu-sub-team-05.png'></image> 我的团队
+					</view>
+				</view>
+			</view>
+			<view  class="phone msg" bindtap="toMsg"><image src="http://ii.sinelinked.com/miniProgramAssets/msg.png"></image></view>
+			<view  class="phone" bindtap="makePhoneCall"><image src="http://ii.sinelinked.com/miniProgramAssets/phone.png"></image></view>
+			
+			<navigator class="banner banner-bottom" url="/pages/card/person/gy/gy">
+				<image src="http://ii.sinelinked.com/miniProgramAssets/gy02.png"></image>
+			</navigator>
+			<!-- <i-button i-class="msg-btn" bind:click="toMsg" type="primary">点我咨询</i-button> -->
+	</view>
+</view>
+
+
+<i-toast id="toast" />
+
+<i-modal visible="{{ visibleTeamChoose }}" show-ok="{{ false }}" show-cancel="{{ false }}">
+  <view class="team-cell" bindtap="teamChooseHandle" data-cardid="{{ item.userId }}" wx:for="{{ teamChooseData }}" wx:key="{{ index }}">{{ item.name }}</view>
+</i-modal>
+
+<!-- copyright -->
+<text class="copyright" decode="{{true}}">
+	<text class="tag">leaf</text> : {{ cardInfo.id }} &ensp;&ensp;&ensp; @柳哨声声
+</text>

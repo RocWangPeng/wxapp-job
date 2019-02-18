@@ -1,0 +1,78 @@
+<i-spin fix size="large" wx:if="{{ spinShow }}">加载中</i-spin>
+<i-tab-bar fixed current="{{ current }}" color="#4e8cee" bindchange="handleChange">
+	<i-tab-bar-item wx:for="{{ tabBar }}" wx:key="index" key="{{ item.key }}" icon="{{ item.icon }}" current-icon="{{ item.currentIcon }}"
+	 title="{{ item.title }}"></i-tab-bar-item>
+</i-tab-bar>
+<!-- top -->
+<view class="top center  {{ unfold?'unfold':'' }}">
+	<view class="data-item">今日浏览: {{ counter.todayBrowseNum || 0 }}</view>
+	<view class="data-item">今日收藏: {{ counter.todayCollectNum || 0 }}</view>
+	<view class="data-item" bindtap="unfoldHandle">
+		<i-icon size="22" type="other" />
+	</view>
+	<view class="data-item">历史浏览: {{ counter.historyBrowseNum || 0 }}</view>
+	<view class="data-item">历史收藏: {{ counter.historyCollectNum || 0 }}</view>
+	<view class="data-item">历史转发: {{ counter.historyForwardNum || 0 }}</view>
+</view>
+<!-- 长按弹框 -->
+<!-- <modal show="{{ visibilityCardList }}" data="{{ cardList }}" bind:click="getChooseCard"></modal> -->
+<!-- msg -->
+<view class="msg-main center wrap">
+	<view class="null" wx:if="{{ hasMsg }}">
+		<image class="no-msg" src="http://ii.sinelinked.com/miniProgramAssets/no-msg.png"></image>
+		<text>空空如也</text>
+	</view>
+	<view class="msg-items {{ item.topStatus == 1?'topz':'' }}" wx:for="{{ msgData }}" wx:key="{{ index }}">
+		<i-badge i-class='i-badge-c' dot="{{  item.status == 1?1:0 }}">
+			<i-swipeout data-relateid="{{ item.relateId }}" data-operate="2" data-cardid="{{ item.cardId }}" data-sourceid="{{ item.sourceId }}" data-msgtype="{{ item.msgType }}" bindtap="delOrReadHandle" i-class="i-swipeout-item"
+			 operateWidth="{{180}}" toggle="{{toggle}}">
+				<view slot="content" class="msg-cell">
+					<image class="msg-icon" src="{{ item.typeIcon }}"></image>
+					<view class="msg-info">
+						<view class="msg-name">
+							<text>{{ item.sourceName }}</text>
+							<!-- <text class="msg-time">{{ item.createTime }}</text> -->
+						</view>
+						<view class="msg-sub-title">
+							<!-- <image src="http://ii.sinelinked.com/miniProgramAssets/person.png"></image> -->
+							<text wx:if="{{ item.msgType != 1 }}" class="msg-sub-name">{{ item.sourcePhone }}</text>
+							<text>{{ item.createTime }}</text>
+						</view>
+						<text  class="msg-desc">{{ item.msgContent }}</text>
+					</view>
+				</view>
+				<view slot="button" class="i-swipeout-button-group">
+					<view slot="button" class="i-swipeout-button-group">
+						<view data-relateid="{{ item.relateId }}" data-topstatus="{{ item.topStatus }}" catchtap="stickHandle" class="i-swipeout-button stick">
+							{{ item.topStatus == 1?'取消置顶':'置顶' }}
+						</view>
+						<view data-relateid="{{ item.relateId }}" data-operate="3" catchtap="delOrReadHandle" class="i-swipeout-button delete">
+							删除
+						</view>
+						<view data-msgtype="{{ item.msgType }}" data-sourceunionid="{{ item.sourceUnionId }}" data-sourcename="{{ item.sourceName }}" data-sourcephone="{{ item.sourcePhone }}"
+						 catchtap="blackHandle" class="i-swipeout-button shielding">
+							屏蔽
+						</view>
+					</view>
+				</view>
+			</i-swipeout>
+		</i-badge>
+	</view>
+</view>
+
+
+<!-- msg-Bar -->
+<view class="msg-Bar">
+	<view class="msg-item" bindtap="clearMsg">
+		<image mode="widthFix" src="http://ii.sinelinked.com/miniProgramAssets/msgicon01.png"></image>
+		<text>清空消息</text>
+	</view>
+	<view class="msg-item" data-msgtype="1" bindtap="getNoMsg">
+		<image mode="widthFix" src="http://ii.sinelinked.com/miniProgramAssets/msgicon02.png"></image>
+		<text>{{ noMsgTab?'查看全部':'只看未读' }}</text>
+	</view>
+	<view class="msg-item" bindtap="readMsg">
+		<image mode="widthFix" src="http://ii.sinelinked.com/miniProgramAssets/msgicon03.png"></image>
+		<text>全部已读</text>
+	</view>
+</view>
