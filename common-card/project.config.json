@@ -33,14 +33,14 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "temp",
-					"pathName": "pages/admin/cardcase/cardcase/cardcase",
-					"query": "cardId=PI7775507623062994944",
-					"scene": "1011"
+					"pathName": "pages/card/team/memberList/memberList",
+					"query": "cardId=NO7775586792300937216&type=2",
+					"scene": 1011
 				},
 				{
 					"id": -1,

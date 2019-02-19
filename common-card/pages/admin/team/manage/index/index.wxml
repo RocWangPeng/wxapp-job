@@ -16,6 +16,12 @@
 			<text>通知</text>
 		</view>
 	</navigator>
+	<navigator  url="/pages/admin/team/manage/msgBoard/msgBoard" class="menu-item">
+		<view class="item">
+			<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/tongzhi.png"></image>
+			<text>留言管理</text>
+		</view>
+	</navigator>
 	<!-- <view class="menu-item">
 		<view class="item">
 			<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/hongbao.png"></image>

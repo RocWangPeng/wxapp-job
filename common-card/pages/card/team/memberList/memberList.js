@@ -30,7 +30,23 @@ Page({
 		}
 
 	},
-
+	toMsgBoard(e){
+		utils.navigateTo({
+			url: '/pages/card/team/msgBoard/msgBoard'
+		})
+	},
+	toCard(e){
+		var cardId = e.currentTarget.dataset.cardid
+		utils.navigateTo({
+			url: '/pages/card/person/index/index?cardId='+cardId
+		})
+	},
+	toTeam(e){
+		var teamid = e.currentTarget.dataset.teamid
+		utils.navigateTo({
+			url: '/pages/card/team/index/index?teamId='+teamid
+		})
+	},
 	getTeamAgent(cardId) {
 		var data = {
 			cardId: cardId,

@@ -1,21 +1,70 @@
 /* pages/member-list/member-list.wxss */
-page{
+page {
 	width: 100%;
 	min-height: 100vh;
 	color: #333;
-	background:#f5efe1 url('http://ii.sinelinked.com/miniProgramAssets/bg-mb-01.jpg') no-repeat;
+	background: #f5efe1 url('http://ii.sinelinked.com/miniProgramAssets/bg-mb-01.jpg') no-repeat;
 	background-size: contain;
 	box-sizing: border-box;
 }
+
 .center {
 	width: 668rpx;
 	margin: 0 auto;
 }
 
-.member-list {
-	padding-top: 50rpx;
+/* notice */
+.notice {
+	width: 629rpx;
+	height: 437rpx;
+	position: relative;
+	margin: 60rpx auto 0 auto;
+	background: url('http://ii.sinelinked.com/miniProgramAssets/notice.png') no-repeat;
+	background-size: contain;
+	box-sizing: border-box;
+	padding-top: 158rpx;
+	padding-left: 76rpx;
+	padding-right: 76rpx;
+	font-size: 24rpx;
+	color: #4f4f4f;
+}
+
+.notice text {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 6;
+	-webkit-box-orient: vertical;
+}
+.message_btn_box{
+	margin-top: 24rpx;
 	display: flex;
-	/* justify-content: space-between; */
+	justify-content: flex-end;
+}
+.message_btn{
+	width: 140rpx;
+	height: 54rpx;
+	background: #4d99f8;
+	color: #fff;
+	font-size: 24rpx;
+	display: flex;
+	align-items: center;
+	margin: 0;
+	margin-right: 26rpx;
+}
+.pencil{
+	width: 26rpx;
+	height: 26rpx;
+	margin-right: 10rpx;
+}
+.public-label{
+	font-size: 26rpx;
+	color: #666;
+}
+.member-list {
+	padding-top: 30rpx;
+	padding-bottom: 30rpx;
+	display: flex;
 	flex-wrap: wrap;
 }
 

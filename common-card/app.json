@@ -35,7 +35,8 @@
         "sms/sms",
         "manage/index/index",
         "manage/sms/sms",
-				"manage/smsHistory/smsHistory",
+				"manage/msgBoard/msgBoard",
+        "manage/smsHistory/smsHistory",
         "mine/index/index",
         "mine/profile/profile",
         "mine/forWard/forWard",
@@ -70,7 +71,8 @@
         "show/show",
         "company/company",
         "msg/msg",
-        "memberList/memberList"
+        "memberList/memberList",
+				"msgBoard/msgBoard"
       ]
     },
     {
