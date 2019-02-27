@@ -17,6 +17,29 @@ class wechat {
 
 		})
 	}
+	
+	/* 
+	 通过openId获取unionId
+	 */
+	static getUnionIdByOpenId(openId){
+		return new Promise((resolve, reject) => {
+			wx.request({
+				url: "https://www.tcrunner.com/UniversalCards/apiPersonal/personal/getUnionIdByOpenId",
+				data: {
+					openId,
+					role:1
+				},
+				success: (res) => {
+					resolve(res)
+				},
+				fail: (err) => {
+					
+					reject(err)
+				}
+			})
+		
+		})
+	}
 
 	/* 
 		是否授权
@@ -62,6 +85,7 @@ class wechat {
 					resolve(res)
 				},
 				fail: (err) => {
+					console.log('fail',err);
 					reject(err)
 				}
 			})
@@ -83,12 +107,18 @@ class wechat {
 							code: code,
 						},
 						success: (res) => {
-							var data = res.data.data
-							var obj = {
-								openId: data.openId,
-								unionId: data.unionId
+							if(res.data.code == 0){
+								var data = res.data.data
+								var obj = {
+									openId: data.openId,
+									unionId: data.unionId
+								}
+								
+								resolve(obj)
+							}else{
+								reject()
 							}
-							resolve(obj)
+							
 						},
 						fail: (err) => {
 							reject(err)

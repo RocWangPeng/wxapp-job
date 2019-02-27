@@ -7,7 +7,8 @@ Page({
 		cardInfo: {}, //名片信息
 		cardForwardTitle:'',//转发标题
 		cardForwardCoverUrl:'',//转发封面
-		spinShow:true
+		spinShow:true,
+		img:[]
 	},
 
 	/**
@@ -37,11 +38,19 @@ Page({
 							cardInfo[val] = ''
 						}
 					}
+					
+					var img = cardInfo.cardPersonalProfilePhotosUrl
+					if(img){
+						img = img.split('|')
+					}
+					
+					
 					const headImg = wx.getStorageSync('headImg')
 					cardInfo.cardHeadUrl = headImg || 'http://ii.sinelinked.com/miniProgramAssets/defaultHeadImg.jpg'
 	
 					self.setData({
 						cardInfo: cardInfo,
+						img
 					})
 					
 					const cardForwardTitle = wx.getStorageSync('cardForwardTitle')

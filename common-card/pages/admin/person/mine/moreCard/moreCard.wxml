@@ -1,10 +1,10 @@
 <view class="center mine-moreCard">
 	
-	<view class="card-list" wx:for="{{ cardList }}" wx:key="{{ index }}" data-id="{{ item.id }}" data-index="{{ index }}" bindtap="chooseCard" bindlongpress="setDefaultCard">
+	<view class="card-list" wx:for="{{ cardList }}" wx:key="{{ index }}" data-id="{{ item.id }}" data-index="{{ index }}" bindtap="chooseCard" bindlongpress="showAction">
 		<image class="head-img" src="{{ item.cardHeadUrl || 'http://ii.sinelinked.com/miniProgramAssets/defaultHeadImg.jpg'}}"></image>
 		<view class="remark">
-			<text class="card-name">{{ item.cardName || ''}}</text>
-			<view class="remark-txt">{{ item.remark || '' }}</view>
+			<text class="card-name">{{ item.cardSymbol || item.cardName}}</text>
+			<view class="remark-txt">NO.{{ item.createSort || '' }}</view>
 		</view>
 		<view class="default">
 			<i-icon size="26" wx:if="{{ item.cardNum == 1 }}" color="#4e8cee" type="right" />
@@ -18,9 +18,14 @@
 
 <view class="public-plate">
 	<i-icon type="prompt_fill" size="18" color="#5e92e3" />
-	<text bindtap="cancleForWard">长按名片可设置"默认名片",可做为优先展示名片</text>
+	<text>长按名片可设置"默认名片",可做为优先展示名片</text>
 </view>
 <!-- add-card-modal -->
 <i-modal visible="{{ visibleAddCard }}" actions="{{ actionsAddCard }}" bind:click="addCardHandle">
+    <view><i-input i-class="add-card-input" bind:change="newCardValHandle" value="{{ newCardVal }}" maxlength="50" placeholder="输入名片名字" /></view>
+</i-modal>
+
+<!-- 改名 -->
+<i-modal visible="{{ visibleChangeCard }}" actions="{{ actionsChangeCard }}" bind:click="changeCardHandle">
     <view><i-input i-class="add-card-input" bind:change="newCardValHandle" value="{{ newCardVal }}" maxlength="50" placeholder="输入名片名字" /></view>
 </i-modal>

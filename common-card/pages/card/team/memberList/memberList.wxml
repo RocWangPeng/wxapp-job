@@ -7,14 +7,13 @@
 	<!-- notice -->
 	<view class="notice">
 		<text>
-			团队公告
-			　　“决不能让老区群众在全面建成小康社会进程中掉队”“要像保护眼睛一样保护生态环境”“要着力净化政治生态，营造廉洁从政良好环境”……
+			{{ teamnotice || active_signature }}
 		</text>
 	</view>
 	<view class="message_btn_box">
 		<button class="message_btn" bindtap="toMsgBoard">
 			<image class="pencil" src="http://ii.sinelinked.com/miniProgramAssets/pencil.png"></image>
-			留言
+			留言板
 		</button>
 	</view>
 	<view class="public-label">
@@ -35,26 +34,14 @@
 		<text>关联团队</text>
 	</view>
 	<view class='member-list'>
-	  <view class='member-item' bindtap="toTeam" data-teamid="{{ item.id }}" wx:for="{{ memList }}" wx:key="{{ index }}">
-	   	<view open-type="redirect" url="/pages/card/person/index/index?cardId={{ item.id }}" hover-class="navigator-hover">
+	  <view class='member-item' bindtap="toTeam" data-teamid="{{ item.id }}" wx:for="{{ focusList }}" wx:key="{{ index }}">
+	   	<view open-type="redirect" url="/pages/card/team/index/index?cardId={{ item.id }}" hover-class="navigator-hover">
 	    <image src="{{ item.cardHeadUrl }}"></image>
 	    <text>{{ item.cardName }}</text>
 	    </view>
 	  </view>
 	</view>
 	
-	<view class="public-label">
-		<image class="pencil" src="http://ii.sinelinked.com/miniProgramAssets/fensi.png"></image>
-		<text>团队粉丝</text>
-	</view>
-	<view class='member-list'>
-	  <view class='member-item' bindtap="toTeam" data-teamid="{{ item.id }}"  wx:for="{{ memList }}" wx:key="{{ index }}">
-	   	<view open-type="redirect" url="/pages/card/person/index/index?cardId={{ item.id }}" hover-class="navigator-hover">
-	    <image src="{{ item.cardHeadUrl }}"></image>
-	    <text>{{ item.cardName }}</text>
-	    </view>
-	  </view>
-	</view>
 </view>
 <i-toast id="toast" />
 

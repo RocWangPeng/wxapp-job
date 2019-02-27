@@ -26,6 +26,10 @@ Page({
 		cardDisplayTeamsStatus: 0, //是否显示当前团队
 		isCollect: false, //是否已收藏
 		unionId: '',
+		zanImg:'http://ii.sinelinked.com/miniProgramAssets/zan.png',
+		isPoints:false,
+		counter:{},
+		zan_scale:false
 	},
 	/**
 	 * 生命周期函数--监听页面加载
@@ -38,6 +42,7 @@ Page({
 			this.setData({
 				cardId: cardId
 			})
+			
 		}
 	},
 	// 判断名片是否已收藏
@@ -65,6 +70,7 @@ Page({
 				if (res.code == 0) {
 					if (type == 1) {
 						var cardInfo = res.data.info
+						var counter = res.data.counter
 						for (let val in cardInfo) {
 							if (cardInfo[val] === null) {
 								cardInfo[val] = ''
@@ -126,9 +132,12 @@ Page({
 							})
 
 						}
+						
+						self.isPoints()
 
 						self.setData({
-							cardInfo: cardInfo,
+							cardInfo,
+							counter,
 							phone: phone,
 							['cardInfo.cardHeadUrl']: cardInfo.cardHeadUrl + '#&' + Math.random()
 						})
@@ -200,6 +209,22 @@ Page({
 
 
 
+			})
+	},
+	// getCounter
+	getCounter(){
+		var data = {
+			cardId: this.data.cardId,
+			type: 1
+		}
+		utils.request(utils.personApi + '/personal/get/card/info', 'GET', data)
+			.then((res) => {
+				if(res.code == 0){
+					var counter = res.data.counter
+					this.setData({
+						counter
+					})
+				}
 			})
 	},
 	// 统计收藏
@@ -314,6 +339,49 @@ Page({
 		if (phone) {
 			return phone.slice(0, 3) + '-' + phone.slice(3, 7) + '-' + phone.slice(7, 11)
 		}
+	},
+	// 点赞
+	zanHandle() {
+		var currentOpenId = wx.getStorageSync('currentOpenId')
+		var data = {
+			cardId:this.data.cardId,
+			openId:currentOpenId
+		}
+		utils.request(utils.personApi + '/counter/points', 'POST',data)
+			.then(res => {
+				if (res.code == 0) {
+					this.setData({
+						zan_scale:true
+					})
+					this.isPoints()
+					setTimeout(()=>{
+						this.setData({
+							zan_scale:false
+						})
+					},3000)
+				}
+			})
+	
+	},
+	// 是否点赞
+	isPoints(){
+		var currentOpenId = wx.getStorageSync('currentOpenId')
+		var data = {
+			cardId:this.data.cardId,
+			openId:currentOpenId
+		}
+		utils.request(utils.personApi + '/counter/isPoints', 'GET',data)
+			.then(res => {
+				if (res.code == 0) {
+					var isPoints = res.data.isPoint == 'true' ?true:false
+					var zanImg = isPoints?'http://ii.sinelinked.com/miniProgramAssets/zan_fill.png':'http://ii.sinelinked.com/miniProgramAssets/zan.png'
+					this.setData({
+						isPoints:isPoints,
+						zanImg:zanImg
+					})
+					this.getCounter()
+				}
+			})
 	},
 	/**
 	 * 生命周期函数--监听页面显示

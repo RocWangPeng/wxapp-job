@@ -1,0 +1,26 @@
+<view class="center wrap  mine-template">
+	 <view class="remarks-title">模版选择</view>
+	 <view class="tpl_wrap">
+		 <view class="tpl_content">
+			 <view class="item" wx:for="{{ tpl_data }}" wx:key="{{ index }}" data-cardtemplatetype="{{ item.cardTemplateType }}" bindtap="chooseTplHandle">
+				<view class="choose_icon_box">
+					<image mode="widthFix" src="{{ item.icon }}"></image>
+				</view>
+			 	<image mode="widthFix" src="{{ item.src }}"></image>
+			 </view>
+		 </view>
+	 </view>
+</view>
+
+<view class="center wrap  mine-template">
+	 <view class="remarks-title bg">
+		 <text>名片背景</text>
+		 <text>恢复默认</text>
+	 </view>
+	 <view class="tpl_bg">
+		 <button class="change_btn">更换背景</button>
+		 <image mode="widthFix" src="{{ defaultSrc }}"></image>
+	 </view>
+</view>
+
+<image-cropper id="image-cropper" limit_move="{{true}}" disable_rotate="{{true}}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" bindload="cropperload" bindimageload="loadimage" bindtapcut="clickcut"></image-cropper>

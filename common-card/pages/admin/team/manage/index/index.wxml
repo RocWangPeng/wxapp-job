@@ -4,22 +4,34 @@
 	 title="{{ item.title }}"></i-tab-bar-item>
 </i-tab-bar>
 <view class="team-manage">
-	<!-- <view class="menu-item">
-		<view class="item">
-			<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/hongbao.png"></image>
-			<text>红包</text>
-		</view>
-	</view> -->
 	<navigator  url="/pages/admin/team/manage/sms/sms" class="menu-item">
 		<view class="item">
-			<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/tongzhi.png"></image>
+			<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/liuyan.png"></image>
 			<text>通知</text>
 		</view>
 	</navigator>
-	<navigator  url="/pages/admin/team/manage/msgBoard/msgBoard" class="menu-item">
+	<navigator  url="/pages/admin/team/manage/gonggao/gonggao" class="menu-item">
 		<view class="item">
-			<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/tongzhi.png"></image>
+			<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/gonggao.png"></image>
+			<text>公告</text>
+		</view>
+	</navigator>
+	<navigator  url="/pages/admin/team/manage/msgBoard/msgBoard" class="menu-item">
+		<view class="item liuyanguanli">
+			<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/liuyanguanli.png"></image>
 			<text>留言管理</text>
+		</view>
+	</navigator>
+	<!-- <navigator  url="/pages/admin/team/manage/searchTeam/searchTeam" class="menu-item">
+		<view class="item search">
+			<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/search.png"></image>
+			<text>搜索团队</text>
+		</view>
+	</navigator> -->
+	<navigator  url="/pages/admin/team/manage/concern/concern" class="menu-item">
+		<view class="item">
+			<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/fensiguanli.png"></image>
+			<text>粉丝/关注</text>
 		</view>
 	</navigator>
 	<!-- <view class="menu-item">

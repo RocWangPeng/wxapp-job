@@ -1,0 +1,102 @@
+page{
+	background: #efefef;
+}
+.tabs{
+	margin-bottom: 16rpx;
+}
+.userList{
+	background: #fff;
+	margin-bottom: 12rpx;
+}
+.userItem{
+	height: 170rpx;
+	border-top: 1rpx solid #efefef;
+	box-sizing: border-box;
+	padding: 20rpx 22rpx;
+	font-size: 22rpx;
+	color: #4a4a4a;
+	display: flex;
+	align-items: center;
+}
+.head-img{
+	width: 136rpx;
+	height: 136rpx;
+	border-radius: 50%;
+}
+.userInfo{
+	padding-left: 20rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.userInfo {
+	flex: 2;
+}
+.userInfo text:nth-child(1){
+	font-size: 30rpx;
+	color: #3a3a3a;
+	line-height: 50rpx;
+	padding-top: 20rpx;
+}
+.userInfo text:nth-child(2){
+	font-size: 22rpx;
+	color: #3a3a3a;
+	line-height: 30rpx;
+}
+.concernBtn{
+	padding: 0 22rpx;
+	height: 52rpx;
+	border: 1rpx solid #4e8cee;
+	font-size: 22rpx;
+	text-align: center;
+	line-height: 52rpx;
+	color: #4e8cee;
+	border-radius: 8rpx;
+}
+
+.cancleBtn{
+	border: 1rpx solid red;
+	color: red;
+}
+
+.search_bar{
+	width: 100%;
+	padding: 14rpx 18rpx;
+	background:#eeeeee;
+	box-sizing: border-box;
+}
+.input_warp input{
+	font-size: 24rpx;
+	line-height: 80rpx;
+	padding-left: 12rpx;
+	color:#4a4a4a ;
+	width: 100%;
+}
+.search_bar .input_warp{
+	display: flex;
+	align-items: center;
+	background: #fff;
+	border-radius: 10rpx;
+	box-sizing: border-box;
+	padding-left: 12rpx;
+}
+.search_bar .input_warp .i_icon_c{
+	display: flex;
+}
+
+/* .search_team{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 50;
+	height: 100%;
+	width: 100%;
+	background: #e3e4e9 url('http://ii.sinelinked.com/miniProgramAssets/chunjie-bg.jpg') no-repeat center center;
+	background-size: 100% 100%;
+} */
+.tips{
+	display: block;
+	text-align: center;
+	font-size: 22rpx;
+	line-height: 80rpx;
+}

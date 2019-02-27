@@ -93,13 +93,6 @@ Page({
 								tempShowArr.push(cardShowPhotosUrls[i]+'&'+Math.random())
 							}
 						}
-// 						if(cardShowPhotosUrls.length == 1){
-// 							tempShowArr.push(cardShowPhotosUrls[0]+'&'+Math.random())
-// 						}else if(cardShowPhotosUrls.length > 1){
-// 							for (var i = 0; i < cardShowPhotosUrls.length; i++) {
-// 								tempShowArr.push(cardShowPhotosUrls[i]+'&'+Math.random())
-// 							}
-// 						}
 					}
 					
 					this.setData({

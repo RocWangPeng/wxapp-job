@@ -1,4 +1,4 @@
-// pages/agent/msg/msg.js
+var utils = require('../../../../utils/util.js')
 Page({
 
 	/**
@@ -8,8 +8,6 @@ Page({
 		question: '', //咨询问题
 		userName: '', //用户姓名
 		tel: '', //联系方式
-		address: '',
-		region: ['请选择所属地区'],
 		tel_token: '', //验证码,,
 		uid: '', //顾问Id
 		sendTxt: '发送验证码',
@@ -39,21 +37,13 @@ Page({
 			tel_token: e.detail.value
 		})
 	},
-// 	// 所属地区
-// 	bindRegionChange: function(event) {
-// 		var addressCodeResult = event.detail.code[0] + '|' + event.detail.code[1]
-// 		this.setData({
-// 			region: event.detail.value,
-// 			address: addressCodeResult,
-// 		})
-// 	},
 	// 提交咨询信息
 	submitMsg() {
 		var that = this
 		if (!that.data.question) {
 			wx.showModal({
 				title: '提示',
-				content: '请填写咨询问题',
+				content: '请填写留言内容',
 				showCancel: false,
 			})
 			return
@@ -72,8 +62,8 @@ Page({
 			})
 			return
 		}
-
-		var phoneReg = /^1(3|4|5|7|8)[0-9]\d{8}$/;
+		
+		var phoneReg = /^0?(13[0-9]|14[5-9]|15[012356789]|166|17[0-8]|18[0-9]|19[8-9])[0-9]{8}$/;
 		if (!phoneReg.test(that.data.tel)) {
 			wx.showModal({
 				title: '提示',
@@ -83,23 +73,22 @@ Page({
 			return
 		}
 
-		const userId = wx.getStorageSync('agentData').userId
+		const currentOpenId = wx.getStorageSync('currentOpenId')
+		const currentUnionId = wx.getStorageSync('currentUnionId')
+		const activeCardId = wx.getStorageSync('activeCardId')
 
-		wx.request({
-			url: `https://ii.sinelinked.com/tg_web/api/order/publishOrders`,
-			method: 'POST',
-			data: {
-				name: that.data.userName,
-				tel: that.data.tel,
-				address: that.data.address,
-				content: that.data.question,
-				proxyId: userId,
-				orign: '2',
-				mtype: '1',
-				verifyCode: that.data.tel_token
-			},
-			success: function(res) {
-				if (res.data.code == 0) {
+		var data = {
+			role:1,// 留言者角色：1-游客 2-团队用户
+			content:that.data.question,
+			name:that.data.userName,
+			mobile:that.data.tel,
+			openId:currentOpenId,
+			teamId:activeCardId,
+			unionid:currentUnionId
+		}
+    utils.requestTeam(utils.teamApi + '/team/save/leaveword', 'POST', data, 'application/x-www-form-urlencoded')
+			.then(res => {
+				if (res.code == 0) {
 					wx.showModal({
 						title: '提示',
 						content: '提交成功',
@@ -116,15 +105,13 @@ Page({
 				} else {
 					wx.showModal({
 						title: '提示',
-						content: res.data.error,
+						content: res.error,
 						showCancel: false,
 					})
 				}
-			},
-			fail: function(err) {
-				console.log(err)
-			}
-		})
+			})
+			
+
 	},
 	onChange: function() {},
 	// 发送验证码

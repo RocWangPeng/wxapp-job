@@ -43,10 +43,15 @@ page{
 	border-radius:30rpx ;
 }
 .personSummary-main{
+	display: block;
   padding-top: 20rpx;
+	padding-bottom: 20rpx;
   font-size: 28rpx;
   color: #333;
 	box-sizing: border-box;
 	padding-left: 26rpx;
 	padding-right: 26rpx;
+}
+.image{
+	width: 100%;
 }

@@ -9,10 +9,14 @@ App({
 			wechat.getOpenIdOrUnionId()
 				.then(res => {
 					var data = res
-					console.log('app启动 获取 当前用户openId,unionId', data);
 					// 存储当前小程序用户openId || unionId
 					wx.setStorageSync('currentOpenId', data.openId)
-					wx.setStorageSync('currentUnionId', data.unionId)
+					wechat.getUnionIdByOpenId(data.openId)
+						.then(res=>{
+							console.log(res);
+							wx.setStorageSync('currentUnionId', res.data.data.unionId)
+						})
+					
 				})
 				.catch(e => {
 					wx.showToast({
@@ -41,7 +45,7 @@ App({
 					key: 'cardcase',
 					icon: 'businesscard',
 					currentIcon: 'businesscard_fill',
-					title: '名片夹',
+					title: '收藏夹',
 					url: '/pages/admin/person/cardcase/cardcase'
 				},
 				{

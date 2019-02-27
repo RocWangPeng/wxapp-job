@@ -43,9 +43,9 @@
 	</view>
 	
 </view>
-<view class="banner banner-bottom" url="/pages/card/person/gy/gy">
+<!-- <view class="banner banner-bottom" url="/pages/card/person/gy/gy">
 	<image src="http://ii.sinelinked.com/mobile/agent/static/img/reg_welfare.880640a.jpg"></image>
-</view>
+</view> -->
 <!-- 删除确认框 -->
 <i-modal title="删除确认" visible="{{ visibleDel }}" actions="{{ actionsDel }}" bind:click="delHandle">
     <view>确认是否删除此名片</view>

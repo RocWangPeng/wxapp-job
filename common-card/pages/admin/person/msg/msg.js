@@ -118,7 +118,7 @@ Page({
 						item.typeIcon = this.getMsgType(item.msgType).icon
 						item.title = this.getMsgType(item.msgType).title
 						item.createTime = item.createTime.slice(5)
-						item.msgContent = item.msgContent.replace(/\\n/g,"\n")  //数据转json会对\n再次转议
+						item.msgContent = item.msgContent && item.msgContent.replace(/\\n/g,"\n")  //数据转json会对\n再次转议
 					})
 
 					var msgSetTypeData = ''
@@ -152,6 +152,12 @@ Page({
 	// 获取对应头像
 	getMsgType(type) {
 		switch (type) {
+			case 0:
+				return {
+					icon: 'http://ii.sinelinked.com/miniProgramAssets/card-person.png',
+					title: '个人消息'
+				}
+				break;
 			case 1:
 				return {
 					icon: 'http://ii.sinelinked.com/miniProgramAssets/card-msg.png',

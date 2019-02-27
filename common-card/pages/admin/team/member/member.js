@@ -23,6 +23,7 @@ Page({
 		this.setData({
 			tabBar: app.globalData.tabBar.team
 		})
+		this.teamnotice()
 	},
 	// tabBar切换
 	handleChange({
@@ -43,6 +44,22 @@ Page({
 		wx.navigateTo({
 			url:'/pages/admin/team/memberInfo/memberInfo?cardId='+cardid
 		})
+	},
+	// 查询当前团队最新公告
+	teamnotice(){
+		const activeCardId = wx.getStorageSync('activeCardId')
+		
+		var data = {
+			teamId: activeCardId,
+		}
+		utils.requestTeam(utils.teamApi + '/team/get/teamnotice', 'GET', data, 'application/x-www-form-urlencoded')
+			.then(res => {
+				if (res.code == 0) {
+					this.setData({
+						teamnotice:res.data.teamnotice
+					})
+				}
+			})
 	},
 	// 获取团队成员信息
 	teamlist(status = 2) {

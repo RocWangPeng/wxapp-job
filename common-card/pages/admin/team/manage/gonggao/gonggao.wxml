@@ -1,0 +1,12 @@
+<view class="center wrap mine-introduce">
+	<view class="introduce-input">
+		 <textarea value="{{ content }}" autofocus bindinput="bindTextAreaBlur" auto-height placeholder="请输入公告内容" />
+	</view>
+</view>
+<i-button bind:click="submit" type="primary">发送</i-button>
+
+<!-- <navigator url="/pages/admin/team/manage/smsHistory/smsHistory" class="history-msg">
+	<text>
+		历史消息
+	</text>
+</navigator> -->

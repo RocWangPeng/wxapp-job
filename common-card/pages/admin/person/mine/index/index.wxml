@@ -46,6 +46,9 @@
 			<i-cell title="企业" is-link url="/pages/admin/person/mine/company/company?cardId={{ activeCardId }}">
 				<i-icon size="20" type="homepage" slot="icon" />
 			</i-cell>
+			<i-cell title="名片模板" is-link url="/pages/admin/person/mine/template/template?cardId={{ activeCardId }}">
+				<i-icon size="20" type="tailor" slot="icon" />
+			</i-cell>
 			<i-cell title="配置信息" is-link url="/pages/admin/person/mine/setting/setting?cardId={{ activeCardId }}">
 				<i-icon size="20" type="setup" slot="icon" />
 			</i-cell>

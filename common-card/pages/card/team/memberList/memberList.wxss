@@ -38,17 +38,19 @@ page {
 }
 .message_btn_box{
 	margin-top: 24rpx;
+	margin-bottom: 16rpx;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: center;
 }
 .message_btn{
-	width: 140rpx;
-	height: 54rpx;
+	width: 340rpx;
+	height: 68rpx;
 	background: #4d99f8;
 	color: #fff;
 	font-size: 24rpx;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	margin: 0;
 	margin-right: 26rpx;
 }

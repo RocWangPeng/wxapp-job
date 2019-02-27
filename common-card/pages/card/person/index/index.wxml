@@ -25,13 +25,13 @@
 				</view>
 				<!-- views -->
 				<view class="views">
-					<view class="views-item">
-						<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/chakan.png'></image>
-						<text>{{ cardInfo.historyBrowseNum  || 0}}次浏览</text>
+					<view class="views-item" bindtap="zanHandle">
+						<image mode='widthFix' class="{{ zan_scale?'zan_scale':'' }}" src='{{ zanImg }}'></image>
+						<text>{{ counter.pointsNum  || 0}}次赞</text>
 					</view>
 					<view class="views-item">
 						<image mode='widthFix' src='http://ii.sinelinked.com/miniProgramAssets/choucang.png'></image>
-						<text>{{ cardInfo.historyCollectNum  || 0}}次收藏</text>
+						<text>{{ counter.historyCollectNum  || 0}}次收藏</text>
 					</view>
 				</view>
 				<view class="team-nav">

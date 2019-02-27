@@ -24,7 +24,6 @@ Page({
 	 */
 	onLoad: function(options) {
 
-
 		// 获取用户类型 
 		var role = options.role
 		// role 1(个人) 2(团队)
@@ -113,9 +112,23 @@ Page({
 						url: '/pages/user/person/login/login'
 					})
 				} else {
-					wx.reLaunch({
-						url: '/pages/admin/person/msg/msg'
-					})
+					var cardCase = wx.getStorageSync('cardCase')
+					if(cardCase){
+						wx.removeStorage({
+						  key: 'cardCase',
+						  success(res) {
+							console.log(res.data)
+						  }
+						})
+						wx.reLaunch({
+							url: '/pages/admin/person/cardcase/cardcase'
+						})
+					}else{
+						wx.reLaunch({
+							url: '/pages/admin/person/msg/msg'
+						})
+					}
+					
 				}
 				return
 			}
@@ -124,6 +137,7 @@ Page({
 			url: utils.authApi + '/auth/user/wx/loginByOpenId',
 			data: dataObj,
 			success(res) {
+				console.log('res');
 				if (res.data.code == 0) {
 					var data = res.data.data
 					if (data.needChoose) {
@@ -193,10 +207,49 @@ Page({
 					}, 300)
 				} else if (res.data.code == 22) {
 					wx.redirectTo({
-						url: '/pages/user/authorization/authorization'
+						url: '/pages/user/authorization/authorization?role='+self.data.role
+					})
+				}else{
+					wx.showToast({
+					  title: res.data.error,
+					  icon: 'none',
+					  duration: 2000
+					})
+					
+					wx.redirectTo({
+						url: '/pages/user/authorization/authorization?role='+self.data.role
 					})
 				}
+			},
+			fail:function(err){
+				console.log('err');
+// 				wx.showToast({
+// 				  title: '成功',
+// 				  icon: 'success',
+// 				  duration: 2000
+// 				})
+
+			console.log('服务器出错，重新登陆');
+				
+				// this.getUserInfo()
+				var currentOpenId = wx.getStorageSync('currentOpenId') //当前微信用户的unionId
+				if (currentOpenId) {
+					this.setData({
+						openId:currentOpenId
+					})
+					
+					var data = {
+						openId: currentOpenId,
+						userType: 1,
+						role: this.data.role,
+						device: 3,
+						code: '0',
+						// loginPhone: loginPhone || ''
+					}
+					this.wxLogin(data)
+				}
 			}
+			
 		})
 	},
 	/**

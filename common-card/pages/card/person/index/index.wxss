@@ -489,3 +489,15 @@ page {
 .copyright .tag{
 	font-size: 24rpx;
 }
+
+.zan_scale{
+	transition: .3s;
+	/* transform: scale(1.2); */
+	animation: .5s zan_scale;
+}
+
+@keyframes zan_scale{
+	0%{transform: scale(1.0);}
+	50%{transform: scale(1.3);}
+	100%{transform: scale(1);}
+}

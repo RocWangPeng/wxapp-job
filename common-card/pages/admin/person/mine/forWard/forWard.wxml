@@ -1,7 +1,7 @@
 <view class="center wrap mine-forWard">
 	<view class="forWard-title">
 		<image class="logo-img" src="http://ii.sinelinked.com/lib/img/logo.png"></image>
-		<text>保信云顾问</text>
+		<text>柳条筐子</text>
 	</view>
 	<view class="forWard-input">
 		 <input placeholder="请输入转发标题" value="{{ cardForwardTitle }}" bindinput="bindshowDesc" />

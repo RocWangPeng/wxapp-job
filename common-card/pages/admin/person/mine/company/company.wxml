@@ -1,6 +1,13 @@
 <view class="center wrap mine-introduce">
 	<view class="introduce-input">
+		<view class="insertImg" bindtap="chooseImage">
+			<i-icon size="20" color="#666" type="dynamic_fill" />
+			<text>插入图片</text>
+		</view>
 		 <textarea value="{{ introduce  }}" bindinput="bindshowDesc"  auto-height placeholder="请输入企业介绍" />
+		 <view class="imgBox">
+		 		<image wx:key="{{ index }}" bindlongpress="deleteImg" data-index = "{{ index }}" wx:for="{{ tempFilePaths }}" src="{{ item }}" mode="widthFix"></image>
+		 </view>
 	</view>
 </view>
 <i-button bind:click="formSubmit" type="primary">保存</i-button>

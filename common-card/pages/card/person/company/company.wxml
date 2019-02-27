@@ -7,4 +7,5 @@
     <text class="jianjie">简介</text>
   </view>
  <text class="personSummary-main">{{ cardInfo.cardCompanyProfile || ' ' }}</text>
+  <image class="image" wx:for="{{ img }}" wx:key="{{ index }}" mode="widthFix" src="{{ item }}"></image>
 </view>

@@ -1,4 +1,4 @@
-<view class="center">
+<!-- <view class="center">
 	<textarea class="textarea" bindblur="bindinput" placeholder="请输入留言内容" />
 	<view class="message_btn_box">
 		<button class="message_btn" bindtap="toMsgBoard">
@@ -6,28 +6,33 @@
 			留言
 		</button>
 	</view>
-</view>
+</view> -->
 <view class="msgList">
-	<view class="msgItem">
+	<view class="msgItem" wx:for="{{ leaveword }}">
 		<view class="msgLeft">
-			<image class="defaultHeadImg" src="http://ii.sinelinked.com/miniProgramAssets/defaultHeadImg.jpg">></image>
+			<image class="defaultHeadImg" src="{{ item.headImgUrl }}">></image>
 		</view>
 		<view class="msgMain">
-			<text class="nicke">小明</text>
+			<text class="nicke">{{ item.nickName }}</text>
 			<text class="content">
-				afafdadfadfadf小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明adfadfadfafadfas
+				{{ item.messageContent }}
 			</text>
+			<view class="supoort">
+				<view>
+					<image src="http://ii.sinelinked.com/miniProgramAssets/support-yes.png"></image>
+					<text>10</text>
+				</view>
+				<view>
+					<image src="http://ii.sinelinked.com/miniProgramAssets/support-no.png"></image>
+					<text>10</text>
+				</view>
+			</view>
 		</view>
 	</view>
-	<view class="msgItem">
-		<view class="msgLeft">
-			<image class="defaultHeadImg" src="http://ii.sinelinked.com/miniProgramAssets/defaultHeadImg.jpg">></image>
-		</view>
-		<view class="msgMain">
-			<text class="nicke">小明</text>
-			<text class="content">
-				afafdadfadfadf小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明adfadfadfafadfas
-			</text>
-		</view>
-	</view>
+</view>
+<view class="message_input">
+	<textarea class="textarea" value="{{content}}" auto-height="{{ true }}" bindinput="bindinput" />
+	<button class="message_btn" bindtap="submitMsg">
+		留言
+	</button>
 </view>

@@ -11,7 +11,19 @@ Page({
 		memList: [],
 		inputValue: '',
 		cardId: '',
-		spinShow: true
+		spinShow: true,
+		ifTeamuser:null,
+		teamnotice:'',
+		signature:[
+			'怀才就像怀孕，时间久了才能让人看出来。',
+			'你既然认准一条道路，何必去打听要走多久。',
+			'生活可以是甜的，也可以是苦的，但不能是没味的。你可以胜利，也可以失败，但你不能屈服。',
+			'不是井里没有水，而是挖的不够深；不是成功来的慢，而是放弃速度快。得到一件东西需要智慧，放弃一样东西则需要勇气！'
+		],
+		active_signature:'',
+		focusList:[],//关联团队
+		fansList:[],//团队粉丝
+
 	},
 
 	/**
@@ -28,12 +40,69 @@ Page({
 			})
 			this.getTeamAgent(cardId)
 		}
-
+		
+		this.teamuser()
+		this.teamnotice()
+		this.focuslist()
+	},
+	// 查询当前团队最新公告
+	teamnotice(){
+		const activeCardId = wx.getStorageSync('activeCardId')
+		
+		var data = {
+			teamId: activeCardId,
+		}
+		utils.requestTeam(utils.teamApi + '/team/get/teamnotice', 'GET', data, 'application/x-www-form-urlencoded')
+			.then(res => {
+				console.log(res);
+				if (res.code == 0) {
+					this.setData({
+						teamnotice:res.data.noticeContent
+					})
+				}else{
+					var signature = this.data.signature
+					this.setData({
+						active_signature:signature[Math.floor(Math.random()*signature.length)]
+					})
+				}
+			})
+	},
+	// 验证当前浏览用户是否属于当前团队的用户
+	teamuser(){
+		const currentOpenId = wx.getStorageSync('currentOpenId')
+		const activeCardId = wx.getStorageSync('activeCardId')
+		var data = {
+			teamId:activeCardId,
+			openId:currentOpenId
+		}
+		utils.requestTeam(utils.teamApi + '/team/valid/teamuser', 'POST', data,'application/x-www-form-urlencoded')
+			.then(res=>{
+				if(res.code == 0){
+					this.setData({
+						ifTeamuser:true
+					})
+				}else{
+					this.setData({
+						ifTeamuser:false
+					})
+				}
+			})
 	},
 	toMsgBoard(e){
-		utils.navigateTo({
-			url: '/pages/card/team/msgBoard/msgBoard'
-		})
+		var ifTeamuser = this.data.ifTeamuser
+		if(!ifTeamuser){
+			return
+		}
+		if(ifTeamuser){
+			utils.navigateTo({
+				url: '/pages/card/team/msgBoard/msgBoard'
+			})
+		}else{
+			utils.navigateTo({
+				url: '/pages/card/team/msg/msg'
+			})
+		}
+		
 	},
 	toCard(e){
 		var cardId = e.currentTarget.dataset.cardid
@@ -102,7 +171,24 @@ Page({
 				}
 			})
 	},
-
+	// 查询 关联团队 和 团队粉丝
+	focuslist(){
+		const currentOpenId = wx.getStorageSync('currentOpenId')
+		const activeCardId = wx.getStorageSync('activeCardId')
+		var data = {
+			teamId:activeCardId,
+			openId:currentOpenId
+		}
+		utils.requestTeam(utils.teamApi + '/team/get/focuslist', 'POST', data, 'application/x-www-form-urlencoded')
+			.then(res => {
+				if (res.code == 0) {
+					this.setData({
+						focusList:res.data.focusList,
+						fansList:res.data.fansList
+					})
+				}
+			})
+	},
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */

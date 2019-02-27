@@ -12,7 +12,7 @@ page{
 .introduce-input textarea{
 	padding-top: 20rpx;
 	font-size: 26rpx;
-	min-height: 40vh;
+	min-height: 10vh;
 }
 .isShow{
 	margin-top: 30rpx;
@@ -26,4 +26,13 @@ page{
 	font-size: 24rpx;
 	color: #999999;
 	
+}
+.insertImg{
+	font-size: 20rpx;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.insertImg text{
+	padding-left: 6rpx;
 }

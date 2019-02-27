@@ -143,6 +143,7 @@ Component({
 
 		},
 		toCardCase() {
+			wx.setStorageSync('cardCase', true)
 			var data = this.data.data
 			this.getUnionIdByOpenId()
 				.then(unionId => {

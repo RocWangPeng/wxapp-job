@@ -23,7 +23,8 @@
         "mine/blacklist/blacklist",
         "mine/cardcase/cardcase",
         "mine/company/company",
-        "mine/loginType/loginType"
+        "mine/loginType/loginType",
+				"mine/template/template"
       ]
     },
     {
@@ -35,7 +36,10 @@
         "sms/sms",
         "manage/index/index",
         "manage/sms/sms",
-				"manage/msgBoard/msgBoard",
+        "manage/gonggao/gonggao",
+        "manage/msgBoard/msgBoard",
+        "manage/concern/concern",
+        "manage/searchTeam/searchTeam",
         "manage/smsHistory/smsHistory",
         "mine/index/index",
         "mine/profile/profile",
@@ -72,7 +76,7 @@
         "company/company",
         "msg/msg",
         "memberList/memberList",
-				"msgBoard/msgBoard"
+        "msgBoard/msgBoard"
       ]
     },
     {

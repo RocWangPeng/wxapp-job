@@ -61,10 +61,14 @@ Page({
 		utils.request(utils.personApi + '/personal/get/cardByInfoType', 'GET', data)
 			.then(res => {
 				if (res.code == 0) {
+					var cardForwardCoverUrl = res.data.info.cardForwardCoverUrl
+					if(cardForwardCoverUrl){
+						cardForwardCoverUrl = cardForwardCoverUrl + '&' + Math.random()
+					}
 					this.setData({
 						cardInfo: res.data.info,
 						cardForwardTitle: res.data.info.cardForwardTitle,
-						tempFilePaths: res.data.info.cardForwardCoverUrl
+						tempFilePaths: cardForwardCoverUrl
 					})
 
 				}

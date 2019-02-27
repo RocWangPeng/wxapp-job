@@ -1,0 +1,78 @@
+<view class="search-bar">
+  <view class="input-warp">
+    <i-icon size="24" color="#bebebe" type="search" />
+    <input class="input" bindinput="bindKeyInput" placeholder="请输入团队名称" /> </view>
+  <view class="button-warp">
+    <view class="team-btn btn" bindtap="search" data-type='team'> 搜索 </view>
+  </view>
+</view>
+<!-- <view class="search-result">
+ <view class="result-warp">
+  <image class='tip-icon' mode="aspectFit" src='{{ tipIcon }}'></image>
+  <text wx:if="{{ resultTipShow }}">{{ resultTip }}</text>
+ </view>
+</view> -->
+<view class="userList">
+	<view class="userItem">
+		<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/head-img.jpg"></image>
+		<view class="userInfo">
+			<text>贤心</text>
+			<text>职场精英</text>
+		</view>
+		<view class="concernBtn">
+			+ 关注
+		</view>
+	</view>
+	<view class="userItem">
+		<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/head-img.jpg"></image>
+		<view class="userInfo">
+			<text>贤心</text>
+			<text>职场精英</text>
+		</view>
+		<view class="concernBtn">
+			+ 关注
+		</view>
+	</view>
+	<view class="userItem">
+		<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/head-img.jpg"></image>
+		<view class="userInfo">
+			<text>贤心</text>
+			<text>职场精英</text>
+		</view>
+		<view class="concernBtn">
+			+ 关注
+		</view>
+	</view>
+	<view class="userItem">
+		<image class="head-img" src="http://ii.sinelinked.com/miniProgramAssets/head-img.jpg"></image>
+		<view class="userInfo">
+			<text>贤心</text>
+			<text>职场精英</text>
+		</view>
+		<view class="concernBtn">
+			+ 关注
+		</view>
+	</view>
+</view>
+<!-- <view class="card-main">
+  <view class="card-flex">
+    <view bindtap="toCard" class="card-item agent-card">
+      <image mode="aspectFit" src='http://ii.sinelinked.com/miniProgramAssets/man.png'></image>
+      <text>我的名片</text>
+    </view>
+    <view bindtap="previewImage" class="qr-code">
+      <image class="qr-code" src="http://ii.sinelinked.com/miniProgramAssets/qr-code.png"></image>
+     
+    </view>
+  </view>
+  <view class="card-flex">
+    <view bindtap="toTeam" class="card-item team-card">
+      <image mode="aspectFit" src='http://ii.sinelinked.com/miniProgramAssets/team.png'></image>
+      <text>我的团队</text>
+    </view>
+    <view bindtap="previewImageTeam" class="qr-code">
+      <image class="qr-code" src="http://ii.sinelinked.com/miniProgramAssets/qr-code.png"></image>
+    </view>
+  </view>
+</view> -->
+

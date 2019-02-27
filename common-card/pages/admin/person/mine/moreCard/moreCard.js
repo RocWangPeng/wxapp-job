@@ -6,6 +6,9 @@ Page({
 	 */
 	data: {
 		visibleAddCard: false,
+		visibleChangeCard: false,
+		activeId:'',
+		newCardVal: '',
 		newCardVal: '',
 		cardList: [], //名片列表
 		actionsAddCard: [{
@@ -13,6 +16,15 @@ Page({
 			},
 			{
 				name: '添加',
+				color: '#ed3f14',
+				loading: false
+			}
+		],
+		actionsChangeCard: [{
+				name: '取消'
+			},
+			{
+				name: '确定',
 				color: '#ed3f14',
 				loading: false
 			}
@@ -94,6 +106,64 @@ Page({
 				})
 		}
 	},
+		changeCardHandle({
+		detail
+	}) {
+		if (detail.index === 0) {
+			this.setData({
+				visibleAddCard: false
+			});
+		} else {
+			if (!this.data.newCardVal) {
+				wx.showToast({
+					title: '请输入名片名称',
+					icon: 'none',
+					duration: 1500
+				})
+				return
+			} else if (this.data.newCardVal && this.data.newCardVal.length > 8) {
+				wx.showToast({
+					title: '名片名称最多8个字',
+					icon: 'none',
+					duration: 1500
+				})
+				return
+			}
+			const action = [...this.data.actionsChangeCard];
+			action[1].loading = true;
+	
+			this.setData({
+				actionsChangeCard: action,
+			});
+			var data = {
+				cardSymbol: this.data.newCardVal,
+				id:this.data.activeId
+			}
+			utils.request(utils.personApi + '/personal/update/card/symbol', 'POST', data, 'application/x-www-form-urlencoded')
+				.then(res => {
+					if (res.code == 0) {
+						wx.showToast({
+							title: '修改成功',
+							icon: 'success',
+							duration: 2000
+						})
+						this.getCardList()
+					} else {
+						wx.showToast({
+							title: '修改失败',
+							icon: 'none',
+							duration: 2000
+						})
+					}
+					action[1].loading = false;
+					this.setData({
+						visibleChangeCard: false,
+						actionsChangeCard: action,
+						newCardVal:'',
+					});
+				})
+		}
+	},
 	// 获取名片列表
 	getCardList() {
 		utils.request(utils.personApi + '/personal/get/card/List', 'GET')
@@ -106,6 +176,7 @@ Page({
 					this.setData({
 						cardList: cardList
 					})
+					wx.setStorageSync('cardId', cardList[0].id)
 				}
 			})
 	},
@@ -124,6 +195,89 @@ Page({
 				delta: 1
 			})
 		},500)
+	},
+	/* 长按 */
+	showAction(e) {
+		var self = this
+		var activeId = e.currentTarget.dataset.id
+		this.setData({
+			activeId:activeId
+		})
+		var data = {
+			cardId: activeId
+		}
+	
+		wx.getSystemInfo({
+			success: function(result) {
+				//选项集合
+				let itemList;
+				if (result.platform == 'android') {
+					itemList = ['修改名片名字', '设置为默认名片','删除该名片','取消']
+				} else {
+					itemList = ['修改名片名字', '设置为默认名片','删除该名片']
+				}
+				wx.showActionSheet({
+					itemList: itemList,
+					success: function(res) {
+						if (res.tapIndex == 0) {
+							
+							self.setData({
+								visibleChangeCard:true
+							})
+							
+						} else if (res.tapIndex == 1) {
+							// 设置为默认名片
+							utils.request(utils.personApi + '/personal/setDefaultCard', 'POST', data, "application/x-www-form-urlencoded")
+								.then(res => {
+									if (res.code == 0) {
+										wx.showToast({
+										  title: '已设置为默认名片',
+										  icon: 'none',
+										  duration: 2000
+										})
+										self.getCardList()
+									}
+								})
+							
+						} else if (res.tapIndex == 2) {
+							//删除
+							self.delCard()
+						}
+					},
+				})
+			},
+		})
+	},
+
+	// 删除名片
+	delCard(){
+		var self = this
+		var data = {
+			id:this.data.activeId
+		}
+		wx.showModal({
+		  title: '提示',
+		  content: '如该名片有加入团队或者其它关联设置,将自动失效或者解除',
+		  success(res) {
+			if (res.confirm) {
+				utils.request(utils.personApi + '/personal/del/card', 'POST', data, "application/x-www-form-urlencoded")
+					.then(res => {
+						if (res.code == 0) {
+							wx.showToast({
+							  title: '已删除',
+							  icon: 'none',
+							  duration: 2000
+							})
+							self.getCardList()
+						}
+					})
+			} else if (res.cancel) {
+			  console.log('用户点击取消')
+			}
+		  }
+		})
+
+		
 	},
 	// 长按设置默认名片
 	setDefaultCard(e) {

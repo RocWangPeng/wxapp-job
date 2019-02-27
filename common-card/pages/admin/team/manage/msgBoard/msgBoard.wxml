@@ -8,36 +8,20 @@
 	</view>
 </view> -->
 <view class="msgList">
-	<view class="msgItem">
+	<view class="msgItem" wx:for="{{ leaveword }}" wx:key="{{ index }}">
 		<view class="msgLeft">
-			<image class="defaultHeadImg" src="http://ii.sinelinked.com/miniProgramAssets/defaultHeadImg.jpg">></image>
+			<image class="defaultHeadImg" src="{{ item.headImgUrl }}">></image>
 		</view>
 		<view class="msgMain">
-			<text class="nicke">小明</text>
+			<text class="nicke">{{ item.nickName }}</text>
 			<text class="content">
-				afafdadfadfadf小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明adfadfadfafadfas
+				{{ item.messageContent }}
 			</text>
-			<view class="action">
-				<!-- <view class="action_del">删除</view> -->
-				<!-- <view class="action_reply ">回复</view> -->
-				<view class="action_item">
-					<i-icon size="20" color="#999999" type="trash_fill" />
-				</view>
-				<view class="action_item">
-					<i-icon size="20" color="#999999" type="message_fill" />
+			<view class="supoort">
+				<view data-id = "{{ item.id }}" bindtap="delleaveword">
+					<i-icon size="18" color="#999999" type="trash_fill" />
 				</view>
 			</view>
-		</view>
-	</view>
-	<view class="msgItem">
-		<view class="msgLeft">
-			<image class="defaultHeadImg" src="http://ii.sinelinked.com/miniProgramAssets/defaultHeadImg.jpg">></image>
-		</view>
-		<view class="msgMain">
-			<text class="nicke">小明</text>
-			<text class="content">
-				afafdadfadfadf小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明小明adfadfadfafadfas
-			</text>
 		</view>
 	</view>
 </view>

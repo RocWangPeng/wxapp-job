@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -33,13 +33,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 11,
 			"list": [
 				{
 					"id": 0,
-					"name": "temp",
-					"pathName": "pages/card/team/memberList/memberList",
-					"query": "cardId=NO7775586792300937216&type=2",
+					"name": "team",
+					"pathName": "pages/card/team/index/index",
+					"query": "cardId=NO7775530448155901952",
 					"scene": 1011
 				},
 				{
@@ -49,10 +49,11 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "mineIndexteam",
-					"pathName": "pages/admin/team/mine/index/index",
-					"query": ""
+					"pathName": "pages/admin/team/manage/searchTeam/searchTeam",
+					"query": "",
+					"scene": null
 				},
 				{
 					"id": 3,
@@ -106,6 +107,13 @@
 					"name": "authorization",
 					"pathName": "pages/card/authorization/authorization",
 					"query": ""
+				},
+				{
+					"id": 11,
+					"name": "temp",
+					"pathName": "pages/admin/person/mine/template/template",
+					"query": "cardId=PI7775526468049895424",
+					"scene": null
 				}
 			]
 		}

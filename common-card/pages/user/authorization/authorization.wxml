@@ -9,4 +9,4 @@
 	</view>
 </view>
 
-<modal show="{{ visibilityTeamUser }}" title="{{ title }}" data="{{ teamUser }}" bind:click="getChooseCard"></modal>
+<modal show="{{ visibilityTeamUser }}" isMask="{{ false }}" title="{{ title }}" data="{{ teamUser }}" bind:click="getChooseCard"></modal>

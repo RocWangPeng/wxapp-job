@@ -17,7 +17,7 @@ Page({
 		searchResult: [],
 		isResult: '',
 		resultTip: '请输入搜索内容',
-		tipIcon: 'http://ii.sinelinked.com/miniProgramAssets/tip04.png',
+		tipIcon: 'http://ii.sinelinked.com/miniProgramAssets/tip05.png',
 		userInfo: {}, //用户信息
 		agent: {},
 		unineId: '',
@@ -165,6 +165,11 @@ Page({
 	onLoad: function(options) {
 		var self = this
 		// 存储当前小程序用户openId || unionId
+		this.getOpenIdOrUnionId()
+			
+		
+	},
+	getOpenIdOrUnionId(){
 		wechat.getOpenIdOrUnionId()
 			.then(res => {
 				var data = res
@@ -200,8 +205,9 @@ Page({
 				}
 				
 			})
-			
-		
+			.catch(e=>{
+				// this.getOpenIdOrUnionId()
+			})
 	},
 	toCard() {
 		var self = this

@@ -1,0 +1,72 @@
+.mine-template{
+	margin-top: 30rpx;
+	margin-bottom: 30rpx;
+	background: #fff;
+}
+.remarks-title{
+	padding: 12rpx 0;
+	font-size: 30rpx;
+}
+.tpl_wrap{
+	padding: 30rpx 50rpx;
+	width: 580rpx;
+	overflow: auto;
+}
+.tpl_content{
+	/* width: 200%; */
+}
+.tpl_wrap .item{
+	width: 158rpx;
+	display: inline-block;
+	margin-right: 46rpx;
+	position: relative;
+}
+.tpl_wrap .item:last-child{
+	margin-right: 0;
+}
+.tpl_wrap .item image{
+	width: 100%;
+	display: block;
+}
+.choose_icon_box{
+	width: 40rpx;
+	height: 40rpx;
+	position: absolute;
+	top: -20rpx;
+	right:-20rpx;
+	border-radius: 50%;
+	background: #fff;
+}
+.bg.remarks-title{
+	display: flex;
+	justify-content: space-between;
+}
+.bg.remarks-title text:last-child{
+	font-size: 26rpx;
+	color: #4e8cee;
+	text-decoration: underline;
+}
+.tpl_bg{
+	margin-top: 16rpx;
+	width: 640rpx;
+	box-shadow: 0 0 20rpx rgba(0,0,0,.2);
+	border-radius: 12rpx;
+	position: relative;
+}
+.tpl_bg .change_btn{
+	/* width: 130rpx; */
+	height: 60rpx;
+	font-size: 22rpx;
+	color: #666666;
+	position: absolute;
+	right: 20rpx;
+	top: 40rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.tpl_bg image{
+	width: 100%;
+	border-radius: 12rpx;
+}
+@import '../../../../../component/image-cropper/image-cropper.wxss'

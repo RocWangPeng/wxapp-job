@@ -9,12 +9,19 @@ Component({
 		show: {
 			type:Boolean,
 			value:false
+		},
+		isMask:{
+			type:Boolean,
+			value:true
 		}
 		
 	},
 	methods: {
 		close(){
-			this.setData({show:false})
+			if(this.data.isMask){
+				this.setData({show:false})
+			}
+			
 		},
 		handleClickItem({ currentTarget = {} }){
 			const dataset = currentTarget.dataset || {};

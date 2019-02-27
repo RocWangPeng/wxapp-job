@@ -1,0 +1,55 @@
+<!-- search-team -->
+<!-- <search-team class="search_team"></search-team> -->
+<view class="search_bar">
+	<view class="input_warp">
+		<i-icon type="search" i-class="i_icon_c"  size="20" color="#bebebe" />
+		<input class="input" bindinput="bindKeyInput" placeholder="请输入团队名称" />
+	</view>
+</view>
+
+<view class="userList">
+	<text class="tips">{{ tips }}</text>
+	<view class="userItem" wx:for="{{ result }}" wx:key="{{ index }}">
+		<image class="head-img" src="{{ item.cardHeadUrl }}"></image>
+		<view class="userInfo">
+			<text>{{ item.cardName }}</text>
+			<text>{{item.createTime}}</text>
+		</view>
+		<view class="concernBtn" wx:if="{{ item.focusStatus == 4 }}" data-index="{{ index }}" data-focusteamid="{{ item.id }}" data-status="1" bindtap="focus">
+			+ 关注
+		</view>
+		<view class="concernBtn cancleBtn" wx:else data-index="{{ index }}"  data-focusteamid="{{ item.id }}" data-status="3" bindtap="focus">
+			× 取消关注
+		</view>
+	</view>
+</view>
+
+<i-tabs i-class="tabs" current="{{ current }}" bindchange="tabsHandleChange">
+    <i-tab key="guanzhu" title="我的关注"></i-tab>
+    <i-tab key="fensi" title="我的粉丝"></i-tab>
+</i-tabs>
+<view class="userList" wx:if="{{ current == 'guanzhu' }}">
+	
+	<view class="userItem" wx:for="{{ focusList }}" wx:key="{{ index }}" data-index="{{ index }}" data-focusteamid="{{ item.focusTeamId }}" data-status="3"  bindtap="toCard" bindlongpress="showAction">
+		<image class="head-img" src="{{ item.cardHeadUrl }}"></image>
+		<view class="userInfo">
+			<text>{{ item.cardName }}</text>
+			<text>{{item.createTime}}</text>
+		</view>
+	</view>
+	
+	<text class="tips" wx:if="{{ focusList.length == 0}}">暂无数据</text>
+</view>
+
+<view class="userList" wx:else>
+	
+	<view class="userItem" wx:for="{{ fansList }}" wx:key="{{ index }}" data-index="{{ index }}" data-focusteamid="{{ item.focusTeamId }}" data-status="3" bindtap="toCard">
+		<image class="head-img" src="{{ item.cardHeadUrl }}"></image>
+		<view class="userInfo">
+			<text>{{ item.cardName }}</text>
+			<text>{{item.createTime}}</text>
+		</view>
+	</view>
+	
+	<text class="tips" wx:if="{{ fansList.length == 0}}">暂无数据</text>
+</view>
